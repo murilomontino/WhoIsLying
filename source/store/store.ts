@@ -22,6 +22,13 @@ const configureStoreDefault = (_initialState = {}) => {
 
     sagaMiddleware.run(rootSaga)
 
+    store.subscribe(() => {
+        const state = store.getState()
+        if (state._persist && state._persist.rehydrated) {
+            console.log('Rehydration complete')
+        }
+    })
+
     return store
 }
 
