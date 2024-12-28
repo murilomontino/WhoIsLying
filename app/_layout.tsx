@@ -11,7 +11,7 @@ export default function _Layout() {
         <SafeAreaView
             edges={['top']}
             className="flex flex-1 w-full"
-            style={{ backgroundColor: '#09b285' }}
+            
         >
                 <StatusBar backgroundColor="#09b285" translucent animated />
                 <Slot />
