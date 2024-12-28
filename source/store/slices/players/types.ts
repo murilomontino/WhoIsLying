@@ -1,7 +1,9 @@
 import type { LOADING } from '~/store/slices/constants'
+import type { Player } from './player'
 
 export type InitialState = {
     isLoading: LOADING
+    players: Player[]
 }
 
 export const name = 'players'
