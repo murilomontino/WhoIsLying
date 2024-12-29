@@ -8,6 +8,9 @@ import {
     ON_ADD_PLAYERS,
     ON_ADD_PLAYERS_FAIL,
     ON_ADD_PLAYERS_SUCCESS,
+    ON_DELETE_PLAYERS,
+    ON_DELETE_PLAYERS_FAIL,
+    ON_DELETE_PLAYERS_SUCCESS,
     name,
 } from './types'
 
@@ -29,6 +32,18 @@ const slice = createSlice({
             state.players = [...state.players, player]
         },
         [ON_ADD_PLAYERS_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_DELETE_PLAYERS]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_DELETE_PLAYERS_SUCCESS]: (state, action) => {
+            state.isLoading = LOADING.SUCCESS
+            state.players = state.players.filter(
+                (player) => player._id !== action.payload.id,
+            )
+        },
+        [ON_DELETE_PLAYERS_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },
