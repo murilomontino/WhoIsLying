@@ -1,25 +1,37 @@
-import { all, delay, fork, put, takeLatest } from 'redux-saga/effects'
+import { all, fork, put, takeLatest } from 'redux-saga/effects'
 
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-import { onChangePlayersFail, onChangePlayersSuccess } from './actions'
-import { ACTION_CHANGE_PLAYERS } from './types'
+import { onAddPlayersFail, onAddPlayersSuccess } from './actions'
+import { ACTION_ADD_PLAYERS } from './types'
 
-export function* onChangePlayers({ payload }: PayloadAction) {
+export function* onAddPlayers({ payload }: PayloadAction<{ name: string }>) {
     try {
-        yield delay(2000)
-        yield put(onChangePlayersSuccess())
+        yield put(onAddPlayersSuccess(payload))
     } catch (_) {
-        yield put(onChangePlayersFail())
+        yield put(onAddPlayersFail())
     }
 }
 
-export function* watchOnChangePlayers() {
-    yield takeLatest(ACTION_CHANGE_PLAYERS, onChangePlayers)
+// export function* onChangePlayers({ payload }: PayloadAction) {
+//     try {
+//         yield delay(2000)
+//         yield put(onChangePlayersSuccess())
+//     } catch (_) {
+//         yield put(onChangePlayersFail())
+//     }
+// }
+
+// export function* watchOnChangePlayers() {
+//     yield takeLatest(ACTION_CHANGE_PLAYERS, onChangePlayers)
+// }
+
+export function* watchOnAddPlayers() {
+    yield takeLatest(ACTION_ADD_PLAYERS, onAddPlayers)
 }
 
-function* crmSaga() {
-    yield all([fork(watchOnChangePlayers)])
+function* Sagas() {
+    yield all([fork(watchOnAddPlayers)])
 }
 
-export default crmSaga
+export default Sagas

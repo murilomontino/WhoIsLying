@@ -1,7 +1,6 @@
-import { all } from 'redux-saga/effects'
+import { all, fork } from 'redux-saga/effects'
+import PlayersSagas from './slices/players/sagas'
 
 export default function* rootSaga() {
-    yield all([
-        //public
-    ])
+    yield all([fork(PlayersSagas)])
 }
