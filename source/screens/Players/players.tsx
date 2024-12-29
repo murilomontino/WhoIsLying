@@ -8,6 +8,7 @@ import { ButtonPrimary } from '~/components/atoms/button/button'
 import Title from '~/components/atoms/title'
 import ControlInput from '~/components/molecules/control-input'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import { onAddPlayers } from '~/store/slices/players/actions'
 
 const schema = Yup.object().shape({
     name: Yup.string().trim().required('Required'),
@@ -26,7 +27,7 @@ export default function Page() {
     })
 
     const handlePress = (data: { name: string }) => {
-        console.log(data)
+        dispatch(onAddPlayers(data))
     }
 
     return (
