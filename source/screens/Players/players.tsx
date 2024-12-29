@@ -1,8 +1,10 @@
 import AntDesign from '@expo/vector-icons/AntDesign'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { Link } from 'expo-router'
 import { useForm } from 'react-hook-form'
 import { Text, View } from 'react-native'
 import * as Yup from 'yup'
+import DefaultLayout from '~/components/_layout/default'
 import { Button } from '~/components/atoms/button'
 import { ButtonPrimary } from '~/components/atoms/button/button'
 import Title from '~/components/atoms/title'
@@ -37,7 +39,7 @@ export default function Page() {
     }
 
     return (
-        <View className="flex items-center justify-start flex-1 py-4 space-y-8 bg-emerald-400">
+        <DefaultLayout>
             <Title />
             <View className="flex flex-col w-1/2 space-y-4">
                 {players.map((player) => (
@@ -75,21 +77,23 @@ export default function Page() {
                 </Button>
             </View>
             <View className="flex flex-row items-center justify-center w-full space-x-4">
-                <ButtonPrimary className="w-1/2">
-                    <Text
-                        className="text-white"
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            fontSize: 42,
-                            textShadowColor: 'black', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
-                    >
-                        Start Game
-                    </Text>
-                </ButtonPrimary>
+                <Link href="/categories" asChild>
+                    <ButtonPrimary className="w-1/2">
+                        <Text
+                            className="text-white"
+                            style={{
+                                fontFamily: 'Bangers_400Regular',
+                                fontSize: 42,
+                                textShadowColor: 'black', // Cor da borda
+                                textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
+                                textShadowRadius: 2, // Raio para suavizar a sombra
+                            }}
+                        >
+                            Start Game
+                        </Text>
+                    </ButtonPrimary>
+                </Link>
             </View>
-        </View>
+        </DefaultLayout>
     )
 }
