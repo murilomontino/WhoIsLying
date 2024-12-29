@@ -1,6 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { persistReducer } from 'redux-persist'
 import autoMergeLevel from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
+import players from './slices/players/slice'
+import type { InitialState as PlayersState } from './slices/players/types'
 
 const makePersistConfig = (key: string) => ({
     key,
@@ -8,20 +10,13 @@ const makePersistConfig = (key: string) => ({
     stateReconciler: autoMergeLevel,
 })
 
-const session = (state = {}, action) => {
-    switch (action.type) {
-        default:
-            return state
-    }
-}
-
-const persistedReducersSession = persistReducer(
-    makePersistConfig('@dpsystem/session'),
-    session,
+const persistedReducersPlayers = persistReducer<PlayersState>(
+    makePersistConfig('@who-is-lying/players'),
+    players,
 )
 
 const reducers = {
-    session: persistedReducersSession,
+    players: persistedReducersPlayers,
 }
 
 export default reducers

@@ -6,6 +6,7 @@ import { type InitialState, name } from './types'
 
 const initialState: InitialState = {
     isLoading: LOADING.IDLE,
+    players: [],
 }
 
 const slice = createSlice({
