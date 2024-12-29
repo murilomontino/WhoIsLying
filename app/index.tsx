@@ -1,5 +1,3 @@
-import { Text } from 'react-native'
+import Page from '~/screens/players'
 
-export default function Page() {
-    return <Text>Top-level page</Text>
-}
+export default Page
