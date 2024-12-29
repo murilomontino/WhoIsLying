@@ -5,7 +5,7 @@ export class Player {
 
     constructor(id: string, name: string) {
         this._id = id
-        this.name = name
+        this.name = name.trim()
         this.score = 0
     }
 

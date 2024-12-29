@@ -21,7 +21,7 @@ export default function Page() {
     const {
         control,
         handleSubmit,
-        resetField,
+        setValue,
         formState: { errors, isValid },
     } = useForm({
         resolver: yupResolver(schema),
@@ -29,7 +29,7 @@ export default function Page() {
 
     const handlePress = (data: { name: string }) => {
         dispatch(onAddPlayers(data))
-        resetField('name')
+        setValue('name', '')
     }
 
     const handleDelete = (id: string) => {
