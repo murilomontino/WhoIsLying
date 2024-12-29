@@ -41,6 +41,18 @@ export default function Page() {
     return (
         <DefaultLayout>
             <Title />
+            <Text
+                className="text-center text-gray-800"
+                style={{
+                    fontFamily: 'Bangers_400Regular',
+                    fontSize: 42,
+                    textShadowColor: 'white', // Cor da borda
+                    textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
+                    textShadowRadius: 2, // Raio para suavizar a sombra
+                }}
+            >
+                Jogadores
+            </Text>
             <View className="flex flex-col w-1/2 space-y-4">
                 {players.map((player) => (
                     <View
@@ -64,6 +76,11 @@ export default function Page() {
             <View className="flex flex-row items-center justify-center w-full space-x-4">
                 <ControlInput
                     control={control}
+                    onKeyPress={({ nativeEvent }) => {
+                        if (nativeEvent.key === 'Enter') {
+                            handleSubmit(handlePress)()
+                        }
+                    }}
                     name="name"
                     className="text-2xl"
                     errors={errors}
@@ -78,7 +95,7 @@ export default function Page() {
             </View>
             <View className="flex flex-row items-center justify-center w-full space-x-4">
                 <Link href="/categories" asChild>
-                    <ButtonPrimary className="w-1/2">
+                    <ButtonPrimary className="w-1/2" disabled={players.length < 3}>
                         <Text
                             className="text-white"
                             style={{
