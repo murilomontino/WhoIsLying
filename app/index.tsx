@@ -1,3 +1,3 @@
-import Page from '~/screens/players'
+import Page from '~/screens/Players'
 
 export default Page
