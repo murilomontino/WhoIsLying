@@ -7,7 +7,7 @@ type DefaultLayoutProps = {
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     return (
-        <View className="flex items-center justify-start flex-1 py-4 space-y-8 bg-emerald-400">
+        <View className="flex items-center justify-start flex-1 py-4 space-y-8 overflow-y-auto bg-emerald-400">
             {children}
         </View>
     )
