@@ -65,7 +65,7 @@ const slice = createSlice({
                 reveal: false,
                 canAnswer: true,
                 canVote: true,
-                votes: 0,
+                displayVotes: 0,
                 canAsk: true,
                 __protocol: 'player',
             })
@@ -160,7 +160,7 @@ const slice = createSlice({
                 return {
                     ...player,
                     reveal: false,
-                    votes: 0,
+                    displayVotes: 0,
                     canAnswer: true,
                     canVote: true,
                     canAsk: true,
@@ -202,7 +202,7 @@ const slice = createSlice({
                 return {
                     ...player,
                     canVote: true,
-                    votes: 0,
+                    displayVotes: 0,
                 }
             })
         },
@@ -224,7 +224,7 @@ const slice = createSlice({
                 if (player._id === action.payload.disguised_id) {
                     return {
                         ...player,
-                        votes: player.votes + 1,
+                        displayVotes: player.displayVotes + 1,
                     }
                 }
 
