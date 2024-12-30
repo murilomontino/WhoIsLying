@@ -21,7 +21,7 @@ const AskingScreen = () => {
     useEffect(() => {
         const nextAskPlayer = players.find((player) => player.canAsk)
         if (!nextAskPlayer) {
-            router.push('/game-over')
+            router.push('/round-table')
             return
         }
         setAskPlayer(nextAskPlayer)
@@ -40,7 +40,7 @@ const AskingScreen = () => {
 
         if (canPlayersAnswer.length === 0) {
             setAnswerPlayer(null)
-            router.push('/game-over')
+            router.push('/round-table')
             return
         }
 
