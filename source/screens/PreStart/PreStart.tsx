@@ -45,7 +45,7 @@ const PreStartScreen = () => {
             </View>
 
             <View className="flex flex-row items-center justify-center w-full px-4 space-x-4">
-                <Link href="/game" asChild>
+                <Link href="/reveal" asChild>
                     <ButtonPrimary className="w-full md:w-1/2">
                         <Text
                             className="text-white"
