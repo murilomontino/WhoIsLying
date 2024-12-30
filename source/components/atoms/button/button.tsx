@@ -5,11 +5,15 @@ type ButtonProps = TouchableOpacityProps
 
 const button = tv({
     base: `
-        bg-blue-500 px-4 py-8 w-full rounded-full items-center justify-center h-12
+        px-4 py-8 w-full rounded-full items-center justify-center h-12
     `,
     variants: {
         disabled: {
             true: 'bg-gray-500 opacity-70', // Aplica um tom de cinza quando desabilitado
+        },
+        color: {
+            primary: 'bg-blue-500',
+            secondary: 'bg-gray-500',
         },
     },
 })
@@ -40,7 +44,7 @@ export function ButtonPrimary({ className, disabled, ...props }: ButtonProps) {
         <TouchableOpacity
             {...props}
             disabled={disabled}
-            className={button({ className, disabled })}
+            className={button({ className, disabled, color: 'primary' })}
         />
     )
 }
@@ -50,7 +54,7 @@ export function ButtonSecondary({ className, disabled, ...props }: ButtonProps) 
         <TouchableOpacity
             {...props}
             disabled={disabled}
-            className={button({ className, disabled })}
+            className={button({ className, disabled, color: 'secondary' })}
         />
     )
 }
