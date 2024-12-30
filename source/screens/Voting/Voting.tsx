@@ -23,7 +23,7 @@ const Voting = () => {
             return
         }
 
-        router.push(`/voting/${nextPlayer._id}`)
+        router.push(`/voting/wait-player/${nextPlayer._id}`)
     }, [players, isMounted])
 
     return (
