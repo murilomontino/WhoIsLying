@@ -13,6 +13,9 @@ import {
     ACTION_RESET_PLAYERS,
     ACTION_RESET_PLAYERS_FAIL,
     ACTION_RESET_PLAYERS_SUCCESS,
+    ACTION_UPDATE_CAN_PLAYER_VOTE,
+    ACTION_UPDATE_CAN_PLAYER_VOTE_FAIL,
+    ACTION_UPDATE_CAN_PLAYER_VOTE_SUCCESS,
     ACTION_UPDATE_PLAYER_CAN_ANSWER,
     ACTION_UPDATE_PLAYER_CAN_ANSWER_FAIL,
     ACTION_UPDATE_PLAYER_CAN_ANSWER_SUCCESS,
@@ -101,3 +104,17 @@ export const onUpdatePlayerNameFail = createAction(ACTION_UPDATE_PLAYER_NAME_FAI
 export const onResetPlayers = createAction(ACTION_RESET_PLAYERS)
 export const onResetPlayersSuccess = createAction(ACTION_RESET_PLAYERS_SUCCESS)
 export const onResetPlayersFail = createAction(ACTION_RESET_PLAYERS_FAIL)
+
+export const onUpdateCanPlayerVote = createAction<{
+    _id: string
+    canVote: boolean
+}>(ACTION_UPDATE_CAN_PLAYER_VOTE)
+
+export const onUpdateCanPlayerVoteSuccess = createAction<{
+    _id: string
+    canVote: boolean
+}>(ACTION_UPDATE_CAN_PLAYER_VOTE_SUCCESS)
+
+export const onUpdateCanPlayerVoteFail = createAction(
+    ACTION_UPDATE_CAN_PLAYER_VOTE_FAIL,
+)

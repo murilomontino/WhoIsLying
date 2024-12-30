@@ -4,6 +4,7 @@ export const Player = {
     score: 0,
     reveal: false,
     canAnswer: true,
+    canVote: true,
     canAsk: true,
     __protocol: 'player',
 }
@@ -14,6 +15,7 @@ export type IPlayer = {
     score: number
     reveal: boolean
     canAnswer: boolean
+    canVote: boolean
     canAsk: boolean
     __protocol: string
 }

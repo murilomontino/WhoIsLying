@@ -9,6 +9,8 @@ import {
     onDeletePlayersSuccess,
     onResetPlayersFail,
     onResetPlayersSuccess,
+    onUpdateCanPlayerVoteFail,
+    onUpdateCanPlayerVoteSuccess,
     onUpdatePlayerCanAnswerFail,
     onUpdatePlayerCanAnswerSuccess,
     onUpdatePlayerCanAskFail,
@@ -24,6 +26,7 @@ import {
     ACTION_ADD_PLAYERS,
     ACTION_DELETE_PLAYERS,
     ACTION_RESET_PLAYERS,
+    ACTION_UPDATE_CAN_PLAYER_VOTE,
     ACTION_UPDATE_PLAYER_CAN_ANSWER,
     ACTION_UPDATE_PLAYER_CAN_ASK,
     ACTION_UPDATE_PLAYER_NAME,
@@ -105,6 +108,16 @@ export function* onResetPlayers() {
     }
 }
 
+export function* onUpdateCanPlayerVote({
+    payload,
+}: PayloadAction<{ _id: string; canVote: boolean }>) {
+    try {
+        yield put(onUpdateCanPlayerVoteSuccess(payload))
+    } catch (_) {
+        yield put(onUpdateCanPlayerVoteFail())
+    }
+}
+
 export function* watchOnResetPlayers() {
     yield takeLatest(ACTION_RESET_PLAYERS, onResetPlayers)
 }
@@ -137,6 +150,10 @@ export function* watchOnUpdatePlayerName() {
     yield takeLatest(ACTION_UPDATE_PLAYER_NAME, onUpdatePlayerName)
 }
 
+export function* watchOnUpdateCanPlayerVote() {
+    yield takeLatest(ACTION_UPDATE_CAN_PLAYER_VOTE, onUpdateCanPlayerVote)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnAddPlayers),
@@ -147,6 +164,7 @@ function* Sagas() {
         fork(watchOnUpdatePlayerCanAsk),
         fork(watchOnUpdatePlayerName),
         fork(watchOnResetPlayers),
+        fork(watchOnUpdateCanPlayerVote),
     ])
 }
 

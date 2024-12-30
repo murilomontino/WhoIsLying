@@ -14,6 +14,9 @@ import {
     ON_RESET_PLAYERS,
     ON_RESET_PLAYERS_FAIL,
     ON_RESET_PLAYERS_SUCCESS,
+    ON_UPDATE_CAN_PLAYER_VOTE,
+    ON_UPDATE_CAN_PLAYER_VOTE_FAIL,
+    ON_UPDATE_CAN_PLAYER_VOTE_SUCCESS,
     ON_UPDATE_PLAYER_CAN_ANSWER,
     ON_UPDATE_PLAYER_CAN_ANSWER_FAIL,
     ON_UPDATE_PLAYER_CAN_ANSWER_SUCCESS,
@@ -52,6 +55,7 @@ const slice = createSlice({
                 score: 0,
                 reveal: false,
                 canAnswer: true,
+                canVote: true,
                 canAsk: true,
                 __protocol: 'player',
             })
@@ -147,11 +151,25 @@ const slice = createSlice({
                     ...player,
                     reveal: false,
                     canAnswer: true,
+                    canVote: true,
                     canAsk: true,
                 }
             })
         },
         [ON_RESET_PLAYERS_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_UPDATE_CAN_PLAYER_VOTE]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_UPDATE_CAN_PLAYER_VOTE_SUCCESS]: (state, action) => {
+            state.isLoading = LOADING.SUCCESS
+            const player = state.players.find((p) => p._id === action.payload._id)
+            if (player) {
+                player.canVote = action.payload.canVote
+            }
+        },
+        [ON_UPDATE_CAN_PLAYER_VOTE_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },
