@@ -4,23 +4,28 @@ import { Text, View } from 'react-native'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
 import GoBack from '~/components/molecules/go-back'
-import { useAppSelector } from '~/store/hooks'
+import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import {
+    onUpdatePlayerCanAnswer,
+    onUpdatePlayerCanAsk,
+} from '~/store/slices/players/actions'
 import type { Player } from '~/store/slices/players/player'
 
 const AskingScreen = () => {
     const [askPlayer, setAskPlayer] = useState<typeof Player | null>(null)
     const [answerPlayer, setAnswerPlayer] = useState<typeof Player | null>(null)
+    const dispatch = useAppDispatch()
     const { players } = useAppSelector((state) => state.players)
     const router = useRouter()
 
     useEffect(() => {
-        const askPlayer = players.find((player) => player.canAsk)
-        if (!askPlayer) {
+        const nextAskPlayer = players.find((player) => player.canAsk)
+        if (!nextAskPlayer) {
             router.push('/game-over')
             return
         }
-        setAskPlayer(askPlayer)
-    }, [players, askPlayer?.canAsk])
+        setAskPlayer(nextAskPlayer)
+    }, [players, askPlayer])
 
     useEffect(() => {
         const canPlayersAnswer = players.filter(
@@ -33,12 +38,21 @@ const AskingScreen = () => {
             return
         }
 
+        if (canPlayersAnswer.length === 0) {
+            setAnswerPlayer(null)
+            router.push('/game-over')
+            return
+        }
+
         let answerPlayer = null
 
         while (answerPlayer === null) {
             const randomIndex = Math.floor(Math.random() * canPlayersAnswer.length)
-            const player = canPlayersAnswer[randomIndex]
-            if (player._id === askPlayer?._id) {
+            if (canPlayersAnswer.length === 0) {
+                break
+            }
+            const player = canPlayersAnswer?.[randomIndex]
+            if (player?._id === askPlayer?._id) {
                 continue
             }
             answerPlayer = player
@@ -46,6 +60,22 @@ const AskingScreen = () => {
 
         setAnswerPlayer(answerPlayer)
     }, [askPlayer?._id])
+
+    const handleNext = () => {
+        setAskPlayer(null)
+        dispatch(
+            onUpdatePlayerCanAsk({
+                _id: askPlayer?._id as string,
+                canAsk: false,
+            }),
+        )
+        dispatch(
+            onUpdatePlayerCanAnswer({
+                _id: answerPlayer?._id as string,
+                canAnswer: false,
+            }),
+        )
+    }
 
     return (
         <DefaultLayout>
@@ -55,11 +85,11 @@ const AskingScreen = () => {
                     <Text
                         style={{
                             fontFamily: 'Bangers_400Regular',
-                            textShadowColor: '#ef4444', // Cor da borda
+                            textShadowColor: '#181818', // Cor da borda
                             textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
                             textShadowRadius: 2, // Raio para suavizar a sombra
                         }}
-                        className="text-4xl font-bold text-white text-pretty"
+                        className="text-5xl font-bold text-white text-pretty "
                     >
                         {answerPlayer?.name}
                     </Text>
@@ -68,7 +98,7 @@ const AskingScreen = () => {
                         style={{
                             fontFamily: 'Bangers_400Regular',
                             fontSize: 42,
-                            textShadowColor: '#ef4444', // Cor da borda
+                            textShadowColor: '#181818', // Cor da borda
                             textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
                             textShadowRadius: 2, // Raio para suavizar a sombra
                         }}
@@ -101,20 +131,11 @@ const AskingScreen = () => {
                     {askPlayer?.reveal ? '🍔' : '🤫'}
                 </Text>
 
-                <Text
-                    className="px-8 text-2xl text-center text-white"
-                    style={{
-                        fontFamily: 'Bangers_400Regular',
-                        textShadowColor: '#000', // Cor da borda
-                        textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                        textShadowRadius: 2, // Raio para suavizar a sombra
-                    }}
-                >
-                    Cada Jogador, exceto o que está fora da Rodada, vai ver a mesma
-                    comida secreta.
-                </Text>
                 <View className="flex items-center justify-center w-full px-8">
-                    <ButtonSecondary className="w-full rounded-lg md:w-1/2">
+                    <ButtonSecondary
+                        onPress={handleNext}
+                        className="w-full rounded-full md:w-1/2"
+                    >
                         <Text
                             className="text-gray-800"
                             style={{
@@ -125,7 +146,7 @@ const AskingScreen = () => {
                                 textShadowRadius: 2, // Raio para suavizar a sombra
                             }}
                         >
-                            Eu sou o(a) {askPlayer?.name}
+                            Próximo
                         </Text>
                     </ButtonSecondary>
                 </View>

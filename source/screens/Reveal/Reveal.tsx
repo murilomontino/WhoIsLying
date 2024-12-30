@@ -8,7 +8,7 @@ import { useAppSelector } from '~/store/hooks'
 import type { Player } from '~/store/slices/players/player'
 
 const RevealScreen = () => {
-    const [player, setPlayer] = useState<Player | null>(null)
+    const [player, setPlayer] = useState<typeof Player | null>(null)
     const { players } = useAppSelector((state) => state.players)
     const router = useRouter()
 
@@ -83,7 +83,7 @@ const RevealScreen = () => {
                 <View className="flex items-center justify-center w-full px-8">
                     <ButtonSecondary
                         onPress={handleReveal}
-                        className="w-full rounded-lg md:w-1/2"
+                        className="w-full rounded-full md:w-1/2"
                     >
                         <Text
                             className="text-gray-800"

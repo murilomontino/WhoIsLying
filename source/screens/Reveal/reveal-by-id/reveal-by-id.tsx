@@ -13,7 +13,8 @@ import Animated, {
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
 import Title from '~/components/atoms/title'
-import { useAppSelector } from '~/store/hooks'
+import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import { onUpdatePlayerReveal } from '~/store/slices/players/actions'
 import type { Player } from '~/store/slices/players/player'
 
 const RevealByIdScreen = () => {
@@ -22,6 +23,7 @@ const RevealByIdScreen = () => {
     const { players } = useAppSelector((state) => state.players)
     const { category } = useAppSelector((state) => state.categories)
     const router = useRouter()
+    const dispatch = useAppDispatch()
     const { id } = useLocalSearchParams()
     // Animações com useSharedValue
     const opacity = useSharedValue(100) // FadeIn
@@ -67,7 +69,7 @@ const RevealByIdScreen = () => {
     }
 
     const handleReveal = () => {
-        player?.revealPlayer?.()
+        dispatch(onUpdatePlayerReveal({ _id: player?._id as string, reveal: true }))
         router.push('/reveal')
     }
 
@@ -159,7 +161,7 @@ const RevealByIdScreen = () => {
                     <ButtonPrimary
                         disabled={!visible}
                         onPress={handleReveal}
-                        className="w-full rounded-lg md:w-1/2"
+                        className="w-full rounded-full md:w-1/2"
                     >
                         <Text
                             className="text-white"
