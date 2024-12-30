@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 import DefaultLayout from '~/components/_layout/default'
 import { useAppSelector } from '~/store/hooks'
 
-const Voting = () => {
+const VotingScreen = () => {
     const { players } = useAppSelector((state) => state.players)
     const [isMounted, setIsMounted] = useState(false)
 
@@ -35,4 +35,4 @@ const Voting = () => {
     )
 }
 
-export default Voting
+export default VotingScreen

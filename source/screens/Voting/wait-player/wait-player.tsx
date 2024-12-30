@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import React, { useEffect, useState } from 'react'
 import { Text, View } from 'react-native'
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
 import { useAppSelector } from '~/store/hooks'
@@ -33,7 +34,11 @@ const WaitPlayerScreen = () => {
 
     return (
         <DefaultLayout>
-            <View className="flex flex-col items-center justify-center w-full h-full space-y-8">
+            <Animated.View
+                entering={FadeIn}
+                exiting={FadeOut}
+                className="flex flex-col items-center justify-center w-full h-full space-y-8"
+            >
                 <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
                     <Text
                         className="text-center text-white"
@@ -79,7 +84,7 @@ const WaitPlayerScreen = () => {
                         </Text>
                     </ButtonSecondary>
                 </View>
-            </View>
+            </Animated.View>
         </DefaultLayout>
     )
 }
