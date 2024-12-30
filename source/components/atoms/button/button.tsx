@@ -1,7 +1,10 @@
 import { TouchableOpacity, type TouchableOpacityProps } from 'react-native'
 import { tv } from 'tailwind-variants'
+import withControl from '~/components/helpers/with-control'
 
-type ButtonProps = TouchableOpacityProps
+type ButtonProps = TouchableOpacityProps & {
+    condition?: boolean
+}
 
 const button = tv({
     base: `
@@ -39,9 +42,11 @@ export function Button({ className, disabled, ...props }: ButtonProps) {
     )
 }
 
+const BtnControl = withControl(Button)
+
 export function ButtonPrimary({ className, disabled, ...props }: ButtonProps) {
     return (
-        <TouchableOpacity
+        <BtnControl
             {...props}
             disabled={disabled}
             className={button({ className, disabled, color: 'primary' })}
@@ -51,7 +56,7 @@ export function ButtonPrimary({ className, disabled, ...props }: ButtonProps) {
 
 export function ButtonSecondary({ className, disabled, ...props }: ButtonProps) {
     return (
-        <TouchableOpacity
+        <BtnControl
             {...props}
             disabled={disabled}
             className={button({ className, disabled, color: 'secondary' })}
