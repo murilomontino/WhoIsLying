@@ -1,5 +1,5 @@
-import { Link } from 'expo-router'
-import React, { useEffect } from 'react'
+import { useRouter } from 'expo-router'
+import React from 'react'
 import { Text, View } from 'react-native'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary } from '~/components/atoms/button'
@@ -8,15 +8,21 @@ import GoBack from '~/components/molecules/go-back'
 import Points from '~/components/molecules/points'
 import Rounds from '~/components/molecules/rounds'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import { onChangeQuestionRound } from '~/store/slices/game/actions'
 import { onResetPlayers } from '~/store/slices/players/actions'
+import { delay } from '~/utils/delay'
 
 const PreStartScreen = () => {
     const { category } = useAppSelector((state) => state.categories)
     const dispatch = useAppDispatch()
+    const router = useRouter()
 
-    useEffect(() => {
+    const handleStartGame = async () => {
         dispatch(onResetPlayers())
-    }, [])
+        dispatch(onChangeQuestionRound({ questionRound: 1 }))
+        await delay(100)
+        router.push('/reveal')
+    }
 
     return (
         <DefaultLayout>
@@ -52,22 +58,23 @@ const PreStartScreen = () => {
             </View>
 
             <View className="flex flex-row items-center justify-center w-full px-4 space-x-4">
-                <Link href="/reveal" asChild>
-                    <ButtonPrimary className="w-full md:w-1/2">
-                        <Text
-                            className="text-white"
-                            style={{
-                                fontFamily: 'Bangers_400Regular',
-                                fontSize: 42,
-                                textShadowColor: '#ef4444', // Cor da borda
-                                textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                                textShadowRadius: 2, // Raio para suavizar a sombra
-                            }}
-                        >
-                            Start Game
-                        </Text>
-                    </ButtonPrimary>
-                </Link>
+                <ButtonPrimary
+                    className="w-full md:w-1/2"
+                    onPress={handleStartGame}
+                >
+                    <Text
+                        className="text-white"
+                        style={{
+                            fontFamily: 'Bangers_400Regular',
+                            fontSize: 42,
+                            textShadowColor: '#ef4444', // Cor da borda
+                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
+                            textShadowRadius: 2, // Raio para suavizar a sombra
+                        }}
+                    >
+                        Start Game
+                    </Text>
+                </ButtonPrimary>
             </View>
         </DefaultLayout>
     )

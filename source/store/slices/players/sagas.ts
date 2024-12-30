@@ -7,6 +7,8 @@ import {
     onAddPlayersSuccess,
     onDeletePlayersFail,
     onDeletePlayersSuccess,
+    onResetPlayersFail,
+    onResetPlayersSuccess,
     onUpdatePlayerCanAnswerFail,
     onUpdatePlayerCanAnswerSuccess,
     onUpdatePlayerCanAskFail,
@@ -21,6 +23,7 @@ import {
 import {
     ACTION_ADD_PLAYERS,
     ACTION_DELETE_PLAYERS,
+    ACTION_RESET_PLAYERS,
     ACTION_UPDATE_PLAYER_CAN_ANSWER,
     ACTION_UPDATE_PLAYER_CAN_ASK,
     ACTION_UPDATE_PLAYER_NAME,
@@ -94,6 +97,18 @@ export function* onUpdatePlayerName({
     }
 }
 
+export function* onResetPlayers() {
+    try {
+        yield put(onResetPlayersSuccess())
+    } catch (_) {
+        yield put(onResetPlayersFail())
+    }
+}
+
+export function* watchOnResetPlayers() {
+    yield takeLatest(ACTION_RESET_PLAYERS, onResetPlayers)
+}
+
 export function* watchOnAddPlayers() {
     yield takeLatest(ACTION_ADD_PLAYERS, onAddPlayers)
 }
@@ -131,6 +146,7 @@ function* Sagas() {
         fork(watchOnUpdatePlayerCanAnswer),
         fork(watchOnUpdatePlayerCanAsk),
         fork(watchOnUpdatePlayerName),
+        fork(watchOnResetPlayers),
     ])
 }
 
