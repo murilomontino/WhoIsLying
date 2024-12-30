@@ -1,5 +1,5 @@
 import { Link } from 'expo-router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, View } from 'react-native'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary } from '~/components/atoms/button'
@@ -7,10 +7,17 @@ import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
 import Points from '~/components/molecules/points'
 import Rounds from '~/components/molecules/rounds'
-import { useAppSelector } from '~/store/hooks'
+import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import { onResetPlayers } from '~/store/slices/players/actions'
 
 const PreStartScreen = () => {
     const { category } = useAppSelector((state) => state.categories)
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(onResetPlayers())
+    }, [])
+
     return (
         <DefaultLayout>
             <GoBack />
