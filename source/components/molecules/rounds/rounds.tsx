@@ -18,9 +18,10 @@ const Rounds = () => {
     }
 
     return (
-        <View className="flex-row items-center justify-between w-1/2 bg-white rounded-full ">
+        <View className="flex-row items-center justify-between w-full bg-white rounded-full md:w-1/2 ">
             <Button
-                className="p-2 my-2 border-r border-gray-600"
+                disabled={rounds <= 1}
+                className="p-2 my-2 bg-transparent border-r border-gray-600"
                 onPress={handlePreviousRound}
             >
                 <AntDesign
@@ -29,9 +30,20 @@ const Rounds = () => {
                     className="mr-2 text-gray-800"
                 />
             </Button>
-            <Text>Rodada 1</Text>
+            <Text
+                className="text-3xl font-semibold text-gray-800 uppercase"
+                style={{
+                    fontFamily: 'Bangers_400Regular',
+                    textShadowColor: '#ef4444', // Cor da borda
+                    textShadowOffset: { width: 1, height: 1 }, // Offset da sombra
+                    textShadowRadius: 2, // Raio para suavizar a sombra
+                }}
+            >
+                {rounds} {rounds === 1 ? 'rodada' : 'rodadas'}
+            </Text>
             <Button
-                className="p-2 my-2 border-l border-gray-600"
+                disabled={rounds >= 10}
+                className="p-2 my-2 bg-transparent border-l border-gray-600"
                 onPress={handleNextRound}
             >
                 <AntDesign
