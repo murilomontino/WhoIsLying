@@ -115,13 +115,13 @@ const RevealByIdScreen = () => {
                         className="w-full rounded-lg md:w-1/2 !opacity-100"
                     >
                         <Animated.Text
-                            className="text-white"
+                            className="text-gray-800"
                             style={[
                                 animatedStyles,
                                 {
                                     fontFamily: 'Bangers_400Regular',
                                     fontSize: 42,
-                                    textShadowColor: '#000',
+                                    textShadowColor: '#ef4444',
                                     textShadowOffset: { width: 2, height: 2 },
                                     textShadowRadius: 2,
                                 },
