@@ -1,10 +1,12 @@
 import type { LOADING } from '~/store/slices/constants'
+import type { IPlayer } from '../players/player'
 
 export type InitialState = {
     isLoading: LOADING
     rounds: number
     points: number
     questionRound: number
+    disguisedPlayer: IPlayer | null
 }
 
 export const name = 'game'
@@ -21,6 +23,10 @@ export const ON_CHANGE_QUESTION_ROUND = 'ON_CHANGE_QUESTION_ROUND'
 export const ON_CHANGE_QUESTION_ROUND_SUCCESS = 'ON_CHANGE_QUESTION_ROUND_SUCCESS'
 export const ON_CHANGE_QUESTION_ROUND_FAIL = 'ON_CHANGE_QUESTION_ROUND_FAIL'
 
+export const ON_GENERATE_DISGUISED = 'ON_GENERATE_DISGUISED'
+export const ON_GENERATE_DISGUISED_SUCCESS = 'ON_GENERATE_DISGUISED_SUCCESS'
+export const ON_GENERATE_DISGUISED_FAIL = 'ON_GENERATE_DISGUISED_FAIL'
+
 export const ACTION_CHANGE_ROUNDS = `${name}/${ON_CHANGE_ROUNDS}`
 export const ACTION_CHANGE_ROUNDS_SUCCESS = `${name}/${ON_CHANGE_ROUNDS_SUCCESS}`
 export const ACTION_CHANGE_ROUNDS_FAIL = `${name}/${ON_CHANGE_ROUNDS_FAIL}`
@@ -32,3 +38,7 @@ export const ACTION_CHANGE_POINTS_FAIL = `${name}/${ON_CHANGE_POINTS_FAIL}`
 export const ACTION_CHANGE_QUESTION_ROUND = `${name}/${ON_CHANGE_QUESTION_ROUND}`
 export const ACTION_CHANGE_QUESTION_ROUND_SUCCESS = `${name}/${ON_CHANGE_QUESTION_ROUND_SUCCESS}`
 export const ACTION_CHANGE_QUESTION_ROUND_FAIL = `${name}/${ON_CHANGE_QUESTION_ROUND_FAIL}`
+
+export const ACTION_GENERATE_DISGUISED = `${name}/${ON_GENERATE_DISGUISED}`
+export const ACTION_GENERATE_DISGUISED_SUCCESS = `${name}/${ON_GENERATE_DISGUISED_SUCCESS}`
+export const ACTION_GENERATE_DISGUISED_FAIL = `${name}/${ON_GENERATE_DISGUISED_FAIL}`

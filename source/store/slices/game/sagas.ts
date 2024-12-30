@@ -1,7 +1,9 @@
-import { all, fork, put, takeLatest } from 'redux-saga/effects'
+import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+import { selectPlayers } from '~/store/selectors'
+import type { RootState } from '~/store/store'
 import {
     onChangePointsFail,
     onChangePointsSuccess,
@@ -9,11 +11,14 @@ import {
     onChangeQuestionRoundSuccess,
     onChangeRoundsFail,
     onChangeRoundsSuccess,
+    onGenerateDisguisedFail,
+    onGenerateDisguisedSuccess,
 } from './actions'
 import {
     ACTION_CHANGE_POINTS,
     ACTION_CHANGE_QUESTION_ROUND,
     ACTION_CHANGE_ROUNDS,
+    ACTION_GENERATE_DISGUISED,
 } from './types'
 
 export function* onChangeRounds({ payload }: PayloadAction<{ rounds: number }>) {
@@ -42,6 +47,15 @@ export function* onChangePoints({ payload }: PayloadAction<{ points: number }>) 
     }
 }
 
+export function* onGenerateDisguised() {
+    try {
+        const { players }: RootState['players'] = yield select(selectPlayers)
+        yield put(onGenerateDisguisedSuccess({ players }))
+    } catch (_) {
+        yield put(onGenerateDisguisedFail())
+    }
+}
+
 export function* watchOnChangeRounds() {
     yield takeLatest(ACTION_CHANGE_ROUNDS, onChangeRounds)
 }
@@ -54,11 +68,16 @@ export function* watchOnChangeQuestionRounds() {
     yield takeLatest(ACTION_CHANGE_QUESTION_ROUND, onChangeQuestionRounds)
 }
 
+export function* watchOnGenerateDisguised() {
+    yield takeLatest(ACTION_GENERATE_DISGUISED, onGenerateDisguised)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnChangeRounds),
         fork(watchOnChangePoints),
         fork(watchOnChangeQuestionRounds),
+        fork(watchOnGenerateDisguised),
     ])
 }
 
