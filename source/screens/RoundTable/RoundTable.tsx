@@ -20,7 +20,9 @@ const RoundTableScreen = () => {
     const dispatch = useAppDispatch()
     const router = useRouter()
 
-    const handlePressWeAreReady = () => {}
+    const handlePressWeAreReady = () => {
+        router.push('/voting')
+    }
 
     const handlePressAnotherRound = () => {
         for (const player of players) {

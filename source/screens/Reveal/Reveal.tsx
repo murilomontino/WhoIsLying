@@ -9,17 +9,23 @@ import type { Player } from '~/store/slices/players/player'
 
 const RevealScreen = () => {
     const [player, setPlayer] = useState<typeof Player | null>(null)
+    const [isMounted, setIsMounted] = useState(false)
     const { players } = useAppSelector((state) => state.players)
     const router = useRouter()
 
     useEffect(() => {
+        setIsMounted(true)
+    }, [])
+
+    useEffect(() => {
+        if (!isMounted) return
         const currentPlayer = players.find((player) => !player.reveal)
         if (!currentPlayer) {
             router.push('/asking')
             return
         }
         setPlayer(currentPlayer)
-    }, [players, player?.reveal])
+    }, [players, player?.reveal, isMounted])
 
     const handleReveal = () => {
         router.navigate(`/reveal/${player?._id}`)
