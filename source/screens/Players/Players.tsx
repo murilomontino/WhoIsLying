@@ -46,14 +46,14 @@ export default function Page() {
                 style={{
                     fontFamily: 'Bangers_400Regular',
                     fontSize: 42,
-                    textShadowColor: 'white', // Cor da borda
-                    textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
+                    textShadowColor: '#ef4444', // Cor da borda
+                    textShadowOffset: { width: 1, height: 1 }, // Offset da sombra
                     textShadowRadius: 2, // Raio para suavizar a sombra
                 }}
             >
                 Jogadores
             </Text>
-            <View className="flex flex-col w-1/2 space-y-4">
+            <View className="flex flex-col w-full px-4 space-y-4 md:w-1/2">
                 {players.map((player) => (
                     <View
                         key={player._id}
@@ -73,7 +73,7 @@ export default function Page() {
                 ))}
             </View>
 
-            <View className="flex flex-row items-center justify-center w-full space-x-4">
+            <View className="flex flex-row items-center justify-center w-[70vw] px-8 ">
                 <ControlInput
                     control={control}
                     onKeyPress={({ nativeEvent }) => {
@@ -82,7 +82,7 @@ export default function Page() {
                         }
                     }}
                     name="name"
-                    className="text-2xl"
+                    className="mr-5 text-2xl"
                     errors={errors}
                 />
                 <Button
@@ -97,15 +97,18 @@ export default function Page() {
                     />
                 </Button>
             </View>
-            <View className="flex flex-row items-center justify-center w-full space-x-4">
+            <View className="flex flex-row items-center justify-center w-full px-4 space-x-4">
                 <Link href="/categories" asChild>
-                    <ButtonPrimary className="w-1/2" disabled={players.length < 3}>
+                    <ButtonPrimary
+                        className="w-full md:w-1/2"
+                        disabled={players.length < 3}
+                    >
                         <Text
                             className="text-white"
                             style={{
                                 fontFamily: 'Bangers_400Regular',
                                 fontSize: 42,
-                                textShadowColor: 'black', // Cor da borda
+                                textShadowColor: '#ef4444', // Cor da borda
                                 textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
                                 textShadowRadius: 2, // Raio para suavizar a sombra
                             }}
