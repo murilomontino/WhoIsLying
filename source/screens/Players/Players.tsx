@@ -3,6 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Link } from 'expo-router'
 import { useForm } from 'react-hook-form'
 import { Text, View } from 'react-native'
+import Animated, { FadeInLeft, FadeOutRight } from 'react-native-reanimated'
 import * as Yup from 'yup'
 import DefaultLayout from '~/components/_layout/default'
 import { Button } from '~/components/atoms/button'
@@ -34,7 +35,7 @@ export default function Page() {
         setValue('name', '')
     }
 
-    const handleDelete = (id: string) => {
+    const handleDelete = async (id: string) => {
         dispatch(onDeletePlayers({ id }))
     }
 
@@ -53,11 +54,13 @@ export default function Page() {
             >
                 Jogadores
             </Text>
-            <View className="flex flex-col w-full px-4 space-y-4 md:w-1/2">
+            <View className="flex flex-col w-full px-4 space-y-4 min-h-48 md:w-1/2">
                 {players.map((player) => (
-                    <View
+                    <Animated.View
+                        entering={FadeInLeft}
+                        exiting={FadeOutRight}
                         key={player._id}
-                        className="flex flex-row items-center flex-1 px-4 py-2 space-x-4 bg-white rounded-full"
+                        className="flex flex-row items-center flex-1 h-12 px-4 py-2 space-x-4 bg-white rounded-full max-h-12"
                     >
                         <Text className="text-2xl flex-[4] text-center text-gray-800">
                             {player.name}
@@ -69,7 +72,7 @@ export default function Page() {
                                 className="text-gray-800"
                             />
                         </Button>
-                    </View>
+                    </Animated.View>
                 ))}
             </View>
 
