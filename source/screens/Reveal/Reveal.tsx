@@ -60,7 +60,7 @@ const RevealScreen = () => {
                         textShadowColor: '#ef4444', // Cor da borda
                         textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
                         textShadowRadius: 2, // Raio para suavizar a sombra
-                        fontSize: 200,
+                        fontSize: 128,
                         transform: [{ rotate: '35deg' }],
                     }}
                     className="text-center text-white"
