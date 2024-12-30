@@ -3,7 +3,7 @@ import type { Player } from './player'
 
 export type InitialState = {
     isLoading: LOADING
-    players: Player[]
+    players: (typeof Player)[]
 }
 
 export const name = 'players'

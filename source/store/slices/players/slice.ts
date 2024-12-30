@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import { v4 as uuidV4 } from 'uuid'
 import { LOADING } from '~/store/slices/constants'
-import { Player } from './player'
+import { type IPlayer, build } from './player'
 import {
     type InitialState,
     ON_ADD_PLAYERS,
@@ -28,7 +28,15 @@ const slice = createSlice({
         },
         [ON_ADD_PLAYERS_SUCCESS]: (state, action) => {
             state.isLoading = LOADING.SUCCESS
-            const player = new Player(uuidV4(), action.payload.name)
+            const player = build({
+                _id: uuidV4(),
+                name: action.payload.name,
+                score: 0,
+                reveal: false,
+                canAnswer: true,
+                canAsk: true,
+                __protocol: 'player',
+            })
             state.players = [...state.players, player]
         },
         [ON_ADD_PLAYERS_FAIL]: (state) => {
@@ -40,7 +48,7 @@ const slice = createSlice({
         [ON_DELETE_PLAYERS_SUCCESS]: (state, action) => {
             state.isLoading = LOADING.SUCCESS
             state.players = state.players.filter(
-                (player) => player._id !== action.payload.id,
+                (player: IPlayer) => player._id !== action.payload.id,
             )
         },
         [ON_DELETE_PLAYERS_FAIL]: (state) => {
