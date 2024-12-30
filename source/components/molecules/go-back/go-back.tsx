@@ -4,10 +4,18 @@ import React from 'react'
 import { Text } from 'react-native'
 import { Button } from '~/components/atoms/button'
 
-const GoBack = () => {
+type GoBackProps = {
+    href?: string
+}
+
+const GoBack = ({ href }: GoBackProps) => {
     const router = useRouter()
 
     const goBack = () => {
+        if (href) {
+            return router.navigate(href)
+        }
+
         if (router.canGoBack()) {
             return router.back()
         }
