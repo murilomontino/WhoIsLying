@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import { v4 as uuidV4 } from 'uuid'
 import { LOADING } from '~/store/slices/constants'
@@ -38,6 +38,9 @@ import {
     ON_UPDATE_PLAYER_SCORE,
     ON_UPDATE_PLAYER_SCORE_FAIL,
     ON_UPDATE_PLAYER_SCORE_SUCCESS,
+    ON_VOTE_IN_PLAYER,
+    ON_VOTE_IN_PLAYER_FAIL,
+    ON_VOTE_IN_PLAYER_SUCCESS,
     name,
 } from './types'
 
@@ -62,6 +65,7 @@ const slice = createSlice({
                 reveal: false,
                 canAnswer: true,
                 canVote: true,
+                votes: 0,
                 canAsk: true,
                 __protocol: 'player',
             })
@@ -156,6 +160,7 @@ const slice = createSlice({
                 return {
                     ...player,
                     reveal: false,
+                    votes: 0,
                     canAnswer: true,
                     canVote: true,
                     canAsk: true,
@@ -197,10 +202,43 @@ const slice = createSlice({
                 return {
                     ...player,
                     canVote: true,
+                    votes: 0,
                 }
             })
         },
         [ON_RESET_VOTING_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_VOTE_IN_PLAYER]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_VOTE_IN_PLAYER_SUCCESS]: (
+            state,
+            action: PayloadAction<{
+                disguised_id: string
+                _id: string
+            }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.players = state.players.map((player) => {
+                if (player._id === action.payload.disguised_id) {
+                    return {
+                        ...player,
+                        votes: player.votes + 1,
+                    }
+                }
+
+                if (player._id === action.payload._id) {
+                    return {
+                        ...player,
+                        canVote: false,
+                    }
+                }
+
+                return player
+            })
+        },
+        [ON_VOTE_IN_PLAYER_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

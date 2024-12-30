@@ -34,6 +34,9 @@ import {
     ACTION_UPDATE_PLAYER_SCORE,
     ACTION_UPDATE_PLAYER_SCORE_FAIL,
     ACTION_UPDATE_PLAYER_SCORE_SUCCESS,
+    ACTION_VOTE_IN_PLAYER,
+    ACTION_VOTE_IN_PLAYER_FAIL,
+    ACTION_VOTE_IN_PLAYER_SUCCESS,
 } from './types'
 
 export const onChangePlayers = createAction(ACTION_CHANGE_PLAYERS)
@@ -125,3 +128,12 @@ export const onUpdateCanPlayerVoteFail = createAction(
 export const onResetVoting = createAction(ACTION_RESET_VOTING)
 export const onResetVotingSuccess = createAction(ACTION_RESET_VOTING_SUCCESS)
 export const onResetVotingFail = createAction(ACTION_RESET_VOTING_FAIL)
+
+export const onVoteInPlayer = createAction<{ disguised_id: string; _id: string }>(
+    ACTION_VOTE_IN_PLAYER,
+)
+export const onVoteInPlayerSuccess = createAction<{
+    disguised_id: string
+    _id: string
+}>(ACTION_VOTE_IN_PLAYER_SUCCESS)
+export const onVoteInPlayerFail = createAction(ACTION_VOTE_IN_PLAYER_FAIL)

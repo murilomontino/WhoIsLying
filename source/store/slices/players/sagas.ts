@@ -23,6 +23,8 @@ import {
     onUpdatePlayerRevealSuccess,
     onUpdatePlayerScoreFail,
     onUpdatePlayerScoreSuccess,
+    onVoteInPlayerFail,
+    onVoteInPlayerSuccess,
 } from './actions'
 import {
     ACTION_ADD_PLAYERS,
@@ -35,6 +37,7 @@ import {
     ACTION_UPDATE_PLAYER_NAME,
     ACTION_UPDATE_PLAYER_REVEAL,
     ACTION_UPDATE_PLAYER_SCORE,
+    ACTION_VOTE_IN_PLAYER,
 } from './types'
 
 export function* onAddPlayers({ payload }: PayloadAction<{ name: string }>) {
@@ -129,6 +132,16 @@ export function* onResetVoting() {
     }
 }
 
+export function* onVoteInPlayer({
+    payload,
+}: PayloadAction<{ disguised_id: string; _id: string }>) {
+    try {
+        yield put(onVoteInPlayerSuccess(payload))
+    } catch (_) {
+        yield put(onVoteInPlayerFail())
+    }
+}
+
 export function* watchOnResetPlayers() {
     yield takeLatest(ACTION_RESET_PLAYERS, onResetPlayers)
 }
@@ -169,6 +182,10 @@ export function* watchOnResetVoting() {
     yield takeLatest(ACTION_RESET_VOTING, onResetVoting)
 }
 
+export function* watchOnVoteInPlayer() {
+    yield takeLatest(ACTION_VOTE_IN_PLAYER, onVoteInPlayer)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnAddPlayers),
@@ -181,6 +198,7 @@ function* Sagas() {
         fork(watchOnResetPlayers),
         fork(watchOnUpdateCanPlayerVote),
         fork(watchOnResetVoting),
+        fork(watchOnVoteInPlayer),
     ])
 }
 

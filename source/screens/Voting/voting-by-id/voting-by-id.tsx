@@ -5,7 +5,7 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
-import { onUpdateCanPlayerVote } from '~/store/slices/players/actions'
+import { onVoteInPlayer } from '~/store/slices/players/actions'
 import type { Player } from '~/store/slices/players/player'
 
 const Voting = () => {
@@ -14,6 +14,8 @@ const Voting = () => {
     const dispatch = useAppDispatch()
     const { players } = useAppSelector((state) => state.players)
     const router = useRouter()
+
+    const possiblePlayers = players.filter((p) => p._id !== id)
 
     useEffect(() => {
         const player = players.find((p) => p._id === id)
@@ -24,11 +26,11 @@ const Voting = () => {
         }
     }, [id])
 
-    const handleNext = () => {
+    const handleNext = (disguised_id: string) => {
         dispatch(
-            onUpdateCanPlayerVote({
+            onVoteInPlayer({
+                disguised_id,
                 _id: votePlayer?._id as string,
-                canVote: false,
             }),
         )
 
@@ -63,24 +65,29 @@ const Voting = () => {
                     </Text>
                 </View>
 
-                <View className="flex items-center justify-center w-full px-8">
-                    <ButtonSecondary
-                        onPress={handleNext}
-                        className="w-full rounded-full md:w-1/2"
-                    >
-                        <Text
-                            className="text-gray-800"
-                            style={{
-                                fontFamily: 'Bangers_400Regular',
-                                fontSize: 42,
-                                textShadowColor: '#ef4444', // Cor da borda
-                                textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                                textShadowRadius: 2, // Raio para suavizar a sombra
-                            }}
-                        >
-                            Próximo
-                        </Text>
-                    </ButtonSecondary>
+                <View className="flex items-center justify-center w-full px-8 space-y-4">
+                    {possiblePlayers.map((player) => {
+                        return (
+                            <ButtonSecondary
+                                key={player._id}
+                                onPress={handleNext.bind(null, player._id)}
+                                className="w-full rounded-full md:w-1/2"
+                            >
+                                <Text
+                                    className="text-gray-800"
+                                    style={{
+                                        fontFamily: 'Bangers_400Regular',
+                                        fontSize: 42,
+                                        textShadowColor: '#ef4444', // Cor da borda
+                                        textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
+                                        textShadowRadius: 2, // Raio para suavizar a sombra
+                                    }}
+                                >
+                                    {player.name}
+                                </Text>
+                            </ButtonSecondary>
+                        )
+                    })}
                 </View>
             </Animated.View>
         </DefaultLayout>

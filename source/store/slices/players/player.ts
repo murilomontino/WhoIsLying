@@ -2,6 +2,7 @@ export const Player = {
     _id: '',
     name: '',
     score: 0,
+    votes: 0,
     reveal: false,
     canAnswer: true,
     canVote: true,
@@ -15,6 +16,7 @@ export type IPlayer = {
     score: number
     reveal: boolean
     canAnswer: boolean
+    votes: number
     canVote: boolean
     canAsk: boolean
     __protocol: string
