@@ -85,11 +85,15 @@ export default function Page() {
                     className="text-2xl"
                     errors={errors}
                 />
-                <Button onPress={handleSubmit(handlePress)} disabled={!isValid}>
+                <Button
+                    className="!bg-transparent"
+                    onPress={handleSubmit(handlePress)}
+                    disabled={!isValid}
+                >
                     <AntDesign
                         name="pluscircleo"
                         size={48}
-                        className="text-gray-800 "
+                        className="text-gray-800"
                     />
                 </Button>
             </View>
