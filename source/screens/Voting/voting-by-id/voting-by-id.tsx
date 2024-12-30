@@ -4,6 +4,7 @@ import { Text, View } from 'react-native'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
+import Title from '~/components/atoms/title'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onVoteInPlayer } from '~/store/slices/players/actions'
 import type { Player } from '~/store/slices/players/player'
@@ -51,6 +52,7 @@ const Voting = () => {
                 exiting={FadeOut}
                 className="flex flex-col items-center justify-center w-full h-full space-y-8"
             >
+                <Title />
                 <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
                     <Text
                         style={{
@@ -65,19 +67,32 @@ const Voting = () => {
                     </Text>
                 </View>
 
+                <Text
+                    className="text-center text-white"
+                    style={{
+                        fontFamily: 'Bangers_400Regular',
+                        fontSize: 24,
+                        textShadowColor: '#ef4444', // Cor da borda
+                        textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
+                        textShadowRadius: 2, // Raio para suavizar a sombra
+                    }}
+                >
+                    Vote em quem você acha que é o impostor!
+                </Text>
+
                 <View className="flex items-center justify-center w-full px-8 space-y-4">
                     {possiblePlayers.map((player) => {
                         return (
                             <ButtonSecondary
                                 key={player._id}
                                 onPress={handleNext.bind(null, player._id)}
-                                className="w-full rounded-full md:w-1/2"
+                                className="w-full px-0 py-1 rounded-full md:w-1/2"
                             >
                                 <Text
                                     className="text-gray-800"
                                     style={{
                                         fontFamily: 'Bangers_400Regular',
-                                        fontSize: 42,
+                                        fontSize: 32,
                                         textShadowColor: '#ef4444', // Cor da borda
                                         textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
                                         textShadowRadius: 2, // Raio para suavizar a sombra
