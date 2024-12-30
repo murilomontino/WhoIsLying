@@ -6,6 +6,9 @@ import {
     ON_CHANGE_POINTS,
     ON_CHANGE_POINTS_FAIL,
     ON_CHANGE_POINTS_SUCCESS,
+    ON_CHANGE_QUESTION_ROUND,
+    ON_CHANGE_QUESTION_ROUND_FAIL,
+    ON_CHANGE_QUESTION_ROUND_SUCCESS,
     ON_CHANGE_ROUNDS,
     ON_CHANGE_ROUNDS_FAIL,
     ON_CHANGE_ROUNDS_SUCCESS,
@@ -16,6 +19,7 @@ const initialState: InitialState = {
     isLoading: LOADING.IDLE,
     rounds: 1,
     points: 500,
+    questionRound: 1,
 }
 
 const slice = createSlice({
@@ -60,6 +64,23 @@ const slice = createSlice({
             state.points = action.payload.points
         },
         [ON_CHANGE_POINTS_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_CHANGE_QUESTION_ROUND]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_CHANGE_QUESTION_ROUND_SUCCESS]: (
+            state,
+            action: PayloadAction<{ questionRound: number }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            if (action.payload.questionRound <= 0) {
+                state.questionRound = 1
+                return
+            }
+            state.questionRound = action.payload.questionRound
+        },
+        [ON_CHANGE_QUESTION_ROUND_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

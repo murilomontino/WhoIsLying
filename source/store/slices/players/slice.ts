@@ -11,6 +11,9 @@ import {
     ON_DELETE_PLAYERS,
     ON_DELETE_PLAYERS_FAIL,
     ON_DELETE_PLAYERS_SUCCESS,
+    ON_RESET_PLAYERS,
+    ON_RESET_PLAYERS_FAIL,
+    ON_RESET_PLAYERS_SUCCESS,
     ON_UPDATE_PLAYER_CAN_ANSWER,
     ON_UPDATE_PLAYER_CAN_ANSWER_FAIL,
     ON_UPDATE_PLAYER_CAN_ANSWER_SUCCESS,
@@ -132,6 +135,23 @@ const slice = createSlice({
             }
         },
         [ON_UPDATE_PLAYER_NAME_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_RESET_PLAYERS]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_RESET_PLAYERS_SUCCESS]: (state) => {
+            state.isLoading = LOADING.SUCCESS
+            state.players = state.players.map((player) => {
+                return {
+                    ...player,
+                    reveal: false,
+                    canAnswer: true,
+                    canAsk: true,
+                }
+            })
+        },
+        [ON_RESET_PLAYERS_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

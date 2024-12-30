@@ -10,6 +10,9 @@ import {
     ACTION_DELETE_PLAYERS,
     ACTION_DELETE_PLAYERS_FAIL,
     ACTION_DELETE_PLAYERS_SUCCESS,
+    ACTION_RESET_PLAYERS,
+    ACTION_RESET_PLAYERS_FAIL,
+    ACTION_RESET_PLAYERS_SUCCESS,
     ACTION_UPDATE_PLAYER_CAN_ANSWER,
     ACTION_UPDATE_PLAYER_CAN_ANSWER_FAIL,
     ACTION_UPDATE_PLAYER_CAN_ANSWER_SUCCESS,
@@ -94,3 +97,7 @@ export const onUpdatePlayerNameSuccess = createAction<{
     name: string
 }>(ACTION_UPDATE_PLAYER_NAME_SUCCESS)
 export const onUpdatePlayerNameFail = createAction(ACTION_UPDATE_PLAYER_NAME_FAIL)
+
+export const onResetPlayers = createAction(ACTION_RESET_PLAYERS)
+export const onResetPlayersSuccess = createAction(ACTION_RESET_PLAYERS_SUCCESS)
+export const onResetPlayersFail = createAction(ACTION_RESET_PLAYERS_FAIL)
