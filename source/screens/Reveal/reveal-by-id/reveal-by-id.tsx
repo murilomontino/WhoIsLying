@@ -18,7 +18,7 @@ import type { Player } from '~/store/slices/players/player'
 
 const RevealByIdScreen = () => {
     const [visible, setVisible] = useState(false)
-    const [player, setPlayer] = useState<Player | null>(null)
+    const [player, setPlayer] = useState<typeof Player | null>(null)
     const { players } = useAppSelector((state) => state.players)
     const { category } = useAppSelector((state) => state.categories)
     const router = useRouter()
@@ -67,7 +67,7 @@ const RevealByIdScreen = () => {
     }
 
     const handleReveal = () => {
-        player?.revealPlayer()
+        player?.revealPlayer?.()
         router.push('/reveal')
     }
 

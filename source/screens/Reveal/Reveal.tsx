@@ -15,7 +15,7 @@ const RevealScreen = () => {
     useEffect(() => {
         const currentPlayer = players.find((player) => !player.reveal)
         if (!currentPlayer) {
-            router.push('/game-over')
+            router.push('/asking')
             return
         }
         setPlayer(currentPlayer)

@@ -42,8 +42,8 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@babel/core": "^7.25.2",
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@biomejs/biome": "^1.9.4",
     "@types/react": "~18.3.12",
     "typescript": "^5.3.3"
