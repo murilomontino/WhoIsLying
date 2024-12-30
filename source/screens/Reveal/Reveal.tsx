@@ -86,11 +86,11 @@ const RevealScreen = () => {
                         className="w-full rounded-lg md:w-1/2"
                     >
                         <Text
-                            className="text-white"
+                            className="text-gray-800"
                             style={{
                                 fontFamily: 'Bangers_400Regular',
                                 fontSize: 42,
-                                textShadowColor: '#000', // Cor da borda
+                                textShadowColor: '#ef4444', // Cor da borda
                                 textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
                                 textShadowRadius: 2, // Raio para suavizar a sombra
                             }}

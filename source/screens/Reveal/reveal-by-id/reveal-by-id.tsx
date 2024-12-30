@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Text, View } from 'react-native'
 import Animated, {
     Easing,
+    FadeInLeft,
+    FadeOutRight,
     useAnimatedStyle,
     useSharedValue,
     withRepeat,
@@ -86,6 +88,8 @@ const RevealByIdScreen = () => {
                 <Title />
                 <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
                     <Animated.Text
+                        entering={FadeInLeft}
+                        exiting={FadeOutRight}
                         style={{
                             fontFamily: 'Bangers_400Regular',
                             textShadowColor: '#ef4444', // Cor da borda
@@ -98,7 +102,9 @@ const RevealByIdScreen = () => {
                     </Animated.Text>
                 </View>
                 <View className="flex items-center justify-center w-full px-8">
-                    <Text
+                    <Animated.Text
+                        entering={FadeInLeft}
+                        exiting={FadeOutRight}
                         className="px-8 text-2xl text-center text-white"
                         style={{
                             fontFamily: 'Bangers_400Regular',
@@ -108,7 +114,7 @@ const RevealByIdScreen = () => {
                         }}
                     >
                         A Categoria é {category}
-                    </Text>
+                    </Animated.Text>
                     <ButtonSecondary
                         disabled={visible}
                         onPress={handleSpinning}
@@ -145,9 +151,13 @@ const RevealByIdScreen = () => {
                     comida secreta. Tente Fazer com que pareça óbvio que você sabe
                     qual é a comida secreta, mas sem revelar diretamente.
                 </Text>
-                <View className="flex items-center justify-center w-full px-8">
+                <Animated.View
+                    entering={FadeInLeft}
+                    exiting={FadeOutRight}
+                    className="flex items-center justify-center w-full px-8"
+                >
                     <ButtonPrimary
-                        condition={visible}
+                        disabled={!visible}
                         onPress={handleReveal}
                         className="w-full rounded-lg md:w-1/2"
                     >
@@ -164,7 +174,7 @@ const RevealByIdScreen = () => {
                             Entendido
                         </Text>
                     </ButtonPrimary>
-                </View>
+                </Animated.View>
             </View>
         </DefaultLayout>
     )
