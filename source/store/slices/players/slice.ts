@@ -8,12 +8,18 @@ import {
     ON_ADD_PLAYERS,
     ON_ADD_PLAYERS_FAIL,
     ON_ADD_PLAYERS_SUCCESS,
+    ON_CHANGE_PLAYERS,
+    ON_CHANGE_PLAYERS_FAIL,
+    ON_CHANGE_PLAYERS_SUCCESS,
     ON_DELETE_PLAYERS,
     ON_DELETE_PLAYERS_FAIL,
     ON_DELETE_PLAYERS_SUCCESS,
     ON_RESET_PLAYERS,
     ON_RESET_PLAYERS_FAIL,
     ON_RESET_PLAYERS_SUCCESS,
+    ON_RESET_VOTING,
+    ON_RESET_VOTING_FAIL,
+    ON_RESET_VOTING_SUCCESS,
     ON_UPDATE_CAN_PLAYER_VOTE,
     ON_UPDATE_CAN_PLAYER_VOTE_FAIL,
     ON_UPDATE_CAN_PLAYER_VOTE_SUCCESS,
@@ -170,6 +176,31 @@ const slice = createSlice({
             }
         },
         [ON_UPDATE_CAN_PLAYER_VOTE_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_CHANGE_PLAYERS]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_CHANGE_PLAYERS_SUCCESS]: (state, action) => {
+            state.isLoading = LOADING.SUCCESS
+            state.players = action.payload.players
+        },
+        [ON_CHANGE_PLAYERS_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_RESET_VOTING]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_RESET_VOTING_SUCCESS]: (state) => {
+            state.isLoading = LOADING.SUCCESS
+            state.players = state.players.map((player) => {
+                return {
+                    ...player,
+                    canVote: true,
+                }
+            })
+        },
+        [ON_RESET_VOTING_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

@@ -8,6 +8,7 @@ import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import {
+    onResetVoting,
     onUpdatePlayerCanAnswer,
     onUpdatePlayerCanAsk,
 } from '~/store/slices/players/actions'
@@ -21,6 +22,7 @@ const RoundTableScreen = () => {
     const router = useRouter()
 
     const handlePressWeAreReady = () => {
+        dispatch(onResetVoting())
         router.push('/voting')
     }
 

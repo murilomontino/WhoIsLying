@@ -13,6 +13,9 @@ import {
     ACTION_RESET_PLAYERS,
     ACTION_RESET_PLAYERS_FAIL,
     ACTION_RESET_PLAYERS_SUCCESS,
+    ACTION_RESET_VOTING,
+    ACTION_RESET_VOTING_FAIL,
+    ACTION_RESET_VOTING_SUCCESS,
     ACTION_UPDATE_CAN_PLAYER_VOTE,
     ACTION_UPDATE_CAN_PLAYER_VOTE_FAIL,
     ACTION_UPDATE_CAN_PLAYER_VOTE_SUCCESS,
@@ -118,3 +121,7 @@ export const onUpdateCanPlayerVoteSuccess = createAction<{
 export const onUpdateCanPlayerVoteFail = createAction(
     ACTION_UPDATE_CAN_PLAYER_VOTE_FAIL,
 )
+
+export const onResetVoting = createAction(ACTION_RESET_VOTING)
+export const onResetVotingSuccess = createAction(ACTION_RESET_VOTING_SUCCESS)
+export const onResetVotingFail = createAction(ACTION_RESET_VOTING_FAIL)
