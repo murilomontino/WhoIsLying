@@ -9,8 +9,10 @@ const GoBack = () => {
 
     const goBack = () => {
         if (router.canGoBack()) {
-            router.back()
+            return router.back()
         }
+
+        return router.navigate('/')
     }
 
     return (
