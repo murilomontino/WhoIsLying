@@ -1,5 +1,6 @@
 import { Bangers_400Regular, useFonts } from '@expo-google-fonts/bangers'
-import { Text, type TextProps, View } from 'react-native'
+import { Text, type TextProps } from 'react-native'
+import Animated, { BounceIn, BounceOutRight } from 'react-native-reanimated'
 
 export type TitleProps = TextProps
 
@@ -15,7 +16,11 @@ export default function Title({ className, ...props }: TitleProps) {
     }
 
     return (
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+        <Animated.View
+            entering={BounceIn}
+            exiting={BounceOutRight}
+            style={{ flexDirection: 'row', flexWrap: 'wrap' }}
+        >
             {title.split('').map((char: string, index: number) => (
                 <Text
                     key={index}
@@ -35,6 +40,6 @@ export default function Title({ className, ...props }: TitleProps) {
                     {char}
                 </Text>
             ))}
-        </View>
+        </Animated.View>
     )
 }
