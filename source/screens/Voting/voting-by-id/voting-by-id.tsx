@@ -38,7 +38,7 @@ const Voting = () => {
             return router.push('/round-table')
         }
 
-        router.push(`/asking/${player._id}`)
+        router.push(`/voting/${player._id}`)
         return
     }
 
