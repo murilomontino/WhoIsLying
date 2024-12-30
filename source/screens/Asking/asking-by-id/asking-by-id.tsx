@@ -11,6 +11,7 @@ import {
     onUpdatePlayerCanAsk,
 } from '~/store/slices/players/actions'
 import type { Player } from '~/store/slices/players/player'
+import { drawPlayer } from '~/utils/drawPlayer'
 
 const AskingById = () => {
     const { id } = useLocalSearchParams()
@@ -50,11 +51,10 @@ const AskingById = () => {
         let answerPlayer = null
 
         while (answerPlayer === null) {
-            const randomIndex = Math.floor(Math.random() * canPlayersAnswer.length)
             if (canPlayersAnswer.length === 0) {
                 break
             }
-            const player = canPlayersAnswer?.[randomIndex]
+            const player = drawPlayer(canPlayersAnswer)
             if (player?._id === askPlayer?._id) {
                 continue
             }

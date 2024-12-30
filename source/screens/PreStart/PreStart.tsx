@@ -8,7 +8,10 @@ import GoBack from '~/components/molecules/go-back'
 import Points from '~/components/molecules/points'
 import Rounds from '~/components/molecules/rounds'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
-import { onChangeQuestionRound } from '~/store/slices/game/actions'
+import {
+    onChangeQuestionRound,
+    onGenerateDisguised,
+} from '~/store/slices/game/actions'
 import { onResetPlayers } from '~/store/slices/players/actions'
 import { delay } from '~/utils/delay'
 
@@ -20,6 +23,7 @@ const PreStartScreen = () => {
     const handleStartGame = async () => {
         dispatch(onResetPlayers())
         dispatch(onChangeQuestionRound({ questionRound: 1 }))
+        dispatch(onGenerateDisguised())
         await delay(100)
         router.push('/reveal')
     }

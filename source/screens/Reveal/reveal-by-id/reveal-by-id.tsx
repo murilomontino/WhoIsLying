@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Text, View } from 'react-native'
 import Animated, {
     Easing,
@@ -22,6 +22,7 @@ const RevealByIdScreen = () => {
     const [player, setPlayer] = useState<typeof Player | null>(null)
     const { players } = useAppSelector((state) => state.players)
     const { category } = useAppSelector((state) => state.categories)
+    const { disguisedPlayer } = useAppSelector((state) => state.game)
     const router = useRouter()
     const dispatch = useAppDispatch()
     const { id } = useLocalSearchParams()
@@ -84,6 +85,14 @@ const RevealByIdScreen = () => {
         }
     })
 
+    const item = useMemo(() => {
+        if (!visible) return 'Revelar'
+        if (id === disguisedPlayer?._id) {
+            return 'Você é o Impostor'
+        }
+        return 'Curupira'
+    }, [visible, id, disguisedPlayer])
+
     return (
         <DefaultLayout>
             <View className="flex flex-col items-center justify-center w-full h-full space-y-8">
@@ -135,7 +144,7 @@ const RevealByIdScreen = () => {
                                 },
                             ]}
                         >
-                            {!visible ? 'Revelar' : 'Curupira'}
+                            {item}
                         </Animated.Text>
                     </ButtonSecondary>
                 </View>
