@@ -25,6 +25,7 @@
     "expo-router": "~4.0.15",
     "expo-status-bar": "~2.0.0",
     "nativewind": "^4.1.23",
+    "random-js": "^2.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.54.2",

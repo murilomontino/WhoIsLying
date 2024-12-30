@@ -7758,6 +7758,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"random-js@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "random-js@npm:2.1.0"
+  checksum: 10c0/900cb56b8cf17295a74ae17f4dca2fcb1e25fba8bc784f839810d23990746dca909b266407bf08a68a7b194b87ebbc66b56071b94ac175e20258b927f24191c4
+  languageName: node
+  linkType: hard
+
 "range-parser@npm:~1.2.1":
   version: 1.2.1
   resolution: "range-parser@npm:1.2.1"
@@ -9822,6 +9829,7 @@ __metadata:
     expo-router: "npm:~4.0.15"
     expo-status-bar: "npm:~2.0.0"
     nativewind: "npm:^4.1.23"
+    random-js: "npm:^2.1.0"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
     react-hook-form: "npm:^7.54.2"
