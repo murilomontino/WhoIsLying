@@ -47,7 +47,7 @@ const CategoriesScreen = () => {
     return (
         <DefaultLayout>
             <Link href="/" asChild>
-                <Button className="w-1/2">
+                <Button className="absolute top-0 left-0 px-4 m-4 bg-red-500 rounded-full w-fit">
                     <Text
                         className="gap-2 space-x-2 text-white"
                         style={{
