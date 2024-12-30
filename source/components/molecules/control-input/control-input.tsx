@@ -9,7 +9,7 @@ import {
     type FieldValues,
     type Path,
 } from 'react-hook-form'
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 
 type ControlInputProps<Ctx extends FieldValues> = {
     name: Path<Ctx>
@@ -34,7 +34,7 @@ export default function ControlInput<Ctx extends FieldValues>({
     const err = errors?.[name] || { message: '' }
 
     return (
-        <>
+        <View className="flex flex-col w-full">
             <Controller
                 control={control}
                 name={name as Path<Ctx>}
@@ -49,6 +49,6 @@ export default function ControlInput<Ctx extends FieldValues>({
             />
             {/* biome-ignore lint/suspicious/noExplicitAny: <explanation> */}
             {hasError && <Text>{err?.message as any}</Text>}
-        </>
+        </View>
     )
 }
