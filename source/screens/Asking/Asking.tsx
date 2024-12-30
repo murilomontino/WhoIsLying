@@ -16,6 +16,8 @@ const AskingScreen = () => {
     const [answerPlayer, setAnswerPlayer] = useState<typeof Player | null>(null)
     const dispatch = useAppDispatch()
     const { players } = useAppSelector((state) => state.players)
+    const { questionRound } = useAppSelector((state) => state.game)
+
     const router = useRouter()
 
     useEffect(() => {
@@ -89,6 +91,17 @@ const AskingScreen = () => {
                             textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
                             textShadowRadius: 2, // Raio para suavizar a sombra
                         }}
+                        className="text-xl font-bold text-white text-pretty "
+                    >
+                        {questionRound} Rodada
+                    </Text>
+                    <Text
+                        style={{
+                            fontFamily: 'Bangers_400Regular',
+                            textShadowColor: '#181818', // Cor da borda
+                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
+                            textShadowRadius: 2, // Raio para suavizar a sombra
+                        }}
                         className="text-5xl font-bold text-white text-pretty "
                     >
                         {answerPlayer?.name}
@@ -123,7 +136,7 @@ const AskingScreen = () => {
                         textShadowColor: '#ef4444', // Cor da borda
                         textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
                         textShadowRadius: 2, // Raio para suavizar a sombra
-                        fontSize: 200,
+                        fontSize: 128,
                         transform: [{ rotate: '35deg' }],
                     }}
                     className="text-center text-white"
