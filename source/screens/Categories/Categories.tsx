@@ -1,5 +1,5 @@
 import AntDesign from '@expo/vector-icons/AntDesign'
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import React from 'react'
 import { Text, View } from 'react-native'
 import DefaultLayout from '~/components/_layout/default'
@@ -38,9 +38,10 @@ const categories: Category[] = [
 
 const CategoriesScreen = () => {
     const dispatch = useAppDispatch()
-
+    const router = useRouter()
     const handleCategory = (category: string) => {
         dispatch(onChangeCategory({ category }))
+        router.push('/pre-start')
     }
 
     return (
