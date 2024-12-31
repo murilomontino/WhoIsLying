@@ -18,12 +18,9 @@ const AskingScreen = () => {
         if (!isMounted) return
 
         const nextAskPlayer = players.find((player) => player.canAsk)
-        if (!nextAskPlayer) {
-            router.push('/round-table')
-            return
-        }
+        if (!nextAskPlayer) return router.push('/round-table')
 
-        router.push(`/asking/${nextAskPlayer._id}`)
+        return router.push(`/asking/${nextAskPlayer._id}`)
     }, [players, isMounted])
 
     return (
