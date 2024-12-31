@@ -8,6 +8,7 @@ type ButtonProps = TouchableOpacityProps & {
 
 const button = tv({
     base: `
+        shadow-lg
         px-4 py-8 w-full rounded-full items-center justify-center h-12 border-4 
     `,
     variants: {
