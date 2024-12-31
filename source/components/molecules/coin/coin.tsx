@@ -104,9 +104,9 @@ const Dice3D = ({
                 }, 750) // Aguarda um tempo para exibir a palavra final
                 rotationX.value = 0 // Reseta para o próximo giro
                 if (winnerSound) {
-                    playSoundWinner() // Toca o som de vitória
+                    playSoundWinner({ startTime: 1250 }) // Toca o som de vitória
                 } else {
-                    playSoundLoser() // Toca o som de derrota
+                    playSoundLoser({ startTime: 250 }) // Toca o som de derrota
                 }
                 stopSoundReveal({ delay: 800 }) // Para o som de reveal
             },
