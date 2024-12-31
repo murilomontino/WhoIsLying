@@ -78,7 +78,7 @@ const AskingScreen = () => {
                 return (
                     player.canAnswer &&
                     player._id !== nextPlayerAsk._id &&
-                    !player.blackListQuestioners.includes(nextPlayerAsk._id)
+                    !nextPlayerAsk.blackListQuestioners.includes(player._id)
                 )
             },
         )

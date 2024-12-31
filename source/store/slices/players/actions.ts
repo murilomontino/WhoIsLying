@@ -1,5 +1,6 @@
 import { createAction } from '@reduxjs/toolkit'
 
+import type { IPlayer } from './player'
 import {
     ACTION_ADD_PLAYERS,
     ACTION_ADD_PLAYERS_FAIL,
@@ -13,6 +14,9 @@ import {
     ACTION_DELETE_PLAYERS,
     ACTION_DELETE_PLAYERS_FAIL,
     ACTION_DELETE_PLAYERS_SUCCESS,
+    ACTION_NEW_ROUND,
+    ACTION_NEW_ROUND_FAIL,
+    ACTION_NEW_ROUND_SUCCESS,
     ACTION_RESET_PLAYERS,
     ACTION_RESET_PLAYERS_FAIL,
     ACTION_RESET_PLAYERS_SUCCESS,
@@ -146,9 +150,14 @@ export const onAnsweredTheQuestion = createAction<{
     player_ask_id: string
 }>(ACTION_ANSWERED_THE_QUESTION)
 export const onAnsweredTheQuestionSuccess = createAction<{
-    _id: string
-    player_ask_id: string
+    players: IPlayer[]
 }>(ACTION_ANSWERED_THE_QUESTION_SUCCESS)
 export const onAnsweredTheQuestionFail = createAction(
     ACTION_ANSWERED_THE_QUESTION_FAIL,
 )
+
+export const onNewRound = createAction(ACTION_NEW_ROUND)
+export const onNewRoundSuccess = createAction<{ players: IPlayer[] }>(
+    ACTION_NEW_ROUND_SUCCESS,
+)
+export const onNewRoundFail = createAction(ACTION_NEW_ROUND_FAIL)

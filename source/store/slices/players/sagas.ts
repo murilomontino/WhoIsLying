@@ -1,7 +1,9 @@
-import { all, fork, put, takeLatest } from 'redux-saga/effects'
+import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+import { selectPlayers } from '~/store/selectors'
+import type { RootState } from '~/store/store'
 import {
     onAddPlayersFail,
     onAddPlayersSuccess,
@@ -9,6 +11,8 @@ import {
     onAnsweredTheQuestionSuccess,
     onDeletePlayersFail,
     onDeletePlayersSuccess,
+    onNewRoundFail,
+    onNewRoundSuccess,
     onResetPlayersFail,
     onResetPlayersSuccess,
     onResetVotingFail,
@@ -28,10 +32,12 @@ import {
     onVoteInPlayerFail,
     onVoteInPlayerSuccess,
 } from './actions'
+import type { IPlayer } from './player'
 import {
     ACTION_ADD_PLAYERS,
     ACTION_ANSWERED_THE_QUESTION,
     ACTION_DELETE_PLAYERS,
+    ACTION_NEW_ROUND,
     ACTION_RESET_PLAYERS,
     ACTION_RESET_VOTING,
     ACTION_UPDATE_CAN_PLAYER_VOTE,
@@ -121,7 +127,21 @@ export function* onAnsweredTheQuestion({
     payload,
 }: PayloadAction<{ _id: string; player_ask_id: string }>) {
     try {
-        yield put(onAnsweredTheQuestionSuccess(payload))
+        const { players }: RootState['players'] = yield select(selectPlayers)
+        const newPlayers: IPlayer[] = players.map((player) => {
+            if (player._id !== payload._id) {
+                return player
+            }
+            return {
+                ...player,
+                blackListQuestioners: [
+                    ...player.blackListQuestioners,
+                    payload.player_ask_id,
+                ],
+                canAnswer: false,
+            }
+        })
+        yield put(onAnsweredTheQuestionSuccess({ players: newPlayers }))
     } catch (_) {
         yield put(onAnsweredTheQuestionFail())
     }
@@ -142,6 +162,23 @@ export function* onResetVoting() {
         yield put(onResetVotingSuccess())
     } catch (_) {
         yield put(onResetVotingFail())
+    }
+}
+
+export function* onNewRound() {
+    try {
+        const { players }: RootState['players'] = yield select(selectPlayers)
+        const newPlayers: IPlayer[] = players.map((player) => {
+            return {
+                ...player,
+                canAnswer: true,
+                canAsk: true,
+                blackListQuestioners: [],
+            }
+        })
+        yield put(onNewRoundSuccess({ players: newPlayers }))
+    } catch (_) {
+        yield put(onNewRoundFail())
     }
 }
 
@@ -203,6 +240,10 @@ export function* watchOnAnsweredTheQuestion() {
     yield takeLatest(ACTION_ANSWERED_THE_QUESTION, onAnsweredTheQuestion)
 }
 
+export function* watchOnNewRound() {
+    yield takeLatest(ACTION_NEW_ROUND, onNewRound)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnAddPlayers),
@@ -217,6 +258,7 @@ function* Sagas() {
         fork(watchOnUpdateCanPlayerVote),
         fork(watchOnResetVoting),
         fork(watchOnVoteInPlayer),
+        fork(watchOnNewRound),
     ])
 }
 

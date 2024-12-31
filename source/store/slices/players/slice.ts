@@ -17,6 +17,9 @@ import {
     ON_DELETE_PLAYERS,
     ON_DELETE_PLAYERS_FAIL,
     ON_DELETE_PLAYERS_SUCCESS,
+    ON_NEW_ROUND,
+    ON_NEW_ROUND_FAIL,
+    ON_NEW_ROUND_SUCCESS,
     ON_RESET_PLAYERS,
     ON_RESET_PLAYERS_FAIL,
     ON_RESET_PLAYERS_SUCCESS,
@@ -56,6 +59,19 @@ const slice = createSlice({
     name,
     initialState,
     reducers: {
+        [ON_NEW_ROUND]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_NEW_ROUND_SUCCESS]: (
+            state,
+            action: PayloadAction<{ players: IPlayer[] }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.players = action.payload.players
+        },
+        [ON_NEW_ROUND_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
         [ON_ADD_PLAYERS]: (state) => {
             state.isLoading = LOADING.PENDING
         },
@@ -253,19 +269,11 @@ const slice = createSlice({
         [ON_ANSWERED_THE_QUESTION_SUCCESS]: (
             state,
             action: PayloadAction<{
-                _id: string
-                player_ask_id: string
+                players: IPlayer[]
             }>,
         ) => {
             state.isLoading = LOADING.SUCCESS
-            const player = state.players.find((p) => p._id === action.payload._id)
-            if (player) {
-                player.canAnswer = true
-                player.blackListQuestioners = [
-                    ...player.blackListQuestioners,
-                    action.payload.player_ask_id,
-                ]
-            }
+            state.players = action.payload.players
         },
         [ON_ANSWERED_THE_QUESTION_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED

@@ -1,19 +1,18 @@
 import { AntDesign } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Text, View } from 'react-native'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
 import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
-import {
-    onResetVoting,
-    onUpdatePlayerCanAnswer,
-    onUpdatePlayerCanAsk,
-} from '~/store/slices/players/actions'
+import { onNewRound, onResetVoting } from '~/store/slices/players/actions'
 
 import { onChangeQuestionRound } from '~/store/slices/game/actions'
+import cache from '~/utils/cache'
+import { delay } from '~/utils/delay'
+import { drawPlayerWithConditions } from '~/utils/drawPlayer'
 
 const RoundTableScreen = () => {
     const { players } = useAppSelector((state) => state.players)
@@ -26,25 +25,22 @@ const RoundTableScreen = () => {
         router.push('/voting')
     }
 
-    const handlePressAnotherRound = () => {
-        for (const player of players) {
-            dispatch(
-                onUpdatePlayerCanAnswer({
-                    _id: player._id,
-                    canAnswer: true,
-                }),
-            )
-            dispatch(
-                onUpdatePlayerCanAsk({
-                    _id: player._id,
-                    canAsk: true,
-                }),
-            )
-        }
+    const handleNextRound = useCallback(async () => {
+        const answerPlayer = await drawPlayerWithConditions(
+            players,
+            (player) => player._id !== players[0]._id,
+        )
 
-        dispatch(onChangeQuestionRound({ questionRound: questionRound + 1 }))
-        router.push('/asking')
-    }
+        router.push(`/asking/1/${players[0]._id}/${answerPlayer._id}`)
+    }, [players])
+
+    const handlePressAnotherRound = useCallback(async () => {
+        await cache.clearAll()
+        await dispatch(onNewRound())
+        await dispatch(onChangeQuestionRound({ questionRound: questionRound + 1 }))
+        await delay(100)
+        await handleNextRound()
+    }, [players, questionRound])
 
     return (
         <DefaultLayout>
