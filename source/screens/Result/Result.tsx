@@ -83,6 +83,7 @@ const ResultScreen = () => {
                         O Impostor é...
                     </Text>
                     <CoinFlip
+                        winnerSound={disguisedPlayer?._id === winner._id}
                         onFinally={handleReveal}
                         initialWord="Ver Resultado"
                         finalWord={disguisedPlayer?.name}
