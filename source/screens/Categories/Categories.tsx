@@ -1,12 +1,14 @@
 import { useRouter } from 'expo-router'
 import React from 'react'
-import { Text, View } from 'react-native'
+import { FadeIn, FadeInRight, FadeOut, FadeOutRight } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { Button } from '~/components/atoms/button'
+import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
 import CardCategory from '~/components/molecules/card-category'
 import type { ImgCategory } from '~/components/molecules/card-category/card-category'
 import GoBack from '~/components/molecules/go-back'
+import View from '~/components/ui/view'
 import { useAppDispatch } from '~/store/hooks'
 import { onChangeCategory } from '~/store/slices/categories/actions'
 
@@ -49,30 +51,32 @@ const CategoriesScreen = () => {
             <GoBack />
             <Title />
             <Text
+                entering={FadeIn.duration(1000)}
+                exiting={FadeOut.duration(1000)}
                 className="text-center text-gray-800"
-                style={{
-                    fontFamily: 'Bangers_400Regular',
-                    fontSize: 42,
-                    textShadowColor: 'white', // Cor da borda
-                    textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                    textShadowRadius: 2, // Raio para suavizar a sombra
-                }}
+                as="h2"
             >
                 Categorias
             </Text>
-            <View className="flex flex-row flex-wrap justify-center">
-                {categories.map((category) => (
-                    <Button
+            <View className="flex flex-row flex-wrap justify-start">
+                {categories.map((category, index) => (
+                    <View
                         key={category.category}
-                        disabled={!category.active}
-                        onPress={() => handleCategory(category.category)}
-                        style={{ margin: 8 }}
+                        delay={(index + 1) * 100}
+                        entering={FadeInRight.duration(450)}
+                        exiting={FadeOutRight.duration(450)}
                     >
-                        <CardCategory
-                            title={category.title}
-                            category={category.category}
-                        />
-                    </Button>
+                        <Button
+                            disabled={!category.active}
+                            onPress={() => handleCategory(category.category)}
+                            style={{ margin: 8 }}
+                        >
+                            <CardCategory
+                                title={category.title}
+                                category={category.category}
+                            />
+                        </Button>
+                    </View>
                 ))}
             </View>
         </DefaultLayout>

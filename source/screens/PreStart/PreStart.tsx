@@ -22,6 +22,7 @@ import {
     onGenerateDisguised,
 } from '~/store/slices/game/actions'
 import { onResetPlayers } from '~/store/slices/players/actions'
+import cache from '~/utils/cache'
 import { delay } from '~/utils/delay'
 
 const PreStartScreen = () => {
@@ -30,6 +31,7 @@ const PreStartScreen = () => {
     const router = useRouter()
 
     const handleStartGame = async () => {
+        cache.clearAll()
         dispatch(onResetPlayers())
         dispatch(onChangeQuestionRound({ questionRound: 1 }))
         dispatch(onGenerateDisguised())

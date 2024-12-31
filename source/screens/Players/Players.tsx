@@ -3,6 +3,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Link } from 'expo-router'
 import { useForm } from 'react-hook-form'
 import {
+    BounceInDown,
+    BounceOutUp,
     FadeInDown,
     FadeInLeft,
     FadeInUp,
@@ -112,9 +114,9 @@ export default function Page() {
                 </Button>
             </View>
             <View
-                delay={500}
-                entering={FadeInDown}
-                exiting={FadeOutUp}
+                delay={100}
+                entering={BounceInDown.duration(1000)}
+                exiting={BounceOutUp.duration(1000)}
                 className="flex flex-row items-center justify-center w-full px-4 space-x-4"
             >
                 <Link href="/categories" asChild>
