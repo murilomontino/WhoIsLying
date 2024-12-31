@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import cn from 'classnames'
+import React, { startTransition, useState } from 'react'
 import {
     runOnJS,
     useAnimatedStyle,
@@ -9,16 +10,33 @@ import { Button } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import View from '~/components/ui/view'
 
+const color = {
+    init: '#fff',
+    middle: '#181818',
+    final: '#fff',
+}
+
+const bg = {
+    init: '#3b82f6',
+    middle: '#181818',
+    final: '#3b82f6',
+}
+
 const Dice3D = ({
     initialWord = 'One',
     finalWord = 'Six',
     words = ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
 }) => {
+    const [colorText, setColorText] = useState(color.init) // Cor do texto
+    const [bgColor, setBgColor] = useState(bg.init) // Cor de fundo
     const [side, setSide] = useState(initialWord) // Palavra exibida, agora com a palavra inicial definida pela prop
     const rotationX = useSharedValue(0) // Rotação no eixo X
     const textRotationX = useSharedValue(0) // Rotação do texto no eixo X
 
     const handleRoll = () => {
+        startTransition(() => {
+            setColorText(color.middle) // Muda a cor do texto para vermelho
+        })
         const totalRotations = 5 // Número de giros completos
         const finalRotationX = Math.floor(Math.random() * 360) // Rotação final aleatória no eixo X
         const duration = 5000 // Duração total da animação
@@ -37,7 +55,16 @@ const Dice3D = ({
             { duration },
             () => {
                 clearInterval(intervalId) // Para a alternância ao final
-                runOnJS(setSide)(finalWord) // Define a palavra final a partir da prop
+                startTransition(() => {
+                    setBgColor(bg.middle) // Muda a cor de fundo para preto
+                })
+                setTimeout(() => {
+                    runOnJS(setSide)(finalWord) // Define a palavra final a partir da prop
+                    startTransition(() => {
+                        setBgColor(bg.final) // Muda a cor de fundo para azul
+                        setColorText(color.final) // Muda a cor do texto para vermelho
+                    })
+                }, 750) // Aguarda um tempo para exibir a palavra final
                 rotationX.value = 0 // Reseta para o próximo giro
             },
         )
@@ -66,15 +93,32 @@ const Dice3D = ({
     })
 
     return (
-        <Button onPress={handleRoll} className="w-full md:w-1/2">
+        <Button
+            hasSound={false}
+            onPress={handleRoll}
+            className="items-center justify-center w-full md:w-1/2"
+        >
             <View
-                className="items-center justify-center w-full h-12 px-4 py-8 bg-gray-300 border-gray-800 rounded-none "
-                style={[animatedStyle]}
+                className="items-center justify-center w-[50vw] h-20 px-4 py-8 border-4 border-gray-500 rounded-lg "
+                style={[
+                    animatedStyle,
+                    {
+                        backgroundColor: bgColor,
+                    },
+                ]}
             >
                 <Text
                     as="h2"
-                    className="!text-red-500  text-shadow-outlined-white"
-                    style={[textAnimatedStyle]}
+                    className={cn({
+                        'text-shadow-outlined-red':
+                            colorText === color.final || colorText === color.init,
+                    })}
+                    style={[
+                        textAnimatedStyle,
+                        {
+                            color: colorText,
+                        },
+                    ]}
                 >
                     {side}
                 </Text>
