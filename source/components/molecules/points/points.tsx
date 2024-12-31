@@ -1,5 +1,6 @@
 import { AntDesign } from '@expo/vector-icons'
 import React from 'react'
+import { BounceInRight, BounceOutLeft } from 'react-native-reanimated'
 import { Button } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import View from '~/components/ui/view'
@@ -19,7 +20,11 @@ const Points = () => {
     }
 
     return (
-        <View className="flex-row items-center justify-between w-full bg-white rounded-full md:w-1/2 ">
+        <View
+            entering={BounceInRight.duration(1000)}
+            exiting={BounceOutLeft.duration(1000)}
+            className="flex-row items-center justify-between w-full bg-white rounded-full md:w-1/2 "
+        >
             <Button
                 disabled={points <= 50}
                 className="p-2 my-2 bg-transparent border-r border-gray-600"

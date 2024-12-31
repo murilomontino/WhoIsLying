@@ -2,7 +2,14 @@ import AntDesign from '@expo/vector-icons/AntDesign'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Link } from 'expo-router'
 import { useForm } from 'react-hook-form'
-import { FadeInLeft, FadeOutRight } from 'react-native-reanimated'
+import {
+    FadeInDown,
+    FadeInLeft,
+    FadeInUp,
+    FadeOutDown,
+    FadeOutRight,
+    FadeOutUp,
+} from 'react-native-reanimated'
 import * as Yup from 'yup'
 import DefaultLayout from '~/components/_layout/default'
 import { Button } from '~/components/atoms/button'
@@ -43,12 +50,19 @@ export default function Page() {
     return (
         <DefaultLayout>
             <Title />
-            <Text as="h2" className="text-center text-gray-800">
+            <Text
+                delay={100}
+                entering={FadeInUp}
+                exiting={FadeOutDown}
+                as="h2"
+                className="text-center text-gray-800"
+            >
                 Jogadores
             </Text>
             <View className="flex flex-col w-full px-4 space-y-4 min-h-48 md:w-1/2">
-                {players.map((player) => (
+                {players.map((player, index) => (
                     <View
+                        delay={(index + 1) * 100}
                         entering={FadeInLeft}
                         exiting={FadeOutRight}
                         key={player._id}
@@ -68,7 +82,12 @@ export default function Page() {
                 ))}
             </View>
 
-            <View className="flex flex-row items-center justify-center w-[70vw] px-8 ">
+            <View
+                delay={250}
+                entering={FadeInDown}
+                exiting={FadeOutUp}
+                className="flex flex-row items-center justify-center w-[70vw] px-8 "
+            >
                 <ControlInput
                     control={control}
                     onKeyPress={({ nativeEvent }) => {
@@ -92,7 +111,12 @@ export default function Page() {
                     />
                 </Button>
             </View>
-            <View className="flex flex-row items-center justify-center w-full px-4 space-x-4">
+            <View
+                delay={500}
+                entering={FadeInDown}
+                exiting={FadeOutUp}
+                className="flex flex-row items-center justify-center w-full px-4 space-x-4"
+            >
                 <Link href="/categories" asChild>
                     <ButtonPrimary
                         className="w-full md:w-1/2"

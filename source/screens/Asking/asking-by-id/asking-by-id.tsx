@@ -12,6 +12,7 @@ import {
     onUpdatePlayerCanAsk,
 } from '~/store/slices/players/actions'
 import type { Player } from '~/store/slices/players/player'
+import cache from '~/utils/cache'
 import { drawPlayer } from '~/utils/drawPlayer'
 
 const AskingById = () => {
@@ -32,13 +33,28 @@ const AskingById = () => {
         }
     }, [id])
 
-    useEffect(() => {
+    const getAnswerPlayer = async () => {
+        const cachedAnswerPlayer = await cache.get(
+            `${questionRound}-answerPlayer-${askPlayer?._id}`,
+        )
+
+        if (cachedAnswerPlayer) {
+            const player = players.find((p) => p._id === cachedAnswerPlayer)
+
+            if (!player) {
+                throw new Error('Jogador não encontrado')
+            }
+
+            setAnswerPlayer(player)
+            return
+        }
+
         const canPlayersAnswer = players.filter(
             (player) => player.canAnswer && player._id !== askPlayer?._id,
         )
 
-        // aleatoriamente sorteia um jogador para responder
         if (canPlayersAnswer.length === 1) {
+            // aleatoriamente sorteia um jogador para responder
             setAnswerPlayer(canPlayersAnswer[0])
             return
         }
@@ -63,6 +79,17 @@ const AskingById = () => {
         }
 
         setAnswerPlayer(answerPlayer)
+
+        await cache.set(
+            `${questionRound}-answerPlayer-${askPlayer?._id}`,
+            answerPlayer?._id as string,
+        )
+    }
+
+    useEffect(() => {
+        if (askPlayer) {
+            getAnswerPlayer()
+        }
     }, [askPlayer?._id])
 
     const handleNext = () => {
