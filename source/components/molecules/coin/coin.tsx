@@ -22,11 +22,19 @@ const bg = {
     final: '#3b82f6',
 }
 
+type Dice3DProps = {
+    initialWord?: string
+    finalWord?: string
+    words?: string[]
+    onFinally?: () => void
+}
+
 const Dice3D = ({
     initialWord = 'One',
     finalWord = 'Six',
     words = ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
-}) => {
+    onFinally,
+}: Dice3DProps) => {
     const [colorText, setColorText] = useState(color.init) // Cor do texto
     const [bgColor, setBgColor] = useState(bg.init) // Cor de fundo
     const [side, setSide] = useState(initialWord) // Palavra exibida, agora com a palavra inicial definida pela prop
@@ -63,6 +71,7 @@ const Dice3D = ({
                     startTransition(() => {
                         setBgColor(bg.final) // Muda a cor de fundo para azul
                         setColorText(color.final) // Muda a cor do texto para vermelho
+                        onFinally?.() // Executa a função final, se existir
                     })
                 }, 750) // Aguarda um tempo para exibir a palavra final
                 rotationX.value = 0 // Reseta para o próximo giro
