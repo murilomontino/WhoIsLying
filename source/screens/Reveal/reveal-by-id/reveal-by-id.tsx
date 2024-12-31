@@ -130,11 +130,11 @@ const RevealByIdScreen = () => {
                         <ButtonSecondary
                             disabled={visible}
                             onPress={handleSpinning}
-                            className="w-full rounded-lg md:w-1/2 !opacity-100"
+                            className="rounded-lg !opacity-100 h-24 w-[50vw] max-w-[300px]"
                         >
                             <Text
                                 className="text-gray-800"
-                                as="h3"
+                                as="h4"
                                 style={[animatedStyles]}
                             >
                                 {item}
