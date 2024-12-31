@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import Animated, {
+import {
     runOnJS,
     useAnimatedStyle,
     useSharedValue,
     withTiming,
 } from 'react-native-reanimated'
 import { Button } from '~/components/atoms/button'
+import Text from '~/components/atoms/text'
+import View from '~/components/ui/view'
 
 const Dice3D = ({
     initialWord = 'One',
@@ -65,26 +67,18 @@ const Dice3D = ({
 
     return (
         <Button onPress={handleRoll} className="w-full md:w-1/2">
-            <Animated.View
-                className="items-center justify-center w-full h-12 px-4 py-8 bg-blue-500 border-4 border-red-500 rounded-full "
+            <View
+                className="items-center justify-center w-full h-12 px-4 py-8 bg-gray-300 border-gray-800 rounded-none "
                 style={[animatedStyle]}
             >
-                <Animated.Text
-                    className="text-white"
-                    style={[
-                        textAnimatedStyle,
-                        {
-                            fontFamily: 'Bangers_400Regular',
-                            fontSize: 42,
-                            textShadowColor: '#ef4444', // Cor da borda
-                            textShadowOffset: { width: 4, height: 4 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        },
-                    ]}
+                <Text
+                    as="h2"
+                    className="!text-red-500  text-shadow-outlined-white"
+                    style={[textAnimatedStyle]}
                 >
                     {side}
-                </Animated.Text>
-            </Animated.View>
+                </Text>
+            </View>
         </Button>
     )
 }
