@@ -47,7 +47,7 @@ export function Button({
     hasSound = true,
     ...props
 }: ButtonProps) {
-    const { playClickSound } = useSound({ sound: 'click' })
+    const { playClickSound } = useSound({ sound: 'click', volume: 0.2 })
 
     const handlePress = (event: GestureResponderEvent) => {
         if (hasSound) playClickSound()
