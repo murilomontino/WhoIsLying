@@ -124,6 +124,7 @@ const slice = createSlice({
             const player = state.players.find((p) => p._id === action.payload._id)
             if (player) {
                 player.canAnswer = action.payload.canAnswer
+                player.blackListQuestioners = []
             }
         },
         [ON_UPDATE_PLAYER_CAN_ANSWER_FAIL]: (state) => {
