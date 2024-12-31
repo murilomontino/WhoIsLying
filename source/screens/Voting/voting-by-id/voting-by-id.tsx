@@ -38,7 +38,7 @@ const Voting = () => {
         const player = players.find((p) => p.canVote && p._id !== votePlayer?._id)
 
         if (!player) {
-            return router.push('/round-table')
+            return router.push('/result')
         }
 
         router.push(`/voting/wait-player/${player._id}`)
