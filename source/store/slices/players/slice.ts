@@ -8,6 +8,9 @@ import {
     ON_ADD_PLAYERS,
     ON_ADD_PLAYERS_FAIL,
     ON_ADD_PLAYERS_SUCCESS,
+    ON_ANSWERED_THE_QUESTION,
+    ON_ANSWERED_THE_QUESTION_FAIL,
+    ON_ANSWERED_THE_QUESTION_SUCCESS,
     ON_CHANGE_PLAYERS,
     ON_CHANGE_PLAYERS_FAIL,
     ON_CHANGE_PLAYERS_SUCCESS,
@@ -65,6 +68,7 @@ const slice = createSlice({
                 reveal: false,
                 canAnswer: true,
                 canVote: true,
+                blackListQuestioners: [],
                 displayVotes: 0,
                 canAsk: true,
                 __protocol: 'player',
@@ -163,6 +167,7 @@ const slice = createSlice({
                     displayVotes: 0,
                     canAnswer: true,
                     canVote: true,
+                    blackListQuestioners: [],
                     canAsk: true,
                 }
             })
@@ -239,6 +244,29 @@ const slice = createSlice({
             })
         },
         [ON_VOTE_IN_PLAYER_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_ANSWERED_THE_QUESTION]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_ANSWERED_THE_QUESTION_SUCCESS]: (
+            state,
+            action: PayloadAction<{
+                _id: string
+                player_asked_id: string
+            }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            const player = state.players.find((p) => p._id === action.payload._id)
+            if (player) {
+                player.canAnswer = true
+                player.blackListQuestioners = [
+                    ...player.blackListQuestioners,
+                    action.payload.player_asked_id,
+                ]
+            }
+        },
+        [ON_ANSWERED_THE_QUESTION_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

@@ -4,6 +4,9 @@ import {
     ACTION_ADD_PLAYERS,
     ACTION_ADD_PLAYERS_FAIL,
     ACTION_ADD_PLAYERS_SUCCESS,
+    ACTION_ANSWERED_THE_QUESTION,
+    ACTION_ANSWERED_THE_QUESTION_FAIL,
+    ACTION_ANSWERED_THE_QUESTION_SUCCESS,
     ACTION_CHANGE_PLAYERS,
     ACTION_CHANGE_PLAYERS_FAIL,
     ACTION_CHANGE_PLAYERS_SUCCESS,
@@ -137,3 +140,15 @@ export const onVoteInPlayerSuccess = createAction<{
     _id: string
 }>(ACTION_VOTE_IN_PLAYER_SUCCESS)
 export const onVoteInPlayerFail = createAction(ACTION_VOTE_IN_PLAYER_FAIL)
+
+export const onAnsweredTheQuestion = createAction<{
+    _id: string
+    player_asked_id: string
+}>(ACTION_ANSWERED_THE_QUESTION)
+export const onAnsweredTheQuestionSuccess = createAction<{
+    _id: string
+    player_asked_id: string
+}>(ACTION_ANSWERED_THE_QUESTION_SUCCESS)
+export const onAnsweredTheQuestionFail = createAction(
+    ACTION_ANSWERED_THE_QUESTION_FAIL,
+)

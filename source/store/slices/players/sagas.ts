@@ -5,6 +5,8 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import {
     onAddPlayersFail,
     onAddPlayersSuccess,
+    onAnsweredTheQuestionFail,
+    onAnsweredTheQuestionSuccess,
     onDeletePlayersFail,
     onDeletePlayersSuccess,
     onResetPlayersFail,
@@ -28,6 +30,7 @@ import {
 } from './actions'
 import {
     ACTION_ADD_PLAYERS,
+    ACTION_ANSWERED_THE_QUESTION,
     ACTION_DELETE_PLAYERS,
     ACTION_RESET_PLAYERS,
     ACTION_RESET_VOTING,
@@ -114,6 +117,16 @@ export function* onResetPlayers() {
     }
 }
 
+export function* onAnsweredTheQuestion({
+    payload,
+}: PayloadAction<{ _id: string; player_asked_id: string }>) {
+    try {
+        yield put(onAnsweredTheQuestionSuccess(payload))
+    } catch (_) {
+        yield put(onAnsweredTheQuestionFail())
+    }
+}
+
 export function* onUpdateCanPlayerVote({
     payload,
 }: PayloadAction<{ _id: string; canVote: boolean }>) {
@@ -186,6 +199,10 @@ export function* watchOnVoteInPlayer() {
     yield takeLatest(ACTION_VOTE_IN_PLAYER, onVoteInPlayer)
 }
 
+export function* watchOnAnsweredTheQuestion() {
+    yield takeLatest(ACTION_ANSWERED_THE_QUESTION, onAnsweredTheQuestion)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnAddPlayers),
@@ -193,6 +210,7 @@ function* Sagas() {
         fork(watchOnUpdatePlayerScore),
         fork(watchOnUpdatePlayerReveal),
         fork(watchOnUpdatePlayerCanAnswer),
+        fork(watchOnAnsweredTheQuestion),
         fork(watchOnUpdatePlayerCanAsk),
         fork(watchOnUpdatePlayerName),
         fork(watchOnResetPlayers),
