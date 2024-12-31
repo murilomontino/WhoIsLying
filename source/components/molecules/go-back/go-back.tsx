@@ -4,10 +4,12 @@ import React from 'react'
 import { FadeIn, FadeOut } from 'react-native-reanimated'
 import { Button } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
+import withControl from '~/components/helpers/with-control'
 import View from '~/components/ui/view'
 
 type GoBackProps = {
     href?: string
+    condition?: boolean
 }
 
 const GoBack = ({ href }: GoBackProps) => {
@@ -44,4 +46,4 @@ const GoBack = ({ href }: GoBackProps) => {
     )
 }
 
-export default GoBack
+export default withControl(GoBack)
