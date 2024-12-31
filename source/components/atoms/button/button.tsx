@@ -1,11 +1,17 @@
-import { TouchableOpacity, type TouchableOpacityProps } from 'react-native'
+import {
+    type GestureResponderEvent,
+    TouchableOpacity,
+    type TouchableOpacityProps,
+} from 'react-native'
 import { tv } from 'tailwind-variants'
 import withControl from '~/components/helpers/with-control'
 import withDelay from '~/components/helpers/with-delay'
+import useSound from '~/components/hooks/use-sound'
 
 type ButtonProps = TouchableOpacityProps & {
     condition?: boolean
     delay?: number
+    hasSound?: boolean
 }
 
 const button = tv({
@@ -35,10 +41,24 @@ const buttonWithoutClass = tv({
     },
 })
 
-export function Button({ className, disabled, ...props }: ButtonProps) {
+export function Button({
+    className,
+    disabled,
+    hasSound = true,
+    ...props
+}: ButtonProps) {
+    const { playClickSound } = useSound({ sound: 'click' })
+
+    const handlePress = (event: GestureResponderEvent) => {
+        if (hasSound) playClickSound()
+
+        props.onPress?.(event)
+    }
+
     return (
         <TouchableOpacity
             {...props}
+            onPress={handlePress}
             disabled={disabled}
             className={buttonWithoutClass({ className, disabled })}
         />
