@@ -1,9 +1,10 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import React, { useEffect, useMemo, useState } from 'react'
-import { Text, View } from 'react-native'
-import Animated, {
+import {
     Easing,
     FadeInLeft,
+    FadeInRight,
+    FadeOutLeft,
     FadeOutRight,
     useAnimatedStyle,
     useSharedValue,
@@ -12,7 +13,9 @@ import Animated, {
 } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
+import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
+import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onUpdatePlayerReveal } from '~/store/slices/players/actions'
 import type { Player } from '~/store/slices/players/player'
@@ -98,71 +101,60 @@ const RevealByIdScreen = () => {
             <View className="flex flex-col items-center justify-center w-full h-full space-y-8">
                 <Title />
                 <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
-                    <Animated.Text
+                    <Text
                         entering={FadeInLeft}
                         exiting={FadeOutRight}
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            textShadowColor: '#ef4444', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
-                        className="font-bold text-white text-7xl text-pretty"
+                        as="h2"
+                        className="!text-white text-shadow-outlined-red"
                     >
                         {player?.name}
-                    </Animated.Text>
+                    </Text>
                 </View>
                 <View className="flex items-center justify-center w-full px-8">
-                    <Animated.Text
+                    <Text
                         entering={FadeInLeft}
                         exiting={FadeOutRight}
-                        className="px-8 text-2xl text-center text-white"
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            textShadowColor: '#000', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
+                        as="h3"
+                        className="!text-white text-shadow-outlined-red"
                     >
-                        A Categoria é {category}
-                    </Animated.Text>
-                    <ButtonSecondary
-                        disabled={visible}
-                        onPress={handleSpinning}
-                        className="w-full rounded-lg md:w-1/2 !opacity-100"
+                        A Categoria é{' '}
+                        <Text entering={FadeInRight} exiting={FadeOutLeft} as="h3">
+                            {category}
+                        </Text>
+                    </Text>
+                    <View
+                        entering={FadeInRight}
+                        exiting={FadeOutRight}
+                        className="flex items-center justify-center w-full"
                     >
-                        <Animated.Text
-                            className="text-gray-800"
-                            style={[
-                                animatedStyles,
-                                {
-                                    fontFamily: 'Bangers_400Regular',
-                                    fontSize: 42,
-                                    textShadowColor: '#ef4444',
-                                    textShadowOffset: { width: 2, height: 2 },
-                                    textShadowRadius: 2,
-                                },
-                            ]}
+                        <ButtonSecondary
+                            disabled={visible}
+                            onPress={handleSpinning}
+                            className="w-full rounded-lg md:w-1/2 !opacity-100"
                         >
-                            {item}
-                        </Animated.Text>
-                    </ButtonSecondary>
+                            <Text
+                                className="text-gray-800"
+                                as="h3"
+                                style={[animatedStyles]}
+                            >
+                                {item}
+                            </Text>
+                        </ButtonSecondary>
+                    </View>
                 </View>
 
                 <Text
-                    className="px-8 text-2xl text-center text-white"
-                    style={{
-                        fontFamily: 'Bangers_400Regular',
-                        textShadowColor: '#000', // Cor da borda
-                        textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                        textShadowRadius: 2, // Raio para suavizar a sombra
-                    }}
+                    entering={FadeInRight}
+                    exiting={FadeOutRight}
+                    as="body"
+                    className="w-full px-8 text-center !text-white md:w-1/2 text-shadow-sm"
                 >
                     Cada Jogador, exceto o que está fora da Rodada, vai ver a mesma
                     comida secreta. Tente Fazer com que pareça óbvio que você sabe
                     qual é a comida secreta, mas sem revelar diretamente.
                 </Text>
-                <Animated.View
+                <View
+                    condition={visible}
                     entering={FadeInLeft}
                     exiting={FadeOutRight}
                     className="flex items-center justify-center w-full px-8"
@@ -173,19 +165,13 @@ const RevealByIdScreen = () => {
                         className="w-full rounded-full md:w-1/2"
                     >
                         <Text
-                            className="text-white"
-                            style={{
-                                fontFamily: 'Bangers_400Regular',
-                                fontSize: 42,
-                                textShadowColor: '#000', // Cor da borda
-                                textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                                textShadowRadius: 2, // Raio para suavizar a sombra
-                            }}
+                            className="!text-white text-shadow-outlined-red"
+                            as="h3"
                         >
                             Entendido
                         </Text>
                     </ButtonPrimary>
-                </Animated.View>
+                </View>
             </View>
         </DefaultLayout>
     )

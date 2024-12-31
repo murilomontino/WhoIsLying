@@ -1,6 +1,8 @@
 import { Bangers_400Regular, useFonts } from '@expo-google-fonts/bangers'
-import { Text, type TextProps } from 'react-native'
-import Animated, { BounceIn, BounceOutRight } from 'react-native-reanimated'
+import type { TextProps } from 'react-native'
+import { BounceIn, BounceOutRight } from 'react-native-reanimated'
+import View from '~/components/ui/view'
+import Text from '../text'
 
 export type TitleProps = TextProps
 
@@ -16,23 +18,21 @@ export default function Title({ className, ...props }: TitleProps) {
     }
 
     return (
-        <Animated.View
+        <View
             entering={BounceIn}
             exiting={BounceOutRight}
-            style={{ flexDirection: 'row', flexWrap: 'wrap' }}
+            className={`flex flex-row items-center ${className}`}
         >
             {title.split('').map((char: string, index: number) => (
                 <Text
-                    key={index}
+                    key={`${char}-${
+                        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                        index
+                    }`}
+                    as="h1"
+                    className="mr-1 italic"
                     style={{
-                        fontFamily: 'Bangers_400Regular',
-                        fontStyle: 'italic',
-                        fontSize: 82,
                         color: 'white',
-                        textShadowColor: 'black', // Cor da borda
-                        textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                        textShadowRadius: 2, // Raio para suavizar a sombra
-                        marginRight: 4,
                         transform: [{ translateY: index % 2 === 0 ? -2 : 2 }], // Alterna posição no eixo Y
                     }}
                     {...props}
@@ -40,6 +40,6 @@ export default function Title({ className, ...props }: TitleProps) {
                     {char}
                 </Text>
             ))}
-        </Animated.View>
+        </View>
     )
 }

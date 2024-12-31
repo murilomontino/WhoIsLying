@@ -75,7 +75,7 @@ const RevealScreen = () => {
                 </Text>
 
                 <Text
-                    className="px-8 text-2xl text-center text-white"
+                    className="w-full px-8 text-2xl text-center text-white md:w-1/2"
                     style={{
                         fontFamily: 'Bangers_400Regular',
                         textShadowColor: '#000', // Cor da borda
