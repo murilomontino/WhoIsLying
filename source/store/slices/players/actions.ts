@@ -143,11 +143,11 @@ export const onVoteInPlayerFail = createAction(ACTION_VOTE_IN_PLAYER_FAIL)
 
 export const onAnsweredTheQuestion = createAction<{
     _id: string
-    player_asked_id: string
+    player_ask_id: string
 }>(ACTION_ANSWERED_THE_QUESTION)
 export const onAnsweredTheQuestionSuccess = createAction<{
     _id: string
-    player_asked_id: string
+    player_ask_id: string
 }>(ACTION_ANSWERED_THE_QUESTION_SUCCESS)
 export const onAnsweredTheQuestionFail = createAction(
     ACTION_ANSWERED_THE_QUESTION_FAIL,

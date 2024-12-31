@@ -254,7 +254,7 @@ const slice = createSlice({
             state,
             action: PayloadAction<{
                 _id: string
-                player_asked_id: string
+                player_ask_id: string
             }>,
         ) => {
             state.isLoading = LOADING.SUCCESS
@@ -263,7 +263,7 @@ const slice = createSlice({
                 player.canAnswer = true
                 player.blackListQuestioners = [
                     ...player.blackListQuestioners,
-                    action.payload.player_asked_id,
+                    action.payload.player_ask_id,
                 ]
             }
         },

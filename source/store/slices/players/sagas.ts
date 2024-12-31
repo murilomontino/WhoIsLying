@@ -119,7 +119,7 @@ export function* onResetPlayers() {
 
 export function* onAnsweredTheQuestion({
     payload,
-}: PayloadAction<{ _id: string; player_asked_id: string }>) {
+}: PayloadAction<{ _id: string; player_ask_id: string }>) {
     try {
         yield put(onAnsweredTheQuestionSuccess(payload))
     } catch (_) {

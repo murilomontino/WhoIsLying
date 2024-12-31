@@ -17,18 +17,17 @@ import { drawPlayer } from '~/utils/drawPlayer'
 
 const AskingById = () => {
     const { id } = useLocalSearchParams()
-    const [askPlayer, setAskPlayer] = useState<typeof Player | null>(null)
     const [answerPlayer, setAnswerPlayer] = useState<typeof Player | null>(null)
     const dispatch = useAppDispatch()
     const { players } = useAppSelector((state) => state.players)
+
+    const askPlayer = useMemo(
+        () => players.find((p) => p._id === id),
+        [id, players],
+    )
+
     const { questionRound } = useAppSelector((state) => state.game)
     const router = useRouter()
-
-    useEffect(() => {
-        const player = players.find((p) => p._id === id)
-        if (!player) return router.push('/reveal')
-        setAskPlayer(player)
-    }, [id])
 
     const getAnswerPlayer = async () => {
         const cachedAnswerPlayer = await cache.get(
@@ -92,9 +91,8 @@ const AskingById = () => {
     }
 
     useEffect(() => {
-        if (askPlayer) {
-            getAnswerPlayer()
-        }
+        if (!askPlayer) return
+        getAnswerPlayer()
     }, [askPlayer?._id])
 
     const handleNext = async () => {
@@ -107,7 +105,7 @@ const AskingById = () => {
         dispatch(
             onAnsweredTheQuestion({
                 _id: answerPlayer?._id as string,
-                player_asked_id: askPlayer?._id as string,
+                player_ask_id: askPlayer?._id as string,
             }),
         )
 
