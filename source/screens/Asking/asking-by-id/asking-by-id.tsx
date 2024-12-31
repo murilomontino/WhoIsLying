@@ -8,7 +8,7 @@ import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import {
-    onUpdatePlayerCanAnswer,
+    onAnsweredTheQuestion,
     onUpdatePlayerCanAsk,
 } from '~/store/slices/players/actions'
 import type { Player } from '~/store/slices/players/player'
@@ -67,9 +67,19 @@ const AskingById = () => {
                 break
             }
             const player = drawPlayer(canPlayersAnswer)
+
             if (player?._id === askPlayer?._id) {
                 continue
             }
+
+            if (!askPlayer) {
+                continue
+            }
+
+            if (player?.blackListQuestioners?.includes(askPlayer?._id as string)) {
+                continue
+            }
+
             answerPlayer = player
         }
 
@@ -95,9 +105,9 @@ const AskingById = () => {
             }),
         )
         dispatch(
-            onUpdatePlayerCanAnswer({
+            onAnsweredTheQuestion({
                 _id: answerPlayer?._id as string,
-                canAnswer: false,
+                player_asked_id: askPlayer?._id as string,
             }),
         )
 
