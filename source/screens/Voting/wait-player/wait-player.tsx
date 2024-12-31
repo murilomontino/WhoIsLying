@@ -1,9 +1,10 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import React, { useEffect, useState } from 'react'
-import { Text, View } from 'react-native'
-import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
+import { FadeIn, FadeOut } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
+import Text from '~/components/atoms/text'
+import View from '~/components/ui/view'
 import { useAppSelector } from '~/store/hooks'
 import type { Player } from '~/store/slices/players/player'
 
@@ -34,7 +35,7 @@ const WaitPlayerScreen = () => {
 
     return (
         <DefaultLayout>
-            <Animated.View
+            <View
                 entering={FadeIn}
                 exiting={FadeOut}
                 className="flex flex-col items-center justify-center w-full h-full space-y-8"
@@ -53,13 +54,8 @@ const WaitPlayerScreen = () => {
                         Passe para o(a){' '}
                     </Text>
                     <Text
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            textShadowColor: '#ef4444', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
-                        className="font-bold text-white text-7xl text-pretty"
+                        as="h1"
+                        className="!text-gray-800 text-shadow-outlined-red"
                     >
                         {player?.name}
                     </Text>
@@ -70,21 +66,12 @@ const WaitPlayerScreen = () => {
                         onPress={handleReveal}
                         className="w-full rounded-full md:w-1/2"
                     >
-                        <Text
-                            className="text-gray-800"
-                            style={{
-                                fontFamily: 'Bangers_400Regular',
-                                fontSize: 42,
-                                textShadowColor: '#ef4444', // Cor da borda
-                                textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                                textShadowRadius: 2, // Raio para suavizar a sombra
-                            }}
-                        >
+                        <Text className="text-gray-800" as="h3">
                             Eu sou o(a) {player?.name}
                         </Text>
                     </ButtonSecondary>
                 </View>
-            </Animated.View>
+            </View>
         </DefaultLayout>
     )
 }

@@ -1,7 +1,8 @@
 import { AntDesign } from '@expo/vector-icons'
 import React from 'react'
-import { Text, View } from 'react-native'
 import { Button } from '~/components/atoms/button'
+import Text from '~/components/atoms/text'
+import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onChangeRounds } from '~/store/slices/game/actions'
 
@@ -30,15 +31,7 @@ const Rounds = () => {
                     className="mr-2 text-gray-800"
                 />
             </Button>
-            <Text
-                className="text-3xl font-semibold text-gray-800 uppercase"
-                style={{
-                    fontFamily: 'Bangers_400Regular',
-                    textShadowColor: '#ef4444', // Cor da borda
-                    textShadowOffset: { width: 1, height: 1 }, // Offset da sombra
-                    textShadowRadius: 2, // Raio para suavizar a sombra
-                }}
-            >
+            <Text as="h5">
                 {rounds} {rounds === 1 ? 'rodada' : 'rodadas'}
             </Text>
             <Button

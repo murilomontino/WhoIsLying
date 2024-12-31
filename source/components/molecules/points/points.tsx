@@ -1,7 +1,8 @@
 import { AntDesign } from '@expo/vector-icons'
 import React from 'react'
-import { Text, View } from 'react-native'
 import { Button } from '~/components/atoms/button'
+import Text from '~/components/atoms/text'
+import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onChangePoints } from '~/store/slices/game/actions'
 
@@ -30,17 +31,7 @@ const Points = () => {
                     className="mr-2 text-gray-800"
                 />
             </Button>
-            <Text
-                className="text-3xl font-semibold text-gray-800 uppercase"
-                style={{
-                    fontFamily: 'Bangers_400Regular',
-                    textShadowColor: '#ef4444', // Cor da borda
-                    textShadowOffset: { width: 1, height: 1 }, // Offset da sombra
-                    textShadowRadius: 2, // Raio para suavizar a sombra
-                }}
-            >
-                {points} pontos
-            </Text>
+            <Text as="h5">{points} pontos</Text>
             <Button
                 disabled={points >= 9999}
                 className="p-2 my-2 bg-transparent border-l border-gray-600"

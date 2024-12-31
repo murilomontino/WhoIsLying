@@ -7,7 +7,7 @@ import AnimatedText, {
 
 const text = tv({
     base: `
-        font-bold font-bangers text-shadow-outlined
+        font-bold font-bangers text-gray-800
     `,
     variants: {
         as: {
@@ -18,7 +18,7 @@ const text = tv({
             h5: 'text-2xl',
             h6: 'text-xl',
             subtitle: 'text-sm',
-            body: 'text-xl',
+            body: 'text-2xl',
             caption: 'text-xs',
             overline: 'text-xs',
         },

@@ -1,9 +1,10 @@
 import { useRouter } from 'expo-router'
 import React, { useEffect, useState } from 'react'
-import { Text, View } from 'react-native'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
+import Text from '~/components/atoms/text'
 import GoBack from '~/components/molecules/go-back'
+import View from '~/components/ui/view'
 import { useAppSelector } from '~/store/hooks'
 import type { Player } from '~/store/slices/players/player'
 
@@ -34,54 +35,33 @@ const RevealScreen = () => {
     return (
         <DefaultLayout>
             <GoBack />
-            <View className="flex flex-col items-center justify-center w-full h-full space-y-8">
-                <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
-                    <Text
-                        className="text-center text-white"
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            fontSize: 42,
-                            textShadowColor: '#ef4444', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
-                    >
+            <View className="flex flex-col items-center justify-center w-full h-[85vh] space-y-8">
+                <View className="flex flex-col items-center justify-center w-full px-2 mb-8 ">
+                    <Text className="text-center !text-white " as="h3">
                         Passe para o(a){' '}
                     </Text>
                     <Text
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            textShadowColor: '#ef4444', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
-                        className="font-bold text-white text-7xl text-pretty"
+                        as="h1"
+                        className="!text-gray-800 text-shadow-outlined-red text-pretty"
                     >
                         {player?.name}
                     </Text>
                 </View>
-                <Text
-                    style={{
-                        fontFamily: 'Bangers_400Regular',
-                        textShadowColor: '#ef4444', // Cor da borda
-                        textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                        textShadowRadius: 2, // Raio para suavizar a sombra
-                        fontSize: 128,
-                        transform: [{ rotate: '35deg' }],
-                    }}
-                    className="text-center text-white"
-                >
-                    {player?.reveal ? '🍔' : '🤫'}
-                </Text>
+                <View className="h-20 my-2 ">
+                    <Text
+                        style={{
+                            fontSize: 128,
+                            transform: [{ rotate: '35deg' }],
+                        }}
+                        className="text-center text-white"
+                    >
+                        🤫
+                    </Text>
+                </View>
 
                 <Text
-                    className="w-full px-8 text-2xl text-center text-white md:w-1/2"
-                    style={{
-                        fontFamily: 'Bangers_400Regular',
-                        textShadowColor: '#000', // Cor da borda
-                        textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                        textShadowRadius: 2, // Raio para suavizar a sombra
-                    }}
+                    as="body"
+                    className="w-full px-8 text-center !text-white text-shadow-outlined md:w-1/2"
                 >
                     Cada Jogador, exceto o que está fora da Rodada, vai ver a mesma
                     comida secreta.
@@ -91,18 +71,7 @@ const RevealScreen = () => {
                         onPress={handleReveal}
                         className="w-full rounded-full md:w-1/2"
                     >
-                        <Text
-                            className="text-gray-800"
-                            style={{
-                                fontFamily: 'Bangers_400Regular',
-                                fontSize: 42,
-                                textShadowColor: '#ef4444', // Cor da borda
-                                textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                                textShadowRadius: 2, // Raio para suavizar a sombra
-                            }}
-                        >
-                            Eu sou o(a) {player?.name}
-                        </Text>
+                        <Text as="h3">Eu sou o(a) {player?.name}</Text>
                     </ButtonSecondary>
                 </View>
             </View>

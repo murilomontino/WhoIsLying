@@ -1,10 +1,11 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import React, { useEffect, useState } from 'react'
-import { Text, View } from 'react-native'
-import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
+import { FadeIn, FadeOut } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
+import Text from '~/components/atoms/text'
 import GoBack from '~/components/molecules/go-back'
+import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import {
     onUpdatePlayerCanAnswer,
@@ -92,92 +93,51 @@ const AskingById = () => {
     return (
         <DefaultLayout>
             <GoBack />
-            <Animated.View
+            <View
                 entering={FadeIn}
                 exiting={FadeOut}
-                className="flex flex-col items-center justify-center w-full h-full space-y-8"
+                className="flex flex-col items-center justify-center w-full h-[85vh] space-y-8"
             >
-                <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
-                    <Text
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            textShadowColor: '#181818', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
-                        className="text-xl font-bold text-white text-pretty "
-                    >
+                <View className="flex flex-col items-center justify-center w-full px-2 mb-10 space-y-4">
+                    <Text as="body" className="!text-white text-shadow-outlined">
                         {questionRound} Rodada
                     </Text>
-                    <Text
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            textShadowColor: '#181818', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
-                        className="text-5xl font-bold text-white text-pretty "
-                    >
+                    <Text as="h2" className="!text-white text-shadow-outlined-red">
                         {answerPlayer?.name}
                     </Text>
                     <Text
-                        className="text-center text-white"
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            fontSize: 42,
-                            textShadowColor: '#181818', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
+                        className="text-center !text-white text-shadow-outlined"
+                        as="h3"
                     >
                         Pergunta Para
                     </Text>
                     <Text
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            textShadowColor: '#ef4444', // Cor da borda
-                            textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                            textShadowRadius: 2, // Raio para suavizar a sombra
-                        }}
-                        className="font-bold text-white text-7xl text-pretty"
+                        as="h1"
+                        className="!text-gray-800 text-shadow-outlined-red"
                     >
                         {askPlayer?.name}
                     </Text>
                 </View>
-                <Text
-                    style={{
-                        fontFamily: 'Bangers_400Regular',
-                        textShadowColor: '#ef4444', // Cor da borda
-                        textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                        textShadowRadius: 2, // Raio para suavizar a sombra
-                        fontSize: 128,
-                        transform: [{ rotate: '35deg' }],
-                    }}
-                    className="text-center text-white"
-                >
-                    {askPlayer?.reveal ? '🍔' : '🤫'}
-                </Text>
+                <View className="h-20">
+                    <Text
+                        style={{
+                            fontSize: 128,
+                            transform: [{ rotate: '35deg' }],
+                        }}
+                    >
+                        🍔
+                    </Text>
+                </View>
 
                 <View className="flex items-center justify-center w-full px-8">
                     <ButtonSecondary
                         onPress={handleNext}
                         className="w-full rounded-full md:w-1/2"
                     >
-                        <Text
-                            className="text-gray-800"
-                            style={{
-                                fontFamily: 'Bangers_400Regular',
-                                fontSize: 42,
-                                textShadowColor: '#ef4444', // Cor da borda
-                                textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                                textShadowRadius: 2, // Raio para suavizar a sombra
-                            }}
-                        >
-                            Próximo
-                        </Text>
+                        <Text as="h2">Próximo</Text>
                     </ButtonSecondary>
                 </View>
-            </Animated.View>
+            </View>
         </DefaultLayout>
     )
 }
