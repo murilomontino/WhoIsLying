@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { FadeIn, FadeOut } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
@@ -26,11 +26,8 @@ const AskingById = () => {
 
     useEffect(() => {
         const player = players.find((p) => p._id === id)
-        if (player) {
-            setAskPlayer(player)
-        } else {
-            router.push('/reveal')
-        }
+        if (!player) return router.push('/reveal')
+        setAskPlayer(player)
     }, [id])
 
     const getAnswerPlayer = async () => {
@@ -41,9 +38,7 @@ const AskingById = () => {
         if (cachedAnswerPlayer) {
             const player = players.find((p) => p._id === cachedAnswerPlayer)
 
-            if (!player) {
-                throw new Error('Jogador não encontrado')
-            }
+            if (!player) return
 
             setAnswerPlayer(player)
             return
@@ -92,8 +87,7 @@ const AskingById = () => {
         }
     }, [askPlayer?._id])
 
-    const handleNext = () => {
-        setAskPlayer(null)
+    const handleNext = async () => {
         dispatch(
             onUpdatePlayerCanAsk({
                 _id: askPlayer?._id as string,
@@ -107,19 +101,34 @@ const AskingById = () => {
             }),
         )
 
-        const player = players.find((p) => p.canAsk && p._id !== askPlayer?._id)
+        const indexActual = players.findIndex(
+            (player) => player._id === askPlayer?._id,
+        )
 
-        if (!player) {
+        const nextIndex = indexActual + 1
+
+        if (nextIndex === players.length) {
             return router.push('/round-table')
         }
 
-        router.push(`/asking/${player._id}`)
-        return
+        const player = players[nextIndex]
+
+        return router.push(`/asking/${player._id}`)
     }
+
+    const goBackHref = useMemo(() => {
+        const indexActual = players.findIndex((player) => player._id === id)
+
+        const previousIndex = Math.max(0, indexActual - 1)
+
+        const player = players[previousIndex]
+
+        return `/asking/${player._id}`
+    }, [players, id])
 
     return (
         <DefaultLayout>
-            <GoBack />
+            <GoBack href={goBackHref} />
             <View
                 entering={FadeIn}
                 exiting={FadeOut}
