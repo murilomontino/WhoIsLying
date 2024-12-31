@@ -1,6 +1,7 @@
 import React from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
 import withControl from '~/components/helpers/with-control'
+import withDelay from '~/components/helpers/with-delay'
 import AnimatedText, {
     type TextProps as AnimatedTextProps,
 } from '~/components/ui/text'
@@ -31,6 +32,7 @@ const text = tv({
 type TextProps = AnimatedTextProps &
     VariantProps<typeof text> & {
         condition?: boolean
+        delay?: number
     }
 
 const Text = ({ className, ...props }: TextProps) => {
@@ -45,4 +47,4 @@ const Text = ({ className, ...props }: TextProps) => {
     )
 }
 
-export default withControl(Text)
+export default withControl(withDelay(Text))

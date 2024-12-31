@@ -1,4 +1,4 @@
-import type { InputProps } from '~/components/atoms/input/input'
+import type { InputProps } from '~/components/atoms/input'
 import Input from '~/components/atoms/input/input'
 
 import React, { useMemo } from 'react'
@@ -9,19 +9,22 @@ import {
     type FieldValues,
     type Path,
 } from 'react-hook-form'
-import { Text, View } from 'react-native'
+import Text from '~/components/atoms/text'
+import View, { type ViewProps } from '~/components/ui/view'
 
 type ControlInputProps<Ctx extends FieldValues> = {
     name: Path<Ctx>
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     control: Control<Ctx, any>
     errors?: FieldErrors<Ctx>
+    viewProps: ViewProps
 } & InputProps
 
 export default function ControlInput<Ctx extends FieldValues>({
     control,
     name,
     errors,
+    viewProps,
     ...props
 }: ControlInputProps<Ctx>) {
     const hasError = useMemo(() => {
@@ -34,7 +37,7 @@ export default function ControlInput<Ctx extends FieldValues>({
     const err = errors?.[name] || { message: '' }
 
     return (
-        <View className="flex flex-col w-full">
+        <View className="flex flex-col w-full" {...viewProps}>
             <Controller
                 control={control}
                 name={name as Path<Ctx>}

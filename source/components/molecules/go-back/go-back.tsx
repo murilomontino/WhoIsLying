@@ -1,8 +1,10 @@
 import { AntDesign } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React from 'react'
-import { Text } from 'react-native'
+import { FadeIn, FadeOut } from 'react-native-reanimated'
 import { Button } from '~/components/atoms/button'
+import Text from '~/components/atoms/text'
+import View from '~/components/ui/view'
 
 type GoBackProps = {
     href?: string
@@ -24,24 +26,21 @@ const GoBack = ({ href }: GoBackProps) => {
     }
 
     return (
-        <Button
-            onPress={goBack}
-            className="absolute top-0 left-0 px-4 m-4 bg-red-500 rounded-full w-fit"
+        <View
+            entering={FadeIn.duration(300)}
+            exiting={FadeOut.duration(300)}
+            className="absolute top-0 left-0 rounded-full w-fit"
         >
-            <Text
-                className="gap-2 space-x-2 text-white"
-                style={{
-                    fontFamily: 'Bangers_400Regular',
-                    fontSize: 24,
-                    textShadowColor: 'black', // Cor da borda
-                    textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                    textShadowRadius: 2, // Raio para suavizar a sombra
-                }}
+            <Button
+                onPress={goBack}
+                className="px-4 m-4 bg-red-500 rounded-full w-fit"
             >
-                <AntDesign name="back" size={24} className="mr-2 text-white" />
-                Voltar
-            </Text>
-        </Button>
+                <Text className="gap-2 space-x-2 text-white" as="body">
+                    <AntDesign name="back" size={24} className="mr-2 text-white" />
+                    Voltar
+                </Text>
+            </Button>
+        </View>
     )
 }
 
