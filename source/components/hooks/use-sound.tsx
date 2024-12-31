@@ -30,7 +30,10 @@ const useSound = ({ sound: uriSound, volume = 0.5 }: UseSoundProps) => {
     }
 
     // Tocar o som de clique
-    const playClickSound = () => {
+    const playClickSound = (props?: { startTime: number } | null) => {
+        if (!clickSound) return
+        const startTime = props?.startTime || 0
+        clickSound?.setPositionAsync(startTime)
         clickSound?.playAsync()
     }
 
