@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import {
     BounceInLeft,
     BounceInRight,
@@ -17,6 +17,7 @@ import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
 import { useAppSelector } from '~/store/hooks'
 import type { Player } from '~/store/slices/players/player'
+import { drawPlayerWithConditions } from '~/utils/drawPlayer'
 
 const RevealScreen = () => {
     const [player, setPlayer] = useState<typeof Player | null>(null)
@@ -28,15 +29,25 @@ const RevealScreen = () => {
         setIsMounted(true)
     }, [])
 
+    const revealEffect = useCallback(async () => {
+        const currentPlayer = players.find((player) => !player.reveal)
+
+        if (currentPlayer) {
+            return setPlayer(currentPlayer)
+        }
+
+        const answerPlayer = await drawPlayerWithConditions(
+            players,
+            (player) => player._id !== players[0]._id,
+        )
+        router.push(`/asking/1/${players[0]._id}/${answerPlayer._id}`)
+        return
+    }, [players, router])
+
     useEffect(() => {
         if (!isMounted) return
-        const currentPlayer = players.find((player) => !player.reveal)
-        if (!currentPlayer) {
-            router.push('/asking')
-            return
-        }
-        setPlayer(currentPlayer)
-    }, [players, player?.reveal, isMounted])
+        revealEffect()
+    }, [revealEffect, isMounted])
 
     const handleReveal = () => {
         router.navigate(`/reveal/${player?._id}`)
