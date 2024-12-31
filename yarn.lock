@@ -2117,6 +2117,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-async-storage/async-storage@npm:^1.13.4":
+  version: 1.24.0
+  resolution: "@react-native-async-storage/async-storage@npm:1.24.0"
+  dependencies:
+    merge-options: "npm:^3.0.4"
+  peerDependencies:
+    react-native: ^0.0.0-0 || >=0.60 <1.0
+  checksum: 10c0/cad2098ef84251f2ab8ebc07b750e585a20ac7ca07f26e5441e957a76f2b66f01d10ef5fbddb63d675431377b31beb5208548093e1eb17d262d2184b51133f4d
+  languageName: node
+  linkType: hard
+
 "@react-native-async-storage/async-storage@npm:^2.1.0":
   version: 2.1.0
   resolution: "@react-native-async-storage/async-storage@npm:2.1.0"
@@ -8097,6 +8108,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-cache@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "react-native-cache@npm:2.0.3"
+  dependencies:
+    "@react-native-async-storage/async-storage": "npm:^1.13.4"
+  checksum: 10c0/e53703b85a3b8e56c6ff8079d7cde6d97dd0eb6d910b8273ff8629f33822689f269cabd215804ac11f6ccca4025459e7dce7b6ea89e9046a39064fec3f2d5d31
+  languageName: node
+  linkType: hard
+
 "react-native-css-interop@npm:0.1.22":
   version: 0.1.22
   resolution: "react-native-css-interop@npm:0.1.22"
@@ -10129,6 +10149,7 @@ __metadata:
     react-dom: "npm:18.3.1"
     react-hook-form: "npm:^7.54.2"
     react-native: "npm:0.76.5"
+    react-native-cache: "npm:^2.0.3"
     react-native-reanimated: "npm:~3.16.1"
     react-native-safe-area-context: "npm:4.12.0"
     react-native-screens: "npm:~4.4.0"
