@@ -1,9 +1,11 @@
 import { TouchableOpacity, type TouchableOpacityProps } from 'react-native'
 import { tv } from 'tailwind-variants'
 import withControl from '~/components/helpers/with-control'
+import withDelay from '~/components/helpers/with-delay'
 
 type ButtonProps = TouchableOpacityProps & {
     condition?: boolean
+    delay?: number
 }
 
 const button = tv({
@@ -43,7 +45,7 @@ export function Button({ className, disabled, ...props }: ButtonProps) {
     )
 }
 
-const BtnControl = withControl(Button)
+const BtnControl = withControl(withDelay(Button))
 
 export function ButtonPrimary({ className, disabled, ...props }: ButtonProps) {
     return (
