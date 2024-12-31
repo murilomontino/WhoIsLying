@@ -8,6 +8,7 @@ import {
 } from 'react-native-reanimated'
 import { Button } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
+import useSound from '~/components/hooks/use-sound'
 import View from '~/components/ui/view'
 
 const color = {
@@ -27,14 +28,36 @@ type Dice3DProps = {
     finalWord?: string
     words?: string[]
     onFinally?: () => void
+    winnerSound?: boolean
 }
 
 const Dice3D = ({
     initialWord = 'One',
     finalWord = 'Six',
     words = ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
+    winnerSound = false,
     onFinally,
 }: Dice3DProps) => {
+    const { playClickSound: playSoundSuspense, stopClickSound: stopSoundSuspense } =
+        useSound({
+            sound: 'suspense',
+            volume: 0.5,
+        }) // Som de suspense
+    const { playClickSound: playSoundReveal, stopClickSound: stopSoundReveal } =
+        useSound({
+            sound: 'reveal',
+            volume: 1,
+        }) // Som de reveal
+    const { playClickSound: playSoundWinner } = useSound({
+        sound: 'win',
+        volume: 1,
+    }) // Som de Vitória
+
+    const { playClickSound: playSoundLoser } = useSound({
+        sound: 'lose',
+        volume: 1,
+    }) // Som de Derrota
+
     const [colorText, setColorText] = useState(color.init) // Cor do texto
     const [bgColor, setBgColor] = useState(bg.init) // Cor de fundo
     const [side, setSide] = useState(initialWord) // Palavra exibida, agora com a palavra inicial definida pela prop
@@ -42,6 +65,8 @@ const Dice3D = ({
     const textRotationX = useSharedValue(0) // Rotação do texto no eixo X
 
     const handleRoll = () => {
+        playSoundSuspense() // Toca o som de suspense
+        playSoundReveal() // Toca o som de reveal
         startTransition(() => {
             setColorText(color.middle) // Muda a cor do texto para vermelho
         })
@@ -68,13 +93,22 @@ const Dice3D = ({
                 })
                 setTimeout(() => {
                     runOnJS(setSide)(finalWord) // Define a palavra final a partir da prop
+
                     startTransition(() => {
                         setBgColor(bg.final) // Muda a cor de fundo para azul
                         setColorText(color.final) // Muda a cor do texto para vermelho
                         onFinally?.() // Executa a função final, se existir
+
+                        stopSoundSuspense({ delay: 500 }) // Para o som de suspense
                     })
                 }, 750) // Aguarda um tempo para exibir a palavra final
                 rotationX.value = 0 // Reseta para o próximo giro
+                if (winnerSound) {
+                    playSoundWinner() // Toca o som de vitória
+                } else {
+                    playSoundLoser() // Toca o som de derrota
+                }
+                stopSoundReveal({ delay: 800 }) // Para o som de reveal
             },
         )
 
