@@ -58,6 +58,12 @@ const Dice3D = ({
         volume: 1,
     }) // Som de Derrota
 
+    const { playClickSound: playSoundSpinning, stopClickSound: stopSoundSpinning } =
+        useSound({
+            sound: 'spinning-roll',
+            volume: 1,
+        }) // Som de Spinning  Roll
+
     const [colorText, setColorText] = useState(color.init) // Cor do texto
     const [bgColor, setBgColor] = useState(bg.init) // Cor de fundo
     const [side, setSide] = useState(initialWord) // Palavra exibida, agora com a palavra inicial definida pela prop
@@ -67,6 +73,7 @@ const Dice3D = ({
     const handleRoll = () => {
         playSoundSuspense() // Toca o som de suspense
         playSoundReveal() // Toca o som de reveal
+        playSoundSpinning() // Toca o som de spinning roll
         startTransition(() => {
             setColorText(color.middle) // Muda a cor do texto para vermelho
         })
@@ -93,7 +100,6 @@ const Dice3D = ({
                 })
                 setTimeout(() => {
                     runOnJS(setSide)(finalWord) // Define a palavra final a partir da prop
-
                     startTransition(() => {
                         setBgColor(bg.final) // Muda a cor de fundo para azul
                         setColorText(color.final) // Muda a cor do texto para vermelho
@@ -108,6 +114,7 @@ const Dice3D = ({
                 } else {
                     playSoundLoser({ startTime: 250 }) // Toca o som de derrota
                 }
+                stopSoundSpinning({ delay: 0, fadeDuration: 1 }) // Para o som de spinning roll
                 stopSoundReveal({ delay: 800 }) // Para o som de reveal
             },
         )

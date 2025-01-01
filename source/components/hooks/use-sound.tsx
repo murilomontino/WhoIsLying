@@ -8,6 +8,7 @@ const Sounds = {
     win: require('../../../assets/sounds/win.mp3'),
     lose: require('../../../assets/sounds/lose.mp3'),
     reveal: require('../../../assets/sounds/reveal.mp3'),
+    'spinning-roll': require('../../../assets/sounds/spinning-roll.mp3'),
 } as const
 type Sounds = keyof typeof Sounds
 
@@ -38,11 +39,10 @@ const useSound = ({ sound: uriSound, volume = 0.5 }: UseSoundProps) => {
     }
 
     // Função para fazer o fade out do som
-    const stopClickSound = ({
-        delay = 0,
-        fadeDuration = 2000,
-    }: { delay: number; fadeDuration?: number }) => {
+    const stopClickSound = (params?: { delay: number; fadeDuration?: number }) => {
         if (!clickSound) return
+        const delay = params?.delay || 0
+        const fadeDuration = params?.fadeDuration || 2000
         // Primeiro, aguarda o delay para começar o fade out
         setTimeout(() => {
             // Gradualmente diminui o volume até 0
