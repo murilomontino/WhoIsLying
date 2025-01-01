@@ -61,7 +61,7 @@ const Dice3D = ({
     const { playClickSound: playSoundSpinning, stopClickSound: stopSoundSpinning } =
         useSound({
             sound: 'spinning-roll',
-            volume: 1,
+            volume: 0.2,
         }) // Som de Spinning  Roll
 
     const [colorText, setColorText] = useState(color.init) // Cor do texto
