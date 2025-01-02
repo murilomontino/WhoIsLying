@@ -20,6 +20,8 @@ const ResultScreen = () => {
     const { disguisedPlayer } = useAppSelector((state) => state.game)
     const [reveal, setReveal] = useState(false)
     const minDelay = 1000
+    const delayName = 2000
+    const delayProx = 3000
 
     const handleReveal = () => {
         setReveal(true)
@@ -55,7 +57,7 @@ const ResultScreen = () => {
                         O(a) Mais votado(a) foi...
                     </Text>
                     <Text
-                        delay={minDelay + 500}
+                        delay={minDelay + delayName}
                         entering={BounceInLeft.duration(1000)}
                         exiting={FadeOut.duration(1000)}
                         as="h2"
@@ -67,7 +69,7 @@ const ResultScreen = () => {
                 <View
                     entering={FadeIn.duration(1000)}
                     exiting={FadeOut.duration(1000)}
-                    delay={minDelay + 3000}
+                    delay={minDelay + delayProx}
                     className="flex flex-col items-center justify-center w-full px-4 space-x-4 space-y-2"
                 >
                     <Text
@@ -79,7 +81,7 @@ const ResultScreen = () => {
                     <CoinFlip
                         winnerSound={disguisedPlayer?._id === winner._id}
                         onFinally={handleReveal}
-                        initialWord="Ver Resultado"
+                        initialWord="Revelar"
                         finalWord={disguisedPlayer?.name}
                         words={players.map((player) => player.name)}
                     />

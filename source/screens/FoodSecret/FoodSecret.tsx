@@ -38,14 +38,6 @@ const FoodSecretScreen = () => {
                     </Text>
                 </View>
 
-                <Text
-                    delay={100}
-                    entering={FadeIn.duration(1000)}
-                    as="h2"
-                    className="text-center !text-white text-shadow-outlined"
-                >
-                    Mostre esta tela para todos
-                </Text>
                 <View
                     delay={100}
                     entering={BounceIn.duration(1000)}
