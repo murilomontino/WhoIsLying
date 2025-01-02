@@ -1,6 +1,7 @@
 import AntDesign from '@expo/vector-icons/AntDesign'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Link } from 'expo-router'
+import { useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import {
     BounceInDown,
@@ -49,6 +50,10 @@ export default function Page() {
         dispatch(onDeletePlayers({ id }))
     }
 
+    const totalScore = useMemo(() => {
+        return players.reduce((acc, player) => acc + player.score, 0)
+    }, [players])
+
     return (
         <DefaultLayout>
             <Title />
@@ -61,19 +66,25 @@ export default function Page() {
             >
                 Jogadores
             </Text>
-            <View className="flex flex-col w-full px-4 space-y-4 min-h-48 md:w-1/2">
+            <View className="flex flex-col w-full px-4 space-y-4 overflow-auto h-52 md:w-1/2">
                 {players.map((player, index) => (
                     <View
                         delay={(index + 1) * 100}
                         entering={FadeInLeft}
                         exiting={FadeOutRight}
                         key={player._id}
-                        className="flex flex-row items-center flex-1 h-12 px-4 py-2 space-x-4 bg-white rounded-full max-h-12"
+                        className="flex flex-row items-center flex-1 h-10 px-4 py-2 space-x-4 bg-white rounded-full min-h-10 max-h-10"
                     >
-                        <Text className="text-2xl flex-[4] text-center text-gray-800">
+                        <Text className="text-2xl flex-[10] text-center text-gray-800">
                             {player.name}
                         </Text>
-                        <Button onPress={() => handleDelete(player._id)}>
+                        <Text className="text-2xl flex-[1] text-center text-gray-800">
+                            {player.score}
+                        </Text>
+                        <Button
+                            className="flex-[1]"
+                            onPress={() => handleDelete(player._id)}
+                        >
                             <AntDesign
                                 name="delete"
                                 size={24}
@@ -91,13 +102,13 @@ export default function Page() {
                 className="flex flex-row items-center justify-center w-[70vw] px-8 "
             >
                 <ControlInput
+                    name="name"
                     control={control}
                     onKeyPress={({ nativeEvent }) => {
                         if (nativeEvent.key === 'Enter') {
                             handleSubmit(handlePress)()
                         }
                     }}
-                    name="name"
                     className="mr-5 text-2xl"
                     errors={errors}
                 />
@@ -117,8 +128,17 @@ export default function Page() {
                 delay={100}
                 entering={BounceInDown.duration(1000)}
                 exiting={BounceOutUp.duration(1000)}
-                className="flex flex-row items-center justify-center w-full px-4 space-x-4"
+                className="flex flex-col items-center justify-center w-full px-4 space-x-4 space-y-2"
             >
+                <Button
+                    delay={200}
+                    condition={totalScore > 0}
+                    className="items-center justify-center bg-gray-500 rounded-full h-11 w-60"
+                >
+                    <Text className="!text-white text-shadow-outlined-red" as="h5">
+                        Zerar Pontuação
+                    </Text>
+                </Button>
                 <Link href="/categories" asChild>
                     <ButtonPrimary
                         className="w-full md:w-1/2"

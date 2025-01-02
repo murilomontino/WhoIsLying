@@ -41,12 +41,7 @@ const buttonWithoutClass = tv({
     },
 })
 
-export function Button({
-    className,
-    disabled,
-    hasSound = true,
-    ...props
-}: ButtonProps) {
+function Btn({ className, disabled, hasSound = true, ...props }: ButtonProps) {
     const { playClickSound } = useSound({ sound: 'click', volume: 0.2 })
 
     const handlePress = (event: GestureResponderEvent) => {
@@ -65,11 +60,11 @@ export function Button({
     )
 }
 
-const BtnControl = withControl(withDelay(Button))
+export const Button = withControl(withDelay(Btn))
 
 export function ButtonPrimary({ className, disabled, ...props }: ButtonProps) {
     return (
-        <BtnControl
+        <Button
             {...props}
             disabled={disabled}
             className={button({ className, disabled, color: 'primary' })}
@@ -79,7 +74,7 @@ export function ButtonPrimary({ className, disabled, ...props }: ButtonProps) {
 
 export function ButtonSecondary({ className, disabled, ...props }: ButtonProps) {
     return (
-        <BtnControl
+        <Button
             {...props}
             disabled={disabled}
             className={button({ className, disabled, color: 'secondary' })}
