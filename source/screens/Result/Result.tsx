@@ -1,3 +1,4 @@
+import { Link } from 'expo-router'
 import { useMemo, useState } from 'react'
 import {
     BounceIn,
@@ -91,14 +92,16 @@ const ResultScreen = () => {
                     exiting={BounceOut.duration(1000)}
                     className="flex flex-row items-center justify-center w-full px-4 space-x-4"
                 >
-                    <ButtonPrimary className="w-full md:w-1/2">
-                        <Text
-                            as="h3"
-                            className="!text-white text-shadow-outlined-red"
-                        >
-                            Continuar
-                        </Text>
-                    </ButtonPrimary>
+                    <Link href="/food-secret" asChild>
+                        <ButtonPrimary className="w-full md:w-1/2">
+                            <Text
+                                as="h3"
+                                className="!text-white text-shadow-outlined-red"
+                            >
+                                Continuar
+                            </Text>
+                        </ButtonPrimary>
+                    </Link>
                 </View>
             </View>
         </DefaultLayout>
