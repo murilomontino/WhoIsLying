@@ -10,7 +10,7 @@ const RevealFoodScreen = () => {
     const router = useRouter()
 
     const handleContinue = () => {
-        router.push('/result')
+        router.push('/score')
     }
 
     return (

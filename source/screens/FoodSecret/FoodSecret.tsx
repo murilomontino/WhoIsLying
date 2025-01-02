@@ -10,7 +10,7 @@ const FoodSecretScreen = () => {
     const router = useRouter()
 
     const handleContinue = () => {
-        router.push('/result')
+        router.push('/reveal-food')
     }
 
     return (
