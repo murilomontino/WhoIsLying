@@ -31,7 +31,7 @@ const GoBack = ({ href }: GoBackProps) => {
         <View
             entering={FadeIn.duration(300)}
             exiting={FadeOut.duration(300)}
-            className="absolute top-0 left-0 rounded-full w-fit"
+            className="absolute top-0 left-0 z-50 rounded-full w-fit"
         >
             <Button
                 onPress={goBack}
