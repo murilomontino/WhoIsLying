@@ -1,17 +1,25 @@
 import { useRouter } from 'expo-router'
-import { BounceIn, BounceOut, FadeIn, FadeOut } from 'react-native-reanimated'
+import {
+    BounceIn,
+    BounceOut,
+    FadeIn,
+    FadeInLeft,
+    FadeOut,
+    FadeOutRight,
+} from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
+import { useAppSelector } from '~/store/hooks'
 
 const ScoreScreen = () => {
     const router = useRouter()
-
+    const { players } = useAppSelector((state) => state.players)
     const handleContinue = () => {
-        router.push('/result')
+        // router.push('/result')
     }
 
     return (
@@ -39,15 +47,24 @@ const ScoreScreen = () => {
                         Pontuação
                     </Text>
                 </View>
-
-                <Text
-                    delay={100}
-                    entering={FadeIn.duration(1000)}
-                    as="h2"
-                    className="text-center !text-white text-shadow-outlined"
-                >
-                    Mostre esta tela para todos
-                </Text>
+                <View className="flex flex-col w-full px-4 space-y-4 overflow-auto h-52 md:w-1/2">
+                    {players.map((player, index) => (
+                        <View
+                            delay={(index + 1) * 100}
+                            entering={FadeInLeft}
+                            exiting={FadeOutRight}
+                            key={player._id}
+                            className="flex flex-row items-center flex-1 h-10 px-4 py-2 space-x-4 bg-white rounded-full min-h-10 max-h-10"
+                        >
+                            <Text className="text-2xl flex-[10] text-center text-gray-800">
+                                {player.name}
+                            </Text>
+                            <Text className="text-2xl flex-[1] text-center text-gray-800">
+                                {player.score}
+                            </Text>
+                        </View>
+                    ))}
+                </View>
                 <View
                     delay={100}
                     entering={BounceIn.duration(1000)}
@@ -62,7 +79,7 @@ const ScoreScreen = () => {
                             as="h3"
                             className="!text-white text-shadow-outlined-red"
                         >
-                            Ver Resultado
+                            Continuar
                         </Text>
                     </ButtonPrimary>
                 </View>
