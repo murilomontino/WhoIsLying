@@ -43,14 +43,7 @@ const ResultScreen = () => {
             >
                 <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
                     <Title />
-                    <Text
-                        entering={FadeIn.duration(1000)}
-                        exiting={FadeOut.duration(1000)}
-                        as="h2"
-                        className="text-center !text-white text-shadow-outlined-red"
-                    >
-                        Resultado da Votação
-                    </Text>
+
                     <Text
                         delay={minDelay}
                         entering={FadeIn.duration(1000)}
@@ -90,14 +83,7 @@ const ResultScreen = () => {
                         words={players.map((player) => player.name)}
                     />
                 </View>
-                <Text
-                    delay={minDelay + 3000}
-                    entering={FadeIn.duration(1000)}
-                    as="body"
-                    className="text-center !text-white text-shadow-outlined"
-                >
-                    Mostre esta tela para todos
-                </Text>
+
                 <View
                     condition={reveal}
                     delay={2000}
