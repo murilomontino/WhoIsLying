@@ -4,6 +4,7 @@ import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
+import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
 
 const ScoreScreen = () => {
@@ -15,6 +16,7 @@ const ScoreScreen = () => {
 
     return (
         <DefaultLayout>
+            <GoBack />
             <View
                 delay={100}
                 entering={FadeIn}
