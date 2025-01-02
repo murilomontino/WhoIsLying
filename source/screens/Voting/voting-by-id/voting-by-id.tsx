@@ -39,7 +39,7 @@ const Voting = () => {
         const player = players.find((p) => p.canVote && p._id !== votePlayer?._id)
 
         if (!player) {
-            return router.push('/result')
+            return router.push('/pre-result')
         }
 
         router.push(`/voting/wait-player/${player._id}`)

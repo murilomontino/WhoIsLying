@@ -19,7 +19,7 @@ const VotingScreen = () => {
 
         const nextPlayer = players.find((player) => player.canVote)
         if (!nextPlayer) {
-            router.push('/result')
+            router.push('/pre-result')
             return
         }
 
