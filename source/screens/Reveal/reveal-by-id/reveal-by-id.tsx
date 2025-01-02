@@ -33,6 +33,7 @@ const RevealByIdScreen = () => {
     const opacity = useSharedValue(100) // FadeIn
     const flipX = useSharedValue(0) // Flip em X
     const pulseScale = useSharedValue(1) // Pulsar
+    const translateX = useSharedValue(0) // Translate em X
 
     useEffect(() => {
         const player = players.find((p) => p._id === id)
@@ -73,8 +74,25 @@ const RevealByIdScreen = () => {
     }
 
     const handleReveal = () => {
-        dispatch(onUpdatePlayerReveal({ _id: player?._id as string, reveal: true }))
-        router.push('/reveal')
+        // Inicia a animação de saída
+        opacity.value = withTiming(0, {
+            duration: 1000,
+            easing: Easing.out(Easing.quad),
+        })
+        translateX.value = withTiming(
+            -100,
+            { duration: 1000, easing: Easing.out(Easing.quad) },
+            () => {
+                // Após a animação, atualiza o estado do jogador e redireciona
+                dispatch(
+                    onUpdatePlayerReveal({
+                        _id: player?._id as string,
+                        reveal: true,
+                    }),
+                )
+                router.push('/reveal')
+            },
+        )
     }
 
     // Estilo para as animações
@@ -84,6 +102,16 @@ const RevealByIdScreen = () => {
             transform: [
                 { rotateX: `${flipX.value}deg` }, // Aplica a rotação de Flip em X
                 { scale: pulseScale.value }, // Animação de pulsar (scale)
+                { translateX: translateX.value }, // Animação de saída
+            ],
+        }
+    })
+
+    const animatedViewStyles = useAnimatedStyle(() => {
+        return {
+            opacity: opacity.value,
+            transform: [
+                { translateX: translateX.value }, // Animação de saída
             ],
         }
     })
@@ -98,7 +126,10 @@ const RevealByIdScreen = () => {
 
     return (
         <DefaultLayout>
-            <View className="flex flex-col items-center justify-center w-full h-full space-y-8">
+            <View
+                style={[animatedViewStyles]}
+                className="flex flex-col items-center justify-center w-full h-full space-y-8"
+            >
                 <Title />
                 <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
                     <Text
