@@ -6,7 +6,7 @@ import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
 import View from '~/components/ui/view'
 
-const FoodSecretScreen = () => {
+const RevealFoodScreen = () => {
     const router = useRouter()
 
     const handleContinue = () => {
@@ -34,7 +34,7 @@ const FoodSecretScreen = () => {
                         as="h2"
                         className="text-center !text-white text-shadow-outlined-red"
                     >
-                        Vote na Comida
+                        Qual é a comida?
                     </Text>
                 </View>
 
@@ -69,4 +69,4 @@ const FoodSecretScreen = () => {
     )
 }
 
-export default FoodSecretScreen
+export default RevealFoodScreen
