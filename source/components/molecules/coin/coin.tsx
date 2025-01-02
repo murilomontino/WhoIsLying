@@ -1,6 +1,7 @@
 import cn from 'classnames'
 import React, { startTransition, useState } from 'react'
 import {
+    Easing,
     runOnJS,
     useAnimatedStyle,
     useSharedValue,
@@ -92,7 +93,10 @@ const Dice3D = ({
         // Inicia a animação de rotação do dado
         rotationX.value = withTiming(
             totalRotations * 360 + finalRotationX,
-            { duration },
+            {
+                duration: duration,
+                easing: Easing.out(Easing.quad), // Desaceleração progressiva
+            },
             () => {
                 clearInterval(intervalId) // Para a alternância ao final
                 startTransition(() => {
@@ -135,13 +139,6 @@ const Dice3D = ({
         }
     })
 
-    // Estilo animado para o texto com efeito de caça-níquel no eixo X
-    const textAnimatedStyle = useAnimatedStyle(() => {
-        return {
-            transform: [{ rotateY: `${textRotationX.value}deg` }], // Apenas rotação no eixo X
-        }
-    })
-
     return (
         <Button
             hasSound={false}
@@ -164,7 +161,6 @@ const Dice3D = ({
                             colorText === color.final || colorText === color.init,
                     })}
                     style={[
-                        textAnimatedStyle,
                         {
                             color: colorText,
                         },
