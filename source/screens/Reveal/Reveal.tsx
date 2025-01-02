@@ -3,12 +3,12 @@ import React, { useCallback, useEffect, useState } from 'react'
 import {
     BounceInLeft,
     BounceInRight,
-    BounceOutLeft,
-    BounceOutRight,
+    Easing,
     FadeIn,
     FadeInDown,
-    FadeOut,
-    FadeOutUp,
+    useAnimatedStyle,
+    useSharedValue,
+    withTiming,
 } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
@@ -24,6 +24,9 @@ const RevealScreen = () => {
     const [isMounted, setIsMounted] = useState(false)
     const { players } = useAppSelector((state) => state.players)
     const router = useRouter()
+
+    const opacity = useSharedValue(1)
+    const translateX = useSharedValue(0)
 
     useEffect(() => {
         setIsMounted(true)
@@ -50,8 +53,25 @@ const RevealScreen = () => {
     }, [revealEffect, isMounted])
 
     const handleReveal = () => {
-        router.navigate(`/reveal/${player?._id}`)
+        opacity.value = withTiming(0, {
+            duration: 1000,
+            easing: Easing.out(Easing.quad),
+        })
+        translateX.value = withTiming(
+            -100,
+            { duration: 1000, easing: Easing.out(Easing.quad) },
+            () => {
+                router.push(`/reveal/${player?._id}`)
+            },
+        )
     }
+
+    const animatedStyle = useAnimatedStyle(() => {
+        return {
+            opacity: opacity.value,
+            transform: [{ translateX: translateX.value }],
+        }
+    })
 
     return (
         <DefaultLayout>
@@ -60,16 +80,17 @@ const RevealScreen = () => {
                 <View className="flex flex-col items-center justify-center w-full px-2 mb-8 ">
                     <Text
                         delay={250}
-                        entering={BounceInRight.damping(0.5).duration(500)} // 1 segundo de atraso                        className="text-center !text-white "
-                        exiting={BounceOutLeft.damping(0.5).duration(500)} // 1 segundo de atraso
+                        entering={BounceInRight.damping(0.5).duration(500)}
+                        style={animatedStyle}
                         as="h3"
+                        className="text-center !text-white "
                     >
                         Passe para o(a){' '}
                     </Text>
                     <Text
                         delay={250}
-                        entering={BounceInLeft.damping(0.5).duration(500)} // 1 segundo de atraso
-                        exiting={BounceOutRight.damping(0.5).duration(500)} // 1 segundo de atraso
+                        entering={BounceInLeft.damping(0.5).duration(500)}
+                        style={animatedStyle}
                         as="h1"
                         className="!text-gray-800 text-shadow-outlined-red text-pretty"
                     >
@@ -79,12 +100,14 @@ const RevealScreen = () => {
                 <View className="h-20 my-2 ">
                     <Text
                         delay={250}
-                        entering={FadeIn.duration(1000)} // 1 segundo de atraso
-                        exiting={FadeOut.duration(1000)} // 1 segundo de atraso
-                        style={{
-                            fontSize: 128,
-                            transform: [{ rotate: '35deg' }],
-                        }}
+                        entering={FadeIn.duration(1000)}
+                        style={[
+                            animatedStyle,
+                            {
+                                fontSize: 128,
+                                transform: [{ rotate: '35deg' }],
+                            },
+                        ]}
                         className="text-center text-white"
                     >
                         🤫
@@ -93,8 +116,8 @@ const RevealScreen = () => {
 
                 <Text
                     delay={250}
-                    entering={FadeIn.duration(1000)} // 1 segundo de atraso
-                    exiting={FadeOut.duration(1000)} // 1 segundo de atraso
+                    entering={FadeIn.duration(1000)}
+                    style={animatedStyle}
                     as="body"
                     className="w-full px-8 text-center !text-white text-shadow-outlined md:w-1/2"
                 >
@@ -103,8 +126,8 @@ const RevealScreen = () => {
                 </Text>
                 <View
                     delay={250}
-                    entering={FadeInDown.duration(250)} // 1 segundo de atraso
-                    exiting={FadeOutUp.duration(1000)} // 1 segundo de atraso
+                    entering={FadeInDown.duration(250)}
+                    style={animatedStyle}
                     className="flex items-center justify-center w-full px-8"
                 >
                     <ButtonSecondary
