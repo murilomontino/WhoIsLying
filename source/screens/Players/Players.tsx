@@ -1,5 +1,6 @@
 import AntDesign from '@expo/vector-icons/AntDesign'
 import { yupResolver } from '@hookform/resolvers/yup'
+import cn from 'classnames'
 import { Link } from 'expo-router'
 import { useMemo } from 'react'
 import { useForm } from 'react-hook-form'
@@ -23,7 +24,6 @@ import ControlInput from '~/components/molecules/control-input'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onAddPlayers, onDeletePlayers } from '~/store/slices/players/actions'
-
 const schema = Yup.object().shape({
     name: Yup.string().trim().required('Required'),
 })
@@ -62,9 +62,13 @@ export default function Page() {
                 entering={FadeInUp}
                 exiting={FadeOutDown}
                 as="h2"
-                className="text-center text-gray-800"
+                className={cn(
+                    { '!text-red-500': players.length < 3 },
+                    'text-gray-800 text-center',
+                )}
             >
-                Jogadores
+                {players.length} {players.length === 1 ? 'Jogador' : 'Jogadores'}{' '}
+                <Text>(Min 3)</Text>
             </Text>
             <View className="flex flex-col w-full px-4 space-y-4 overflow-auto h-52 md:w-1/2">
                 {players.map((player, index) => (
@@ -141,15 +145,10 @@ export default function Page() {
                 </Button>
                 <Link href="/categories" asChild>
                     <ButtonPrimary
-                        className="w-full md:w-1/2"
+                        className="w-full md:w-1/2 "
                         disabled={players.length < 3}
                     >
-                        <Text
-                            className="!text-white text-shadow-outlined-red"
-                            as="h3"
-                        >
-                            Ir Para Categorias
-                        </Text>
+                        Ir Para Categorias
                     </ButtonPrimary>
                 </Link>
             </View>
