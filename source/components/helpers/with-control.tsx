@@ -3,6 +3,7 @@ import { type ComponentType, useEffect, useState } from 'react'
 // Estas são as props que o HOC irá adicionar
 export type ControlProps = {
     condition?: boolean | string | number | null | undefined
+    demount?: boolean
     conditionReRender?: boolean
 }
 
@@ -11,6 +12,7 @@ function withIf<T extends {}>(WrappedComponent: ComponentType<T & ControlProps>)
     // E este é o novo componente.
     return ({
         condition = true,
+        demount = false,
         conditionReRender,
         ...props
     }: T & ControlProps) => {
@@ -30,7 +32,7 @@ function withIf<T extends {}>(WrappedComponent: ComponentType<T & ControlProps>)
             }, 1)
         }, [conditionReRender])
 
-        if (!condition || isLoading) {
+        if (!condition || isLoading || demount) {
             // Se a prop "if" é falsa, não renderiza o componente.
             return null
         }
