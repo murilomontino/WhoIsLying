@@ -118,15 +118,18 @@ export const onResetPlayers = createAction(ACTION_RESET_PLAYERS)
 export const onResetPlayersSuccess = createAction(ACTION_RESET_PLAYERS_SUCCESS)
 export const onResetPlayersFail = createAction(ACTION_RESET_PLAYERS_FAIL)
 
-export const onUpdateCanPlayerVote = createAction<{
+type DisplayVote = {
     _id: string
     canVote: boolean
-}>(ACTION_UPDATE_CAN_PLAYER_VOTE)
+}
 
-export const onUpdateCanPlayerVoteSuccess = createAction<{
-    _id: string
-    canVote: boolean
-}>(ACTION_UPDATE_CAN_PLAYER_VOTE_SUCCESS)
+export const onUpdateCanPlayerVote = createAction<DisplayVote>(
+    ACTION_UPDATE_CAN_PLAYER_VOTE,
+)
+
+export const onUpdateCanPlayerVoteSuccess = createAction<DisplayVote>(
+    ACTION_UPDATE_CAN_PLAYER_VOTE_SUCCESS,
+)
 
 export const onUpdateCanPlayerVoteFail = createAction(
     ACTION_UPDATE_CAN_PLAYER_VOTE_FAIL,
@@ -136,13 +139,15 @@ export const onResetVoting = createAction(ACTION_RESET_VOTING)
 export const onResetVotingSuccess = createAction(ACTION_RESET_VOTING_SUCCESS)
 export const onResetVotingFail = createAction(ACTION_RESET_VOTING_FAIL)
 
-export const onVoteInPlayer = createAction<{ disguised_id: string; _id: string }>(
-    ACTION_VOTE_IN_PLAYER,
-)
-export const onVoteInPlayerSuccess = createAction<{
+export type DisplayVoting = {
     disguised_id: string
     _id: string
-}>(ACTION_VOTE_IN_PLAYER_SUCCESS)
+}
+
+export const onVoteInPlayer = createAction<DisplayVoting>(ACTION_VOTE_IN_PLAYER)
+export const onVoteInPlayerSuccess = createAction<DisplayVoting>(
+    ACTION_VOTE_IN_PLAYER_SUCCESS,
+)
 export const onVoteInPlayerFail = createAction(ACTION_VOTE_IN_PLAYER_FAIL)
 
 export const onAnsweredTheQuestion = createAction<{

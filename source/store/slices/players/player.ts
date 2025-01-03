@@ -5,6 +5,7 @@ export type IPlayer = {
     reveal: boolean
     canAnswer: boolean
     blackListQuestioners: string[]
+    votes: string[]
     displayVotes: number
     canVote: boolean
     canAsk: boolean
@@ -16,6 +17,7 @@ export const Player: IPlayer = {
     name: '',
     score: 0,
     displayVotes: 0,
+    votes: [],
     reveal: false,
     canAnswer: true,
     canVote: true,

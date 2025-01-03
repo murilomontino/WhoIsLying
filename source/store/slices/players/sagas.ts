@@ -5,6 +5,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
 import {
+    type DisplayVoting,
     onAddPlayersFail,
     onAddPlayersSuccess,
     onAnsweredTheQuestionFail,
@@ -182,9 +183,7 @@ export function* onNewRound() {
     }
 }
 
-export function* onVoteInPlayer({
-    payload,
-}: PayloadAction<{ disguised_id: string; _id: string }>) {
+export function* onVoteInPlayer({ payload }: PayloadAction<DisplayVoting>) {
     try {
         yield put(onVoteInPlayerSuccess(payload))
     } catch (_) {

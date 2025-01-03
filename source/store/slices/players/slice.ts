@@ -2,6 +2,7 @@ import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import { v4 as uuidV4 } from 'uuid'
 import { LOADING } from '~/store/slices/constants'
+import type { DisplayVoting } from './actions'
 import { type IPlayer, build } from './player'
 import {
     type InitialState,
@@ -85,6 +86,7 @@ const slice = createSlice({
                 canAnswer: true,
                 canVote: true,
                 blackListQuestioners: [],
+                votes: [],
                 displayVotes: 0,
                 canAsk: true,
                 __protocol: 'player',
@@ -182,6 +184,7 @@ const slice = createSlice({
                     ...player,
                     reveal: false,
                     displayVotes: 0,
+                    votes: [],
                     canAnswer: true,
                     canVote: true,
                     blackListQuestioners: [],
@@ -225,6 +228,7 @@ const slice = createSlice({
                     ...player,
                     canVote: true,
                     displayVotes: 0,
+                    votes: [],
                 }
             })
         },
@@ -236,10 +240,7 @@ const slice = createSlice({
         },
         [ON_VOTE_IN_PLAYER_SUCCESS]: (
             state,
-            action: PayloadAction<{
-                disguised_id: string
-                _id: string
-            }>,
+            action: PayloadAction<DisplayVoting>,
         ) => {
             state.isLoading = LOADING.SUCCESS
             state.players = state.players.map((player) => {
@@ -247,6 +248,7 @@ const slice = createSlice({
                     return {
                         ...player,
                         displayVotes: player.displayVotes + 1,
+                        votes: [...player.votes, action.payload._id],
                     }
                 }
 
