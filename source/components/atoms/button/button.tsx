@@ -4,15 +4,14 @@ import {
     type TouchableOpacityProps,
 } from 'react-native'
 import { tv } from 'tailwind-variants'
-import withControl from '~/components/helpers/with-control'
+import withControl, { type ControlProps } from '~/components/helpers/with-control'
 import withDelay from '~/components/helpers/with-delay'
 import useSound from '~/components/hooks/use-sound'
 
 type ButtonProps = TouchableOpacityProps & {
-    condition?: boolean
     delay?: number
     hasSound?: boolean
-}
+} & ControlProps
 
 const button = tv({
     base: `
