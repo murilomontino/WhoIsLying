@@ -15,15 +15,17 @@ type ButtonProps = TouchableOpacityProps & {
 
 const button = tv({
     base: `
-        shadow-lg
-        px-4 py-8 w-full rounded-full items-center justify-center h-12 border-4 
+        shadow-lg opacity-90 hover:opacity-100 transition-opacity disabled:hover:opacity-70
+        px-4 py-8 w-full rounded-full items-center justify-center h-12 border-4 text-4xl
+        font-bold font-bangers transition-colors transition duration-300
     `,
     variants: {
         disabled: {
-            true: 'bg-gray-500 opacity-70', // Aplica um tom de cinza quando desabilitado
+            true: '!bg-gray-500 !border-gray-200 opacity-40', // Aplica um tom de cinza quando desabilitado
         },
         color: {
-            primary: 'bg-blue-500 border-red-500',
+            primary:
+                'bg-blue-500 border-red-500 !text-white text-shadow-outlined-red',
             secondary: 'bg-white border-red-500',
         },
     },
@@ -31,7 +33,7 @@ const button = tv({
 
 const buttonWithoutClass = tv({
     base: `
-        
+        opacity-90 hover:opacity-100 transition-opacity
     `,
     variants: {
         disabled: {
