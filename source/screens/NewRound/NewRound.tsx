@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router'
 import { BounceIn, BounceOut, FadeIn, FadeOut } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { Button, ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
@@ -7,8 +8,18 @@ import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
 
 const NewRoundScreen = () => {
-    const handleContinue = () => {
-        // router.push('/result')
+    const router = useRouter()
+
+    const handleContinueFromCategory = () => {
+        router.push('/categories')
+    }
+
+    const handleContinueNewRound = () => {
+        router.push('/reveal')
+    }
+
+    const handleContinueNewPlayer = () => {
+        router.push('/')
     }
 
     return (
@@ -38,7 +49,7 @@ const NewRoundScreen = () => {
                 className="flex flex-row items-center justify-center w-full px-4 space-x-4"
             >
                 <ButtonSecondary
-                    onPress={handleContinue}
+                    onPress={handleContinueFromCategory}
                     className="w-full md:w-1/2"
                 >
                     <Text as="h3">Escolher Categoria</Text>
@@ -50,7 +61,10 @@ const NewRoundScreen = () => {
                 exiting={BounceOut.duration(1000)}
                 className="flex flex-row items-center justify-center w-full px-4 space-x-4"
             >
-                <ButtonPrimary onPress={handleContinue} className="w-full md:w-1/2">
+                <ButtonPrimary
+                    onPress={handleContinueNewRound}
+                    className="w-full md:w-1/2"
+                >
                     <Text as="h3" className="!text-white text-shadow-outlined-red">
                         Continuar
                     </Text>
@@ -63,7 +77,7 @@ const NewRoundScreen = () => {
                 className="flex flex-row items-center justify-center w-full px-4 space-x-4"
             >
                 <Button
-                    onPress={handleContinue}
+                    onPress={handleContinueNewPlayer}
                     className="items-center justify-center w-full md:w-1/2 "
                 >
                     <Text as="h3" className="px-4 py-2 ">

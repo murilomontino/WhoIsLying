@@ -107,8 +107,8 @@ const PreAskingScreen = () => {
                         entering={FadeInRight.duration(1000)}
                         className="px-4 text-justify text-gray-800 md:w-1/2"
                     >
-                        Sinta-se à vontade para perguntar que não estejam
-                        mencionadas.
+                        Sinta-se à vontade para perguntar o que quiser e ignorar o
+                        sugerido.
                     </Text>
                 </View>
                 <Text

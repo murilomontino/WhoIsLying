@@ -94,7 +94,7 @@ const ResultScreen = () => {
                     exiting={BounceOut.duration(1000)}
                     className="flex flex-row items-center justify-center w-full px-4 space-x-4"
                 >
-                    <Link href="/food-secret" asChild>
+                    <Link href="/pre-food-secret" asChild>
                         <ButtonPrimary className="w-full md:w-1/2">
                             <Text
                                 as="h3"
