@@ -17,7 +17,6 @@ import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
 import { useAppSelector } from '~/store/hooks'
 import type { Player } from '~/store/slices/players/player'
-import { drawPlayerWithConditions } from '~/utils/drawPlayer'
 
 const RevealScreen = () => {
     const [player, setPlayer] = useState<typeof Player | null>(null)
@@ -39,11 +38,7 @@ const RevealScreen = () => {
             return setPlayer(currentPlayer)
         }
 
-        const answerPlayer = await drawPlayerWithConditions(
-            players,
-            (player) => player._id !== players[0]._id,
-        )
-        router.push(`/asking/1/${players[0]._id}/${answerPlayer._id}`)
+        router.push('/pre-asking')
         return
     }, [players, router])
 
