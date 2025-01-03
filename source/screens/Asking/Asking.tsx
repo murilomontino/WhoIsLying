@@ -1,6 +1,18 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
-import React, { useCallback, useMemo } from 'react'
-import { FadeIn, FadeOut } from 'react-native-reanimated'
+import React, { useCallback, useMemo, useState } from 'react'
+import {
+    BounceIn,
+    BounceInLeft,
+    BounceInRight,
+    BounceOut,
+    BounceOutLeft,
+    BounceOutRight,
+    FadeIn,
+    FadeInUp,
+    FadeOut,
+    FlipInEasyX,
+    FlipOutEasyX,
+} from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
@@ -18,6 +30,7 @@ import { drawPlayerWithConditions } from '~/utils/drawPlayer'
 const AskingScreen = () => {
     const { n, ask_id, answer_id } = useLocalSearchParams()
 
+    const [isExiting, setIsExiting] = useState(false)
     const dispatch = useAppDispatch()
     const { players } = useAppSelector((state) => state.players)
 
@@ -51,6 +64,7 @@ const AskingScreen = () => {
     }, [ask_id, answer_id])
 
     const handleNext = useCallback(async () => {
+        setIsExiting(true)
         const nextRouteCache = await cache.get(`asking-${n}`)
         if (nextRouteCache) {
             return router.push(nextRouteCache)
@@ -58,7 +72,7 @@ const AskingScreen = () => {
 
         await handleSubmit()
 
-        await delay(100)
+        await delay(1000)
 
         const indexActual = players.findIndex(
             (player) => player._id === (ask_id as string),
@@ -93,31 +107,59 @@ const AskingScreen = () => {
         <DefaultLayout>
             <GoBack condition={Number(n) !== 1} />
             <View
-                entering={FadeIn}
-                exiting={FadeOut}
+                delay={100}
+                entering={FadeInUp.duration(100)}
                 className="flex flex-col items-center justify-center w-full h-[85vh] space-y-8"
             >
-                <View className="flex flex-col items-center justify-center w-full px-2 mb-10 space-y-4">
-                    <Text as="body" className="!text-white text-shadow-outlined">
+                <View
+                    entering={FadeIn.duration(150)}
+                    exiting={FadeOut.duration(150)}
+                    demount={isExiting}
+                    className="flex flex-col items-center justify-center w-full px-2 mb-10 space-y-4"
+                >
+                    <Text
+                        entering={BounceInLeft.duration(1000)}
+                        exiting={BounceOutRight.duration(1000)}
+                        demount={isExiting}
+                        as="body"
+                        className="!text-white text-shadow-outlined"
+                    >
                         {questionRound} Rodada
                     </Text>
-                    <Text as="h2" className="!text-white text-shadow-outlined-red">
+                    <Text
+                        entering={FlipInEasyX.duration(1000)}
+                        exiting={FlipOutEasyX.duration(1000)}
+                        demount={isExiting}
+                        as="h2"
+                        className="!text-white text-shadow-outlined-red"
+                    >
                         {askPlayer?.name}
                     </Text>
                     <Text
+                        entering={FadeIn.duration(1000)}
+                        exiting={FadeOut.duration(300)}
+                        demount={isExiting}
                         className="text-center !text-white text-shadow-outlined"
                         as="h3"
                     >
                         Pergunta Para
                     </Text>
                     <Text
+                        entering={BounceInRight.duration(500)}
+                        exiting={BounceOutLeft.duration(500)}
+                        demount={isExiting}
                         as="h1"
                         className="!text-gray-800 text-shadow-outlined-red"
                     >
                         {answerPlayer?.name}
                     </Text>
                 </View>
-                <View className="h-20">
+                <View
+                    entering={BounceIn.duration(1000)}
+                    exiting={BounceOut.duration(1000)}
+                    demount={isExiting}
+                    className="h-20"
+                >
                     <Text
                         style={{
                             fontSize: 128,
@@ -128,7 +170,12 @@ const AskingScreen = () => {
                     </Text>
                 </View>
 
-                <View className="flex items-center justify-center w-full px-8">
+                <View
+                    entering={FadeIn.duration(1000)}
+                    exiting={FadeOut.duration(1000)}
+                    demount={isExiting}
+                    className="flex items-center justify-center w-full px-8"
+                >
                     <ButtonSecondary
                         onPress={handleNext}
                         className="w-full rounded-full md:w-1/2"
