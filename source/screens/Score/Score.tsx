@@ -12,6 +12,7 @@ import { ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
+import Score from '~/components/molecules/score'
 import View from '~/components/ui/view'
 import { useAppSelector } from '~/store/hooks'
 
@@ -19,7 +20,7 @@ const ScoreScreen = () => {
     const router = useRouter()
     const { players } = useAppSelector((state) => state.players)
     const handleContinue = () => {
-        // router.push('/result')
+        router.push('/new-round')
     }
 
     return (
@@ -59,9 +60,7 @@ const ScoreScreen = () => {
                             <Text className="text-2xl flex-[10] text-center text-gray-800">
                                 {player.name}
                             </Text>
-                            <Text className="text-2xl flex-[1] text-center text-gray-800">
-                                {player.score}
-                            </Text>
+                            <Score playerScore={player.score} sumScore={25} />
                         </View>
                     ))}
                 </View>
@@ -79,7 +78,7 @@ const ScoreScreen = () => {
                             as="h3"
                             className="!text-white text-shadow-outlined-red"
                         >
-                            Continuar
+                            Nova Rodada
                         </Text>
                     </ButtonPrimary>
                 </View>
