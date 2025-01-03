@@ -164,9 +164,15 @@ const RevealByIdScreen = () => {
                             className="rounded-lg !opacity-100 h-24 w-[50vw] max-w-[300px]"
                         >
                             <Text
-                                className="text-gray-800"
+                                disabled={visible}
                                 as="h4"
-                                style={[animatedStyles]}
+                                className="text-shadow-outlined"
+                                style={[
+                                    animatedStyles,
+                                    {
+                                        color: visible ? '#ef4444' : '#ef4444',
+                                    },
+                                ]}
                             >
                                 {item}
                             </Text>
