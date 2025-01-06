@@ -6,6 +6,8 @@ import { selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
 import {
     type NewPlayersScore,
+    onChangePlayRoundFail,
+    onChangePlayRoundSuccess,
     onChangePointsFail,
     onChangePointsSuccess,
     onChangeQuestionRoundFail,
@@ -24,9 +26,10 @@ import {
     onVotingItemSuccess,
 } from './actions'
 
-import { onResetPlayers } from '../players/actions'
+import { onChangePlayers, onResetPlayers } from '../players/actions'
 import type { IPlayer } from '../players/player'
 import {
+    ACTION_CHANGE_PLAY_ROUND,
     ACTION_CHANGE_POINTS,
     ACTION_CHANGE_QUESTION_ROUND,
     ACTION_CHANGE_ROUNDS,
@@ -80,6 +83,14 @@ export function* onVotingItem({ payload }: PayloadAction<{ votingItem: string }>
     }
 }
 
+export function* onChangePlayRound({ payload }: PayloadAction<{ round: number }>) {
+    try {
+        yield put(onChangePlayRoundSuccess(payload))
+    } catch (_) {
+        yield put(onChangePlayRoundFail())
+    }
+}
+
 export function* onScorePlayers({
     payload,
 }: PayloadAction<{
@@ -95,7 +106,8 @@ export function* onScorePlayers({
                 score: newScore.score + newScore.sumScore,
             } as IPlayer
         })
-        yield put(onScorePlayersSuccess({ players: newPlayers }))
+        yield put(onChangePlayers({ players: newPlayers }))
+        yield put(onScorePlayersSuccess())
     } catch (_) {
         yield put(onScorePlayersFail())
     }
@@ -152,6 +164,10 @@ export function* watchOnVoteInTheDisguised() {
     yield takeLatest(ACTION_VOTE_IN_THE_DISGUISED, onVoteInTheDisguised)
 }
 
+export function* watchOnChangePlayRound() {
+    yield takeLatest(ACTION_CHANGE_PLAY_ROUND, onChangePlayRound)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnChangeRounds),
@@ -162,6 +178,7 @@ function* Sagas() {
         fork(watchOnScorePlayers),
         fork(watchOnResetGame),
         fork(watchOnVoteInTheDisguised),
+        fork(watchOnChangePlayRound),
     ])
 }
 

@@ -2,6 +2,9 @@ import { createAction } from '@reduxjs/toolkit'
 
 import type { IPlayer } from '../players/player'
 import {
+    ACTION_CHANGE_PLAY_ROUND,
+    ACTION_CHANGE_PLAY_ROUND_FAIL,
+    ACTION_CHANGE_PLAY_ROUND_SUCCESS,
     ACTION_CHANGE_POINTS,
     ACTION_CHANGE_POINTS_FAIL,
     ACTION_CHANGE_POINTS_SUCCESS,
@@ -73,9 +76,7 @@ export type NewPlayersScore = {
 export const onScorePlayers = createAction<{
     playersScore: NewPlayersScore[]
 }>(ACTION_SCORE_PLAYERS)
-export const onScorePlayersSuccess = createAction<{
-    players: IPlayer[]
-}>(ACTION_SCORE_PLAYERS_SUCCESS)
+export const onScorePlayersSuccess = createAction(ACTION_SCORE_PLAYERS_SUCCESS)
 export const onScorePlayersFail = createAction(ACTION_SCORE_PLAYERS_FAIL)
 
 export const onResetGame = createAction(ACTION_RESET_GAME)
@@ -91,3 +92,11 @@ export const onVoteInTheDisguisedSuccess = createAction<{ player_id: string }>(
 export const onVoteInTheDisguisedFail = createAction(
     ACTION_VOTE_IN_THE_DISGUISED_FAIL,
 )
+
+export const onChangePlayRound = createAction<{ round: number }>(
+    ACTION_CHANGE_PLAY_ROUND,
+)
+export const onChangePlayRoundSuccess = createAction<{ round: number }>(
+    ACTION_CHANGE_PLAY_ROUND_SUCCESS,
+)
+export const onChangePlayRoundFail = createAction(ACTION_CHANGE_PLAY_ROUND_FAIL)

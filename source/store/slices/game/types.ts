@@ -4,6 +4,7 @@ import type { IPlayer } from '../players/player'
 export type InitialState = {
     isLoading: LOADING
     rounds: number
+    round: number
     points: number
     questionRound: number
     disguisedPlayer: IPlayer | null
@@ -44,6 +45,10 @@ export const ON_VOTE_IN_THE_DISGUISED = 'ON_VOTE_IN_THE_DISGUISED'
 export const ON_VOTE_IN_THE_DISGUISED_SUCCESS = 'ON_VOTE_IN_THE_DISGUISED_SUCCESS'
 export const ON_VOTE_IN_THE_DISGUISED_FAIL = 'ON_VOTE_IN_THE_DISGUISED_FAIL'
 
+export const ON_CHANGE_PLAY_ROUND = 'ON_CHANGE_PLAY_ROUND'
+export const ON_CHANGE_PLAY_ROUND_SUCCESS = 'ON_CHANGE_PLAY_ROUND_SUCCESS'
+export const ON_CHANGE_PLAY_ROUND_FAIL = 'ON_CHANGE_PLAY_ROUND_FAIL'
+
 export const ACTION_CHANGE_ROUNDS = `${name}/${ON_CHANGE_ROUNDS}`
 export const ACTION_CHANGE_ROUNDS_SUCCESS = `${name}/${ON_CHANGE_ROUNDS_SUCCESS}`
 export const ACTION_CHANGE_ROUNDS_FAIL = `${name}/${ON_CHANGE_ROUNDS_FAIL}`
@@ -75,3 +80,7 @@ export const ACTION_RESET_GAME_FAIL = `${name}/${ON_RESET_GAME_FAIL}`
 export const ACTION_VOTE_IN_THE_DISGUISED = `${name}/${ON_VOTE_IN_THE_DISGUISED}`
 export const ACTION_VOTE_IN_THE_DISGUISED_SUCCESS = `${name}/${ON_VOTE_IN_THE_DISGUISED_SUCCESS}`
 export const ACTION_VOTE_IN_THE_DISGUISED_FAIL = `${name}/${ON_VOTE_IN_THE_DISGUISED_FAIL}`
+
+export const ACTION_CHANGE_PLAY_ROUND = `${name}/${ON_CHANGE_PLAY_ROUND}`
+export const ACTION_CHANGE_PLAY_ROUND_SUCCESS = `${name}/${ON_CHANGE_PLAY_ROUND_SUCCESS}`
+export const ACTION_CHANGE_PLAY_ROUND_FAIL = `${name}/${ON_CHANGE_PLAY_ROUND_FAIL}`

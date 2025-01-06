@@ -5,6 +5,9 @@ import { drawPlayer } from '~/utils/drawPlayer'
 import type { IPlayer } from '../players/player'
 import {
     type InitialState,
+    ON_CHANGE_PLAY_ROUND,
+    ON_CHANGE_PLAY_ROUND_FAIL,
+    ON_CHANGE_PLAY_ROUND_SUCCESS,
     ON_CHANGE_POINTS,
     ON_CHANGE_POINTS_FAIL,
     ON_CHANGE_POINTS_SUCCESS,
@@ -34,7 +37,8 @@ import {
 
 const initialState: InitialState = {
     isLoading: LOADING.IDLE,
-    rounds: 1,
+    rounds: 5,
+    round: 1,
     points: 500,
     disguisedPlayer: null,
     questionRound: 1,
@@ -163,6 +167,21 @@ const slice = createSlice({
             state.disguisedPlayer?.votes.push(action.payload.player_id)
         },
         [ON_VOTE_IN_THE_DISGUISED_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_CHANGE_PLAY_ROUND]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_CHANGE_PLAY_ROUND_SUCCESS]: (
+            state,
+            action: PayloadAction<{
+                round: number
+            }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.round = action.payload.round
+        },
+        [ON_CHANGE_PLAY_ROUND_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },
