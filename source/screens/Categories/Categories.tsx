@@ -9,7 +9,7 @@ import CardCategory from '~/components/molecules/card-category'
 import type { ImgCategory } from '~/components/molecules/card-category/card-category'
 import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
-import { useAppDispatch } from '~/store/hooks'
+import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onChangeCategory } from '~/store/slices/categories/actions'
 
 type Category = {
@@ -40,10 +40,12 @@ const categories: Category[] = [
 
 const CategoriesScreen = () => {
     const dispatch = useAppDispatch()
+    const { questionRound } = useAppSelector((state) => state.game)
     const router = useRouter()
+
     const handleCategory = (category: string) => {
         dispatch(onChangeCategory({ category }))
-        router.push('/pre-start')
+        router.push(`/pre-start/${questionRound}`)
     }
 
     return (

@@ -6,16 +6,21 @@ import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
+import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import { onChangeQuestionRound } from '~/store/slices/game/actions'
 
 const NewRoundScreen = () => {
     const router = useRouter()
+    const { questionRound } = useAppSelector((state) => state.game)
+    const dispatch = useAppDispatch()
 
     const handleContinueFromCategory = () => {
+        dispatch(onChangeQuestionRound({ questionRound: questionRound + 1 }))
         router.push('/categories')
     }
 
     const handleContinueNewRound = () => {
-        router.push('/reveal')
+        router.push(`/pre-start/${questionRound + 1}`)
     }
 
     const handleContinueNewPlayer = () => {
@@ -66,7 +71,7 @@ const NewRoundScreen = () => {
                     className="w-full md:w-1/2"
                 >
                     <Text as="h3" className="!text-white text-shadow-outlined-red">
-                        Continuar
+                        Manter Categoria e Continuar
                     </Text>
                 </ButtonPrimary>
             </View>

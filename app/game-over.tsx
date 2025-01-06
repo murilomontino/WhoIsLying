@@ -35,7 +35,7 @@ const GameOver = () => {
             )
         }
 
-        router.push('/pre-start')
+        router.push('/pre-start/1')
     }, [players])
 
     return (
