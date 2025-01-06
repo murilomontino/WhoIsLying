@@ -1,4 +1,4 @@
-import { useLocalSearchParams, useRouter } from 'expo-router'
+import { useRouter } from 'expo-router'
 import React from 'react'
 import {
     BounceIn,
@@ -29,12 +29,11 @@ const PreStartScreen = () => {
     const { category } = useAppSelector((state) => state.categories)
     const dispatch = useAppDispatch()
     const router = useRouter()
-    const { round } = useLocalSearchParams()
 
     const handleStartGame = async () => {
         cache.clearAll()
         dispatch(onResetPlayers())
-        dispatch(onChangeQuestionRound({ questionRound: Number(round) }))
+        dispatch(onChangeQuestionRound({ questionRound: Number(1) }))
         dispatch(onGenerateDisguised())
         await delay(100)
         router.push('/reveal')

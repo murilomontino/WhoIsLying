@@ -44,7 +44,7 @@ const AskingScreen = () => {
         [answer_id, players],
     )
 
-    const { questionRound } = useAppSelector((state) => state.game)
+    const { round } = useAppSelector((state) => state.game)
     const router = useRouter()
 
     const handleSubmit = useCallback(async () => {
@@ -124,7 +124,7 @@ const AskingScreen = () => {
                         as="body"
                         className="!text-white text-shadow-outlined"
                     >
-                        {questionRound} Rodada
+                        {round} Rodada
                     </Text>
                     <Text
                         entering={FlipInEasyX.duration(1000)}

@@ -7,7 +7,7 @@ import { ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
 import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
-import { onNewRound, onResetVoting } from '~/store/slices/players/actions'
+import { onNewQuestionRound, onResetVoting } from '~/store/slices/players/actions'
 
 import { onChangeQuestionRound } from '~/store/slices/game/actions'
 import cache from '~/utils/cache'
@@ -36,7 +36,7 @@ const RoundTableScreen = () => {
 
     const handlePressAnotherRound = useCallback(async () => {
         await cache.clearAll()
-        await dispatch(onNewRound())
+        await dispatch(onNewQuestionRound())
         await dispatch(onChangeQuestionRound({ questionRound: questionRound + 1 }))
         await delay(100)
         await handleNextRound()

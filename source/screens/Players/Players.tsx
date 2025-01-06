@@ -24,7 +24,11 @@ import ControlInput from '~/components/molecules/control-input'
 import Restart from '~/components/molecules/restart'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
-import { onAddPlayers, onDeletePlayers } from '~/store/slices/players/actions'
+import {
+    onAddPlayers,
+    onDeletePlayers,
+    onResetScore,
+} from '~/store/slices/players/actions'
 const schema = Yup.object().shape({
     name: Yup.string().trim().required('Required'),
 })
@@ -45,6 +49,10 @@ export default function Page() {
     const handlePress = (data: { name: string }) => {
         dispatch(onAddPlayers(data))
         setValue('name', '')
+    }
+
+    const handlePressZeroPoints = () => {
+        dispatch(onResetScore())
     }
 
     const handleDelete = async (id: string) => {
@@ -138,6 +146,7 @@ export default function Page() {
             >
                 <Button
                     delay={200}
+                    onPress={handlePressZeroPoints}
                     condition={totalScore > 0}
                     className="items-center justify-center bg-gray-500 rounded-full h-11 w-60"
                 >

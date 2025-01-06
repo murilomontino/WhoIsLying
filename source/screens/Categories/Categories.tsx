@@ -40,12 +40,12 @@ const categories: Category[] = [
 
 const CategoriesScreen = () => {
     const dispatch = useAppDispatch()
-    const { questionRound } = useAppSelector((state) => state.game)
+    const { round } = useAppSelector((state) => state.game)
     const router = useRouter()
 
     const handleCategory = (category: string) => {
         dispatch(onChangeCategory({ category }))
-        router.push(`/pre-start/${questionRound}`)
+        router.push(`/pre-start/${round}`)
     }
 
     return (

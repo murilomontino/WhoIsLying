@@ -7,23 +7,25 @@ import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
-import { onChangeQuestionRound } from '~/store/slices/game/actions'
+import { onChangePlayRound } from '~/store/slices/game/actions'
 
 const NewRoundScreen = () => {
     const router = useRouter()
-    const { questionRound } = useAppSelector((state) => state.game)
+    const { round } = useAppSelector((state) => state.game)
     const dispatch = useAppDispatch()
 
     const handleContinueFromCategory = () => {
-        dispatch(onChangeQuestionRound({ questionRound: questionRound + 1 }))
+        dispatch(onChangePlayRound({ round: round + 1 }))
         router.push('/categories')
     }
 
     const handleContinueNewRound = () => {
-        router.push(`/pre-start/${questionRound + 1}`)
+        dispatch(onChangePlayRound({ round: round + 1 }))
+        router.push(`/pre-start/${round + 1}`)
     }
 
     const handleContinueNewPlayer = () => {
+        dispatch(onChangePlayRound({ round: round + 1 }))
         router.push('/')
     }
 
