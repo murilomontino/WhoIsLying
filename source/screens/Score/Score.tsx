@@ -1,4 +1,5 @@
 import { useRouter } from 'expo-router'
+import { useMemo } from 'react'
 import {
     BounceIn,
     BounceOut,
@@ -14,12 +15,67 @@ import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
 import Score from '~/components/molecules/score'
 import View from '~/components/ui/view'
-import { useAppSelector } from '~/store/hooks'
+import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import { type NewPlayersScore, onScorePlayers } from '~/store/slices/game/actions'
+import type { IPlayer } from '~/store/slices/players/player'
+import { calcScoreDisguisedPlayer, calcScorePlayer } from '~/utils/calcScore'
+import { delay } from '~/utils/delay'
 
 const ScoreScreen = () => {
     const router = useRouter()
+    const dispatch = useAppDispatch()
+
     const { players } = useAppSelector((state) => state.players)
-    const handleContinue = () => {
+    const { disguisedPlayer, questionRound, votingItem } = useAppSelector(
+        (state) => state.game,
+    )
+
+    const winner = useMemo(() => {
+        return players.reduce((acc, player) => {
+            if (player.displayVotes > acc.displayVotes) {
+                return player
+            }
+            return acc
+        })
+    }, [])
+
+    const playersScore: NewPlayersScore[] = useMemo(() => {
+        return players.map((player: IPlayer) => {
+            if (!disguisedPlayer) {
+                return { ...player, sumScore: 0 }
+            }
+            if (player._id === disguisedPlayer?._id) {
+                return {
+                    _id: player._id,
+                    name: player.name,
+                    score: player.score,
+                    sumScore: calcScoreDisguisedPlayer(
+                        disguisedPlayer,
+                        winner,
+                        questionRound,
+                        votingItem,
+                        'cartoon',
+                    ),
+                }
+            }
+
+            return {
+                _id: player._id,
+                name: player.name,
+                score: player.score,
+                sumScore: calcScorePlayer(
+                    player,
+                    disguisedPlayer,
+                    winner,
+                    questionRound,
+                ),
+            }
+        })
+    }, [players, disguisedPlayer])
+
+    const handleContinue = async () => {
+        dispatch(onScorePlayers({ playersScore: playersScore }))
+        await delay(1000)
         router.push('/new-round')
     }
 
@@ -49,7 +105,7 @@ const ScoreScreen = () => {
                     </Text>
                 </View>
                 <View className="flex flex-col w-full px-4 space-y-4 overflow-auto h-52 md:w-1/2">
-                    {players.map((player, index) => (
+                    {playersScore.map((player, index) => (
                         <View
                             delay={(index + 1) * 100}
                             entering={FadeInLeft}
