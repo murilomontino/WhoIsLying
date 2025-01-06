@@ -1,4 +1,5 @@
 import { useRouter } from 'expo-router'
+import { useState } from 'react'
 import {
     BounceIn,
     BounceInLeft,
@@ -12,12 +13,27 @@ import DefaultLayout from '~/components/_layout/default'
 import { Button, ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import View from '~/components/ui/view'
-import { useAppSelector } from '~/store/hooks'
+import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import { onVotingItem } from '~/store/slices/game/actions'
+import { delay } from '~/utils/delay'
 
 const FoodSecretScreen = () => {
     const router = useRouter()
+    const [voting, setVoting] = useState<string | null>(null)
+    const [isExisting, setIsExisting] = useState(false)
     const { disguisedPlayer } = useAppSelector((state) => state.game)
-    const handleContinue = () => {
+    const dispatch = useAppDispatch()
+
+    const handleVote = (item: string) => {
+        setVoting(item)
+    }
+
+    const handleConfirmVote = async () => {
+        if (!voting) return
+        setIsExisting(true)
+        dispatch(onVotingItem({ votingItem: voting }))
+
+        await delay(1000)
         router.push('/reveal-food')
     }
 
@@ -25,19 +41,20 @@ const FoodSecretScreen = () => {
         <DefaultLayout>
             <View
                 delay={100}
-                entering={FadeIn}
-                exiting={FadeOut}
+                entering={FadeIn.duration(1000)}
+                exiting={FadeOut.duration(1000)}
+                demount={isExisting}
                 className="flex flex-col items-center w-full h-full justify-evenly"
             >
                 <View
                     delay={100}
-                    entering={FadeIn}
-                    exiting={FadeOut}
                     className="flex flex-col items-center justify-center w-full px-2 space-y-4"
                 >
                     <Text
                         delay={250}
                         entering={BounceInLeft.damping(0.5).duration(500)}
+                        exiting={BounceOut.damping(0.5).duration(500)}
+                        demount={isExisting}
                         as="h1"
                         className="!text-gray-800 text-shadow-outlined-red text-pretty"
                     >
@@ -46,13 +63,17 @@ const FoodSecretScreen = () => {
                     <Text
                         entering={FadeIn.duration(1000)}
                         exiting={FadeOut.duration(1000)}
+                        demount={isExisting}
                         as="h2"
                         className="text-center !text-white text-shadow-outlined-red"
                     >
                         Vote na Comida
                     </Text>
                 </View>
-                <View className="grid grid-cols-2 w-full px-4 gap-2 md:w-[60vw]">
+                <View
+                    delay={300}
+                    className="grid grid-cols-2 w-full px-4 gap-2 md:w-[60vw]"
+                >
                     {[
                         {
                             name: 'Curupira',
@@ -61,7 +82,7 @@ const FoodSecretScreen = () => {
                             name: 'Arroz',
                         },
                         {
-                            name: 'Feijão',
+                            name: 'Cartoon',
                         },
                         {
                             name: 'Macarrão',
@@ -80,13 +101,17 @@ const FoodSecretScreen = () => {
                         },
                     ].map((item, index) => (
                         <View
-                            delay={(index + 1) * 100}
-                            entering={FadeInLeft}
-                            exiting={FadeOutRight}
+                            delay={(index + 1) * 250}
+                            demount={isExisting}
+                            entering={FadeInLeft.duration(500)}
+                            exiting={FadeOutRight.duration(500)}
                             key={item.name}
                             className="flex items-center w-full h-10 col-span-1 px-4 py-2 space-x-4 bg-white rounded-full min-h-10 max-h-10"
                         >
-                            <Button className="flex items-center justify-center w-full h-full">
+                            <Button
+                                onPress={() => handleVote(item.name)}
+                                className="flex items-center justify-center w-full h-full"
+                            >
                                 <Text className="text-2xl flex-[10] text-center text-gray-800">
                                     {item.name}
                                 </Text>
@@ -96,19 +121,22 @@ const FoodSecretScreen = () => {
                 </View>
                 <View
                     delay={100}
+                    condition={!!voting}
                     entering={BounceIn.duration(1000)}
                     exiting={BounceOut.duration(1000)}
+                    demount={isExisting}
                     className="flex flex-row items-center justify-center w-full px-4 space-x-4"
                 >
                     <ButtonPrimary
-                        onPress={handleContinue}
+                        disabled={!voting}
+                        onPress={handleConfirmVote}
                         className="w-full md:w-1/2"
                     >
                         <Text
                             as="h3"
                             className="!text-white text-shadow-outlined-red"
                         >
-                            Votar em
+                            Votar em {voting}
                         </Text>
                     </ButtonPrimary>
                 </View>
