@@ -2,7 +2,6 @@ import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 import { v4 as uuidV4 } from 'uuid'
 import { LOADING } from '~/store/slices/constants'
-import type { DisplayVoting } from './actions'
 import { type IPlayer, build } from './player'
 import {
     type InitialState,
@@ -240,27 +239,10 @@ const slice = createSlice({
         },
         [ON_VOTE_IN_PLAYER_SUCCESS]: (
             state,
-            action: PayloadAction<DisplayVoting>,
+            action: PayloadAction<{ players: IPlayer[] }>,
         ) => {
             state.isLoading = LOADING.SUCCESS
-            state.players = state.players.map((player) => {
-                if (player._id === action.payload.disguised_id) {
-                    return {
-                        ...player,
-                        displayVotes: player.displayVotes + 1,
-                        votes: [...player.votes, action.payload._id],
-                    }
-                }
-
-                if (player._id === action.payload._id) {
-                    return {
-                        ...player,
-                        canVote: false,
-                    }
-                }
-
-                return player
-            })
+            state.players = action.payload.players
         },
         [ON_VOTE_IN_PLAYER_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED

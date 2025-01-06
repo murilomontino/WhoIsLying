@@ -145,7 +145,7 @@ export type DisplayVoting = {
 }
 
 export const onVoteInPlayer = createAction<DisplayVoting>(ACTION_VOTE_IN_PLAYER)
-export const onVoteInPlayerSuccess = createAction<DisplayVoting>(
+export const onVoteInPlayerSuccess = createAction<{ players: IPlayer[] }>(
     ACTION_VOTE_IN_PLAYER_SUCCESS,
 )
 export const onVoteInPlayerFail = createAction(ACTION_VOTE_IN_PLAYER_FAIL)

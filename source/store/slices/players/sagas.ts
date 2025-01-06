@@ -185,7 +185,26 @@ export function* onNewRound() {
 
 export function* onVoteInPlayer({ payload }: PayloadAction<DisplayVoting>) {
     try {
-        yield put(onVoteInPlayerSuccess(payload))
+        const { players }: RootState['players'] = yield select(selectPlayers)
+
+        const newPlayers: IPlayer[] = players.map((player) => {
+            if (player._id === payload.disguised_id) {
+                return {
+                    ...player,
+                    votes: [...player.votes, payload._id],
+                }
+            }
+
+            if (player._id === payload._id) {
+                return {
+                    ...player,
+                    displayVotes: player.displayVotes + 1,
+                }
+            }
+            return player
+        })
+
+        yield put(onVoteInPlayerSuccess({ players: newPlayers }))
     } catch (_) {
         yield put(onVoteInPlayerFail())
     }
