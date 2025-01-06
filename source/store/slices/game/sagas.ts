@@ -5,6 +5,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
 import {
+    type NewPlayersScore,
     onChangePointsFail,
     onChangePointsSuccess,
     onChangeQuestionRoundFail,
@@ -13,14 +14,19 @@ import {
     onChangeRoundsSuccess,
     onGenerateDisguisedFail,
     onGenerateDisguisedSuccess,
+    onScorePlayersFail,
+    onScorePlayersSuccess,
     onVotingItemFail,
     onVotingItemSuccess,
 } from './actions'
+
+import type { IPlayer } from '../players/player'
 import {
     ACTION_CHANGE_POINTS,
     ACTION_CHANGE_QUESTION_ROUND,
     ACTION_CHANGE_ROUNDS,
     ACTION_GENERATE_DISGUISED,
+    ACTION_SCORE_PLAYERS,
     ACTION_VOTING_ITEM,
 } from './types'
 
@@ -67,6 +73,27 @@ export function* onVotingItem({ payload }: PayloadAction<{ votingItem: string }>
     }
 }
 
+export function* onScorePlayers({
+    payload,
+}: PayloadAction<{
+    playersScore: NewPlayersScore[]
+}>) {
+    try {
+        const { players }: RootState['players'] = yield select(selectPlayers)
+        const newPlayers = players.map((player) => {
+            const newScore = payload.playersScore.find((p) => player._id === p._id)
+            if (!newScore) throw new Error('Player not found')
+            return {
+                ...player,
+                score: newScore.score + newScore.sumScore,
+            } as IPlayer
+        })
+        yield put(onScorePlayersSuccess({ players: newPlayers }))
+    } catch (_) {
+        yield put(onScorePlayersFail())
+    }
+}
+
 export function* watchOnChangeRounds() {
     yield takeLatest(ACTION_CHANGE_ROUNDS, onChangeRounds)
 }
@@ -87,6 +114,10 @@ export function* watchOnVotingItem() {
     yield takeLatest(ACTION_VOTING_ITEM, onVotingItem)
 }
 
+export function* watchOnScorePlayers() {
+    yield takeLatest(ACTION_SCORE_PLAYERS, onScorePlayers)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnChangeRounds),
@@ -94,6 +125,7 @@ function* Sagas() {
         fork(watchOnChangeQuestionRounds),
         fork(watchOnGenerateDisguised),
         fork(watchOnVotingItem),
+        fork(watchOnScorePlayers),
     ])
 }
 

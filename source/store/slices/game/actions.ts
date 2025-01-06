@@ -14,6 +14,9 @@ import {
     ACTION_GENERATE_DISGUISED,
     ACTION_GENERATE_DISGUISED_FAIL,
     ACTION_GENERATE_DISGUISED_SUCCESS,
+    ACTION_SCORE_PLAYERS,
+    ACTION_SCORE_PLAYERS_FAIL,
+    ACTION_SCORE_PLAYERS_SUCCESS,
     ACTION_VOTING_ITEM,
     ACTION_VOTING_ITEM_FAIL,
     ACTION_VOTING_ITEM_SUCCESS,
@@ -54,3 +57,17 @@ export const onVotingItemSuccess = createAction<{ votingItem: string }>(
     ACTION_VOTING_ITEM_SUCCESS,
 )
 export const onVotingItemFail = createAction(ACTION_VOTING_ITEM_FAIL)
+
+export type NewPlayersScore = {
+    _id: string
+    name: string
+    score: number
+    sumScore: number
+}
+export const onScorePlayers = createAction<{
+    playersScore: NewPlayersScore[]
+}>(ACTION_SCORE_PLAYERS)
+export const onScorePlayersSuccess = createAction<{
+    players: IPlayer[]
+}>(ACTION_SCORE_PLAYERS_SUCCESS)
+export const onScorePlayersFail = createAction(ACTION_SCORE_PLAYERS_FAIL)
