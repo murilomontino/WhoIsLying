@@ -17,6 +17,12 @@ import {
     ON_GENERATE_DISGUISED,
     ON_GENERATE_DISGUISED_FAIL,
     ON_GENERATE_DISGUISED_SUCCESS,
+    ON_RESET_GAME,
+    ON_RESET_GAME_FAIL,
+    ON_RESET_GAME_SUCCESS,
+    ON_SCORE_PLAYERS,
+    ON_SCORE_PLAYERS_FAIL,
+    ON_SCORE_PLAYERS_SUCCESS,
     ON_VOTING_ITEM,
     ON_VOTING_ITEM_FAIL,
     ON_VOTING_ITEM_SUCCESS,
@@ -118,6 +124,29 @@ const slice = createSlice({
             state.votingItem = action.payload.votingItem
         },
         [ON_VOTING_ITEM_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_SCORE_PLAYERS]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_SCORE_PLAYERS_SUCCESS]: (state) => {
+            state.isLoading = LOADING.SUCCESS
+        },
+        [ON_SCORE_PLAYERS_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_RESET_GAME]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_RESET_GAME_SUCCESS]: (state) => {
+            state.isLoading = LOADING.SUCCESS
+            state.rounds = 1
+            state.points = 500
+            state.disguisedPlayer = null
+            state.questionRound = 1
+            state.votingItem = ''
+        },
+        [ON_RESET_GAME_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

@@ -14,18 +14,22 @@ import {
     onChangeRoundsSuccess,
     onGenerateDisguisedFail,
     onGenerateDisguisedSuccess,
+    onResetGameFail,
+    onResetGameSuccess,
     onScorePlayersFail,
     onScorePlayersSuccess,
     onVotingItemFail,
     onVotingItemSuccess,
 } from './actions'
 
+import { onResetPlayers } from '../players/actions'
 import type { IPlayer } from '../players/player'
 import {
     ACTION_CHANGE_POINTS,
     ACTION_CHANGE_QUESTION_ROUND,
     ACTION_CHANGE_ROUNDS,
     ACTION_GENERATE_DISGUISED,
+    ACTION_RESET_GAME,
     ACTION_SCORE_PLAYERS,
     ACTION_VOTING_ITEM,
 } from './types'
@@ -94,6 +98,15 @@ export function* onScorePlayers({
     }
 }
 
+function* onResetGame() {
+    try {
+        yield put(onResetPlayers())
+        yield put(onResetGameSuccess())
+    } catch (_) {
+        yield put(onResetGameFail())
+    }
+}
+
 export function* watchOnChangeRounds() {
     yield takeLatest(ACTION_CHANGE_ROUNDS, onChangeRounds)
 }
@@ -118,6 +131,10 @@ export function* watchOnScorePlayers() {
     yield takeLatest(ACTION_SCORE_PLAYERS, onScorePlayers)
 }
 
+export function* watchOnResetGame() {
+    yield takeLatest(ACTION_RESET_GAME, onResetGame)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnChangeRounds),
@@ -126,6 +143,7 @@ function* Sagas() {
         fork(watchOnGenerateDisguised),
         fork(watchOnVotingItem),
         fork(watchOnScorePlayers),
+        fork(watchOnResetGame),
     ])
 }
 

@@ -14,6 +14,9 @@ import {
     ACTION_GENERATE_DISGUISED,
     ACTION_GENERATE_DISGUISED_FAIL,
     ACTION_GENERATE_DISGUISED_SUCCESS,
+    ACTION_RESET_GAME,
+    ACTION_RESET_GAME_FAIL,
+    ACTION_RESET_GAME_SUCCESS,
     ACTION_SCORE_PLAYERS,
     ACTION_SCORE_PLAYERS_FAIL,
     ACTION_SCORE_PLAYERS_SUCCESS,
@@ -71,3 +74,7 @@ export const onScorePlayersSuccess = createAction<{
     players: IPlayer[]
 }>(ACTION_SCORE_PLAYERS_SUCCESS)
 export const onScorePlayersFail = createAction(ACTION_SCORE_PLAYERS_FAIL)
+
+export const onResetGame = createAction(ACTION_RESET_GAME)
+export const onResetGameSuccess = createAction(ACTION_RESET_GAME_SUCCESS)
+export const onResetGameFail = createAction(ACTION_RESET_GAME_FAIL)
