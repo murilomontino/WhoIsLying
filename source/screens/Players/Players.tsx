@@ -21,6 +21,7 @@ import { ButtonPrimary } from '~/components/atoms/button/button'
 import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
 import ControlInput from '~/components/molecules/control-input'
+import Restart from '~/components/molecules/restart'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onAddPlayers, onDeletePlayers } from '~/store/slices/players/actions'
@@ -56,6 +57,7 @@ export default function Page() {
 
     return (
         <DefaultLayout>
+            <Restart />
             <Title />
             <Text
                 delay={100}
