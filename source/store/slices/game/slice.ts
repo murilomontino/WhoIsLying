@@ -23,6 +23,9 @@ import {
     ON_SCORE_PLAYERS,
     ON_SCORE_PLAYERS_FAIL,
     ON_SCORE_PLAYERS_SUCCESS,
+    ON_VOTE_IN_THE_DISGUISED,
+    ON_VOTE_IN_THE_DISGUISED_FAIL,
+    ON_VOTE_IN_THE_DISGUISED_SUCCESS,
     ON_VOTING_ITEM,
     ON_VOTING_ITEM_FAIL,
     ON_VOTING_ITEM_SUCCESS,
@@ -147,6 +150,19 @@ const slice = createSlice({
             state.votingItem = ''
         },
         [ON_RESET_GAME_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_VOTE_IN_THE_DISGUISED]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_VOTE_IN_THE_DISGUISED_SUCCESS]: (
+            state,
+            action: PayloadAction<{ player_id: string }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.disguisedPlayer?.votes.push(action.payload.player_id)
+        },
+        [ON_VOTE_IN_THE_DISGUISED_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

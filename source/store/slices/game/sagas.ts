@@ -18,6 +18,8 @@ import {
     onResetGameSuccess,
     onScorePlayersFail,
     onScorePlayersSuccess,
+    onVoteInTheDisguisedFail,
+    onVoteInTheDisguisedSuccess,
     onVotingItemFail,
     onVotingItemSuccess,
 } from './actions'
@@ -31,6 +33,7 @@ import {
     ACTION_GENERATE_DISGUISED,
     ACTION_RESET_GAME,
     ACTION_SCORE_PLAYERS,
+    ACTION_VOTE_IN_THE_DISGUISED,
     ACTION_VOTING_ITEM,
 } from './types'
 
@@ -98,12 +101,22 @@ export function* onScorePlayers({
     }
 }
 
-function* onResetGame() {
+export function* onResetGame() {
     try {
         yield put(onResetPlayers())
         yield put(onResetGameSuccess())
     } catch (_) {
         yield put(onResetGameFail())
+    }
+}
+
+export function* onVoteInTheDisguised({
+    payload,
+}: PayloadAction<{ player_id: string }>) {
+    try {
+        yield put(onVoteInTheDisguisedSuccess(payload))
+    } catch (_) {
+        yield put(onVoteInTheDisguisedFail())
     }
 }
 
@@ -135,6 +148,10 @@ export function* watchOnResetGame() {
     yield takeLatest(ACTION_RESET_GAME, onResetGame)
 }
 
+export function* watchOnVoteInTheDisguised() {
+    yield takeLatest(ACTION_VOTE_IN_THE_DISGUISED, onVoteInTheDisguised)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnChangeRounds),
@@ -144,6 +161,7 @@ function* Sagas() {
         fork(watchOnVotingItem),
         fork(watchOnScorePlayers),
         fork(watchOnResetGame),
+        fork(watchOnVoteInTheDisguised),
     ])
 }
 

@@ -20,6 +20,9 @@ import {
     ACTION_SCORE_PLAYERS,
     ACTION_SCORE_PLAYERS_FAIL,
     ACTION_SCORE_PLAYERS_SUCCESS,
+    ACTION_VOTE_IN_THE_DISGUISED,
+    ACTION_VOTE_IN_THE_DISGUISED_FAIL,
+    ACTION_VOTE_IN_THE_DISGUISED_SUCCESS,
     ACTION_VOTING_ITEM,
     ACTION_VOTING_ITEM_FAIL,
     ACTION_VOTING_ITEM_SUCCESS,
@@ -78,3 +81,13 @@ export const onScorePlayersFail = createAction(ACTION_SCORE_PLAYERS_FAIL)
 export const onResetGame = createAction(ACTION_RESET_GAME)
 export const onResetGameSuccess = createAction(ACTION_RESET_GAME_SUCCESS)
 export const onResetGameFail = createAction(ACTION_RESET_GAME_FAIL)
+
+export const onVoteInTheDisguised = createAction<{ player_id: string }>(
+    ACTION_VOTE_IN_THE_DISGUISED,
+)
+export const onVoteInTheDisguisedSuccess = createAction<{ player_id: string }>(
+    ACTION_VOTE_IN_THE_DISGUISED_SUCCESS,
+)
+export const onVoteInTheDisguisedFail = createAction(
+    ACTION_VOTE_IN_THE_DISGUISED_FAIL,
+)
