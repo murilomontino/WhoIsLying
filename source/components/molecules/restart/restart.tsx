@@ -6,21 +6,25 @@ import Text from '~/components/atoms/text'
 import withControl, { type ControlProps } from '~/components/helpers/with-control'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
-import { onResetGame } from '~/store/slices/game/actions'
+import { onChangePlayRound, onResetGame } from '~/store/slices/game/actions'
+import { onResetScore } from '~/store/slices/players/actions'
 import cache from '~/utils/cache'
 
 const Restart = ({ ...props }: ControlProps) => {
     const dispatch = useAppDispatch()
-    const { questionRound } = useAppSelector((state) => state.game)
+    const { round } = useAppSelector((state) => state.game)
+
     const handleRestart = () => {
         cache.clearAll()
+        dispatch(onChangePlayRound({ round: 1 }))
         dispatch(onResetGame())
+        dispatch(onResetScore())
     }
 
     return (
         <View
             {...props}
-            condition={questionRound > 1}
+            condition={round > 1}
             entering={FadeIn.duration(300)}
             exiting={FadeOut.duration(300)}
             className="absolute top-0 right-0 z-50 rounded-full w-fit"
