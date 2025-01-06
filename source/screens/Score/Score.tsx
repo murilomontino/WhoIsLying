@@ -23,6 +23,7 @@ import { calcScoreDisguisedPlayer, calcScorePlayer } from '~/utils/calcScore'
 import { delay } from '~/utils/delay'
 
 const ScoreScreen = () => {
+    const [isExiting, setIsExiting] = useState(false)
     const router = useRouter()
     const dispatch = useAppDispatch()
 
@@ -36,6 +37,7 @@ const ScoreScreen = () => {
             if (player.displayVotes > acc.displayVotes) {
                 return player
             }
+
             return acc
         })
     }, [])
@@ -76,14 +78,14 @@ const ScoreScreen = () => {
     }, [players, disguisedPlayer, winner, questionRound, votingItem])
 
     const [sortedPlayers, setSortedPlayers] = useState(playersScore)
-    const [sorting, setSorting] = useState(false)
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setSortedPlayers(
-                [...playersScore].sort((a, b) => b.sumScore - a.sumScore),
+                [...playersScore].sort(
+                    (a, b) => b.sumScore + b.score - (a.sumScore + a.score),
+                ),
             )
-            setSorting(true)
         }, 1500) // 1.5 segundos de espera para iniciar a animação de ordenação
 
         return () => clearTimeout(timer)
@@ -91,6 +93,7 @@ const ScoreScreen = () => {
 
     const handleContinue = async () => {
         dispatch(onScorePlayers({ playersScore: playersScore }))
+        setIsExiting(true)
         await delay(1000)
         router.push('/new-round')
     }
@@ -106,6 +109,7 @@ const ScoreScreen = () => {
             >
                 <View
                     delay={100}
+                    demount={isExiting}
                     entering={FadeIn}
                     exiting={FadeOut}
                     className="flex flex-col items-center justify-center w-full px-2 space-y-4"
@@ -113,7 +117,7 @@ const ScoreScreen = () => {
                     <Title />
                     <Text
                         entering={FadeIn.duration(1000)}
-                        exiting={FadeOut.duration(1000)}
+                        exiting={FadeOutRight.duration(1000)}
                         as="h2"
                         className="text-center !text-white text-shadow-outlined-red"
                     >
@@ -123,10 +127,11 @@ const ScoreScreen = () => {
                 <View className="flex flex-col w-full px-4 space-y-4 overflow-auto h-52 md:w-1/2">
                     {sortedPlayers.map((player, index) => (
                         <View
-                            layout={LinearTransition.springify()} // Ordenação animada
+                            layout={LinearTransition.springify().duration(500)} // Ordenação animada
                             delay={(index + 1) * 100}
                             entering={FadeInLeft}
                             exiting={FadeOutRight}
+                            demount={isExiting}
                             key={player._id}
                             className="flex flex-row items-center flex-1 h-10 px-4 py-2 space-x-4 bg-white rounded-full min-h-10 max-h-10"
                         >
@@ -142,6 +147,7 @@ const ScoreScreen = () => {
                 </View>
                 <View
                     delay={100}
+                    demount={isExiting}
                     entering={BounceIn.duration(1000)}
                     exiting={BounceOut.duration(1000)}
                     className="flex flex-row items-center justify-center w-full px-4 space-x-4"

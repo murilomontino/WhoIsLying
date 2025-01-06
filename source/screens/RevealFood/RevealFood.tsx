@@ -62,7 +62,7 @@ const RevealFoodScreen = () => {
                         as="h2"
                         className="text-center !text-gray-800 text-shadow-outlined-red"
                     >
-                        {category}
+                        {votingItem}
                     </Text>
                 </View>
                 <View
@@ -84,7 +84,7 @@ const RevealFoodScreen = () => {
                         }
                         onFinally={handleReveal}
                         initialWord="Revelar"
-                        finalWord={votingItem}
+                        finalWord={'cartoon'}
                         words={[
                             'Pizza',
                             'Hamburguer',
