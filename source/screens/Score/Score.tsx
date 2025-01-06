@@ -44,18 +44,19 @@ const ScoreScreen = () => {
             if (!disguisedPlayer) {
                 return { ...player, sumScore: 0 }
             }
+
             if (player._id === disguisedPlayer?._id) {
                 return {
                     _id: player._id,
                     name: player.name,
                     score: player.score,
-                    sumScore: calcScoreDisguisedPlayer(
-                        disguisedPlayer,
+                    sumScore: calcScoreDisguisedPlayer({
+                        disguised_player: disguisedPlayer,
                         winner,
                         questionRound,
-                        votingItem,
-                        'cartoon',
-                    ),
+                        choose: votingItem,
+                        item: 'cartoon',
+                    }),
                 }
             }
 
@@ -63,15 +64,15 @@ const ScoreScreen = () => {
                 _id: player._id,
                 name: player.name,
                 score: player.score,
-                sumScore: calcScorePlayer(
+                sumScore: calcScorePlayer({
                     player,
-                    disguisedPlayer,
+                    disguised_player: disguisedPlayer,
                     winner,
                     questionRound,
-                ),
+                }),
             }
         })
-    }, [players, disguisedPlayer])
+    }, [players, disguisedPlayer, winner, questionRound, votingItem])
 
     const handleContinue = async () => {
         dispatch(onScorePlayers({ playersScore: playersScore }))
@@ -116,7 +117,10 @@ const ScoreScreen = () => {
                             <Text className="text-2xl flex-[10] text-center text-gray-800">
                                 {player.name}
                             </Text>
-                            <Score playerScore={player.score} sumScore={25} />
+                            <Score
+                                playerScore={player.score}
+                                sumScore={player.sumScore}
+                            />
                         </View>
                     ))}
                 </View>

@@ -5,17 +5,26 @@
 - Identificar o impostor em maioria de votos: 75 pontos (Condição de Vitória dos Jogadores)
 - Impostor não ser identificado: 75 pontos (Condição de Vitória do Impostor)
 - Decréscimo de 15 pontos por rodada a partir da 2ª rodada, até o mínimo de 25 pontos,
-afeta todos os jogadores e impostor, pois facilita a identificação do impostor e da palavra correta
+afeta todos os jogadores, pois facilita a identificação do impostor
+- Acréscimo de 10 pontos por rodada a partir da 2ª rodada, até o máximo de 50 pontos, afeta
+somente o impostor, pois os jogadores podem identificar o impostor com mais facilidade
 */
 
 import type { IPlayer } from '~/store/slices/players/player'
 
-export const calcScorePlayer = (
-    player: IPlayer,
-    disguised_player: IPlayer,
-    winner: IPlayer,
-    questionRound: number,
-) => {
+type CalcScoreParams = {
+    player: IPlayer
+    disguised_player: IPlayer
+    winner: IPlayer
+    questionRound: number
+}
+
+export const calcScorePlayer = ({
+    disguised_player,
+    player,
+    questionRound,
+    winner,
+}: CalcScoreParams) => {
     let score = 0
 
     // Acertar o impostor: 25 pontos
@@ -36,13 +45,21 @@ export const calcScorePlayer = (
     return score
 }
 
-export const calcScoreDisguisedPlayer = (
-    disguised_player: IPlayer,
-    winner: IPlayer,
-    questionRound: number,
-    choose: string,
-    item: string,
-) => {
+type CalcScoreDisguisedParams = {
+    disguised_player: IPlayer
+    winner: IPlayer
+    questionRound: number
+    choose: string
+    item: string
+}
+
+export const calcScoreDisguisedPlayer = ({
+    choose,
+    disguised_player,
+    item,
+    questionRound,
+    winner,
+}: CalcScoreDisguisedParams) => {
     let score = 0
 
     // Identificar o impostor em maioria de votos: 75 pontos
@@ -52,13 +69,13 @@ export const calcScoreDisguisedPlayer = (
     }
 
     // Impostor acertar a palavra correta: 100 pontos
-    if (choose === item) {
+    if (choose.trim().toLowerCase() === item.trim().toLowerCase()) {
         score += 100
     }
 
-    // Decréscimo de 15 pontos por rodada a partir da 2ª rodada, até o mínimo de 25 pontos
-    const decrease = 15 * (questionRound - 1)
-    score = questionRound > 1 && score > 0 ? Math.max(25, score - decrease) : score
+    // Acréscimo de 10 pontos por rodada a partir da 2ª rodada, até o máximo de 50 pontos
+    const increased = 10 * (questionRound - 1)
+    score += questionRound > 1 ? Math.min(50, increased) : 0
 
     return score
 }
