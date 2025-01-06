@@ -1,4 +1,6 @@
 import { AntDesign } from '@expo/vector-icons'
+import classNames from 'classnames'
+import { useLocalSearchParams } from 'expo-router'
 import React from 'react'
 import { BounceInRight, BounceOutLeft } from 'react-native-reanimated'
 import { Button } from '~/components/atoms/button'
@@ -10,6 +12,9 @@ import { onChangePoints } from '~/store/slices/game/actions'
 const Points = () => {
     const dispatch = useAppDispatch()
     const { points } = useAppSelector((state) => state.game)
+    const { round } = useLocalSearchParams()
+
+    const startingPlayer = round === '1'
 
     const handleNextRound = () => {
         dispatch(onChangePoints({ points: points + 50 }))
@@ -23,10 +28,16 @@ const Points = () => {
         <View
             entering={BounceInRight.duration(1000)}
             exiting={BounceOutLeft.duration(1000)}
-            className="flex-row items-center justify-between w-full bg-white rounded-full md:w-1/2 "
+            className={classNames(
+                {
+                    'opacity-50 bg-gray-200': !startingPlayer,
+                    'opacity-100 bg-white': startingPlayer,
+                },
+                'flex-row items-center justify-between w-full rounded-full md:w-1/2 ',
+            )}
         >
             <Button
-                disabled={points <= 50}
+                disabled={points <= 50 || !startingPlayer}
                 className="p-2 my-2 bg-transparent border-r border-gray-600"
                 onPress={handlePreviousRound}
             >
@@ -38,7 +49,7 @@ const Points = () => {
             </Button>
             <Text as="h5">{points} pontos</Text>
             <Button
-                disabled={points >= 9999}
+                disabled={points >= 9999 || !startingPlayer}
                 className="p-2 my-2 bg-transparent border-l border-gray-600"
                 onPress={handleNextRound}
             >

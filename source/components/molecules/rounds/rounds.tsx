@@ -1,4 +1,6 @@
 import { AntDesign } from '@expo/vector-icons'
+import classNames from 'classnames'
+import { useLocalSearchParams } from 'expo-router'
 import React from 'react'
 import { BounceInLeft, BounceOutRight } from 'react-native-reanimated'
 import { Button } from '~/components/atoms/button'
@@ -10,6 +12,9 @@ import { onChangeRounds } from '~/store/slices/game/actions'
 const Rounds = () => {
     const dispatch = useAppDispatch()
     const { rounds } = useAppSelector((state) => state.game)
+    const { round } = useLocalSearchParams()
+
+    const startingPlayer = round === '1'
 
     const handleNextRound = () => {
         dispatch(onChangeRounds({ rounds: rounds + 1 }))
@@ -23,10 +28,16 @@ const Rounds = () => {
         <View
             entering={BounceInLeft.duration(1000)}
             exiting={BounceOutRight.duration(1000)}
-            className="flex-row items-center justify-between w-full bg-white rounded-full md:w-1/2 "
+            className={classNames(
+                {
+                    'opacity-50 bg-gray-200': !startingPlayer,
+                    'opacity-100 bg-white': startingPlayer,
+                },
+                'flex-row items-center justify-between w-full rounded-full md:w-1/2 ',
+            )}
         >
             <Button
-                disabled={rounds <= 1}
+                disabled={rounds <= 1 || !startingPlayer}
                 className="p-2 my-2 bg-transparent border-r border-gray-600"
                 onPress={handlePreviousRound}
             >
@@ -40,7 +51,7 @@ const Rounds = () => {
                 {rounds} {rounds === 1 ? 'rodada' : 'rodadas'}
             </Text>
             <Button
-                disabled={rounds >= 10}
+                disabled={rounds >= 10 || !startingPlayer}
                 className="p-2 my-2 bg-transparent border-l border-gray-600"
                 onPress={handleNextRound}
             >
