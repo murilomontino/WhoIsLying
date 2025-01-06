@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import {
     BounceIn,
     BounceOut,
@@ -7,6 +7,7 @@ import {
     FadeInLeft,
     FadeOut,
     FadeOutRight,
+    LinearTransition,
 } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary } from '~/components/atoms/button'
@@ -74,6 +75,20 @@ const ScoreScreen = () => {
         })
     }, [players, disguisedPlayer, winner, questionRound, votingItem])
 
+    const [sortedPlayers, setSortedPlayers] = useState(playersScore)
+    const [sorting, setSorting] = useState(false)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setSortedPlayers(
+                [...playersScore].sort((a, b) => b.sumScore - a.sumScore),
+            )
+            setSorting(true)
+        }, 1500) // 1.5 segundos de espera para iniciar a animação de ordenação
+
+        return () => clearTimeout(timer)
+    }, [playersScore])
+
     const handleContinue = async () => {
         dispatch(onScorePlayers({ playersScore: playersScore }))
         await delay(1000)
@@ -106,8 +121,9 @@ const ScoreScreen = () => {
                     </Text>
                 </View>
                 <View className="flex flex-col w-full px-4 space-y-4 overflow-auto h-52 md:w-1/2">
-                    {playersScore.map((player, index) => (
+                    {sortedPlayers.map((player, index) => (
                         <View
+                            layout={LinearTransition.springify()} // Ordenação animada
                             delay={(index + 1) * 100}
                             entering={FadeInLeft}
                             exiting={FadeOutRight}
