@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "WhoIsLying",
-    "slug": "WhoIsLying",
+    "slug": "whoislying",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,6 +17,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.whoislying.tutor",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -29,6 +31,27 @@
     "plugins": [
       "expo-router",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "bd673dfb-323d-4f6d-bcff-9f91f55d1606",
+        "build": {
+          "preview": {
+            "android": {
+              "buildType": "apk"
+            }
+          },
+          "production": {
+            "android": {
+              "buildType": "app-bundle"
+            }
+          }
+        }
+      }
+    },
+    "owner": "murilomontino"
   }
 }

@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router'
 import { useMemo, useState } from 'react'
+import Confetti from 'react-confetti'
 import {
     BounceIn,
     BounceInLeft,
@@ -38,6 +39,7 @@ const VictoryScreen = () => {
     return (
         <DefaultLayout>
             <GoBack />
+            <Confetti />
             <View
                 delay={100}
                 entering={FadeIn}

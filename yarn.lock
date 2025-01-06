@@ -2117,6 +2117,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-async-storage/async-storage@npm:1.23.1":
+  version: 1.23.1
+  resolution: "@react-native-async-storage/async-storage@npm:1.23.1"
+  dependencies:
+    merge-options: "npm:^3.0.4"
+  peerDependencies:
+    react-native: ^0.0.0-0 || >=0.60 <1.0
+  checksum: 10c0/6cfdcab91f0e04f80f4aa91397eb4aedcd1124bf2a997cb730c7f2c70dad75d2aa0ca0f41576ed4e34544a1f79e090169f566366c32a89a41b74bf74bea1c1db
+  languageName: node
+  linkType: hard
+
 "@react-native-async-storage/async-storage@npm:^1.13.4":
   version: 1.24.0
   resolution: "@react-native-async-storage/async-storage@npm:1.24.0"
@@ -2125,17 +2136,6 @@ __metadata:
   peerDependencies:
     react-native: ^0.0.0-0 || >=0.60 <1.0
   checksum: 10c0/cad2098ef84251f2ab8ebc07b750e585a20ac7ca07f26e5441e957a76f2b66f01d10ef5fbddb63d675431377b31beb5208548093e1eb17d262d2184b51133f4d
-  languageName: node
-  linkType: hard
-
-"@react-native-async-storage/async-storage@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@react-native-async-storage/async-storage@npm:2.1.0"
-  dependencies:
-    merge-options: "npm:^3.0.4"
-  peerDependencies:
-    react-native: ^0.0.0-0 || >=0.65 <1.0
-  checksum: 10c0/76a81a55059e93e256f6e9cf3f33a49d24ba83ce2f88e52343107953a66168c533bb387111a88708247c926297ee93c681c4936bcb66993dba78ea7fb28c9fdf
   languageName: node
   linkType: hard
 
@@ -2757,6 +2757,13 @@ __metadata:
   version: 15.7.14
   resolution: "@types/prop-types@npm:15.7.14"
   checksum: 10c0/1ec775160bfab90b67a782d735952158c7e702ca4502968aa82565bd8e452c2de8601c8dfe349733073c31179116cf7340710160d3836aa8a1ef76d1532893b1
+  languageName: node
+  linkType: hard
+
+"@types/react-native-get-random-values@npm:^1":
+  version: 1.8.2
+  resolution: "@types/react-native-get-random-values@npm:1.8.2"
+  checksum: 10c0/66c0268151d0673bff88828d82d4087aeabbe29a8ffe433f50e2593cd04872fc890f0d2660203435d13412b10d866d24a3ab72981cf481e5676ccf88de12c235
   languageName: node
   linkType: hard
 
@@ -4753,6 +4760,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-splash-screen@npm:~0.29.18":
+  version: 0.29.18
+  resolution: "expo-splash-screen@npm:0.29.18"
+  dependencies:
+    "@expo/prebuild-config": "npm:^8.0.23"
+  peerDependencies:
+    expo: "*"
+  checksum: 10c0/71b7de2b8328e4523303c25015d2a069d27bbd423178581471637ecf9aa710189dd94f2df40b400efa4a4604ac54cdce2b8423b9e4597d6af9d709afc8a402db
+  languageName: node
+  linkType: hard
+
 "expo-status-bar@npm:~2.0.0":
   version: 2.0.0
   resolution: "expo-status-bar@npm:2.0.0"
@@ -4808,6 +4826,13 @@ __metadata:
   version: 3.1.1
   resolution: "exponential-backoff@npm:3.1.1"
   checksum: 10c0/160456d2d647e6019640bd07111634d8c353038d9fa40176afb7cd49b0548bdae83b56d05e907c2cce2300b81cae35d800ef92fefb9d0208e190fa3b7d6bb579
+  languageName: node
+  linkType: hard
+
+"fast-base64-decode@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fast-base64-decode@npm:1.0.0"
+  checksum: 10c0/6d8feab513222a463d1cb58d24e04d2e04b0791ac6559861f99543daaa590e2636d040d611b40a50799bfb5c5304265d05e3658b5adf6b841a50ef6bf833d821
   languageName: node
   linkType: hard
 
@@ -8053,6 +8078,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-confetti@npm:^6.2.2":
+  version: 6.2.2
+  resolution: "react-confetti@npm:6.2.2"
+  dependencies:
+    tween-functions: "npm:^1.2.0"
+  peerDependencies:
+    react: ^16.3.0 || ^17.0.1 || ^18.0.0 || ^19.0.0
+  checksum: 10c0/c25250acc18a7e66a2a41aa429fee70a1e56346a73dced7aa64d8c8e87b96b478eb90933b530d1857832785eeb4a5978c5cb30080d187d32bbc68c3c0ef7f0a9
+  languageName: node
+  linkType: hard
+
 "react-devtools-core@npm:^5.3.1":
   version: 5.3.2
   resolution: "react-devtools-core@npm:5.3.2"
@@ -8160,6 +8196,17 @@ __metadata:
     react-native-svg:
       optional: true
   checksum: 10c0/d6052499b8615b58e02ee43b7d2906fd2b5ef90410c26af94dd11d6d93ed116ab0c96f7228573734030f1d41b4e8e2878a63b2223eb86c797730df207ed0c2f0
+  languageName: node
+  linkType: hard
+
+"react-native-get-random-values@npm:^1.11.0":
+  version: 1.11.0
+  resolution: "react-native-get-random-values@npm:1.11.0"
+  dependencies:
+    fast-base64-decode: "npm:^1.0.0"
+  peerDependencies:
+    react-native: ">=0.56"
+  checksum: 10c0/2ce71f1ab7f5b36d4a9dd59cc80b4aa75526f047c6680a7f1a388fa8b9a62efdacaf7b7de3be593c73e882773b2eee74916b00f7c8b158e40b46388998218586
   languageName: node
   linkType: hard
 
@@ -9679,6 +9726,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tween-functions@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "tween-functions@npm:1.2.0"
+  checksum: 10c0/7e59295b8b0ee4132ed2fe335f56a9db5c87056dad6b6fd3011be72239fd20398003ddb4403bc98ad9f5c94468890830f64016edbbde35581faf95b32cda8305
+  languageName: node
+  linkType: hard
+
 "type-detect@npm:4.0.8":
   version: 4.0.8
   resolution: "type-detect@npm:4.0.8"
@@ -9961,12 +10015,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^11.0.3":
-  version: 11.0.3
-  resolution: "uuid@npm:11.0.3"
+"uuid@npm:^11.0.4":
+  version: 11.0.4
+  resolution: "uuid@npm:11.0.4"
   bin:
     uuid: dist/esm/bin/uuid
-  checksum: 10c0/cee762fc76d949a2ff9205770334699e0043d52bb766472593a25f150077c9deed821230251ea3d6ab3943a5ea137d2826678797f1d5f6754c7ce5ce27e9f7a6
+  checksum: 10c0/3c13591c4dedaa3741f925e284df5974e3d6e0b1cb0f6f75f98c36f9c01d2a414350364fd067613ef600a21c6973dab0506530d4f499ff878f32a06f84569ead
   languageName: node
   linkType: hard
 
@@ -10155,9 +10209,10 @@ __metadata:
     "@expo/metro-runtime": "npm:~4.0.0"
     "@expo/vector-icons": "npm:^14.0.2"
     "@hookform/resolvers": "npm:^3.9.1"
-    "@react-native-async-storage/async-storage": "npm:^2.1.0"
+    "@react-native-async-storage/async-storage": "npm:1.23.1"
     "@reduxjs/toolkit": "npm:^2.5.0"
     "@types/react": "npm:~18.3.12"
+    "@types/react-native-get-random-values": "npm:^1"
     classnames: "npm:^2.5.1"
     expo: "npm:~52.0.23"
     expo-app-loading: "npm:2.1.1"
@@ -10166,14 +10221,17 @@ __metadata:
     expo-font: "npm:~13.0.2"
     expo-linking: "npm:~7.0.3"
     expo-router: "npm:~4.0.15"
+    expo-splash-screen: "npm:~0.29.18"
     expo-status-bar: "npm:~2.0.0"
     nativewind: "npm:^4.1.23"
     random-js: "npm:^2.1.0"
     react: "npm:18.3.1"
+    react-confetti: "npm:^6.2.2"
     react-dom: "npm:18.3.1"
     react-hook-form: "npm:^7.54.2"
     react-native: "npm:0.76.5"
     react-native-cache: "npm:^2.0.3"
+    react-native-get-random-values: "npm:^1.11.0"
     react-native-reanimated: "npm:~3.16.1"
     react-native-safe-area-context: "npm:4.12.0"
     react-native-screens: "npm:~4.4.0"
@@ -10185,7 +10243,7 @@ __metadata:
     tailwindcss: "npm:^3.4.17"
     tailwindcss-textshadow: "npm:^2.1.3"
     typescript: "npm:^5.3.3"
-    uuid: "npm:^11.0.3"
+    uuid: "npm:^11.0.4"
     yup: "npm:^1.6.1"
   languageName: unknown
   linkType: soft
