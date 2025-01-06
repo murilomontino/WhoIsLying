@@ -4,6 +4,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 import { selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
+import { onVoteInTheDisguised } from '../game/actions'
 import {
     type DisplayVoting,
     onAddPlayersFail,
@@ -186,11 +187,19 @@ export function* onNewRound() {
 export function* onVoteInPlayer({ payload }: PayloadAction<DisplayVoting>) {
     try {
         const { players }: RootState['players'] = yield select(selectPlayers)
+        const { disguisedPlayer }: RootState['game'] = yield select(
+            (state) => state.game,
+        )
+
+        if (payload.disguised_id === disguisedPlayer?._id) {
+            yield put(onVoteInTheDisguised({ player_id: payload._id }))
+        }
 
         const newPlayers: IPlayer[] = players.map((player) => {
             if (player._id === payload.disguised_id) {
                 return {
                     ...player,
+                    displayVotes: player.displayVotes + 1,
                     votes: [...player.votes, payload._id],
                 }
             }
@@ -198,7 +207,7 @@ export function* onVoteInPlayer({ payload }: PayloadAction<DisplayVoting>) {
             if (player._id === payload._id) {
                 return {
                     ...player,
-                    displayVotes: player.displayVotes + 1,
+                    canVote: false,
                 }
             }
             return player
