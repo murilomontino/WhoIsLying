@@ -17,7 +17,7 @@ import { useAppSelector } from '~/store/hooks'
 const RevealFoodScreen = () => {
     const router = useRouter()
     const { category } = useAppSelector((state) => state.categories)
-    const { disguisedPlayer } = useAppSelector((state) => state.game)
+    const { disguisedPlayer, votingItem } = useAppSelector((state) => state.game)
     const minDelay = 1000
     const delayName = 2000
     const delayProx = 3000
@@ -32,11 +32,19 @@ const RevealFoodScreen = () => {
     return (
         <DefaultLayout>
             <View
-                delay={100}
+                delay={300}
                 entering={FadeIn}
                 exiting={FadeOut}
                 className="flex flex-col items-center w-full h-full justify-evenly"
             >
+                <Text
+                    delay={100}
+                    entering={FadeIn.duration(1000)}
+                    as="h2"
+                    className="text-center !text-white text-shadow-outlined"
+                >
+                    Mostre esta tela para todos
+                </Text>
                 <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
                     <Text
                         delay={minDelay}
@@ -70,13 +78,17 @@ const RevealFoodScreen = () => {
                         Qual {category} é...
                     </Text>
                     <Dice3D
-                        winnerSound={true}
+                        winnerSound={
+                            votingItem.trim().toLowerCase() ===
+                            'cartoon'.trim().toLowerCase()
+                        }
                         onFinally={handleReveal}
                         initialWord="Revelar"
-                        finalWord={category}
+                        finalWord={votingItem}
                         words={[
                             'Pizza',
                             'Hamburguer',
+                            votingItem,
                             'Sushi',
                             'Salada',
                             'Churrasco',
@@ -84,14 +96,6 @@ const RevealFoodScreen = () => {
                     />
                 </View>
 
-                <Text
-                    delay={minDelay + delayProx + 1000}
-                    entering={FadeIn.duration(1000)}
-                    as="h2"
-                    className="text-center !text-white text-shadow-outlined"
-                >
-                    Mostre esta tela para todos
-                </Text>
                 <View
                     condition={reveal}
                     entering={BounceIn.duration(1000)}
