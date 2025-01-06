@@ -11,12 +11,16 @@ import {
     onAddPlayersSuccess,
     onAnsweredTheQuestionFail,
     onAnsweredTheQuestionSuccess,
+    onChangePlayersFail,
+    onChangePlayersSuccess,
     onDeletePlayersFail,
     onDeletePlayersSuccess,
-    onNewRoundFail,
-    onNewRoundSuccess,
+    onNewQuestionRoundFail,
+    onNewQuestionRoundSuccess,
     onResetPlayersFail,
     onResetPlayersSuccess,
+    onResetScoreFail,
+    onResetScoreSuccess,
     onResetVotingFail,
     onResetVotingSuccess,
     onUpdateCanPlayerVoteFail,
@@ -38,9 +42,11 @@ import type { IPlayer } from './player'
 import {
     ACTION_ADD_PLAYERS,
     ACTION_ANSWERED_THE_QUESTION,
+    ACTION_CHANGE_PLAYERS,
     ACTION_DELETE_PLAYERS,
     ACTION_NEW_ROUND,
     ACTION_RESET_PLAYERS,
+    ACTION_RESET_SCORE,
     ACTION_RESET_VOTING,
     ACTION_UPDATE_CAN_PLAYER_VOTE,
     ACTION_UPDATE_PLAYER_CAN_ANSWER,
@@ -167,7 +173,7 @@ export function* onResetVoting() {
     }
 }
 
-export function* onNewRound() {
+export function* onNewQuestionRound() {
     try {
         const { players }: RootState['players'] = yield select(selectPlayers)
         const newPlayers: IPlayer[] = players.map((player) => {
@@ -178,9 +184,9 @@ export function* onNewRound() {
                 blackListQuestioners: [],
             }
         })
-        yield put(onNewRoundSuccess({ players: newPlayers }))
+        yield put(onNewQuestionRoundSuccess({ players: newPlayers }))
     } catch (_) {
-        yield put(onNewRoundFail())
+        yield put(onNewQuestionRoundFail())
     }
 }
 
@@ -216,6 +222,31 @@ export function* onVoteInPlayer({ payload }: PayloadAction<DisplayVoting>) {
         yield put(onVoteInPlayerSuccess({ players: newPlayers }))
     } catch (_) {
         yield put(onVoteInPlayerFail())
+    }
+}
+
+export function* onChangePlayers({
+    payload,
+}: PayloadAction<{ players: IPlayer[] }>) {
+    try {
+        yield put(onChangePlayersSuccess(payload))
+    } catch (_) {
+        yield put(onChangePlayersFail())
+    }
+}
+
+export function* onResetScore() {
+    try {
+        const { players }: RootState['players'] = yield select(selectPlayers)
+        const newPlayers: IPlayer[] = players.map((player) => {
+            return {
+                ...player,
+                score: 0,
+            }
+        })
+        yield put(onResetScoreSuccess({ players: newPlayers }))
+    } catch (_) {
+        yield put(onResetScoreFail())
     }
 }
 
@@ -267,8 +298,16 @@ export function* watchOnAnsweredTheQuestion() {
     yield takeLatest(ACTION_ANSWERED_THE_QUESTION, onAnsweredTheQuestion)
 }
 
-export function* watchOnNewRound() {
-    yield takeLatest(ACTION_NEW_ROUND, onNewRound)
+export function* watchOnNewQuestionRound() {
+    yield takeLatest(ACTION_NEW_ROUND, onNewQuestionRound)
+}
+
+export function* watchOnChangePlayers() {
+    yield takeLatest(ACTION_CHANGE_PLAYERS, onChangePlayers)
+}
+
+export function* watchOnResetScore() {
+    yield takeLatest(ACTION_RESET_SCORE, onResetScore)
 }
 
 function* Sagas() {
@@ -285,7 +324,9 @@ function* Sagas() {
         fork(watchOnUpdateCanPlayerVote),
         fork(watchOnResetVoting),
         fork(watchOnVoteInPlayer),
-        fork(watchOnNewRound),
+        fork(watchOnNewQuestionRound),
+        fork(watchOnChangePlayers),
+        fork(watchOnResetScore),
     ])
 }
 

@@ -23,6 +23,9 @@ import {
     ON_RESET_PLAYERS,
     ON_RESET_PLAYERS_FAIL,
     ON_RESET_PLAYERS_SUCCESS,
+    ON_RESET_SCORE,
+    ON_RESET_SCORE_FAIL,
+    ON_RESET_SCORE_SUCCESS,
     ON_RESET_VOTING,
     ON_RESET_VOTING_FAIL,
     ON_RESET_VOTING_SUCCESS,
@@ -210,7 +213,10 @@ const slice = createSlice({
         [ON_CHANGE_PLAYERS]: (state) => {
             state.isLoading = LOADING.PENDING
         },
-        [ON_CHANGE_PLAYERS_SUCCESS]: (state, action) => {
+        [ON_CHANGE_PLAYERS_SUCCESS]: (
+            state,
+            action: PayloadAction<{ players: IPlayer[] }>,
+        ) => {
             state.isLoading = LOADING.SUCCESS
             state.players = action.payload.players
         },
@@ -260,6 +266,19 @@ const slice = createSlice({
             state.players = action.payload.players
         },
         [ON_ANSWERED_THE_QUESTION_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_RESET_SCORE]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_RESET_SCORE_SUCCESS]: (
+            state,
+            action: PayloadAction<{ players: IPlayer[] }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.players = action.payload.players
+        },
+        [ON_RESET_SCORE_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

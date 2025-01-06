@@ -20,6 +20,9 @@ import {
     ACTION_RESET_PLAYERS,
     ACTION_RESET_PLAYERS_FAIL,
     ACTION_RESET_PLAYERS_SUCCESS,
+    ACTION_RESET_SCORE,
+    ACTION_RESET_SCORE_FAIL,
+    ACTION_RESET_SCORE_SUCCESS,
     ACTION_RESET_VOTING,
     ACTION_RESET_VOTING_FAIL,
     ACTION_RESET_VOTING_SUCCESS,
@@ -46,8 +49,12 @@ import {
     ACTION_VOTE_IN_PLAYER_SUCCESS,
 } from './types'
 
-export const onChangePlayers = createAction(ACTION_CHANGE_PLAYERS)
-export const onChangePlayersSuccess = createAction(ACTION_CHANGE_PLAYERS_SUCCESS)
+export const onChangePlayers = createAction<{ players: IPlayer[] }>(
+    ACTION_CHANGE_PLAYERS,
+)
+export const onChangePlayersSuccess = createAction<{ players: IPlayer[] }>(
+    ACTION_CHANGE_PLAYERS_SUCCESS,
+)
 export const onChangePlayersFail = createAction(ACTION_CHANGE_PLAYERS_FAIL)
 
 export const onAddPlayers = createAction<{ name: string }>(ACTION_ADD_PLAYERS)
@@ -161,8 +168,14 @@ export const onAnsweredTheQuestionFail = createAction(
     ACTION_ANSWERED_THE_QUESTION_FAIL,
 )
 
-export const onNewRound = createAction(ACTION_NEW_ROUND)
-export const onNewRoundSuccess = createAction<{ players: IPlayer[] }>(
+export const onNewQuestionRound = createAction(ACTION_NEW_ROUND)
+export const onNewQuestionRoundSuccess = createAction<{ players: IPlayer[] }>(
     ACTION_NEW_ROUND_SUCCESS,
 )
-export const onNewRoundFail = createAction(ACTION_NEW_ROUND_FAIL)
+export const onNewQuestionRoundFail = createAction(ACTION_NEW_ROUND_FAIL)
+
+export const onResetScore = createAction(ACTION_RESET_SCORE)
+export const onResetScoreSuccess = createAction<{ players: IPlayer[] }>(
+    ACTION_RESET_SCORE_SUCCESS,
+)
+export const onResetScoreFail = createAction(ACTION_RESET_SCORE_FAIL)
