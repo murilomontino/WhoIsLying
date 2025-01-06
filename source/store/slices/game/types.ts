@@ -7,6 +7,7 @@ export type InitialState = {
     points: number
     questionRound: number
     disguisedPlayer: IPlayer | null
+    votingItem: string
 }
 
 export const name = 'game'
@@ -27,6 +28,10 @@ export const ON_GENERATE_DISGUISED = 'ON_GENERATE_DISGUISED'
 export const ON_GENERATE_DISGUISED_SUCCESS = 'ON_GENERATE_DISGUISED_SUCCESS'
 export const ON_GENERATE_DISGUISED_FAIL = 'ON_GENERATE_DISGUISED_FAIL'
 
+export const ON_VOTING_ITEM = 'ON_VOTING_ITEM'
+export const ON_VOTING_ITEM_SUCCESS = 'ON_VOTING_ITEM_SUCCESS'
+export const ON_VOTING_ITEM_FAIL = 'ON_VOTING_ITEM_FAIL'
+
 export const ACTION_CHANGE_ROUNDS = `${name}/${ON_CHANGE_ROUNDS}`
 export const ACTION_CHANGE_ROUNDS_SUCCESS = `${name}/${ON_CHANGE_ROUNDS_SUCCESS}`
 export const ACTION_CHANGE_ROUNDS_FAIL = `${name}/${ON_CHANGE_ROUNDS_FAIL}`
@@ -42,3 +47,7 @@ export const ACTION_CHANGE_QUESTION_ROUND_FAIL = `${name}/${ON_CHANGE_QUESTION_R
 export const ACTION_GENERATE_DISGUISED = `${name}/${ON_GENERATE_DISGUISED}`
 export const ACTION_GENERATE_DISGUISED_SUCCESS = `${name}/${ON_GENERATE_DISGUISED_SUCCESS}`
 export const ACTION_GENERATE_DISGUISED_FAIL = `${name}/${ON_GENERATE_DISGUISED_FAIL}`
+
+export const ACTION_VOTING_ITEM = `${name}/${ON_VOTING_ITEM}`
+export const ACTION_VOTING_ITEM_SUCCESS = `${name}/${ON_VOTING_ITEM_SUCCESS}`
+export const ACTION_VOTING_ITEM_FAIL = `${name}/${ON_VOTING_ITEM_FAIL}`

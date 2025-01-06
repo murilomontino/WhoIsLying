@@ -14,6 +14,9 @@ import {
     ACTION_GENERATE_DISGUISED,
     ACTION_GENERATE_DISGUISED_FAIL,
     ACTION_GENERATE_DISGUISED_SUCCESS,
+    ACTION_VOTING_ITEM,
+    ACTION_VOTING_ITEM_FAIL,
+    ACTION_VOTING_ITEM_SUCCESS,
 } from './types'
 
 export const onChangeRounds = createAction<{ rounds: number }>(ACTION_CHANGE_ROUNDS)
@@ -45,3 +48,9 @@ export const onGenerateDisguisedSuccess = createAction<{ players: IPlayer[] }>(
     ACTION_GENERATE_DISGUISED_SUCCESS,
 )
 export const onGenerateDisguisedFail = createAction(ACTION_GENERATE_DISGUISED_FAIL)
+
+export const onVotingItem = createAction<{ votingItem: string }>(ACTION_VOTING_ITEM)
+export const onVotingItemSuccess = createAction<{ votingItem: string }>(
+    ACTION_VOTING_ITEM_SUCCESS,
+)
+export const onVotingItemFail = createAction(ACTION_VOTING_ITEM_FAIL)

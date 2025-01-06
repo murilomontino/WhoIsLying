@@ -17,6 +17,9 @@ import {
     ON_GENERATE_DISGUISED,
     ON_GENERATE_DISGUISED_FAIL,
     ON_GENERATE_DISGUISED_SUCCESS,
+    ON_VOTING_ITEM,
+    ON_VOTING_ITEM_FAIL,
+    ON_VOTING_ITEM_SUCCESS,
     name,
 } from './types'
 
@@ -26,6 +29,7 @@ const initialState: InitialState = {
     points: 500,
     disguisedPlayer: null,
     questionRound: 1,
+    votingItem: '',
 }
 
 const slice = createSlice({
@@ -101,6 +105,19 @@ const slice = createSlice({
             state.disguisedPlayer = player
         },
         [ON_GENERATE_DISGUISED_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_VOTING_ITEM]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_VOTING_ITEM_SUCCESS]: (
+            state,
+            action: PayloadAction<{ votingItem: string }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.votingItem = action.payload.votingItem
+        },
+        [ON_VOTING_ITEM_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

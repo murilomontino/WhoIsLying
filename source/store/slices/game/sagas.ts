@@ -13,12 +13,15 @@ import {
     onChangeRoundsSuccess,
     onGenerateDisguisedFail,
     onGenerateDisguisedSuccess,
+    onVotingItemFail,
+    onVotingItemSuccess,
 } from './actions'
 import {
     ACTION_CHANGE_POINTS,
     ACTION_CHANGE_QUESTION_ROUND,
     ACTION_CHANGE_ROUNDS,
     ACTION_GENERATE_DISGUISED,
+    ACTION_VOTING_ITEM,
 } from './types'
 
 export function* onChangeRounds({ payload }: PayloadAction<{ rounds: number }>) {
@@ -56,6 +59,14 @@ export function* onGenerateDisguised() {
     }
 }
 
+export function* onVotingItem({ payload }: PayloadAction<{ votingItem: string }>) {
+    try {
+        yield put(onVotingItemSuccess(payload))
+    } catch (_) {
+        yield put(onVotingItemFail())
+    }
+}
+
 export function* watchOnChangeRounds() {
     yield takeLatest(ACTION_CHANGE_ROUNDS, onChangeRounds)
 }
@@ -72,12 +83,17 @@ export function* watchOnGenerateDisguised() {
     yield takeLatest(ACTION_GENERATE_DISGUISED, onGenerateDisguised)
 }
 
+export function* watchOnVotingItem() {
+    yield takeLatest(ACTION_VOTING_ITEM, onVotingItem)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnChangeRounds),
         fork(watchOnChangePoints),
         fork(watchOnChangeQuestionRounds),
         fork(watchOnGenerateDisguised),
+        fork(watchOnVotingItem),
     ])
 }
 
