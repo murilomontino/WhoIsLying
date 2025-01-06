@@ -1,5 +1,8 @@
 import cn from 'classnames'
+import { useFonts } from 'expo-font'
+import { SplashScreen } from 'expo-router'
 import type React from 'react'
+import { useEffect } from 'react'
 import { View } from 'react-native'
 
 type DefaultLayoutProps = {
@@ -7,7 +10,22 @@ type DefaultLayoutProps = {
     className?: string
 }
 
+SplashScreen.preventAutoHideAsync()
+
 const DefaultLayout = ({ children, className }: DefaultLayoutProps) => {
+    const [loaded, error] = useFonts({
+        Bangers_400Regular: require('../../../../assets/fonts/Bangers_400Regular.ttf'),
+    })
+
+    useEffect(() => {
+        if (loaded || error) {
+            SplashScreen.hideAsync()
+        }
+    }, [loaded, error])
+
+    if (!loaded && !error) {
+        return null
+    }
     return (
         <View
             className={cn(

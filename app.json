@@ -30,7 +30,14 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Bangers_400Regular.ttf"
+          ]
+        }
+      ]
     ],
     "extra": {
       "router": {
