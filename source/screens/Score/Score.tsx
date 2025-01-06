@@ -28,9 +28,8 @@ const ScoreScreen = () => {
     const dispatch = useAppDispatch()
 
     const { players } = useAppSelector((state) => state.players)
-    const { disguisedPlayer, questionRound, votingItem } = useAppSelector(
-        (state) => state.game,
-    )
+    const { disguisedPlayer, questionRound, votingItem, points, round, rounds } =
+        useAppSelector((state) => state.game)
 
     const winner = useMemo(() => {
         return players.reduce((acc, player) => {
@@ -95,6 +94,15 @@ const ScoreScreen = () => {
         dispatch(onScorePlayers({ playersScore: playersScore }))
         setIsExiting(true)
         await delay(1000)
+
+        const conditionVictoryByRound = round <= rounds
+        const conditionVictoryByPoints = sortedPlayers[0].score >= points
+
+        if (conditionVictoryByRound || conditionVictoryByPoints) {
+            router.push('/victory')
+            return
+        }
+
         router.push('/new-round')
     }
 
