@@ -4,7 +4,17 @@ import Animated from 'react-native-reanimated'
 export type TextProps = React.ComponentProps<typeof Animated.Text>
 
 const Text = (props: TextProps) => {
-    return <Animated.Text {...props} />
+    return (
+        <Animated.Text
+            style={[
+                {
+                    fontFamily: 'Bangers_400Regular',
+                },
+                props.style,
+            ]}
+            {...props}
+        />
+    )
 }
 
 export default Text
