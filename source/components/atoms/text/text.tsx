@@ -8,7 +8,7 @@ import AnimatedText, {
 
 const text = tv({
     base: `
-        font-bold font-bangers text-gray-800
+        text-gray-800
     `,
     variants: {
         as: {
@@ -38,9 +38,15 @@ const Text = ({ className, ...props }: TextProps) => {
     return (
         <AnimatedText
             {...props}
+            style={[
+                {
+                    fontFamily: 'Bangers_400Regular',
+                },
+                props.style,
+            ]}
             className={text({
-                className: className as string,
                 as: props.as,
+                className: className as string,
             })}
         />
     )
