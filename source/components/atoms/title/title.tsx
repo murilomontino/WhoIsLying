@@ -1,45 +1,31 @@
-import { Bangers_400Regular, useFonts } from '@expo-google-fonts/bangers'
-import type { TextProps } from 'react-native'
+import { Text, type TextProps } from 'react-native'
 import { BounceIn, BounceOutRight } from 'react-native-reanimated'
 import View from '~/components/ui/view'
-import Text from '../text'
 
 export type TitleProps = TextProps
 
 export default function Title({ className, ...props }: TitleProps) {
     const title = 'Who Is Lying'
 
-    const [fontsLoaded] = useFonts({
-        Bangers_400Regular,
-    })
-
-    if (!fontsLoaded) {
-        return null
-    }
-
     return (
         <View
+            {...props}
             entering={BounceIn}
             exiting={BounceOutRight}
-            className={`flex flex-row items-center ${className}`}
+            className={`flex flex-row items-center justify-center w-[80vw]  text-center flex-wrap ${className}`}
         >
-            {title.split('').map((char: string, index: number) => (
-                <Text
-                    key={`${char}-${
-                        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                        index
-                    }`}
-                    as="h1"
-                    className="mr-1 italic"
-                    style={{
+            <Text
+                className="px-1 text-center "
+                style={[
+                    {
+                        fontFamily: 'Bangers_400Regular',
                         color: 'white',
-                        transform: [{ translateY: index % 2 === 0 ? -2 : 2 }], // Alterna posição no eixo Y
-                    }}
-                    {...props}
-                >
-                    {char}
-                </Text>
-            ))}
+                        fontSize: 72,
+                    },
+                ]}
+            >
+                {title}
+            </Text>
         </View>
     )
 }
