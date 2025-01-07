@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router'
 import React from 'react'
+import { ScrollView } from 'react-native'
 import { FadeIn, FadeInRight, FadeOut, FadeOutRight } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { Button } from '~/components/atoms/button'
@@ -36,6 +37,18 @@ const categories: Category[] = [
         title: 'Game',
         category: 'game',
     },
+    {
+        title: 'Music',
+        category: 'music',
+    },
+    {
+        title: 'Series',
+        category: 'series',
+    },
+    {
+        title: 'Random',
+        category: 'random',
+    },
 ] as const
 
 const CategoriesScreen = () => {
@@ -60,18 +73,27 @@ const CategoriesScreen = () => {
             >
                 Categorias
             </Text>
-            <View className="flex flex-row flex-wrap justify-start">
+            <ScrollView
+                contentContainerStyle={{
+                    flexWrap: 'wrap',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    paddingHorizontal: 16,
+                }}
+                style={{ flex: 1 }} // Garante que o ScrollView ocupe o espaço disponível
+            >
                 {categories.map((category, index) => (
                     <View
                         key={category.category}
                         delay={(index + 1) * 100}
                         entering={FadeInRight.duration(450)}
                         exiting={FadeOutRight.duration(450)}
+                        className="flex-grow w-full m-4 md:w-1/3"
                     >
                         <Button
+                            className="w-full"
                             disabled={!category.active}
                             onPress={() => handleCategory(category.category)}
-                            style={{ margin: 8 }}
                         >
                             <CardCategory
                                 title={category.title}
@@ -80,7 +102,7 @@ const CategoriesScreen = () => {
                         </Button>
                     </View>
                 ))}
-            </View>
+            </ScrollView>
         </DefaultLayout>
     )
 }

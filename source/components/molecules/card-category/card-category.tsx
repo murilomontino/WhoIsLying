@@ -1,5 +1,6 @@
 import React from 'react'
-import { ImageBackground, Text, View } from 'react-native'
+import { ImageBackground, View } from 'react-native'
+import Text from '~/components/atoms/text'
 
 const ImgCategoryUri = {
     cartoon: require('../../../../assets/images/categories/desenho-animado.jpeg'),
@@ -16,19 +17,15 @@ const CardCategory = ({ title, category }: CardCategoryProps) => {
         <ImageBackground
             source={ImgCategoryUri[category]} // Caminho da imagem
             resizeMode="cover" // Ajusta a imagem para cobrir todo o card
-            style={{ width: 144, height: 144, borderRadius: 8, overflow: 'hidden' }} // Dimensões e bordas arredondadas
+            style={{
+                width: '100%',
+                height: 144,
+                borderRadius: 8,
+                overflow: 'hidden',
+            }} // Dimensões e bordas arredondadas
         >
-            <View className="flex items-center justify-center border-2 border-gray-300 rounded-lg w-36 h-36">
-                <Text
-                    style={{
-                        fontFamily: 'Bangers_400Regular',
-                        fontSize: 32,
-                        textShadowColor: '#181818', // Cor da borda
-                        textShadowOffset: { width: 2, height: 2 }, // Offset da sombra
-                        textShadowRadius: 2, // Raio para suavizar a sombra
-                    }}
-                    className="text-xl text-white"
-                >
+            <View className="flex items-center justify-center flex-grow border-2 border-gray-300 rounded-lg ">
+                <Text as="h2" className="text-white ">
                     {title}
                 </Text>
             </View>
