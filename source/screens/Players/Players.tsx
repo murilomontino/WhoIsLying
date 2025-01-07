@@ -1,11 +1,14 @@
-import AntDesign from '@expo/vector-icons/AntDesign'
+import { AntDesign } from '@expo/vector-icons'
 import { yupResolver } from '@hookform/resolvers/yup'
 import cn from 'classnames'
-import { Link } from 'expo-router'
-import { useMemo } from 'react'
+import { useRouter } from 'expo-router'
+import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native'
 import {
+    BounceIn,
     BounceInDown,
+    BounceOutRight,
     BounceOutUp,
     FadeInDown,
     FadeInLeft,
@@ -16,8 +19,7 @@ import {
 } from 'react-native-reanimated'
 import * as Yup from 'yup'
 import DefaultLayout from '~/components/_layout/default'
-import { Button } from '~/components/atoms/button'
-import { ButtonPrimary } from '~/components/atoms/button/button'
+import { Button, ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
 import ControlInput from '~/components/molecules/control-input'
@@ -36,6 +38,8 @@ const schema = Yup.object().shape({
 export default function Page() {
     const { players } = useAppSelector((state) => state.players)
     const dispatch = useAppDispatch()
+    const router = useRouter()
+    const [isExiting, setIsExiting] = useState(false)
 
     const {
         control,
@@ -63,106 +67,171 @@ export default function Page() {
         return players.reduce((acc, player) => acc + player.score, 0)
     }, [players])
 
+    const handleToGoCategories = () => {
+        setIsExiting(true)
+        setTimeout(() => {
+            router.push('/categories')
+        }, 500)
+    }
+
     return (
         <DefaultLayout>
             <Restart />
-            <Title />
-            <Text
-                delay={100}
-                entering={FadeInUp}
-                exiting={FadeOutDown}
-                as="h2"
-                className={cn(
-                    { '!text-red-500': players.length < 3 },
-                    'text-gray-800 text-center',
-                )}
+            <View
+                demount={isExiting}
+                entering={BounceIn}
+                exiting={BounceOutRight}
+                className={'flex flex-[2] max-h-[30vh] md:max-h-[15vh] mb-2 h-fit'}
             >
-                {players.length} {players.length === 1 ? 'Jogador' : 'Jogadores'}{' '}
-                <Text>(Min 3)</Text>
-            </Text>
-            <View className="flex flex-col w-full px-4 space-y-4 overflow-auto h-52 md:w-1/2">
-                {players.map((player, index) => (
-                    <View
-                        delay={(index + 1) * 100}
-                        entering={FadeInLeft}
-                        exiting={FadeOutRight}
-                        key={player._id}
-                        className="flex flex-row items-center flex-1 h-10 px-4 py-2 space-x-4 bg-white rounded-full min-h-10 max-h-10"
+                <Title />
+                <View className="h-fit">
+                    <Text
+                        delay={100}
+                        demount={isExiting}
+                        entering={FadeInUp}
+                        exiting={FadeOutDown}
+                        as="h2"
+                        style={{
+                            fontFamily: 'Bangers_400Regular',
+                            fontSize: 32,
+                        }}
+                        className={cn(
+                            { '!text-red-400': players.length < 3 },
+                            'text-gray-800 text-center py-2',
+                        )}
                     >
-                        <Text className="text-2xl flex-[10] text-center text-gray-800">
-                            {player.name}
+                        {players.length}{' '}
+                        {players.length === 1 ? 'Jogador' : 'Jogadores'}{' '}
+                        <Text>(Min 3)</Text>
+                    </Text>
+                </View>
+            </View>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                style={[
+                    {
+                        flex: 1,
+                        width: '100%',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    },
+                ]}
+            >
+                <ScrollView className="flex max-h-[38vh] w-full overflow-y-auto flex-col   py-2 px-2 overflow-auto flex-[2] h-52 md:w-1/2">
+                    {players.map((player, index) => (
+                        <View
+                            demount={isExiting}
+                            delay={(index + 1) * 100}
+                            entering={FadeInLeft}
+                            exiting={FadeOutRight.delay(100 * index)}
+                            key={player._id}
+                            className="flex flex-row items-center flex-1 gap-4 px-4 my-2 bg-white rounded-full md:py-2 h-fit md:h-10 min-h-10 max-h-10"
+                        >
+                            <Text className="text-2xl flex-[10] text-center text-gray-800">
+                                {player.name}
+                            </Text>
+                            <Text className="text-2xl flex-[1] text-center text-gray-800">
+                                {player.score}
+                            </Text>
+                            <Button
+                                className="flex-[1] border-none"
+                                onPress={() => handleDelete(player._id)}
+                            >
+                                <AntDesign
+                                    name="delete"
+                                    size={24}
+                                    className="text-gray-800"
+                                />
+                            </Button>
+                        </View>
+                    ))}
+                </ScrollView>
+
+                <View className="items-center justify-start flex-1 w-full py-4 min-h-fit">
+                    <Button
+                        delay={200}
+                        onPress={handlePressZeroPoints}
+                        condition={totalScore > 0}
+                        className="items-center justify-center bg-gray-500 rounded-full h-11 w-60"
+                    >
+                        <Text
+                            style={[
+                                {
+                                    textShadowColor: '#ef4444',
+                                    textShadowOffset: { width: -2, height: 2 },
+                                    textShadowRadius: 10,
+                                    fontFamily: 'Bangers_400Regular',
+                                },
+                            ]}
+                            className="!text-white text-shadow-outlined-red"
+                            as="h5"
+                        >
+                            Zerar Pontuação
                         </Text>
-                        <Text className="text-2xl flex-[1] text-center text-gray-800">
-                            {player.score}
-                        </Text>
+                    </Button>
+                    <View
+                        delay={250}
+                        entering={FadeInDown}
+                        exiting={FadeOutUp}
+                        className="flex-row items-center justify-center w-full px-8 py-2 mb-2 "
+                    >
+                        <View className="w-full">
+                            <Text>Nome do Jogador</Text>
+                            <ControlInput
+                                onSubmitEditing={() => handleSubmit(handlePress)()}
+                                name="name"
+                                control={control}
+                                onKeyPress={({ nativeEvent }) => {
+                                    if (nativeEvent.key === 'Enter') {
+                                        handleSubmit(handlePress)()
+                                    }
+                                }}
+                                className="mr-2 text-2xl"
+                                errors={errors}
+                            />
+                        </View>
                         <Button
-                            className="flex-[1]"
-                            onPress={() => handleDelete(player._id)}
+                            shadow={null}
+                            className="!bg-transparent"
+                            onPress={handleSubmit(handlePress)}
+                            disabled={!isValid}
                         >
                             <AntDesign
-                                name="delete"
+                                name="pluscircleo"
                                 size={24}
-                                className="text-gray-800"
+                                className="mt-10 text-gray-800"
                             />
                         </Button>
                     </View>
-                ))}
-            </View>
-
-            <View
-                delay={250}
-                entering={FadeInDown}
-                exiting={FadeOutUp}
-                className="flex flex-row items-center justify-center w-[70vw] px-8 "
-            >
-                <ControlInput
-                    name="name"
-                    control={control}
-                    onKeyPress={({ nativeEvent }) => {
-                        if (nativeEvent.key === 'Enter') {
-                            handleSubmit(handlePress)()
-                        }
-                    }}
-                    className="mr-5 text-2xl"
-                    errors={errors}
-                />
-                <Button
-                    className="!bg-transparent"
-                    onPress={handleSubmit(handlePress)}
-                    disabled={!isValid}
-                >
-                    <AntDesign
-                        name="pluscircleo"
-                        size={48}
-                        className="text-gray-800"
-                    />
-                </Button>
-            </View>
-            <View
-                delay={100}
-                entering={BounceInDown.duration(1000)}
-                exiting={BounceOutUp.duration(1000)}
-                className="flex flex-col items-center justify-center w-full px-4 space-x-4 space-y-2"
-            >
-                <Button
-                    delay={200}
-                    onPress={handlePressZeroPoints}
-                    condition={totalScore > 0}
-                    className="items-center justify-center bg-gray-500 rounded-full h-11 w-60"
-                >
-                    <Text className="!text-white text-shadow-outlined-red" as="h5">
-                        Zerar Pontuação
-                    </Text>
-                </Button>
-                <Link href="/categories" asChild>
-                    <ButtonPrimary
-                        className="w-full md:w-1/2 "
-                        disabled={players.length < 3}
+                    <View
+                        delay={100}
+                        demount={isExiting}
+                        entering={BounceInDown.duration(1000)}
+                        exiting={BounceOutUp.duration(1000)}
+                        className="w-[95vw] items-center justify-center"
                     >
-                        Ir Para Categorias
-                    </ButtonPrimary>
-                </Link>
-            </View>
+                        <ButtonPrimary
+                            className="w-full"
+                            onPress={handleToGoCategories}
+                            disabled={players.length < 3}
+                        >
+                            <Text
+                                className="w-full py-2 text-white"
+                                style={[
+                                    {
+                                        textShadowColor: '#ef4444',
+                                        textShadowOffset: { width: -2, height: 2 },
+                                        textShadowRadius: 10,
+                                        fontFamily: 'Bangers_400Regular',
+                                    },
+                                ]}
+                            >
+                                Ir Para Categorias
+                            </Text>
+                        </ButtonPrimary>
+                    </View>
+                </View>
+            </KeyboardAvoidingView>
         </DefaultLayout>
     )
 }
