@@ -1,3 +1,4 @@
+import { AntDesign } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React from 'react'
 import {
@@ -42,16 +43,18 @@ const PreStartScreen = () => {
     return (
         <DefaultLayout>
             <GoBack />
-            <Title />
-            <Text
-                entering={FlipInEasyX.duration(500)}
-                exiting={FlipOutEasyX.duration(500)}
-                as="h2"
-                className="text-center !text-gray-800 text-shadow-outlined-red"
-            >
-                {category}
-            </Text>
-            <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
+            <View className="flex-1">
+                <Title />
+                <Text
+                    entering={FlipInEasyX.duration(500)}
+                    exiting={FlipOutEasyX.duration(500)}
+                    as="h2"
+                    className="text-center !text-gray-800 text-shadow-outlined-red"
+                >
+                    {category}
+                </Text>
+            </View>
+            <View className="flex flex-col items-center justify-center flex-1 w-full px-2">
                 <Text
                     entering={FadeIn.duration(1000)}
                     exiting={FadeOut.duration(1000)}
@@ -66,7 +69,7 @@ const PreStartScreen = () => {
             <View
                 entering={BounceIn.duration(1000)}
                 exiting={BounceOut.duration(1000)}
-                className="flex flex-row items-center justify-center w-full px-4 space-x-4"
+                className="flex flex-row items-center justify-center flex-1 w-full px-4 space-x-4"
             >
                 <ButtonPrimary
                     className="w-full md:w-1/2"
@@ -74,6 +77,8 @@ const PreStartScreen = () => {
                 >
                     <Text as="h3" className="!text-white text-shadow-outlined-red">
                         Start Game
+                        {'  '}
+                        <AntDesign name="play" size={24} />
                     </Text>
                 </ButtonPrimary>
             </View>

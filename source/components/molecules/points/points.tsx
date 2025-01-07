@@ -33,7 +33,7 @@ const Points = () => {
                     'opacity-50 bg-gray-200': !startingPlayer,
                     'opacity-100 bg-white': startingPlayer,
                 },
-                'flex-row items-center justify-between w-full rounded-full md:w-1/2 ',
+                'flex-row items-center justify-between my-2 w-full rounded-full md:w-1/2 ',
             )}
         >
             <Button
