@@ -15,6 +15,7 @@ SplashScreen.preventAutoHideAsync()
 const DefaultLayout = ({ children, className }: DefaultLayoutProps) => {
     const [loaded, error] = useFonts({
         Bangers_400Regular: require('../../../../assets/fonts/Bangers_400Regular.ttf'),
+        Poppins_400Regular: require('../../../../assets/fonts/Poppins_400Regular.ttf'),
     })
 
     useEffect(() => {
