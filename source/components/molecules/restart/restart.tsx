@@ -2,8 +2,8 @@ import { AntDesign } from '@expo/vector-icons'
 import React from 'react'
 import { FadeIn, FadeOut } from 'react-native-reanimated'
 import { Button } from '~/components/atoms/button'
-import Text from '~/components/atoms/text'
 import withControl, { type ControlProps } from '~/components/helpers/with-control'
+import Text from '~/components/ui/text'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onChangePlayRound, onResetGame } from '~/store/slices/game/actions'
@@ -31,11 +31,20 @@ const Restart = ({ ...props }: ControlProps) => {
         >
             <Button
                 onPress={handleRestart}
-                className="px-4 m-4 bg-red-500 rounded-full w-fit"
+                className="px-4 pb-2 m-2 bg-red-400 rounded-full md:m-4 w-fit md:pb-0"
             >
-                <Text className="gap-2 space-x-2 text-white" as="body">
-                    <AntDesign name="sync" size={24} className="mr-2 text-white" />
-                    Novo Jogo
+                <Text
+                    style={[
+                        {
+                            fontFamily: 'Bangers_400Regular',
+                            color: 'white',
+                            fontSize: 20,
+                        },
+                    ]}
+                    className="gap-2 text-white"
+                >
+                    <AntDesign name="sync" size={20} className="text-white " /> Novo
+                    Jogo
                 </Text>
             </Button>
         </View>
