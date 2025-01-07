@@ -23,9 +23,11 @@ export default function Input({ className, ...props }: InputProps) {
         <TextInput
             {...props}
             className={input({ className })}
-            style={{
-                fontFamily: 'Poppins_400Regular',
-            }}
+            style={[
+                {
+                    fontFamily: 'Poppins_400Regular',
+                },
+            ]}
         />
     )
 }
