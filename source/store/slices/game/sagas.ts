@@ -10,6 +10,7 @@ import {
     onChangePlayRoundSuccess,
     onChangePointsFail,
     onChangePointsSuccess,
+    onChangeQuestionRound,
     onChangeQuestionRoundFail,
     onChangeQuestionRoundSuccess,
     onChangeRoundsFail,
@@ -26,7 +27,7 @@ import {
     onVotingItemSuccess,
 } from './actions'
 
-import { onChangePlayers, onResetPlayers } from '../players/actions'
+import { onChangePlayers, onResetPlayers, onResetScore } from '../players/actions'
 import type { IPlayer } from '../players/player'
 import {
     ACTION_CHANGE_PLAY_ROUND,
@@ -117,6 +118,8 @@ export function* onResetGame() {
     try {
         yield put(onResetPlayers())
         yield put(onResetGameSuccess())
+        yield put(onResetScore())
+        yield put(onChangeQuestionRound({ questionRound: 1 }))
     } catch (_) {
         yield put(onResetGameFail())
     }
