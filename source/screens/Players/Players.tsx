@@ -127,10 +127,10 @@ export default function Page() {
                             key={player._id}
                             className="flex flex-row items-center flex-1 gap-4 px-4 my-2 bg-white rounded-full md:py-2 h-fit md:h-10 min-h-10 max-h-10"
                         >
-                            <Text className="text-2xl flex-[10] text-center text-gray-800">
+                            <Text className="text-2xl flex-[8] text-center text-gray-800">
                                 {player.name}
                             </Text>
-                            <Text className="text-2xl flex-[1] text-center text-gray-800">
+                            <Text className="text-2xl min-w-[48px] flex-[1] text-center text-gray-800">
                                 {player.score}
                             </Text>
                             <Button
@@ -181,11 +181,6 @@ export default function Page() {
                                 onSubmitEditing={() => handleSubmit(handlePress)()}
                                 name="name"
                                 control={control}
-                                onKeyPress={({ nativeEvent }) => {
-                                    if (nativeEvent.key === 'Enter') {
-                                        handleSubmit(handlePress)()
-                                    }
-                                }}
                                 className="mr-2 text-2xl"
                                 errors={errors}
                             />

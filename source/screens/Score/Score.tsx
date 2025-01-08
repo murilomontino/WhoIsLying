@@ -147,13 +147,15 @@ const ScoreScreen = () => {
                             key={player._id}
                             className="flex flex-row items-center flex-1 h-10 px-4 py-2 space-x-4 bg-white rounded-full min-h-10 max-h-10"
                         >
-                            <Text className="text-2xl flex-[10] text-center text-gray-800">
+                            <Text className="text-2xl flex-[8] text-center text-gray-800">
                                 {player.name}
                             </Text>
-                            <Score
-                                playerScore={player.score}
-                                sumScore={player.sumScore}
-                            />
+                            <View className="flex-[2] min-w-[64px]">
+                                <Score
+                                    playerScore={player.score}
+                                    sumScore={player.sumScore}
+                                />
+                            </View>
                         </View>
                     ))}
                 </ScrollView>
