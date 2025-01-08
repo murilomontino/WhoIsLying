@@ -39,7 +39,7 @@ const NewRoundScreen = () => {
     }
 
     return (
-        <DefaultLayout className="items-center justify-center">
+        <DefaultLayout className="items-center justify-center px-8">
             <GoBack />
             <View
                 delay={100}
@@ -64,11 +64,11 @@ const NewRoundScreen = () => {
                 demount={isExiting}
                 entering={BounceIn.duration(1000)}
                 exiting={BounceOut.duration(1000)}
-                className="flex flex-row items-center justify-center w-full px-4 space-x-4"
+                className="flex flex-row items-center justify-center w-full "
             >
                 <ButtonSecondary
                     onPress={handleContinueFromCategory}
-                    className="w-full md:w-1/2"
+                    className="!w-full"
                 >
                     <Text as="h3">Escolher Categoria</Text>
                 </ButtonSecondary>
@@ -78,12 +78,9 @@ const NewRoundScreen = () => {
                 demount={isExiting}
                 entering={BounceIn.duration(1000)}
                 exiting={BounceOut.duration(1000)}
-                className="flex flex-row items-center justify-center w-full px-4 space-x-4"
+                className="flex flex-row items-center justify-center !w-full "
             >
-                <ButtonPrimary
-                    onPress={handleContinueNewRound}
-                    className="w-full md:w-1/2"
-                >
+                <ButtonPrimary onPress={handleContinueNewRound} className="w-full">
                     <Text as="h3" className="!text-white text-shadow-outlined-red">
                         Manter Categoria e Continuar
                     </Text>
@@ -94,11 +91,11 @@ const NewRoundScreen = () => {
                 demount={isExiting}
                 entering={BounceIn.duration(1000)}
                 exiting={BounceOut.duration(1000)}
-                className="flex flex-row items-center justify-center w-full px-4 space-x-4"
+                className="flex flex-row items-center justify-center !w-full"
             >
                 <Button
                     onPress={handleContinueNewPlayer}
-                    className="items-center justify-center w-full md:w-1/2 "
+                    className="items-center justify-center !w-full"
                 >
                     <Text as="h3" className="px-4 py-2 ">
                         + Adicionar/Remover Jogador(a)

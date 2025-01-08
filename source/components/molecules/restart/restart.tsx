@@ -6,8 +6,7 @@ import withControl, { type ControlProps } from '~/components/helpers/with-contro
 import Text from '~/components/ui/text'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
-import { onChangePlayRound, onResetGame } from '~/store/slices/game/actions'
-import { onResetScore } from '~/store/slices/players/actions'
+import { onResetGame } from '~/store/slices/game/actions'
 import cache from '~/utils/cache'
 
 const Restart = ({ ...props }: ControlProps) => {
@@ -16,9 +15,7 @@ const Restart = ({ ...props }: ControlProps) => {
 
     const handleRestart = () => {
         cache.clearAll()
-        dispatch(onChangePlayRound({ round: 5 }))
         dispatch(onResetGame())
-        dispatch(onResetScore())
     }
 
     return (

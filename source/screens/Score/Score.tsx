@@ -96,8 +96,10 @@ const ScoreScreen = () => {
         setIsExiting(true)
         await delay(1000)
 
-        const conditionVictoryByRound = round <= rounds
-        const conditionVictoryByPoints = sortedPlayers[0].score >= points
+        const conditionVictoryByRound = round >= rounds
+        const conditionVictoryByPoints = players.find(
+            (player) => player.score >= points,
+        )
 
         if (conditionVictoryByRound || conditionVictoryByPoints) {
             router.push('/victory')

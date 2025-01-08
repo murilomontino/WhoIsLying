@@ -211,7 +211,7 @@ export default function Page() {
                             disabled={players.length < 3}
                         >
                             <Text
-                                className="w-full py-2 text-white"
+                                className="w-full py-2 text-center text-white"
                                 style={[
                                     {
                                         textShadowColor: '#ef4444',
@@ -222,6 +222,8 @@ export default function Page() {
                                 ]}
                             >
                                 Ir Para Categorias
+                                {'  '}
+                                <AntDesign name="play" size={24} />
                             </Text>
                         </ButtonPrimary>
                     </View>
