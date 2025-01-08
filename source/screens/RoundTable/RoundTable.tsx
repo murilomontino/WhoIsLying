@@ -1,7 +1,5 @@
-import { AntDesign } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React, { useCallback } from 'react'
-import { Text, View } from 'react-native'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
 import Title from '~/components/atoms/title'
@@ -9,6 +7,9 @@ import GoBack from '~/components/molecules/go-back'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onNewQuestionRound, onResetVoting } from '~/store/slices/players/actions'
 
+import { AntDesign } from '@expo/vector-icons'
+import Text from '~/components/atoms/text'
+import View from '~/components/ui/view'
 import { onChangeQuestionRound } from '~/store/slices/game/actions'
 import cache from '~/utils/cache'
 import { delay } from '~/utils/delay'
@@ -36,8 +37,8 @@ const RoundTableScreen = () => {
 
     const handlePressAnotherRound = useCallback(async () => {
         await cache.clearAll()
-        await dispatch(onNewQuestionRound())
-        await dispatch(onChangeQuestionRound({ questionRound: questionRound + 1 }))
+        dispatch(onNewQuestionRound())
+        dispatch(onChangeQuestionRound({ questionRound: questionRound + 1 }))
         await delay(100)
         await handleNextRound()
     }, [players, questionRound])
@@ -47,45 +48,27 @@ const RoundTableScreen = () => {
             <GoBack href="/" />
             <View className="flex flex-col items-center justify-center w-full h-full space-y-8">
                 <Title />
-                <View className="flex items-center justify-center w-full px-8 space-y-4">
+                <View className="flex items-center justify-center flex-1 w-full gap-4 px-4">
                     <ButtonSecondary
+                        className="flex flex-col items-center justify-center w-[75vw] text-center "
                         onPress={handlePressAnotherRound}
-                        className="flex flex-row w-full space-x-2 rounded-full md:w-1/2"
                     >
-                        <AntDesign
-                            name="pluscircleo"
-                            size={42}
-                            className="text-gray-800 "
-                        />
-                        <Text
-                            className="text-gray-800"
-                            style={{
-                                fontFamily: 'Bangers_400Regular',
-                                fontSize: 42,
-                                textShadowColor: '#ef4444', // Cor da borda
-                                textShadowOffset: { width: 1, height: 1 }, // Offset da sombra
-                                textShadowRadius: 2, // Raio para suavizar a sombra
-                            }}
-                        >
-                            Mais uma Rodada
-                        </Text>
+                        <View className="flex flex-row items-center justify-center w-full">
+                            <AntDesign
+                                name="pluscircleo"
+                                size={24}
+                                className="text-gray-800 "
+                            />
+                            <Text className="ml-2 text-3xl text-gray-800 ">
+                                Mais uma Rodada
+                            </Text>
+                        </View>
                     </ButtonSecondary>
                     <ButtonPrimary
+                        className="flex flex-col items-center justify-center w-[75vw] text-center "
                         onPress={handlePressWeAreReady}
-                        className="w-full rounded-full md:w-1/2"
                     >
-                        <Text
-                            className="text-white"
-                            style={{
-                                fontFamily: 'Bangers_400Regular',
-                                fontSize: 42,
-                                textShadowColor: '#ef4444', // Cor da borda
-                                textShadowOffset: { width: 1, height: 1 }, // Offset da sombra
-                                textShadowRadius: 2, // Raio para suavizar a sombra
-                            }}
-                        >
-                            Estamos Prontos
-                        </Text>
+                        <Text className="text-3xl text-white">Estamos Prontos</Text>
                     </ButtonPrimary>
                 </View>
             </View>
