@@ -10,7 +10,6 @@ import {
     onChangePlayRoundSuccess,
     onChangePointsFail,
     onChangePointsSuccess,
-    onChangeQuestionRound,
     onChangeQuestionRoundFail,
     onChangeQuestionRoundSuccess,
     onChangeRoundsFail,
@@ -117,9 +116,8 @@ export function* onScorePlayers({
 export function* onResetGame() {
     try {
         yield put(onResetPlayers())
-        yield put(onResetGameSuccess())
         yield put(onResetScore())
-        yield put(onChangeQuestionRound({ questionRound: 1 }))
+        yield put(onResetGameSuccess())
     } catch (_) {
         yield put(onResetGameFail())
     }

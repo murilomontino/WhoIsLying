@@ -147,7 +147,8 @@ const slice = createSlice({
         },
         [ON_RESET_GAME_SUCCESS]: (state) => {
             state.isLoading = LOADING.SUCCESS
-            state.rounds = 1
+            state.rounds = 5
+            state.round = 1
             state.points = 500
             state.disguisedPlayer = null
             state.questionRound = 1
