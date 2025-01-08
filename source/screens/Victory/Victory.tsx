@@ -16,6 +16,8 @@ import Title from '~/components/atoms/title'
 import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import { onResetGame } from '~/store/slices/game/actions'
+import cache from '~/utils/cache'
 import { delay } from '~/utils/delay'
 
 const VictoryScreen = () => {
@@ -25,13 +27,19 @@ const VictoryScreen = () => {
 
     const { players } = useAppSelector((state) => state.players)
 
-    const sortedPlayers = useMemo(
-        () => players?.sort((a, b) => b.score - a.score),
-        [players],
-    )
+    const winner = useMemo(() => {
+        return players.reduce((acc, player) => {
+            if (player.score > acc.score) {
+                return player
+            }
+            return acc
+        })
+    }, [])
 
     const handleContinue = async () => {
         setIsExiting(true)
+        cache.clearAll()
+        dispatch(onResetGame())
         await delay(1000)
         router.push('/')
     }
@@ -68,7 +76,7 @@ const VictoryScreen = () => {
                         as="h1"
                         className="text-center !text-white text-shadow-outlined"
                     >
-                        {sortedPlayers[0].name}{' '}
+                        {winner.name}{' '}
                     </Text>
 
                     <Text
