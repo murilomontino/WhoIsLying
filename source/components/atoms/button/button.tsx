@@ -3,26 +3,16 @@ import {
     TouchableOpacity,
     type TouchableOpacityProps,
 } from 'react-native'
-import { Shadow } from 'react-native-shadow-2'
+import { Shadow, type ShadowProps } from 'react-native-shadow-2'
 import { tv } from 'tailwind-variants'
 import withControl, { type ControlProps } from '~/components/helpers/with-control'
 import withDelay from '~/components/helpers/with-delay'
 import useSound from '~/components/hooks/use-sound'
-type ShadowProps = {
-    shadowColor: string
-    shadowOffset: {
-        width: number
-        height: number
-    }
-    shadowOpacity: number
-    shadowRadius: number
-    elevation: number
-}
 
 type ButtonProps = TouchableOpacityProps & {
     delay?: number
     hasSound?: boolean
-    shadow?: ShadowProps | null
+    shadow?: ShadowProps
 } & ControlProps
 
 const button = tv({
@@ -53,13 +43,7 @@ const buttonWithoutClass = tv({
     },
 })
 
-function Btn({
-    className,
-    shadow,
-    disabled,
-    hasSound = true,
-    ...props
-}: ButtonProps) {
+function Btn({ className, disabled, hasSound = true, ...props }: ButtonProps) {
     const { playClickSound } = useSound({ sound: 'click', volume: 0.2 })
 
     const handlePress = (event: GestureResponderEvent) => {
@@ -72,7 +56,7 @@ function Btn({
         <TouchableOpacity
             {...props}
             onPress={handlePress}
-            style={[props.style, shadow]}
+            style={[props.style]}
             disabled={disabled}
             className={buttonWithoutClass({ className, disabled })}
         />
@@ -81,13 +65,18 @@ function Btn({
 
 export const Button = withControl(withDelay(Btn))
 
-export function ButtonPrimary({ className, disabled, ...props }: ButtonProps) {
+export function ButtonPrimary({
+    className,
+    disabled,
+    shadow,
+    ...props
+}: ButtonProps) {
     return (
         <Shadow
-            distance={7}
-            startColor={'#ef4444'}
-            style={[{ borderRadius: 100 }]}
-            offset={[1, 1]}
+            distance={shadow?.distance || 7}
+            startColor={shadow?.startColor || '#ef4444'}
+            style={[{ borderRadius: 100 }, shadow?.style]}
+            offset={shadow?.offset || [1, 1]}
         >
             <Button
                 {...props}
@@ -98,13 +87,18 @@ export function ButtonPrimary({ className, disabled, ...props }: ButtonProps) {
     )
 }
 
-export function ButtonSecondary({ className, disabled, ...props }: ButtonProps) {
+export function ButtonSecondary({
+    className,
+    shadow,
+    disabled,
+    ...props
+}: ButtonProps) {
     return (
         <Shadow
-            distance={10}
-            startColor={'#ef4444'}
-            style={{ borderRadius: 100 }}
-            offset={[1, 1]}
+            distance={shadow?.distance || 7}
+            startColor={shadow?.startColor || '#ef4444'}
+            style={[{ borderRadius: 100 }, shadow?.style]}
+            offset={shadow?.offset || [1, 1]}
         >
             <Button
                 {...props}
