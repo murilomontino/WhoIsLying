@@ -42,7 +42,7 @@ const AskingScreen = () => {
         [answer_id, players],
     )
 
-    const { round } = useAppSelector((state) => state.game)
+    const { round, questionRound } = useAppSelector((state) => state.game)
     const router = useRouter()
 
     const handleSubmit = useCallback(async () => {
@@ -123,6 +123,15 @@ const AskingScreen = () => {
                         className="!text-white text-shadow-outlined"
                     >
                         {round} Rodada
+                    </Text>
+                    <Text
+                        entering={BounceInLeft.duration(1000)}
+                        exiting={BounceOutRight.duration(1000)}
+                        demount={isExiting}
+                        as="body"
+                        className="!text-white text-shadow-outlined"
+                    >
+                        {questionRound} Rodada de Perguntas
                     </Text>
                     <Text
                         entering={FlipInEasyX.duration(1000)}
