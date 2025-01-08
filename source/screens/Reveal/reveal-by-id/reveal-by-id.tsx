@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {
     Easing,
     FadeInLeft,
@@ -19,6 +19,7 @@ import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onUpdatePlayerReveal } from '~/store/slices/players/actions'
 import type { Player } from '~/store/slices/players/player'
+import { delay } from '~/utils/delay'
 
 const RevealByIdScreen = () => {
     const [visible, setVisible] = useState(false)
@@ -73,27 +74,27 @@ const RevealByIdScreen = () => {
         }, 1000) // Atraso após a animação de Flip
     }
 
-    const handleReveal = () => {
+    const handleReveal = useCallback(async () => {
         // Inicia a animação de saída
         opacity.value = withTiming(0, {
             duration: 1000,
             easing: Easing.out(Easing.quad),
         })
-        translateX.value = withTiming(
-            -100,
-            { duration: 1000, easing: Easing.out(Easing.quad) },
-            () => {
-                // Após a animação, atualiza o estado do jogador e redireciona
-                dispatch(
-                    onUpdatePlayerReveal({
-                        _id: player?._id as string,
-                        reveal: true,
-                    }),
-                )
-                router.push('/reveal')
-            },
+        translateX.value = withTiming(-100, {
+            duration: 1000,
+            easing: Easing.out(Easing.quad),
+        })
+        await delay(1000) // Aguarda a animação de saída
+
+        // Após a animação, atualiza o estado do jogador e redireciona
+        dispatch(
+            onUpdatePlayerReveal({
+                _id: player?._id as string,
+                reveal: true,
+            }),
         )
-    }
+        router.push('/reveal')
+    }, [player])
 
     // Estilo para as animações
     const animatedStyles = useAnimatedStyle(() => {
@@ -121,7 +122,7 @@ const RevealByIdScreen = () => {
         if (id === disguisedPlayer?._id) {
             return 'Você é o Impostor'
         }
-        return 'Curupira'
+        return 'Cartoon'
     }, [visible, id, disguisedPlayer])
 
     return (
@@ -130,8 +131,8 @@ const RevealByIdScreen = () => {
                 style={[animatedViewStyles]}
                 className="flex flex-col items-center justify-center w-full h-full space-y-8"
             >
-                <Title />
-                <View className="flex flex-col items-center justify-center w-full px-2 space-y-4">
+                <View className="flex flex-col items-center justify-center flex-1 w-full px-2 space-y-4">
+                    <Title />
                     <Text
                         entering={FadeInLeft}
                         exiting={FadeOutRight}
@@ -141,7 +142,7 @@ const RevealByIdScreen = () => {
                         {player?.name}
                     </Text>
                 </View>
-                <View className="flex items-center justify-center w-full px-8">
+                <View className="flex items-center justify-center flex-1 w-full px-8">
                     <Text
                         entering={FadeInLeft}
                         exiting={FadeOutRight}
@@ -160,6 +161,11 @@ const RevealByIdScreen = () => {
                     >
                         <ButtonSecondary
                             disabled={visible}
+                            shadow={{
+                                style: {
+                                    borderRadius: 8,
+                                },
+                            }}
                             onPress={handleSpinning}
                             className="rounded-lg !opacity-100 h-24 w-[50vw] max-w-[300px]"
                         >
@@ -179,12 +185,11 @@ const RevealByIdScreen = () => {
                         </ButtonSecondary>
                     </View>
                 </View>
-
                 <Text
                     entering={FadeInRight}
                     exiting={FadeOutRight}
                     as="body"
-                    className="w-full px-8 text-center !text-white md:w-1/2 text-shadow-sm"
+                    className="w-full text-wrap px-8 text-center !text-white md:w-1/2 text-shadow-sm"
                 >
                     Cada Jogador, exceto o que está fora da Rodada, vai ver a mesma
                     comida secreta. Tente Fazer com que pareça óbvio que você sabe
@@ -194,7 +199,7 @@ const RevealByIdScreen = () => {
                     condition={visible}
                     entering={FadeInLeft}
                     exiting={FadeOutRight}
-                    className="flex items-center justify-center w-full px-8"
+                    className="flex flex-[0.5] items-center justify-center w-full px-8"
                 >
                     <ButtonPrimary
                         disabled={!visible}
