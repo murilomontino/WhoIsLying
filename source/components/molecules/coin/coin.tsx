@@ -21,7 +21,7 @@ const color = {
 const bg = {
     init: '#3b82f6',
     middle: '#181818',
-    final: '#3b82f6',
+    final: '#181818',
 }
 
 type Dice3DProps = {
@@ -65,13 +65,13 @@ const Dice3D = ({
             volume: 0.2,
         }) // Som de Spinning  Roll
 
-    const colorText = useSharedValue(color.init) // Cor do texto
-    const bgColor = useSharedValue(bg.init) // Cor de fundo
     const [side, setSide] = useState(initialWord) // Palavra exibida, agora com a palavra inicial definida pela prop
     const rotationX = useSharedValue(0) // Rotação no eixo X
     const textRotationX = useSharedValue(0) // Rotação do texto no eixo X
+    const [reveal, setReveal] = useState(false) // Estado de revelação
 
     const handleRoll = async () => {
+        setReveal(false)
         playSoundSuspense({ startTime: 0 }) // Toca o som de suspense
         playSoundReveal({ startTime: 0 }) // Toca o som de reveal
         playSoundSpinning({ startTime: 0 }) // Toca o som de spinning roll
@@ -113,8 +113,7 @@ const Dice3D = ({
         await delay(750)
         runOnJS(setSide)(finalWord) // Define a palavra final a partir da prop
         onFinally?.() // Executa a função final, se existir
-        bgColor.value = bg.final // Muda a cor de fundo para azul
-        colorText.value = color.final // Muda a cor do texto para branco
+        setReveal(true)
         stopSoundSuspense({ delay: 500 }) // Para o som de suspense
     }
 
@@ -139,7 +138,7 @@ const Dice3D = ({
                 style={[
                     animatedStyle,
                     {
-                        backgroundColor: bgColor.value,
+                        backgroundColor: reveal ? bg.final : bg.init,
                     },
                 ]}
             >
@@ -147,7 +146,7 @@ const Dice3D = ({
                     as="h2"
                     style={[
                         {
-                            color: colorText.value,
+                            color: reveal ? color.final : color.init,
                         },
                     ]}
                 >
