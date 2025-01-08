@@ -35,10 +35,10 @@ const GoBack = ({ href }: GoBackProps) => {
         >
             <Button
                 onPress={goBack}
-                className="px-4 m-4 bg-red-500 rounded-full w-fit"
+                className="px-4 m-2 bg-red-500 rounded-full md:m-4 w-fit md:pb-0"
             >
-                <Text className="gap-2 space-x-2 text-white" as="body">
-                    <AntDesign name="back" size={24} className="mr-2 text-white" />
+                <Text className="gap-2 text-lg text-white">
+                    <AntDesign name="back" size={20} className="mr-2 text-white" />
                     Voltar
                 </Text>
             </Button>

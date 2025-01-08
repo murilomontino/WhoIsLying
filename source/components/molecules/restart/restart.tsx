@@ -31,18 +31,9 @@ const Restart = ({ ...props }: ControlProps) => {
         >
             <Button
                 onPress={handleRestart}
-                className="px-4 pb-2 m-2 bg-red-400 rounded-full md:m-4 w-fit md:pb-0"
+                className="px-4 m-2 bg-red-400 rounded-full md:m-4 w-fit md:pb-0"
             >
-                <Text
-                    style={[
-                        {
-                            fontFamily: 'Bangers_400Regular',
-                            color: 'white',
-                            fontSize: 20,
-                        },
-                    ]}
-                    className="gap-2 text-white"
-                >
+                <Text className="gap-2 text-lg text-white">
                     <AntDesign name="sync" size={20} className="text-white " /> Novo
                     Jogo
                 </Text>
