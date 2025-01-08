@@ -129,7 +129,7 @@ const RevealScreen = () => {
 
                     <ButtonSecondary
                         onPress={handleReveal}
-                        className="w-full rounded-full md:w-1/2"
+                        className="w-full rounded-full "
                     >
                         <Text as="h3">Eu sou o(a) {player?.name}</Text>
                     </ButtonSecondary>

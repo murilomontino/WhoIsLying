@@ -77,7 +77,7 @@ const CategoriesScreen = () => {
                 contentContainerStyle={{
                     flexWrap: 'wrap',
                     flexDirection: 'row',
-                    justifyContent: 'center',
+                    justifyContent: 'flex-start',
                     paddingHorizontal: 16,
                 }}
                 style={{ flex: 1 }} // Garante que o ScrollView ocupe o espaço disponível
@@ -88,10 +88,9 @@ const CategoriesScreen = () => {
                         delay={(index + 1) * 100}
                         entering={FadeInRight.duration(450)}
                         exiting={FadeOutRight.duration(450)}
-                        className="flex-grow w-full m-4 md:w-1/3"
+                        className="flex-grow m-1 w-1/3 max-w-[44vw]  md:max-w-[30vw]"
                     >
                         <Button
-                            className="w-full"
                             disabled={!category.active}
                             onPress={() => handleCategory(category.category)}
                         >

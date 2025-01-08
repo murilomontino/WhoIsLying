@@ -88,7 +88,7 @@ const WaitPlayerScreen = () => {
                 >
                     <ButtonSecondary
                         onPress={handleReveal}
-                        className="w-full rounded-full md:w-1/2"
+                        className="w-full rounded-full "
                     >
                         <Text className="text-gray-800" as="h3">
                             Eu sou o(a) {player?.name}

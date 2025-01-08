@@ -1,10 +1,8 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import React, { useCallback, useMemo, useState } from 'react'
 import {
-    BounceIn,
     BounceInLeft,
     BounceInRight,
-    BounceOut,
     BounceOutLeft,
     BounceOutRight,
     FadeIn,
@@ -154,21 +152,6 @@ const AskingScreen = () => {
                         {answerPlayer?.name}
                     </Text>
                 </View>
-                <View
-                    entering={BounceIn.duration(1000)}
-                    exiting={BounceOut.duration(1000)}
-                    demount={isExiting}
-                    className="h-20"
-                >
-                    <Text
-                        style={{
-                            fontSize: 128,
-                            transform: [{ rotate: '35deg' }],
-                        }}
-                    >
-                        🍔
-                    </Text>
-                </View>
 
                 <View
                     entering={FadeIn.duration(1000)}
@@ -178,7 +161,7 @@ const AskingScreen = () => {
                 >
                     <ButtonSecondary
                         onPress={handleNext}
-                        className="w-full rounded-full md:w-1/2"
+                        className="w-full rounded-full"
                     >
                         <Text as="h2">Próximo</Text>
                     </ButtonSecondary>

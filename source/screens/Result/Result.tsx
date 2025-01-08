@@ -95,7 +95,7 @@ const ResultScreen = () => {
                     className="flex flex-row items-center justify-center w-full px-4 space-x-4"
                 >
                     <Link href="/pre-food-secret" asChild>
-                        <ButtonPrimary className="w-full md:w-1/2">
+                        <ButtonPrimary className="w-full ">
                             <Text
                                 as="h3"
                                 className="!text-white text-shadow-outlined-red"

@@ -204,7 +204,7 @@ const RevealByIdScreen = () => {
                     <ButtonPrimary
                         disabled={!visible}
                         onPress={handleReveal}
-                        className="w-full rounded-full md:w-1/2"
+                        className="w-full rounded-full"
                     >
                         <Text
                             className="!text-white text-shadow-outlined-red"

@@ -71,10 +71,7 @@ const PreStartScreen = () => {
                 exiting={BounceOut.duration(1000)}
                 className="flex flex-row items-center justify-center flex-1 w-full px-4 space-x-4"
             >
-                <ButtonPrimary
-                    className="w-full md:w-1/2"
-                    onPress={handleStartGame}
-                >
+                <ButtonPrimary className="w-full" onPress={handleStartGame}>
                     <Text as="h3" className="!text-white text-shadow-outlined-red">
                         Start Game
                         {'  '}

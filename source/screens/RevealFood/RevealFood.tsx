@@ -102,10 +102,7 @@ const RevealFoodScreen = () => {
                     exiting={BounceOut.duration(1000)}
                     className="flex flex-row items-center justify-center w-full px-4 space-x-4"
                 >
-                    <ButtonPrimary
-                        onPress={handleContinue}
-                        className="w-full md:w-1/2"
-                    >
+                    <ButtonPrimary onPress={handleContinue} className="w-full">
                         <Text
                             as="h3"
                             className="!text-white text-shadow-outlined-red"

@@ -1,6 +1,5 @@
 import { useRouter } from 'expo-router'
 import { useMemo, useState } from 'react'
-import Confetti from 'react-confetti'
 import {
     BounceIn,
     BounceInLeft,
@@ -27,19 +26,19 @@ const VictoryScreen = () => {
     const { players } = useAppSelector((state) => state.players)
 
     const sortedPlayers = useMemo(
-        () => players.toSorted((a, b) => b.score - a.score),
+        () => players?.sort((a, b) => b.score - a.score),
         [players],
     )
 
     const handleContinue = async () => {
         setIsExiting(true)
         await delay(1000)
+        router.push('/')
     }
 
     return (
         <DefaultLayout>
             <GoBack />
-            <Confetti />
             <View
                 delay={100}
                 entering={FadeIn}
@@ -51,7 +50,7 @@ const VictoryScreen = () => {
                     demount={isExiting}
                     entering={FadeIn}
                     exiting={FadeOut}
-                    className="flex flex-col items-center justify-center w-full px-2 space-y-4"
+                    className="flex flex-col items-center justify-center flex-1 w-full px-2 space-y-4"
                 >
                     <Title />
                     <Text
@@ -90,10 +89,7 @@ const VictoryScreen = () => {
                     exiting={BounceOut.duration(1000)}
                     className="flex flex-row items-center justify-center w-full px-4 space-x-4"
                 >
-                    <ButtonPrimary
-                        onPress={handleContinue}
-                        className="w-full md:w-1/2"
-                    >
+                    <ButtonPrimary onPress={handleContinue} className="w-full ">
                         <Text
                             as="h3"
                             className="!text-white text-shadow-outlined-red"

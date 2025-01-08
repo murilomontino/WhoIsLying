@@ -65,7 +65,7 @@ const PreAskingScreen = () => {
                     demount={isExiting}
                     exiting={FadeOut.duration(1000)}
                     entering={FadeInLeft.duration(1000)}
-                    className="flex items-center justify-center w-full space-y-2"
+                    className="flex items-start justify-start w-full space-y-2"
                 >
                     <Text
                         demount={isExiting}
@@ -75,7 +75,7 @@ const PreAskingScreen = () => {
                         entering={FadeInLeft.duration(1000)}
                         className="px-4 text-justify text-gray-800 md:w-1/2"
                     >
-                        Responda a perguntas relacionadas a(o){' '}
+                        {'1)'} Responda a perguntas relacionadas a(o){' '}
                         <Text className="text-black">{category}</Text>, mas
                         garantindo que não o revele diretamente.
                     </Text>
@@ -87,7 +87,7 @@ const PreAskingScreen = () => {
                         entering={FadeIn.duration(1000)}
                         className="px-4 text-justify text-gray-800 md:w-1/2"
                     >
-                        Seja breve e objetivo em suas respostas.
+                        {'2) Seja breve e objetivo em suas respostas.'}
                     </Text>
                     <Text
                         demount={isExiting}
@@ -97,7 +97,7 @@ const PreAskingScreen = () => {
                         entering={FadeInLeft.duration(1000)}
                         className="px-4 text-justify text-gray-800 md:w-1/2"
                     >
-                        Sempre diga a verdade.
+                        {'3) Sempre diga a verdade.'}
                     </Text>
                     <Text
                         demount={isExiting}
@@ -107,8 +107,9 @@ const PreAskingScreen = () => {
                         entering={FadeInRight.duration(1000)}
                         className="px-4 text-justify text-gray-800 md:w-1/2"
                     >
-                        Sinta-se à vontade para perguntar o que quiser e ignorar o
-                        sugerido.
+                        {
+                            '4) Sinta-se à vontade para perguntar o que quiser e ignorar o sugerido.'
+                        }
                     </Text>
                 </View>
                 <Text
@@ -128,10 +129,7 @@ const PreAskingScreen = () => {
                     exiting={BounceOut.duration(1000)}
                     className="flex flex-row items-center justify-center w-full px-4 space-x-4"
                 >
-                    <ButtonPrimary
-                        onPress={handleContinue}
-                        className="w-full md:w-1/2"
-                    >
+                    <ButtonPrimary onPress={handleContinue} className="w-full">
                         <Text
                             as="h3"
                             className="!text-white text-shadow-outlined-red"

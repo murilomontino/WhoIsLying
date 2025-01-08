@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router'
 import { useEffect, useMemo, useState } from 'react'
+import { ScrollView } from 'react-native'
 import {
     BounceIn,
     BounceOut,
@@ -120,7 +121,7 @@ const ScoreScreen = () => {
                     demount={isExiting}
                     entering={FadeIn}
                     exiting={FadeOut}
-                    className="flex flex-col items-center justify-center w-full px-2 space-y-4"
+                    className="flex flex-col items-center justify-center w-full gap-2 px-2"
                 >
                     <Title />
                     <Text
@@ -132,7 +133,10 @@ const ScoreScreen = () => {
                         Pontuação
                     </Text>
                 </View>
-                <View className="flex flex-col w-full px-4 space-y-4 overflow-auto h-52 md:w-1/2">
+                <ScrollView
+                    contentContainerClassName="gap-2"
+                    className="flex max-h-[38vh] w-full overflow-y-auto flex-col py-2 px-2 overflow-auto flex-[2] h-52 md:w-1/2"
+                >
                     {sortedPlayers.map((player, index) => (
                         <View
                             layout={LinearTransition.springify().duration(500)} // Ordenação animada
@@ -152,18 +156,15 @@ const ScoreScreen = () => {
                             />
                         </View>
                     ))}
-                </View>
+                </ScrollView>
                 <View
                     delay={100}
                     demount={isExiting}
                     entering={BounceIn.duration(1000)}
                     exiting={BounceOut.duration(1000)}
-                    className="flex flex-row items-center justify-center w-full px-4 space-x-4"
+                    className="flex flex-row items-center justify-center w-full px-4"
                 >
-                    <ButtonPrimary
-                        onPress={handleContinue}
-                        className="w-full md:w-1/2"
-                    >
+                    <ButtonPrimary onPress={handleContinue} className="w-full ">
                         <Text
                             as="h3"
                             className="!text-white text-shadow-outlined-red"

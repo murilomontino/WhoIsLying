@@ -130,7 +130,7 @@ const FoodSecretScreen = () => {
                     <ButtonPrimary
                         disabled={!voting}
                         onPress={handleConfirmVote}
-                        className="w-full md:w-1/2"
+                        className="w-full"
                     >
                         <Text
                             as="h3"
