@@ -14,6 +14,7 @@ import Title from '~/components/atoms/title'
 import CoinFlip from '~/components/molecules/coin'
 import View from '~/components/ui/view'
 import { useAppSelector } from '~/store/hooks'
+import { delay } from '~/utils/delay'
 
 const ResultScreen = () => {
     const { players } = useAppSelector((state) => state.players)
@@ -23,7 +24,8 @@ const ResultScreen = () => {
     const delayName = 2000
     const delayProx = 3000
 
-    const handleReveal = () => {
+    const handleReveal = async () => {
+        await delay(100)
         setReveal(true)
     }
 
