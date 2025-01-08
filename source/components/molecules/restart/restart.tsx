@@ -16,7 +16,7 @@ const Restart = ({ ...props }: ControlProps) => {
 
     const handleRestart = () => {
         cache.clearAll()
-        dispatch(onChangePlayRound({ round: 1 }))
+        dispatch(onChangePlayRound({ round: 5 }))
         dispatch(onResetGame())
         dispatch(onResetScore())
     }
