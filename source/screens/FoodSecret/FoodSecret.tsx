@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import {
@@ -106,13 +107,24 @@ const FoodSecretScreen = () => {
                             entering={FadeInLeft.duration(500)}
                             exiting={FadeOutRight.duration(500)}
                             key={item.name}
-                            className="flex items-center w-full h-10 col-span-1 px-4 py-2 space-x-4 bg-white rounded-full min-h-10 max-h-10"
+                            className={cn(
+                                'flex items-center w-full h-10 col-span-1 px-4 py-2 space-x-4  rounded-full min-h-10 max-h-10',
+                                {
+                                    'bg-blue-500': voting === item.name,
+                                    'bg-gray-200': voting !== item.name,
+                                },
+                            )}
                         >
                             <Button
                                 onPress={() => handleVote(item.name)}
                                 className="flex items-center justify-center w-full h-full"
                             >
-                                <Text className="text-2xl flex-[10] text-center text-gray-800">
+                                <Text
+                                    demount={isExisting}
+                                    entering={FadeInLeft.duration(500)}
+                                    exiting={FadeOutRight.duration(500)}
+                                    className="text-2xl flex-[10] text-center text-gray-800"
+                                >
                                     {item.name}
                                 </Text>
                             </Button>
