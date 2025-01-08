@@ -1,10 +1,4 @@
-import cn from 'classnames'
-import React, {
-    forwardRef,
-    startTransition,
-    useImperativeHandle,
-    useState,
-} from 'react'
+import React, { useState } from 'react'
 import {
     Easing,
     runOnJS,
@@ -16,6 +10,7 @@ import { Button } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import useSound from '~/components/hooks/use-sound'
 import View from '~/components/ui/view'
+import { delay } from '~/utils/delay'
 
 const color = {
     init: '#fff',
@@ -37,159 +32,130 @@ type Dice3DProps = {
     winnerSound?: boolean
 }
 
-const Dice3D = forwardRef(
-    (
-        {
-            initialWord = 'One',
-            finalWord = 'Six',
-            words = ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
-            winnerSound = false,
-            onFinally,
-        }: Dice3DProps,
-        ref,
-    ) => {
-        const {
-            playClickSound: playSoundSuspense,
-            stopClickSound: stopSoundSuspense,
-        } = useSound({
+const Dice3D = ({
+    initialWord = 'One',
+    finalWord = 'Six',
+    words = ['One', 'Two', 'Three', 'Four', 'Five', 'Six'],
+    winnerSound = false,
+    onFinally,
+}: Dice3DProps) => {
+    const { playClickSound: playSoundSuspense, stopClickSound: stopSoundSuspense } =
+        useSound({
             sound: 'suspense',
             volume: 0.5,
         }) // Som de suspense
-        const { playClickSound: playSoundReveal, stopClickSound: stopSoundReveal } =
-            useSound({
-                sound: 'reveal',
-                volume: 1,
-            }) // Som de reveal
-        const { playClickSound: playSoundWinner } = useSound({
-            sound: 'win',
+    const { playClickSound: playSoundReveal, stopClickSound: stopSoundReveal } =
+        useSound({
+            sound: 'reveal',
             volume: 1,
-        }) // Som de Vitória
+        }) // Som de reveal
+    const { playClickSound: playSoundWinner } = useSound({
+        sound: 'win',
+        volume: 1,
+    }) // Som de Vitória
 
-        const { playClickSound: playSoundLoser } = useSound({
-            sound: 'lose',
-            volume: 1,
-        }) // Som de Derrota
+    const { playClickSound: playSoundLoser } = useSound({
+        sound: 'lose',
+        volume: 1,
+    }) // Som de Derrota
 
-        const {
-            playClickSound: playSoundSpinning,
-            stopClickSound: stopSoundSpinning,
-        } = useSound({
+    const { playClickSound: playSoundSpinning, stopClickSound: stopSoundSpinning } =
+        useSound({
             sound: 'spinning-roll',
             volume: 0.2,
         }) // Som de Spinning  Roll
 
-        const [colorText, setColorText] = useState(color.init) // Cor do texto
-        const [bgColor, setBgColor] = useState(bg.init) // Cor de fundo
-        const [side, setSide] = useState(initialWord) // Palavra exibida, agora com a palavra inicial definida pela prop
-        const rotationX = useSharedValue(0) // Rotação no eixo X
-        const textRotationX = useSharedValue(0) // Rotação do texto no eixo X
+    const colorText = useSharedValue(color.init) // Cor do texto
+    const bgColor = useSharedValue(bg.init) // Cor de fundo
+    const [side, setSide] = useState(initialWord) // Palavra exibida, agora com a palavra inicial definida pela prop
+    const rotationX = useSharedValue(0) // Rotação no eixo X
+    const textRotationX = useSharedValue(0) // Rotação do texto no eixo X
 
-        const handleRoll = () => {
-            playSoundSuspense() // Toca o som de suspense
-            playSoundReveal() // Toca o som de reveal
-            playSoundSpinning() // Toca o som de spinning roll
-            startTransition(() => {
-                setColorText(color.middle) // Muda a cor do texto para vermelho
-            })
-            const totalRotations = 5 // Número de giros completos
-            const finalRotationX = Math.floor(Math.random() * 360) // Rotação final aleatória no eixo X
-            const duration = 5000 // Duração total da animação
-            const intervalTime = 100 // Tempo entre alternâncias de palavras
-            let currentIndex = 0 // Índice inicial para alternância
+    const handleRoll = async () => {
+        playSoundSuspense({ startTime: 0 }) // Toca o som de suspense
+        playSoundReveal({ startTime: 0 }) // Toca o som de reveal
+        playSoundSpinning({ startTime: 0 }) // Toca o som de spinning roll
 
-            // Alterna palavras rapidamente para o efeito de caça-níquel
-            const intervalId = setInterval(() => {
-                currentIndex = (currentIndex + 1) % words.length // Alterna sequencialmente
-                setSide(words[currentIndex]) // Atualiza a palavra exibida
-            }, intervalTime)
+        const totalRotations = 5 // Número de giros completos
+        const finalRotationX = Math.floor(Math.random() * 360) // Rotação final aleatória no eixo X
+        const duration = 5000 // Duração total da animação
+        const intervalTime = 100 // Tempo entre alternâncias de palavras
+        let currentIndex = 0 // Índice inicial para alternância
 
-            // Inicia a animação de rotação do dado
-            rotationX.value = withTiming(
-                totalRotations * 360 + finalRotationX,
-                {
-                    duration: duration,
-                    easing: Easing.out(Easing.quad), // Desaceleração progressiva
-                },
-                () => {
-                    clearInterval(intervalId) // Para a alternância ao final
-                    startTransition(() => {
-                        setBgColor(bg.middle) // Muda a cor de fundo para preto
-                    })
-                    setTimeout(() => {
-                        runOnJS(setSide)(finalWord) // Define a palavra final a partir da prop
-                        startTransition(() => {
-                            setBgColor(bg.final) // Muda a cor de fundo para azul
-                            setColorText(color.final) // Muda a cor do texto para vermelho
-                            onFinally?.() // Executa a função final, se existir
+        // Alterna palavras rapidamente para o efeito de caça-níquel
+        const intervalId = setInterval(() => {
+            currentIndex = (currentIndex + 1) % words.length // Alterna sequencialmente
+            setSide(words[currentIndex]) // Atualiza a palavra exibida
+        }, intervalTime)
 
-                            stopSoundSuspense({ delay: 500 }) // Para o som de suspense
-                        })
-                    }, 750) // Aguarda um tempo para exibir a palavra final
-                    rotationX.value = 0 // Reseta para o próximo giro
-                    if (winnerSound) {
-                        playSoundWinner({ startTime: 1250 }) // Toca o som de vitória
-                    } else {
-                        playSoundLoser({ startTime: 250 }) // Toca o som de derrota
-                    }
-                    stopSoundSpinning({ delay: 0, fadeDuration: 1 }) // Para o som de spinning roll
-                    stopSoundReveal({ delay: 800 }) // Para o som de reveal
-                },
-            )
-
-            // Inicia a rotação do texto no eixo X para o efeito de caça-níquel
-            textRotationX.value = withTiming(360 * 3, { duration: 5000 }, () => {
-                textRotationX.value = 0 // Reseta a rotação do texto após o efeito
-            })
-        }
-
-        useImperativeHandle(ref, () => ({
-            handleRoll,
-        }))
-
-        // Estilo animado para o dado
-        const animatedStyle = useAnimatedStyle(() => {
-            // Limita a rotação entre -90º e 90º para evitar que a palavra fique de cabeça para baixo
-            const rotate = rotationX.value % 360
-            const adjustedRotation = rotate > 180 ? 360 - rotate : rotate // Ajuste para não ir além de 180º
-            return {
-                transform: [{ rotateX: `${adjustedRotation}deg` }],
-            }
+        // Inicia a animação de rotação do dado
+        rotationX.value = withTiming(totalRotations * 360 + finalRotationX, {
+            duration: duration,
+            easing: Easing.out(Easing.quad), // Desaceleração progressiva
         })
 
-        return (
-            <Button
-                hasSound={false}
-                onPress={handleRoll}
-                className="items-center justify-center w-full md:w-1/2"
+        await delay(duration)
+        clearInterval(intervalId) // Para a alternância ao final
+        rotationX.value = 0
+        if (winnerSound) {
+            playSoundWinner({ startTime: 1250 }) // Toca o som de vitória
+        } else {
+            playSoundLoser({ startTime: 250 }) // Toca o som de derrota
+        }
+        stopSoundSpinning({ delay: 0, fadeDuration: 1 }) // Para o som de spinning roll
+        stopSoundReveal({ delay: 800 }) // Para o som de reveal
+
+        // Inicia a rotação do texto no eixo X para o efeito de caça-níquel
+        textRotationX.value = withTiming(360 * 3, { duration: 5000 }, () => {
+            textRotationX.value = 0 // Reseta a rotação do texto após o efeito
+        })
+
+        await delay(750)
+        runOnJS(setSide)(finalWord) // Define a palavra final a partir da prop
+        onFinally?.() // Executa a função final, se existir
+        bgColor.value = bg.final // Muda a cor de fundo para azul
+        colorText.value = color.final // Muda a cor do texto para branco
+        stopSoundSuspense({ delay: 500 }) // Para o som de suspense
+    }
+
+    // Estilo animado para o dado
+    const animatedStyle = useAnimatedStyle(() => {
+        // Limita a rotação entre -90º e 90º para evitar que a palavra fique de cabeça para baixo
+        const rotate = rotationX.value % 360
+        const adjustedRotation = rotate > 180 ? 360 - rotate : rotate // Ajuste para não ir além de 180º
+        return {
+            transform: [{ rotateX: `${adjustedRotation}deg` }],
+        }
+    })
+
+    return (
+        <Button
+            hasSound={false}
+            onPress={handleRoll}
+            className="items-center justify-center w-full md:w-1/2"
+        >
+            <View
+                className="items-center justify-center w-[50vw] h-20 px-4 border-4 border-gray-500 rounded-lg "
+                style={[
+                    animatedStyle,
+                    {
+                        backgroundColor: bgColor.value,
+                    },
+                ]}
             >
-                <View
-                    className="items-center justify-center w-[50vw] h-20 px-4 py-8 border-4 border-gray-500 rounded-lg "
+                <Text
+                    as="h2"
                     style={[
-                        animatedStyle,
                         {
-                            backgroundColor: bgColor,
+                            color: colorText.value,
                         },
                     ]}
                 >
-                    <Text
-                        as="h2"
-                        className={cn({
-                            'text-shadow-outlined-red':
-                                colorText === color.final ||
-                                colorText === color.init,
-                        })}
-                        style={[
-                            {
-                                color: colorText,
-                            },
-                        ]}
-                    >
-                        {side}
-                    </Text>
-                </View>
-            </Button>
-        )
-    },
-)
+                    {side}
+                </Text>
+            </View>
+        </Button>
+    )
+}
 
 export default Dice3D
