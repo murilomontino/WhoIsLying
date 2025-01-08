@@ -21,6 +21,9 @@ export default function Title({ className, ...props }: TitleProps) {
                         fontFamily: 'Bangers_400Regular',
                         color: 'white',
                         fontSize: 72,
+                        textShadowColor: '#ef4444',
+                        textShadowOffset: { width: -2, height: 2 },
+                        textShadowRadius: 10,
                     },
                 ]}
             >
