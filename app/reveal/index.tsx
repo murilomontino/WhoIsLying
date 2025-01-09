@@ -1,3 +1,3 @@
-import Page from '~/screens/Reveal'
+import Page from '~/screens/RevealDisguised'
 
 export default Page
