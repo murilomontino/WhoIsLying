@@ -1,5 +1,5 @@
 import { Link } from 'expo-router'
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import {
     BounceIn,
     BounceInLeft,
@@ -13,30 +13,51 @@ import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
 import CoinFlip from '~/components/molecules/coin'
 import View from '~/components/ui/view'
-import { useAppSelector } from '~/store/hooks'
+import { useAppDispatch, useAppSelector } from '~/store/hooks'
+import { onChangeMostVoted } from '~/store/slices/game/actions'
+import type { IPlayer } from '~/store/slices/players/player'
 import { delay } from '~/utils/delay'
 
 const ResultScreen = () => {
     const { players } = useAppSelector((state) => state.players)
     const { disguisedPlayer } = useAppSelector((state) => state.game)
     const [reveal, setReveal] = useState(false)
+    const dispatch = useAppDispatch()
     const minDelay = 1000
     const delayName = 2000
     const delayProx = 3000
 
-    const handleReveal = async () => {
-        await delay(100)
-        setReveal(true)
-    }
-
-    const winner = useMemo(() => {
-        return players.reduce((acc, player) => {
-            if (player.displayVotes > acc.displayVotes) {
-                return player
+    const mostVoted = useMemo(() => {
+        return players.reduce((acc: IPlayer[], player: IPlayer) => {
+            if (acc.length === 0 || player.displayVotes > acc[0].displayVotes) {
+                return [player]
+            }
+            if (player.displayVotes === acc[0].displayVotes) {
+                return acc.concat(player)
             }
             return acc
-        })
-    }, [])
+        }, [])
+    }, [players])
+
+    const isTie = useMemo(() => mostVoted.length > 1, [mostVoted])
+
+    const handleReveal = useCallback(async () => {
+        if (isTie) {
+            dispatch(onChangeMostVoted({ mostVoted: null }))
+        } else {
+            dispatch(onChangeMostVoted({ mostVoted: mostVoted[0] }))
+        }
+        await delay(100)
+        setReveal(true)
+    }, [mostVoted, isTie])
+
+    const winnerSound = useMemo(() => {
+        if (isTie) {
+            return false
+        }
+        const winner = mostVoted[0]
+        return disguisedPlayer?._id === winner._id
+    }, [isTie, mostVoted, disguisedPlayer])
 
     return (
         <DefaultLayout>
@@ -65,7 +86,7 @@ const ResultScreen = () => {
                         as="h2"
                         className="text-center !text-gray-800 text-shadow-outlined-red"
                     >
-                        {winner.name}
+                        {isTie ? 'Deu empate!' : mostVoted[0].name}
                     </Text>
                 </View>
                 <View
@@ -81,7 +102,7 @@ const ResultScreen = () => {
                         O Impostor é...
                     </Text>
                     <CoinFlip
-                        winnerSound={disguisedPlayer?._id === winner._id}
+                        winnerSound={winnerSound}
                         onFinally={handleReveal}
                         initialWord="Revelar"
                         finalWord={disguisedPlayer?.name}
