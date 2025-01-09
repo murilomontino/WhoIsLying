@@ -7,7 +7,6 @@ import {
     FadeOutRight,
     FlipInEasyX,
     FlipOutEasyX,
-    useSharedValue,
 } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
@@ -30,9 +29,6 @@ const RevealByIdScreen = () => {
     const router = useRouter()
     const dispatch = useAppDispatch()
     const { id } = useLocalSearchParams()
-    // Animações com useSharedValue
-    const opacity = useSharedValue(100) // FadeIn
-    const translateX = useSharedValue(0) // Translate em X
 
     useEffect(() => {
         const player = players.find((p) => p._id === id)
@@ -107,7 +103,7 @@ const RevealByIdScreen = () => {
                         <ButtonSecondary
                             disabled={disabled}
                             onPress={handlePressReveal}
-                            className="rounded-lg !opacity-100 h-32 md:w-[50vw] w-full  "
+                            className="rounded-lg !opacity-100 h-32 md:w-[50vw] min-w-full"
                         >
                             <Text
                                 disabled={visible}
@@ -122,8 +118,8 @@ const RevealByIdScreen = () => {
                             <Text
                                 disabled={visible}
                                 condition={visible}
-                                delay={500}
-                                entering={FlipInEasyX.duration(1000)}
+                                delay={400}
+                                entering={FlipInEasyX.duration(500)}
                                 exiting={FlipOutEasyX}
                                 as="h4"
                                 className="px-4 py-2 text-center text-white w-fit h-fit"
@@ -145,7 +141,7 @@ const RevealByIdScreen = () => {
                     qual é a comida secreta, mas sem revelar diretamente.
                 </Text>
                 <View
-                    delay={1000}
+                    delay={1100}
                     condition={visible}
                     entering={FadeInRight}
                     demount={isExiting}

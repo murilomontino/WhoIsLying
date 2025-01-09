@@ -42,7 +42,7 @@ const PreStartScreen = () => {
 
     return (
         <DefaultLayout>
-            <GoBack />
+            <GoBack href="/" />
             <View className="items-center flex-1">
                 <Title />
                 <Text

@@ -5,7 +5,6 @@ import DefaultLayout from '~/components/_layout/default'
 import { Button, ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
-import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onChangePlayRound } from '~/store/slices/game/actions'
@@ -40,7 +39,6 @@ const NewRoundScreen = () => {
 
     return (
         <DefaultLayout className="items-center justify-center px-8">
-            <GoBack />
             <View
                 delay={100}
                 demount={isExiting}
@@ -58,49 +56,48 @@ const NewRoundScreen = () => {
                     Nova Rodada
                 </Text>
             </View>
-
-            <View
-                delay={100}
-                demount={isExiting}
-                entering={BounceIn.duration(1000)}
-                exiting={BounceOut.duration(1000)}
-                className="flex flex-row items-center justify-center w-full "
-            >
-                <ButtonSecondary
-                    onPress={handleContinueFromCategory}
-                    className="!w-full"
+            <View className="gap-2">
+                <View
+                    delay={100}
+                    demount={isExiting}
+                    entering={BounceIn.duration(1000)}
+                    exiting={BounceOut.duration(1000)}
+                    className="flex flex-row items-center justify-center w-full "
                 >
-                    <Text as="h3">Escolher Categoria</Text>
-                </ButtonSecondary>
-            </View>
-            <View
-                delay={100}
-                demount={isExiting}
-                entering={BounceIn.duration(1000)}
-                exiting={BounceOut.duration(1000)}
-                className="flex flex-row items-center justify-center !w-full "
-            >
-                <ButtonPrimary onPress={handleContinueNewRound} className="w-full">
-                    <Text as="h3" className="!text-white text-shadow-outlined-red">
-                        Manter Categoria e Continuar
-                    </Text>
-                </ButtonPrimary>
-            </View>
-            <View
-                delay={100}
-                demount={isExiting}
-                entering={BounceIn.duration(1000)}
-                exiting={BounceOut.duration(1000)}
-                className="flex flex-row items-center justify-center !w-full"
-            >
-                <Button
-                    onPress={handleContinueNewPlayer}
-                    className="items-center justify-center !w-full"
+                    <ButtonSecondary onPress={handleContinueFromCategory}>
+                        <Text as="h5">Escolher Categoria</Text>
+                    </ButtonSecondary>
+                </View>
+                <View
+                    delay={100}
+                    demount={isExiting}
+                    entering={BounceIn.duration(1000)}
+                    exiting={BounceOut.duration(1000)}
+                    className="flex flex-row items-center justify-center !w-full "
                 >
-                    <Text as="h3" className="px-4 py-2 ">
-                        + Adicionar/Remover Jogador(a)
-                    </Text>
-                </Button>
+                    <ButtonPrimary
+                        onPress={handleContinueNewRound}
+                        className="w-full"
+                    >
+                        <Text as="h5" className="text-white">
+                            Manter Categoria e Continuar
+                        </Text>
+                    </ButtonPrimary>
+                </View>
+                <View
+                    delay={100}
+                    demount={isExiting}
+                    entering={BounceIn.duration(1000)}
+                    exiting={BounceOut.duration(1000)}
+                    className="flex flex-row items-center justify-center !w-full"
+                >
+                    <Button
+                        onPress={handleContinueNewPlayer}
+                        className="items-center justify-center !w-full"
+                    >
+                        <Text as="h5">+ Adicionar/Remover Jogador(a)</Text>
+                    </Button>
+                </View>
             </View>
         </DefaultLayout>
     )

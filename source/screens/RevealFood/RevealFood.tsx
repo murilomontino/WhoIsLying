@@ -84,33 +84,35 @@ const RevealFoodScreen = () => {
                     >
                         Qual {category} é...
                     </Text>
-                    <ButtonSecondary
-                        disabled={disabled}
-                        onPress={handlePressReveal}
-                        className="rounded-lg !opacity-100 h-32 w-full"
-                    >
-                        <Text
-                            disabled={reveal}
-                            entering={FadeInRight}
-                            exiting={FlipOutEasyX.duration(500)}
-                            demount={reveal}
-                            as="h4"
-                            className="text-red-500 "
+                    <View className="w-full px-4">
+                        <ButtonSecondary
+                            disabled={disabled}
+                            onPress={handlePressReveal}
+                            className="rounded-lg !opacity-100 h-32 w-full"
                         >
-                            Revelar
-                        </Text>
-                        <Text
-                            disabled={reveal}
-                            condition={reveal}
-                            delay={500}
-                            entering={FlipInEasyX.duration(1000)}
-                            exiting={FlipOutEasyX}
-                            as="h4"
-                            className="px-4 py-2 text-center text-white w-fit h-fit"
-                        >
-                            Cartoon
-                        </Text>
-                    </ButtonSecondary>
+                            <Text
+                                disabled={reveal}
+                                entering={FadeInRight}
+                                exiting={FlipOutEasyX.duration(500)}
+                                demount={reveal}
+                                as="h4"
+                                className="text-red-500 "
+                            >
+                                Revelar
+                            </Text>
+                            <Text
+                                disabled={reveal}
+                                condition={reveal}
+                                delay={400}
+                                entering={FlipInEasyX.duration(500)}
+                                exiting={FlipOutEasyX}
+                                as="h4"
+                                className="px-4 py-2 text-center text-white w-fit h-fit"
+                            >
+                                Cartoon
+                            </Text>
+                        </ButtonSecondary>
+                    </View>
                 </View>
 
                 <View

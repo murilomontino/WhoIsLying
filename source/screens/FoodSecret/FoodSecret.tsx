@@ -108,7 +108,7 @@ const FoodSecretScreen = () => {
                             exiting={FadeOutRight.duration(500)}
                             key={item.name}
                             className={cn(
-                                'flex items-center w-full h-10 col-span-1 rounded-full min-h-10 max-h-10',
+                                'flex items-center w-full h-10 rounded-full min-h-10 max-h-10',
                                 {
                                     'bg-blue-500': voting === item.name,
                                     'bg-gray-200': voting !== item.name,
@@ -144,10 +144,7 @@ const FoodSecretScreen = () => {
                         onPress={handleConfirmVote}
                         className="w-full"
                     >
-                        <Text
-                            as="h3"
-                            className="!text-white text-shadow-outlined-red"
-                        >
+                        <Text className="!text-white" as="h3">
                             Votar em {voting}
                         </Text>
                     </ButtonPrimary>

@@ -147,7 +147,7 @@ const ScoreScreen = () => {
                             exiting={FadeOutRight}
                             demount={isExiting}
                             key={player._id}
-                            className="flex flex-row items-center flex-1 h-10 px-4 py-2 space-x-4 bg-white rounded-full min-h-10 max-h-10"
+                            className="flex flex-row items-center flex-1 h-10 bg-white rounded-full min-h-10 max-h-10"
                         >
                             <Text className="text-2xl flex-[8] text-center text-gray-800">
                                 {player.name}
