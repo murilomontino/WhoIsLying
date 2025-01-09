@@ -2,6 +2,9 @@ import { createAction } from '@reduxjs/toolkit'
 
 import type { IPlayer } from '../players/player'
 import {
+    ACTION_CHANGE_MOST_VOTED,
+    ACTION_CHANGE_MOST_VOTED_FAIL,
+    ACTION_CHANGE_MOST_VOTED_SUCCESS,
     ACTION_CHANGE_PLAY_ROUND,
     ACTION_CHANGE_PLAY_ROUND_FAIL,
     ACTION_CHANGE_PLAY_ROUND_SUCCESS,
@@ -100,3 +103,11 @@ export const onChangePlayRoundSuccess = createAction<{ round: number }>(
     ACTION_CHANGE_PLAY_ROUND_SUCCESS,
 )
 export const onChangePlayRoundFail = createAction(ACTION_CHANGE_PLAY_ROUND_FAIL)
+
+export const onChangeMostVoted = createAction<{ mostVoted: IPlayer | null }>(
+    ACTION_CHANGE_MOST_VOTED,
+)
+export const onChangeMostVotedSuccess = createAction<{ mostVoted: IPlayer | null }>(
+    ACTION_CHANGE_MOST_VOTED_SUCCESS,
+)
+export const onChangeMostVotedFail = createAction(ACTION_CHANGE_MOST_VOTED_FAIL)

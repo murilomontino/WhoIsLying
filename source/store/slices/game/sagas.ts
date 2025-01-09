@@ -6,6 +6,8 @@ import { selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
 import {
     type NewPlayersScore,
+    onChangeMostVotedFail,
+    onChangeMostVotedSuccess,
     onChangePlayRoundFail,
     onChangePlayRoundSuccess,
     onChangePointsFail,
@@ -29,6 +31,7 @@ import {
 import { onChangePlayers, onResetPlayers, onResetScore } from '../players/actions'
 import type { IPlayer } from '../players/player'
 import {
+    ACTION_CHANGE_MOST_VOTED,
     ACTION_CHANGE_PLAY_ROUND,
     ACTION_CHANGE_POINTS,
     ACTION_CHANGE_QUESTION_ROUND,
@@ -133,6 +136,16 @@ export function* onVoteInTheDisguised({
     }
 }
 
+export function* onChangeMostVoted({
+    payload,
+}: PayloadAction<{ mostVoted: IPlayer | null }>) {
+    try {
+        yield put(onChangeMostVotedSuccess(payload))
+    } catch (_) {
+        yield put(onChangeMostVotedFail())
+    }
+}
+
 export function* watchOnChangeRounds() {
     yield takeLatest(ACTION_CHANGE_ROUNDS, onChangeRounds)
 }
@@ -169,6 +182,10 @@ export function* watchOnChangePlayRound() {
     yield takeLatest(ACTION_CHANGE_PLAY_ROUND, onChangePlayRound)
 }
 
+export function* watchOnChangeMostVoted() {
+    yield takeLatest(ACTION_CHANGE_MOST_VOTED, onChangeMostVoted)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnChangeRounds),
@@ -180,6 +197,7 @@ function* Sagas() {
         fork(watchOnResetGame),
         fork(watchOnVoteInTheDisguised),
         fork(watchOnChangePlayRound),
+        fork(watchOnChangeMostVoted),
     ])
 }
 

@@ -9,6 +9,7 @@ export type InitialState = {
     questionRound: number
     disguisedPlayer: IPlayer | null
     votingItem: string
+    mostVoted: IPlayer | null
 }
 
 export const name = 'game'
@@ -49,6 +50,10 @@ export const ON_CHANGE_PLAY_ROUND = 'ON_CHANGE_PLAY_ROUND'
 export const ON_CHANGE_PLAY_ROUND_SUCCESS = 'ON_CHANGE_PLAY_ROUND_SUCCESS'
 export const ON_CHANGE_PLAY_ROUND_FAIL = 'ON_CHANGE_PLAY_ROUND_FAIL'
 
+export const ON_CHANGE_MOST_VOTED = 'ON_CHANGE_MOST_VOTED'
+export const ON_CHANGE_MOST_VOTED_SUCCESS = 'ON_CHANGE_MOST_VOTED_SUCCESS'
+export const ON_CHANGE_MOST_VOTED_FAIL = 'ON_CHANGE_MOST_VOTED_FAIL'
+
 export const ACTION_CHANGE_ROUNDS = `${name}/${ON_CHANGE_ROUNDS}`
 export const ACTION_CHANGE_ROUNDS_SUCCESS = `${name}/${ON_CHANGE_ROUNDS_SUCCESS}`
 export const ACTION_CHANGE_ROUNDS_FAIL = `${name}/${ON_CHANGE_ROUNDS_FAIL}`
@@ -84,3 +89,7 @@ export const ACTION_VOTE_IN_THE_DISGUISED_FAIL = `${name}/${ON_VOTE_IN_THE_DISGU
 export const ACTION_CHANGE_PLAY_ROUND = `${name}/${ON_CHANGE_PLAY_ROUND}`
 export const ACTION_CHANGE_PLAY_ROUND_SUCCESS = `${name}/${ON_CHANGE_PLAY_ROUND_SUCCESS}`
 export const ACTION_CHANGE_PLAY_ROUND_FAIL = `${name}/${ON_CHANGE_PLAY_ROUND_FAIL}`
+
+export const ACTION_CHANGE_MOST_VOTED = `${name}/${ON_CHANGE_MOST_VOTED}`
+export const ACTION_CHANGE_MOST_VOTED_SUCCESS = `${name}/${ON_CHANGE_MOST_VOTED_SUCCESS}`
+export const ACTION_CHANGE_MOST_VOTED_FAIL = `${name}/${ON_CHANGE_MOST_VOTED_FAIL}`

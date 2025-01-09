@@ -5,6 +5,9 @@ import { drawPlayer } from '~/utils/drawPlayer'
 import type { IPlayer } from '../players/player'
 import {
     type InitialState,
+    ON_CHANGE_MOST_VOTED,
+    ON_CHANGE_MOST_VOTED_FAIL,
+    ON_CHANGE_MOST_VOTED_SUCCESS,
     ON_CHANGE_PLAY_ROUND,
     ON_CHANGE_PLAY_ROUND_FAIL,
     ON_CHANGE_PLAY_ROUND_SUCCESS,
@@ -43,6 +46,7 @@ const initialState: InitialState = {
     disguisedPlayer: null,
     questionRound: 1,
     votingItem: '',
+    mostVoted: null,
 }
 
 const slice = createSlice({
@@ -153,6 +157,7 @@ const slice = createSlice({
             state.disguisedPlayer = null
             state.questionRound = 1
             state.votingItem = ''
+            state.mostVoted = null
         },
         [ON_RESET_GAME_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
@@ -183,6 +188,19 @@ const slice = createSlice({
             state.round = action.payload.round
         },
         [ON_CHANGE_PLAY_ROUND_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_CHANGE_MOST_VOTED]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_CHANGE_MOST_VOTED_SUCCESS]: (
+            state,
+            action: PayloadAction<{ mostVoted: IPlayer }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.mostVoted = action.payload.mostVoted
+        },
+        [ON_CHANGE_MOST_VOTED_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },
