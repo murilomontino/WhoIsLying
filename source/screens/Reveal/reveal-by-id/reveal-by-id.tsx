@@ -6,9 +6,10 @@ import {
     FadeInRight,
     FadeOutLeft,
     FadeOutRight,
+    FlipInEasyX,
+    FlipOutEasyX,
     useAnimatedStyle,
     useSharedValue,
-    withRepeat,
     withTiming,
 } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
@@ -32,8 +33,6 @@ const RevealByIdScreen = () => {
     const { id } = useLocalSearchParams()
     // Animações com useSharedValue
     const opacity = useSharedValue(100) // FadeIn
-    const flipX = useSharedValue(0) // Flip em X
-    const pulseScale = useSharedValue(1) // Pulsar
     const translateX = useSharedValue(0) // Translate em X
 
     useEffect(() => {
@@ -44,35 +43,6 @@ const RevealByIdScreen = () => {
             router.push('/reveal')
         }
     }, [id])
-
-    const handleSpinning = () => {
-        // Configura Flip em X
-        flipX.value = withRepeat(
-            withTiming(100, { duration: 150, easing: Easing.ease }), // Flip em X com duração de 1 segundo
-            4,
-        )
-
-        // Inicia animação de Pulsar e Fade
-        pulseScale.value = withRepeat(
-            withTiming(1.2, { duration: 500, easing: Easing.ease }), // Aumenta a escala para 1.2
-            -1, // Número de repetições (-1 significa infinito)
-            true, // Inverte a animação, fazendo pulsar para frente e para trás
-        )
-
-        // Anima Fade (opacidade) alternando entre 1 e 0
-        opacity.value = withRepeat(
-            withTiming(0.5, { duration: 500, easing: Easing.ease }), // diminui para 0.8
-            -1, // Número de repetições (-1 significa infinito)
-            true, // Inverte o efeito de fade
-        )
-
-        setTimeout(() => {
-            setVisible(true)
-            flipX.value = withTiming(0, { duration: 150, easing: Easing.ease }) // Reseta a rotação de Flip
-            pulseScale.value = withTiming(1, { duration: 500, easing: Easing.ease }) // Reseta a animação de Pulsar
-            opacity.value = withTiming(1, { duration: 1000 }) // Reseta a animação de Fade
-        }, 1000) // Atraso após a animação de Flip
-    }
 
     const handleReveal = useCallback(async () => {
         // Inicia a animação de saída
@@ -96,18 +66,6 @@ const RevealByIdScreen = () => {
         router.push('/reveal')
     }, [player])
 
-    // Estilo para as animações
-    const animatedStyles = useAnimatedStyle(() => {
-        return {
-            opacity: opacity.value,
-            transform: [
-                { rotateX: `${flipX.value}deg` }, // Aplica a rotação de Flip em X
-                { scale: pulseScale.value }, // Animação de pulsar (scale)
-                { translateX: translateX.value }, // Animação de saída
-            ],
-        }
-    })
-
     const animatedViewStyles = useAnimatedStyle(() => {
         return {
             opacity: opacity.value,
@@ -117,8 +75,11 @@ const RevealByIdScreen = () => {
         }
     })
 
+    const handlePressReveal = useCallback(() => {
+        setVisible(true)
+    }, [])
+
     const item = useMemo(() => {
-        if (!visible) return 'Revelar'
         if (id === disguisedPlayer?._id) {
             return 'Você é o Impostor'
         }
@@ -161,26 +122,29 @@ const RevealByIdScreen = () => {
                     >
                         <ButtonSecondary
                             disabled={visible}
-                            shadow={{
-                                style: {
-                                    borderRadius: 8,
-                                },
-                            }}
-                            onPress={handleSpinning}
-                            className="rounded-lg !opacity-100 h-24 w-[50vw] max-w-[300px]"
+                            onPress={handlePressReveal}
+                            className="rounded-lg !opacity-100 h-24 md:w-[50vw] w-full "
                         >
-                            <Text
-                                disabled={visible}
-                                as="h4"
-                                className="text-shadow-outlined"
-                                style={[
-                                    animatedStyles,
-                                    {
-                                        color: visible ? '#ef4444' : '#ef4444',
-                                    },
-                                ]}
-                            >
-                                {item}
+                            <Text disabled={visible} as="h4">
+                                <Text
+                                    entering={FadeInRight}
+                                    exiting={FlipOutEasyX.duration(500)}
+                                    demount={visible}
+                                    as="h4"
+                                    className="text-red-500"
+                                >
+                                    Revelar
+                                </Text>
+                                <Text
+                                    condition={visible}
+                                    delay={500}
+                                    entering={FlipInEasyX.duration(1000)}
+                                    exiting={FlipOutEasyX}
+                                    as="h4"
+                                    className="text-white"
+                                >
+                                    {item}
+                                </Text>
                             </Text>
                         </ButtonSecondary>
                     </View>
