@@ -9,6 +9,7 @@ import AnimatedText, {
 const text = tv({
     base: `
         text-gray-800
+        px-4 py-2 text-center  w-fit h-fit
     `,
     variants: {
         as: {
