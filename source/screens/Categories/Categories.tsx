@@ -74,7 +74,7 @@ const CategoriesScreen = () => {
                 Categorias
             </Text>
             <ScrollView
-                contentContainerClassName="w-fit flex-wrap items-center flex-row justify-start"
+                contentContainerClassName="w-fit flex-wrap px-2 items-center flex-row justify-between"
                 style={{ flex: 1 }} // Garante que o ScrollView ocupe o espaço disponível
             >
                 {categories.map((category, index) => (
