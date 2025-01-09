@@ -74,12 +74,7 @@ const CategoriesScreen = () => {
                 Categorias
             </Text>
             <ScrollView
-                contentContainerStyle={{
-                    flexWrap: 'wrap',
-                    flexDirection: 'row',
-                    justifyContent: 'flex-start',
-                    paddingHorizontal: 16,
-                }}
+                contentContainerClassName="w-fit flex-wrap items-center flex-row justify-start"
                 style={{ flex: 1 }} // Garante que o ScrollView ocupe o espaço disponível
             >
                 {categories.map((category, index) => (
@@ -88,7 +83,7 @@ const CategoriesScreen = () => {
                         delay={(index + 1) * 100}
                         entering={FadeInRight.duration(450)}
                         exiting={FadeOutRight.duration(450)}
-                        className="flex-grow m-1 w-1/3 max-w-[44vw]  md:max-w-[30vw]"
+                        className="flex-grow m-1 w-1/2 max-w-[44vw]  md:max-w-[38vw]"
                     >
                         <Button
                             disabled={!category.active}
