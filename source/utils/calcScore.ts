@@ -15,7 +15,7 @@ import type { IPlayer } from '~/store/slices/players/player'
 type CalcScoreParams = {
     player: IPlayer
     disguised_player: IPlayer
-    winner: IPlayer
+    winner: IPlayer | null
     questionRound: number
 }
 
@@ -34,7 +34,7 @@ export const calcScorePlayer = ({
 
     // Identificar o impostor em maioria de votos: 75 pontos
     // (Condição de Vitória dos Jogadores)
-    if (disguised_player._id === winner._id) {
+    if (disguised_player._id === winner?._id) {
         score += 75
     }
 
@@ -47,7 +47,7 @@ export const calcScorePlayer = ({
 
 type CalcScoreDisguisedParams = {
     disguised_player: IPlayer
-    winner: IPlayer
+    winner: IPlayer | null
     questionRound: number
     choose: string
     item: string
@@ -64,7 +64,7 @@ export const calcScoreDisguisedPlayer = ({
 
     // Identificar o impostor em maioria de votos: 75 pontos
     // (Condição de Vitória dos Jogadores)
-    if (disguised_player._id !== winner._id) {
+    if (disguised_player._id !== winner?._id) {
         score += 75
     }
 
