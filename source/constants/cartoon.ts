@@ -6,7 +6,10 @@ const cartoon = [
         brief_description:
             'Família vivendo aventuras humorísticas em um cenário incomum',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
+        clues: [
+            'É conhecida como uma sitcom animada da TV.',
+            'Os personagens utilizam versões primitivas de tecnologias do século 20.',
+        ],
         category: 'Categoria geral do item',
     },
     {
@@ -16,7 +19,11 @@ const cartoon = [
         brief_description:
             'Dois personagens exploram lugares desconhecidos em aventuras cheias de imaginação',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
+        clues: [
+            'A história se passa em um mundo cheio de elementos mágicos e criaturas peculiares.',
+            'Explora temas de amizade, coragem e criatividade.',
+            'É uma animação reconhecida por misturar humor com mensagens profundas.',
+        ],
         category: 'Categoria geral do item',
     },
     {
@@ -26,8 +33,12 @@ const cartoon = [
         brief_description:
             'Vida diária de uma família em uma cidade, repleta de sátiras e humor.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'É conhecida como uma das sitcoms animadas da TV.',
+            'Aborda temas como trabalho, relações familiares e sociedade.',
+        ],
+        category: 'Séries Animadas',
+        difficulty: 1,
     },
     {
         name: 'Rick and Morty',
@@ -36,18 +47,26 @@ const cartoon = [
         brief_description:
             'Personagens vivem aventuras caóticas em diferentes dimensões.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Explora temas como ciência, moralidade e o universo.',
+            'Mistura humor com viagens complexas e dilemas existenciais.',
+        ],
+        category: 'Séries Animadas',
+        difficulty: 2,
     },
     {
         name: 'Tom e Jerry',
         genre: 'Comédia',
         year_of_release: 1940,
         brief_description:
-            'Clássica rivalidade entre dois personagens em constantes conflitos',
+            'Clássica rivalidade entre dois personagens em constantes conflitos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'É uma das animações mais clássicas e reconhecidas da TV.',
+            'Retrata interações engraçadas e criativas sem falas.',
+        ],
+        category: 'Séries Clássicas',
+        difficulty: 1,
     },
     {
         name: 'Bob Esponja Calça Quadrada',
@@ -56,8 +75,12 @@ const cartoon = [
         brief_description:
             'As aventuras de um personagem e seus amigos em um ambiente subaquático.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Explora a amizade e o cotidiano de forma humorística.',
+            'É conhecida por seu estilo de humor único e situações inesperadas.',
+        ],
+        category: 'Séries Infantis',
+        difficulty: 1,
     },
     {
         name: 'Looney Tunes',
@@ -66,8 +89,12 @@ const cartoon = [
         brief_description:
             'Série de curtas-metragens de animação com personagens icônicos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'É um dos maiores marcos da animação clássica.',
+            'Famosa por apresentar histórias curtas e cheias de humor.',
+        ],
+        category: 'Séries Clássicas',
+        difficulty: 1,
     },
     {
         name: 'DuckTales',
@@ -76,8 +103,12 @@ const cartoon = [
         brief_description:
             'As aventuras de um personagem e seus sobrinhos-netos em busca de tesouros e mistérios.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'É uma série cheia de aventuras, mistérios e viagens.',
+            'Retrata o valor da coragem e da exploração.',
+        ],
+        category: 'Séries Clássicas',
+        difficulty: 3,
     },
     {
         name: 'Popeye',
@@ -86,8 +117,12 @@ const cartoon = [
         brief_description:
             'Personagem que ganha força ao comer e vive aventuras para salvar sua amada.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'É uma animação clássica conhecida pelo estilo único.',
+            'Transmite mensagens sobre superação e determinação.',
+        ],
+        category: 'Séries Clássicas',
+        difficulty: 2,
     },
     {
         name: 'Os Jetsons',
@@ -96,8 +131,12 @@ const cartoon = [
         brief_description:
             'Família futurista vivendo em um mundo cheio de tecnologia avançada e robôs.',
         tags: ['ficção científica', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'É ambientada em um mundo futurista cheio de invenções.',
+            'Retrata as interações familiares com um toque tecnológico.',
+        ],
+        category: 'Séries Clássicas',
+        difficulty: 3,
     },
     {
         name: 'Scooby-Doo',
@@ -105,28 +144,39 @@ const cartoon = [
         year_of_release: 1969,
         brief_description: 'Grupo de amigos resolvem mistérios.',
         tags: ['mistério', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Famosa série sobre mistérios e trabalho em equipe.',
+            'É conhecida pelas reviravoltas em suas histórias.',
+        ],
+        category: 'Séries Infantis',
+        difficulty: 1,
     },
     {
         name: 'Pink e o Cérebro',
         genre: 'Comédia',
         year_of_release: 1995,
-        brief_description:
-            'Dois personagens tentam conquistar o mundo em cada episódio.',
+        brief_description: 'Dois personagens tentam conquistar o mundo.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'É uma série com muito humor e planos ambiciosos.',
+            'Retrata a dinâmica entre personagens opostos.',
+        ],
+        category: 'Séries Animadas',
+        difficulty: 3,
     },
     {
         name: 'Coragem, o Cão Covarde',
         genre: 'Terror',
         year_of_release: 1999,
         brief_description:
-            'Personagem medroso que enfrenta criaturas assustadoras para proteger seus donos.',
+            'Personagem medroso que enfrenta criaturas assustadoras para proteger seus pais.',
         tags: ['terror', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'É uma animação que mistura humor e suspense.',
+            'Famosa por situações que misturam tensão e coragem.',
+        ],
+        category: 'Séries Infantis',
+        difficulty: 2,
     },
     {
         name: 'Futurama',
