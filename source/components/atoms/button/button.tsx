@@ -1,5 +1,6 @@
 import {
     type GestureResponderEvent,
+    Platform,
     TouchableOpacity,
     type TouchableOpacityProps,
 } from 'react-native'
@@ -7,7 +8,6 @@ import { tv } from 'tailwind-variants'
 import withControl, { type ControlProps } from '~/components/helpers/with-control'
 import withDelay from '~/components/helpers/with-delay'
 import useSound from '~/components/hooks/use-sound'
-
 type ButtonProps = TouchableOpacityProps & {
     delay?: number
     hasSound?: boolean
@@ -67,51 +67,49 @@ export function ButtonPrimary({ className, disabled, ...props }: ButtonProps) {
     return (
         <Button
             {...props}
-            style={[
-                props?.style,
-                {
-                    shadowColor: '#000',
-                    shadowOffset: {
-                        width: 0,
-                        height: 12,
-                    },
-                    shadowOpacity: 0.58,
-                    shadowRadius: 16.0,
-
-                    elevation: 24,
-                },
-            ]}
+            style={[props?.style, styles.shadow]}
             disabled={disabled}
             className={button({ className, disabled, color: 'primary' })}
         />
     )
 }
 
-export function ButtonSecondary({
-    className,
-    shadow,
-    disabled,
-    ...props
-}: ButtonProps) {
+export function ButtonSecondary({ className, disabled, ...props }: ButtonProps) {
     return (
         <Button
             {...props}
-            style={[
-                props?.style,
-                {
-                    shadowColor: '#000',
-                    shadowOffset: {
-                        width: 0,
-                        height: 12,
-                    },
-                    shadowOpacity: 0.58,
-                    shadowRadius: 16.0,
-
-                    elevation: 24,
-                },
-            ]}
+            style={[props?.style, styles.shadow]}
             disabled={disabled}
             className={button({ className, disabled, color: 'secondary' })}
         />
     )
+}
+
+const styles = {
+    shadow: {
+        ...Platform.select({
+            ios: {
+                shadowColor: '#000',
+                shadowOffset: {
+                    width: 0,
+                    height: 12,
+                },
+                shadowOpacity: 0.58,
+                shadowRadius: 16.0,
+            },
+            android: {
+                elevation: 24,
+            },
+            web: {
+                elevation: 24,
+                shadowColor: '#000',
+                shadowOffset: {
+                    width: 0,
+                    height: 12,
+                },
+                shadowOpacity: 0.58,
+                shadowRadius: 16.0,
+            },
+        }),
+    },
 }
