@@ -108,7 +108,7 @@ const FoodSecretScreen = () => {
                             exiting={FadeOutRight.duration(500)}
                             key={item.name}
                             className={cn(
-                                'flex items-center w-full h-10 col-span-1 px-4 py-2 space-x-4  rounded-full min-h-10 max-h-10',
+                                'flex items-center w-full h-10 col-span-1 rounded-full min-h-10 max-h-10',
                                 {
                                     'bg-blue-500': voting === item.name,
                                     'bg-gray-200': voting !== item.name,

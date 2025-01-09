@@ -1,16 +1,13 @@
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {
-    Easing,
     FadeInLeft,
     FadeInRight,
     FadeOutLeft,
     FadeOutRight,
     FlipInEasyX,
     FlipOutEasyX,
-    useAnimatedStyle,
     useSharedValue,
-    withTiming,
 } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
@@ -24,6 +21,8 @@ import { delay } from '~/utils/delay'
 
 const RevealByIdScreen = () => {
     const [visible, setVisible] = useState(false)
+    const [disabled, setDisabled] = useState(false)
+    const [isExiting, setIsExiting] = useState(false)
     const [player, setPlayer] = useState<typeof Player | null>(null)
     const { players } = useAppSelector((state) => state.players)
     const { category } = useAppSelector((state) => state.categories)
@@ -45,38 +44,23 @@ const RevealByIdScreen = () => {
     }, [id])
 
     const handleReveal = useCallback(async () => {
-        // Inicia a animação de saída
-        opacity.value = withTiming(0, {
-            duration: 1000,
-            easing: Easing.out(Easing.quad),
-        })
-        translateX.value = withTiming(-100, {
-            duration: 1000,
-            easing: Easing.out(Easing.quad),
-        })
-        await delay(1000) // Aguarda a animação de saída
-
-        // Após a animação, atualiza o estado do jogador e redireciona
+        setIsExiting(true)
         dispatch(
             onUpdatePlayerReveal({
                 _id: player?._id as string,
                 reveal: true,
             }),
         )
+
+        await delay(1000) // Aguarda a animação de saída
+
         router.push('/reveal')
     }, [player])
 
-    const animatedViewStyles = useAnimatedStyle(() => {
-        return {
-            opacity: opacity.value,
-            transform: [
-                { translateX: translateX.value }, // Animação de saída
-            ],
-        }
-    })
-
-    const handlePressReveal = useCallback(() => {
+    const handlePressReveal = useCallback(async () => {
         setVisible(true)
+        await delay(1000)
+        setDisabled(true)
     }, [])
 
     const item = useMemo(() => {
@@ -88,15 +72,13 @@ const RevealByIdScreen = () => {
 
     return (
         <DefaultLayout>
-            <View
-                style={[animatedViewStyles]}
-                className="flex flex-col items-center justify-center w-full h-full space-y-8"
-            >
+            <View className="flex flex-col items-center justify-center w-full h-full space-y-8">
                 <View className="flex flex-col items-center justify-center flex-1 w-full px-2 space-y-4">
                     <Title />
                     <Text
-                        entering={FadeInLeft}
-                        exiting={FadeOutRight}
+                        entering={FadeInRight}
+                        exiting={FadeOutLeft}
+                        demount={isExiting}
                         as="h2"
                         className="!text-white text-shadow-outlined-red"
                     >
@@ -106,6 +88,7 @@ const RevealByIdScreen = () => {
                 <View className="flex items-center justify-center flex-1 w-full px-8">
                     <Text
                         entering={FadeInLeft}
+                        demount={isExiting}
                         exiting={FadeOutRight}
                         as="h3"
                         className="!text-white text-shadow-outlined-red"
@@ -117,34 +100,35 @@ const RevealByIdScreen = () => {
                     </Text>
                     <View
                         entering={FadeInRight}
-                        exiting={FadeOutRight}
-                        className="flex items-center justify-center w-full"
+                        exiting={FadeOutLeft}
+                        demount={isExiting}
+                        className="flex items-center justify-center "
                     >
                         <ButtonSecondary
-                            disabled={visible}
+                            disabled={disabled}
                             onPress={handlePressReveal}
-                            className="rounded-lg !opacity-100 h-24 md:w-[50vw] w-full "
+                            className="rounded-lg !opacity-100 h-32 md:w-[50vw] w-full  "
                         >
-                            <Text disabled={visible} as="h4">
-                                <Text
-                                    entering={FadeInRight}
-                                    exiting={FlipOutEasyX.duration(500)}
-                                    demount={visible}
-                                    as="h4"
-                                    className="text-red-500"
-                                >
-                                    Revelar
-                                </Text>
-                                <Text
-                                    condition={visible}
-                                    delay={500}
-                                    entering={FlipInEasyX.duration(1000)}
-                                    exiting={FlipOutEasyX}
-                                    as="h4"
-                                    className="text-white"
-                                >
-                                    {item}
-                                </Text>
+                            <Text
+                                disabled={visible}
+                                entering={FadeInRight}
+                                exiting={FlipOutEasyX.duration(500)}
+                                demount={visible}
+                                as="h4"
+                                className="text-red-500 "
+                            >
+                                Revelar
+                            </Text>
+                            <Text
+                                disabled={visible}
+                                condition={visible}
+                                delay={500}
+                                entering={FlipInEasyX.duration(1000)}
+                                exiting={FlipOutEasyX}
+                                as="h4"
+                                className="px-4 py-2 text-center text-white w-fit h-fit"
+                            >
+                                {item}
                             </Text>
                         </ButtonSecondary>
                     </View>
@@ -152,6 +136,7 @@ const RevealByIdScreen = () => {
                 <Text
                     entering={FadeInRight}
                     exiting={FadeOutRight}
+                    demount={isExiting}
                     as="body"
                     className="w-full text-wrap px-8 text-center !text-white md:w-1/2 text-shadow-sm"
                 >
@@ -160,9 +145,11 @@ const RevealByIdScreen = () => {
                     qual é a comida secreta, mas sem revelar diretamente.
                 </Text>
                 <View
+                    delay={1000}
                     condition={visible}
-                    entering={FadeInLeft}
-                    exiting={FadeOutRight}
+                    entering={FadeInRight}
+                    demount={isExiting}
+                    exiting={FadeOutLeft}
                     className="flex flex-[0.5] items-center justify-center w-full px-8"
                 >
                     <ButtonPrimary

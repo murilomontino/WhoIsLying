@@ -3,12 +3,10 @@ import React, { useCallback, useEffect, useState } from 'react'
 import {
     BounceInLeft,
     BounceInRight,
-    Easing,
+    BounceOutLeft,
+    BounceOutRight,
     FadeIn,
     FadeInDown,
-    useAnimatedStyle,
-    useSharedValue,
-    withTiming,
 } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonSecondary } from '~/components/atoms/button'
@@ -22,11 +20,10 @@ import { delay } from '~/utils/delay'
 const RevealScreen = () => {
     const [player, setPlayer] = useState<typeof Player | null>(null)
     const [isMounted, setIsMounted] = useState(false)
+    const [isExiting, setIsExiting] = useState(false)
+
     const { players } = useAppSelector((state) => state.players)
     const router = useRouter()
-
-    const opacity = useSharedValue(1)
-    const translateX = useSharedValue(0)
 
     useEffect(() => {
         setIsMounted(true)
@@ -49,26 +46,12 @@ const RevealScreen = () => {
         revealEffect()
     }, [revealEffect, isMounted])
 
-    const handleReveal = useCallback(() => {
-        opacity.value = withTiming(0, {
-            duration: 1000,
-            easing: Easing.out(Easing.quad),
-        })
-        translateX.value = withTiming(-100, {
-            duration: 1000,
-            easing: Easing.out(Easing.quad),
-        })
-        setTimeout(() => {
-            router.push(`/reveal/${player?._id}`)
-        }, 1000)
-    }, [opacity, player?._id, router, translateX])
+    const handleReveal = useCallback(async () => {
+        setIsExiting(true)
+        await delay(1000)
 
-    const animatedStyle = useAnimatedStyle(() => {
-        return {
-            opacity: opacity.value,
-            transform: [{ translateX: translateX.value }],
-        }
-    })
+        router.push(`/reveal/${player?._id}`)
+    }, [player?._id, router])
 
     return (
         <DefaultLayout>
@@ -77,8 +60,9 @@ const RevealScreen = () => {
                 <View className="flex flex-col items-center justify-center flex-1 w-full px-2 mb-8 ">
                     <Text
                         delay={250}
+                        exiting={BounceOutLeft.duration(1000)}
+                        demount={isExiting}
                         entering={BounceInRight.damping(0.5).duration(500)}
-                        style={animatedStyle}
                         as="h3"
                         className="text-center !text-white "
                     >
@@ -86,20 +70,24 @@ const RevealScreen = () => {
                     </Text>
                     <Text
                         delay={250}
+                        exiting={BounceOutRight.duration(1000)}
+                        demount={isExiting}
                         entering={BounceInLeft.damping(0.5).duration(500)}
-                        style={animatedStyle}
                         as="h1"
                         className="!text-gray-800 text-shadow-outlined-red text-pretty"
                     >
                         {player?.name}
                     </Text>
                 </View>
-                <View className="items-center justify-end flex-1 ">
+                <View
+                    exiting={BounceOutLeft.duration(1000)}
+                    demount={isExiting}
+                    className="items-center justify-end flex-1 "
+                >
                     <Text
                         delay={250}
                         entering={FadeIn.duration(1000)}
                         style={[
-                            animatedStyle,
                             {
                                 fontSize: 24,
                                 transform: [{ rotate: '35deg' }],
@@ -113,13 +101,13 @@ const RevealScreen = () => {
                 <View
                     delay={250}
                     entering={FadeInDown.duration(250)}
-                    style={animatedStyle}
+                    exiting={BounceOutLeft.duration(1000)}
+                    demount={isExiting}
                     className="flex items-center justify-center flex-1 w-full px-8"
                 >
                     <Text
                         delay={250}
                         entering={FadeIn.duration(1000)}
-                        style={animatedStyle}
                         as="body"
                         className="w-full mb-4 px-8 text-center !text-white text-shadow-outlined md:w-1/2"
                     >

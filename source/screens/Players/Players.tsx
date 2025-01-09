@@ -84,17 +84,13 @@ export default function Page() {
                 className={'flex flex-[2] max-h-[30vh] md:max-h-[15vh] mb-2 h-fit'}
             >
                 <Title />
-                <View className="h-fit">
+                <View className="items-center h-fit">
                     <Text
                         delay={100}
                         demount={isExiting}
                         entering={FadeInUp}
                         exiting={FadeOutDown}
-                        as="h2"
-                        style={{
-                            fontFamily: 'Bangers_400Regular',
-                            fontSize: 32,
-                        }}
+                        as="h3"
                         className={cn(
                             { '!text-red-400': players.length < 3 },
                             'text-gray-800 text-center py-2',

@@ -5,14 +5,17 @@ import {
     BounceInLeft,
     BounceOut,
     FadeIn,
+    FadeInRight,
     FadeOut,
+    FlipInEasyX,
+    FlipOutEasyX,
 } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
-import { ButtonPrimary } from '~/components/atoms/button'
+import { ButtonPrimary, ButtonSecondary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
-import Dice3D from '~/components/molecules/coin'
 import View from '~/components/ui/view'
 import { useAppSelector } from '~/store/hooks'
+import { delay } from '~/utils/delay'
 
 const RevealFoodScreen = () => {
     const router = useRouter()
@@ -22,8 +25,12 @@ const RevealFoodScreen = () => {
     const delayName = 2000
     const delayProx = 3000
     const [reveal, setReveal] = useState(false)
-    const handleReveal = () => {
+    const [disabled, setDisabled] = useState(false)
+
+    const handlePressReveal = async () => {
         setReveal(true)
+        await delay(1000)
+        setDisabled(true)
     }
     const handleContinue = () => {
         router.push('/score')
@@ -69,7 +76,7 @@ const RevealFoodScreen = () => {
                     entering={FadeIn.duration(1000)}
                     exiting={FadeOut.duration(1000)}
                     delay={minDelay + delayProx}
-                    className="flex flex-col items-center justify-center w-full px-4 space-x-4 space-y-2"
+                    className="flex flex-col items-center justify-center w-full "
                 >
                     <Text
                         className="text-center !text-white text-shadow-outlined"
@@ -77,27 +84,38 @@ const RevealFoodScreen = () => {
                     >
                         Qual {category} é...
                     </Text>
-                    <Dice3D
-                        winnerSound={
-                            votingItem.trim().toLowerCase() ===
-                            'cartoon'.trim().toLowerCase()
-                        }
-                        onFinally={handleReveal}
-                        initialWord="Revelar"
-                        finalWord={'cartoon'}
-                        words={[
-                            'Pizza',
-                            'Hamburguer',
-                            votingItem,
-                            'Sushi',
-                            'Salada',
-                            'Churrasco',
-                        ]}
-                    />
+                    <ButtonSecondary
+                        disabled={disabled}
+                        onPress={handlePressReveal}
+                        className="rounded-lg !opacity-100 h-32 w-full"
+                    >
+                        <Text
+                            disabled={reveal}
+                            entering={FadeInRight}
+                            exiting={FlipOutEasyX.duration(500)}
+                            demount={reveal}
+                            as="h4"
+                            className="text-red-500 "
+                        >
+                            Revelar
+                        </Text>
+                        <Text
+                            disabled={reveal}
+                            condition={reveal}
+                            delay={500}
+                            entering={FlipInEasyX.duration(1000)}
+                            exiting={FlipOutEasyX}
+                            as="h4"
+                            className="px-4 py-2 text-center text-white w-fit h-fit"
+                        >
+                            Cartoon
+                        </Text>
+                    </ButtonSecondary>
                 </View>
 
                 <View
                     condition={reveal}
+                    delay={1000}
                     entering={BounceIn.duration(1000)}
                     exiting={BounceOut.duration(1000)}
                     className="flex flex-row items-center justify-center w-full px-4 space-x-4"

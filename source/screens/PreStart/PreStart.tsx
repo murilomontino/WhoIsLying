@@ -43,7 +43,7 @@ const PreStartScreen = () => {
     return (
         <DefaultLayout>
             <GoBack />
-            <View className="flex-1">
+            <View className="items-center flex-1">
                 <Title />
                 <Text
                     entering={FlipInEasyX.duration(500)}
