@@ -29,18 +29,15 @@ const ScoreScreen = () => {
     const dispatch = useAppDispatch()
 
     const { players } = useAppSelector((state) => state.players)
-    const { disguisedPlayer, questionRound, votingItem, points, round, rounds } =
-        useAppSelector((state) => state.game)
-
-    const winner = useMemo(() => {
-        return players.reduce((acc, player) => {
-            if (player.displayVotes > acc.displayVotes) {
-                return player
-            }
-
-            return acc
-        })
-    }, [])
+    const {
+        disguisedPlayer,
+        questionRound,
+        votingItem,
+        points,
+        round,
+        rounds,
+        mostVoted,
+    } = useAppSelector((state) => state.game)
 
     const playersScore: NewPlayersScore[] = useMemo(() => {
         return players.map((player: IPlayer) => {
@@ -55,7 +52,7 @@ const ScoreScreen = () => {
                     score: player.score,
                     sumScore: calcScoreDisguisedPlayer({
                         disguised_player: disguisedPlayer,
-                        winner,
+                        winner: mostVoted,
                         questionRound,
                         choose: votingItem,
                         item: 'cartoon',
@@ -70,12 +67,12 @@ const ScoreScreen = () => {
                 sumScore: calcScorePlayer({
                     player,
                     disguised_player: disguisedPlayer,
-                    winner,
+                    winner: mostVoted,
                     questionRound,
                 }),
             }
         })
-    }, [players, disguisedPlayer, winner, questionRound, votingItem])
+    }, [players, disguisedPlayer, mostVoted, questionRound, votingItem])
 
     const [sortedPlayers, setSortedPlayers] = useState(playersScore)
 
