@@ -37,6 +37,7 @@ const schema = Yup.object().shape({
 
 export default function Page() {
     const { players } = useAppSelector((state) => state.players)
+    const { round } = useAppSelector((state) => state.game)
     const dispatch = useAppDispatch()
     const router = useRouter()
     const [isExiting, setIsExiting] = useState(false)
@@ -77,6 +78,12 @@ export default function Page() {
     return (
         <DefaultLayout>
             <Restart />
+            <Text
+                className="absolute top-0 left-0 m-4"
+                condition={Number(round) > 1}
+            >
+                {round} Rodada
+            </Text>
             <View
                 demount={isExiting}
                 entering={BounceIn}
