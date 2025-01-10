@@ -1,5 +1,6 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 
+import type { Categories } from '~/constants/categories'
 import { LOADING } from '~/store/slices/constants'
 import { drawPlayer } from '~/utils/drawPlayer'
 import type { IPlayer } from '../players/player'
@@ -23,6 +24,8 @@ import {
     ON_GENERATE_DISGUISED,
     ON_GENERATE_DISGUISED_FAIL,
     ON_GENERATE_DISGUISED_SUCCESS,
+    ON_GENERATE_ITEM,
+    ON_GENERATE_ITEM_SUCCESS,
     ON_RESET_GAME,
     ON_RESET_GAME_FAIL,
     ON_RESET_GAME_SUCCESS,
@@ -46,6 +49,7 @@ const initialState: InitialState = {
     disguisedPlayer: null,
     questionRound: 1,
     votingItem: '',
+    item: null,
     mostVoted: null,
 }
 
@@ -202,6 +206,16 @@ const slice = createSlice({
         },
         [ON_CHANGE_MOST_VOTED_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
+        },
+        [ON_GENERATE_ITEM]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_GENERATE_ITEM_SUCCESS]: (
+            state,
+            action: PayloadAction<{ item: Categories }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.item = action.payload.item
         },
     },
 })

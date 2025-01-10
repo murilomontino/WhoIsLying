@@ -1,4 +1,15 @@
-const cartoon = [
+export type Cartoon = {
+    name: string
+    genre: string
+    year_of_release: number
+    brief_description: string
+    tags: string[]
+    clues: string[]
+    category: string
+    difficulty: 0 | 1 | 2 | 3 | 4 | 5
+}
+
+const cartoon: Cartoon[] = [
     {
         name: 'The Flintstones',
         genre: 'Comédia',
@@ -11,6 +22,7 @@ const cartoon = [
             'Os personagens utilizam versões primitivas de tecnologias do século 20.',
         ],
         category: 'Categoria geral do item',
+        difficulty: 0,
     },
     {
         name: 'Hora de Aventura',
@@ -25,6 +37,7 @@ const cartoon = [
             'É uma animação reconhecida por misturar humor com mensagens profundas.',
         ],
         category: 'Categoria geral do item',
+        difficulty: 1,
     },
     {
         name: 'Os Simpsons',

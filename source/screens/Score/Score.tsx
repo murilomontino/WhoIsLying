@@ -35,6 +35,7 @@ const ScoreScreen = () => {
         votingItem,
         points,
         round,
+        item,
         rounds,
         mostVoted,
     } = useAppSelector((state) => state.game)
@@ -55,7 +56,7 @@ const ScoreScreen = () => {
                         winner: mostVoted,
                         questionRound,
                         choose: votingItem,
-                        item: 'cartoon',
+                        item: item?.name as string,
                     }),
                 }
             }

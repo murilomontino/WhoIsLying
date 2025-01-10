@@ -21,6 +21,7 @@ import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import {
     onChangeQuestionRound,
     onGenerateDisguised,
+    onGenerateItem,
 } from '~/store/slices/game/actions'
 import { onResetPlayers } from '~/store/slices/players/actions'
 import cache from '~/utils/cache'
@@ -36,6 +37,7 @@ const PreStartScreen = () => {
         dispatch(onResetPlayers())
         dispatch(onChangeQuestionRound({ questionRound: Number(1) }))
         dispatch(onGenerateDisguised())
+        dispatch(onGenerateItem())
         await delay(100)
         router.push('/reveal')
     }

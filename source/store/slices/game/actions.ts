@@ -1,5 +1,6 @@
 import { createAction } from '@reduxjs/toolkit'
 
+import type { Categories } from '~/constants/categories'
 import type { IPlayer } from '../players/player'
 import {
     ACTION_CHANGE_MOST_VOTED,
@@ -20,6 +21,9 @@ import {
     ACTION_GENERATE_DISGUISED,
     ACTION_GENERATE_DISGUISED_FAIL,
     ACTION_GENERATE_DISGUISED_SUCCESS,
+    ACTION_GENERATE_ITEM,
+    ACTION_GENERATE_ITEM_FAIL,
+    ACTION_GENERATE_ITEM_SUCCESS,
     ACTION_RESET_GAME,
     ACTION_RESET_GAME_FAIL,
     ACTION_RESET_GAME_SUCCESS,
@@ -111,3 +115,9 @@ export const onChangeMostVotedSuccess = createAction<{ mostVoted: IPlayer | null
     ACTION_CHANGE_MOST_VOTED_SUCCESS,
 )
 export const onChangeMostVotedFail = createAction(ACTION_CHANGE_MOST_VOTED_FAIL)
+
+export const onGenerateItem = createAction(ACTION_GENERATE_ITEM)
+export const onGenerateItemSuccess = createAction<{ item: Categories }>(
+    ACTION_GENERATE_ITEM_SUCCESS,
+)
+export const onGenerateItemFail = createAction(ACTION_GENERATE_ITEM_FAIL)

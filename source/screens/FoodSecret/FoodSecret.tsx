@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import { useRouter } from 'expo-router'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import {
     BounceIn,
     BounceInLeft,
@@ -14,20 +14,28 @@ import DefaultLayout from '~/components/_layout/default'
 import { Button, ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import View from '~/components/ui/view'
+import type { Cartoon } from '~/constants/cartoon'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
 import { onVotingItem } from '~/store/slices/game/actions'
 import { delay } from '~/utils/delay'
+import { generateWords } from '~/utils/drawWord'
 
 const FoodSecretScreen = () => {
     const router = useRouter()
     const [voting, setVoting] = useState<string | null>(null)
     const [isExisting, setIsExisting] = useState(false)
-    const { disguisedPlayer } = useAppSelector((state) => state.game)
+    const { disguisedPlayer, item } = useAppSelector((state) => state.game)
+    const { category } = useAppSelector((state) => state.categories)
+
     const dispatch = useAppDispatch()
 
     const handleVote = (item: string) => {
         setVoting(item)
     }
+
+    const words = useMemo(() => {
+        return generateWords(item as Cartoon, 7)
+    }, [item])
 
     const handleConfirmVote = async () => {
         if (!voting) return
@@ -68,39 +76,14 @@ const FoodSecretScreen = () => {
                         as="h2"
                         className="text-center !text-white text-shadow-outlined-red"
                     >
-                        Vote na Comida
+                        Vote em {category}
                     </Text>
                 </View>
                 <View
                     delay={300}
                     className="grid grid-cols-2 w-full px-4 gap-2 md:w-[60vw]"
                 >
-                    {[
-                        {
-                            name: 'Curupira',
-                        },
-                        {
-                            name: 'Arroz',
-                        },
-                        {
-                            name: 'Cartoon',
-                        },
-                        {
-                            name: 'Macarrão',
-                        },
-                        {
-                            name: 'Batata',
-                        },
-                        {
-                            name: 'Salada',
-                        },
-                        {
-                            name: 'Porco',
-                        },
-                        {
-                            name: 'Peixe-Frito',
-                        },
-                    ].map((item, index) => (
+                    {words.map((item, index) => (
                         <View
                             delay={(index + 1) * 250}
                             demount={isExisting}

@@ -1,8 +1,9 @@
+import type { Category } from '~/constants/categories'
 import type { LOADING } from '~/store/slices/constants'
 
 export type InitialState = {
     isLoading: LOADING
-    category: string
+    category: Category
 }
 
 export const name = 'categories'

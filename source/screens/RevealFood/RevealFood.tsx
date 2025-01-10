@@ -20,7 +20,9 @@ import { delay } from '~/utils/delay'
 const RevealFoodScreen = () => {
     const router = useRouter()
     const { category } = useAppSelector((state) => state.categories)
-    const { disguisedPlayer, votingItem } = useAppSelector((state) => state.game)
+    const { disguisedPlayer, votingItem, item } = useAppSelector(
+        (state) => state.game,
+    )
     const minDelay = 1000
     const delayName = 2000
     const delayProx = 3000
@@ -109,7 +111,7 @@ const RevealFoodScreen = () => {
                                 as="h4"
                                 className="px-4 py-2 text-center text-white w-fit h-fit"
                             >
-                                Cartoon
+                                {item?.name}
                             </Text>
                         </ButtonSecondary>
                     </View>

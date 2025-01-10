@@ -25,7 +25,7 @@ const RevealByIdScreen = () => {
     const [player, setPlayer] = useState<typeof Player | null>(null)
     const { players } = useAppSelector((state) => state.players)
     const { category } = useAppSelector((state) => state.categories)
-    const { disguisedPlayer } = useAppSelector((state) => state.game)
+    const { disguisedPlayer, item: word } = useAppSelector((state) => state.game)
     const router = useRouter()
     const dispatch = useAppDispatch()
     const { id } = useLocalSearchParams()
@@ -63,7 +63,7 @@ const RevealByIdScreen = () => {
         if (id === disguisedPlayer?._id) {
             return 'Você é o Impostor'
         }
-        return 'Cartoon'
+        return word?.name
     }, [visible, id, disguisedPlayer])
 
     return (

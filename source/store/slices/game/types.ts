@@ -1,3 +1,4 @@
+import type { Categories } from '~/constants/categories'
 import type { LOADING } from '~/store/slices/constants'
 import type { IPlayer } from '../players/player'
 
@@ -9,6 +10,7 @@ export type InitialState = {
     questionRound: number
     disguisedPlayer: IPlayer | null
     votingItem: string
+    item: Categories | null
     mostVoted: IPlayer | null
 }
 
@@ -54,6 +56,10 @@ export const ON_CHANGE_MOST_VOTED = 'ON_CHANGE_MOST_VOTED'
 export const ON_CHANGE_MOST_VOTED_SUCCESS = 'ON_CHANGE_MOST_VOTED_SUCCESS'
 export const ON_CHANGE_MOST_VOTED_FAIL = 'ON_CHANGE_MOST_VOTED_FAIL'
 
+export const ON_GENERATE_ITEM = 'ON_GENERATE_ITEM'
+export const ON_GENERATE_ITEM_SUCCESS = 'ON_GENERATE_ITEM_SUCCESS'
+export const ON_GENERATE_ITEM_FAIL = 'ON_GENERATE_ITEM_FAIL'
+
 export const ACTION_CHANGE_ROUNDS = `${name}/${ON_CHANGE_ROUNDS}`
 export const ACTION_CHANGE_ROUNDS_SUCCESS = `${name}/${ON_CHANGE_ROUNDS_SUCCESS}`
 export const ACTION_CHANGE_ROUNDS_FAIL = `${name}/${ON_CHANGE_ROUNDS_FAIL}`
@@ -93,3 +99,7 @@ export const ACTION_CHANGE_PLAY_ROUND_FAIL = `${name}/${ON_CHANGE_PLAY_ROUND_FAI
 export const ACTION_CHANGE_MOST_VOTED = `${name}/${ON_CHANGE_MOST_VOTED}`
 export const ACTION_CHANGE_MOST_VOTED_SUCCESS = `${name}/${ON_CHANGE_MOST_VOTED_SUCCESS}`
 export const ACTION_CHANGE_MOST_VOTED_FAIL = `${name}/${ON_CHANGE_MOST_VOTED_FAIL}`
+
+export const ACTION_GENERATE_ITEM = `${name}/${ON_GENERATE_ITEM}`
+export const ACTION_GENERATE_ITEM_SUCCESS = `${name}/${ON_GENERATE_ITEM_SUCCESS}`
+export const ACTION_GENERATE_ITEM_FAIL = `${name}/${ON_GENERATE_ITEM_FAIL}`
