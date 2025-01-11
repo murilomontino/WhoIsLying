@@ -5,7 +5,6 @@ export type Cartoon = {
     brief_description: string
     tags: string[]
     clues: string[]
-    category: string
     difficulty: 0 | 1 | 2 | 3 | 4 | 5
 }
 
@@ -21,7 +20,6 @@ const cartoon: Cartoon[] = [
             'É conhecida como uma sitcom animada da TV.',
             'Os personagens utilizam versões primitivas de tecnologias do século 20.',
         ],
-        category: 'Categoria geral do item',
         difficulty: 0,
     },
     {
@@ -36,7 +34,6 @@ const cartoon: Cartoon[] = [
             'Explora temas de amizade, coragem e criatividade.',
             'É uma animação reconhecida por misturar humor com mensagens profundas.',
         ],
-        category: 'Categoria geral do item',
         difficulty: 1,
     },
     {
@@ -50,7 +47,6 @@ const cartoon: Cartoon[] = [
             'É conhecida como uma das sitcoms animadas da TV.',
             'Aborda temas como trabalho, relações familiares e sociedade.',
         ],
-        category: 'Séries Animadas',
         difficulty: 1,
     },
     {
@@ -64,7 +60,6 @@ const cartoon: Cartoon[] = [
             'Explora temas como ciência, moralidade e o universo.',
             'Mistura humor com viagens complexas e dilemas existenciais.',
         ],
-        category: 'Séries Animadas',
         difficulty: 2,
     },
     {
@@ -78,7 +73,6 @@ const cartoon: Cartoon[] = [
             'É uma das animações mais clássicas e reconhecidas da TV.',
             'Retrata interações engraçadas e criativas sem falas.',
         ],
-        category: 'Séries Clássicas',
         difficulty: 1,
     },
     {
@@ -92,7 +86,6 @@ const cartoon: Cartoon[] = [
             'Explora a amizade e o cotidiano de forma humorística.',
             'É conhecida por seu estilo de humor único e situações inesperadas.',
         ],
-        category: 'Séries Infantis',
         difficulty: 1,
     },
     {
@@ -106,7 +99,6 @@ const cartoon: Cartoon[] = [
             'É um dos maiores marcos da animação clássica.',
             'Famosa por apresentar histórias curtas e cheias de humor.',
         ],
-        category: 'Séries Clássicas',
         difficulty: 1,
     },
     {
@@ -120,7 +112,6 @@ const cartoon: Cartoon[] = [
             'É uma série cheia de aventuras, mistérios e viagens.',
             'Retrata o valor da coragem e da exploração.',
         ],
-        category: 'Séries Clássicas',
         difficulty: 3,
     },
     {
@@ -134,7 +125,6 @@ const cartoon: Cartoon[] = [
             'É uma animação clássica conhecida pelo estilo único.',
             'Transmite mensagens sobre superação e determinação.',
         ],
-        category: 'Séries Clássicas',
         difficulty: 2,
     },
     {
@@ -148,7 +138,6 @@ const cartoon: Cartoon[] = [
             'É ambientada em um mundo futurista cheio de invenções.',
             'Retrata as interações familiares com um toque tecnológico.',
         ],
-        category: 'Séries Clássicas',
         difficulty: 3,
     },
     {
@@ -161,7 +150,6 @@ const cartoon: Cartoon[] = [
             'Famosa série sobre mistérios e trabalho em equipe.',
             'É conhecida pelas reviravoltas em suas histórias.',
         ],
-        category: 'Séries Infantis',
         difficulty: 1,
     },
     {
@@ -174,7 +162,6 @@ const cartoon: Cartoon[] = [
             'É uma série com muito humor e planos ambiciosos.',
             'Retrata a dinâmica entre personagens opostos.',
         ],
-        category: 'Séries Animadas',
         difficulty: 3,
     },
     {
@@ -188,7 +175,6 @@ const cartoon: Cartoon[] = [
             'É uma animação que mistura humor e suspense.',
             'Famosa por situações que misturam tensão e coragem.',
         ],
-        category: 'Séries Infantis',
         difficulty: 2,
     },
     {
@@ -198,8 +184,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem que é congelado e acorda no futuro.',
         tags: ['ficção científica', 'comédia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Desenho com viagem no tempo.',
+            'Sitcom animado.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'South Park',
@@ -208,8 +197,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Sátira social e política através das aventuras de quatro personagens em uma pequena cidade.',
         tags: ['comédia', 'sátira'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Desenho com humor ácido.',
+            'Personagens infantis.'
+        ],
+        difficulty: 2,
     },
     {
         name: 'Avatar: A Lenda de Aang',
@@ -218,8 +210,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Jovem personagem deve dominar suas habilidades para trazer paz ao mundo.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal controla os elementos.',
+            'História de redenção e crescimento pessoal.'
+        ],
+        difficulty: 2,
     },
     {
         name: 'Os Padrinhos Mágicos',
@@ -228,8 +223,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem tem seus desejos realizados, muitas vezes se colocando em consequências hilárias.',
         tags: ['comédia', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal tem padrinhos mágicos.',
+            'Desenho com humor e fantasia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Johnny Bravo',
@@ -238,8 +236,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As desventuras de um personagem narcisista que tenta conquistar mulheres.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é narcisista.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: "Dexter's Laboratory",
@@ -248,8 +249,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem gênio com um laboratório secreto enfrenta desafios e sua irmã irritante.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um gênio.',
+            'Desenho com humor e invenções malucas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Dragon Ball Z',
@@ -258,8 +262,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Guerreiros lutam para proteger a Terra de ameaças poderosas.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens lutam com poderes especiais.',
+            'Desenho com batalhas épicas.'
+        ],
+        difficulty: 2,
     },
     {
         name: 'Naruto',
@@ -268,8 +275,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Jovem personagem busca reconhecimento e sonha em se tornar o líder de sua vila.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um ninja.',
+            'Desenho com batalhas e crescimento pessoal.'
+        ],
+        difficulty: 2,
     },
     {
         name: 'One Piece',
@@ -278,8 +288,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagens em busca de um tesouro lendário para se tornarem os Reis dos Piratas.',
         tags: ['aventura', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens são piratas.',
+            'Desenho com aventuras e batalhas.'
+        ],
+        difficulty: 2,
     },
     {
         name: 'Yu-Gi-Oh!',
@@ -288,8 +301,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem que joga um jogo de cartas mágico para salvar o mundo de ameaças.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal joga cartas mágicas.',
+            'Desenho com duelos e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Pokémon',
@@ -298,8 +314,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Treinadores capturam e treinam criaturas chamadas Pokémon para batalhas.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens capturam criaturas chamadas Pokémon.',
+            'Desenho com batalhas e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Digimon',
@@ -308,8 +327,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Crianças são transportadas para um mundo digital onde fazem amizade com monstros digitais.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens são transportados para um mundo digital.',
+            'Desenho com batalhas e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Cavaleiros do Zodíaco',
@@ -318,8 +340,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Guerreiros com armaduras baseadas nas constelações lutam para proteger uma deusa.',
         tags: ['ação', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens usam armaduras baseadas nas constelações.',
+            'Desenho com batalhas épicas.'
+        ],
+        difficulty: 2,
     },
     {
         name: 'Ben 10',
@@ -328,8 +353,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem encontra um relógio alienígena que lhe permite se transformar em diferentes criaturas.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal tem um relógio alienígena.',
+            'Desenho com transformações e batalhas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Steven Universo',
@@ -338,8 +366,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem com poderes mágicos defende a Terra ao lado de seres extraterrestres.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal tem poderes mágicos.',
+            'Desenho com batalhas e crescimento pessoal.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Regular Show',
@@ -348,8 +379,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Dois personagens que trabalham em um parque vivem situações absurdas e surreais.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais trabalham em um parque.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Gravity Falls',
@@ -358,8 +392,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Irmãos gêmeos descobrem segredos e mistérios em uma pequena cidade durante as férias de verão.',
         tags: ['mistério', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são irmãos gêmeos.',
+            'Desenho com mistérios e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Jovens Titãs',
@@ -368,8 +405,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de jovens super-heróis luta contra vilões e enfrenta desafios pessoais.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são jovens super-heróis.',
+            'Desenho com batalhas e crescimento pessoal.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Smurfs',
@@ -378,8 +418,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Pequenas criaturas azuis vivem em uma vila e enfrentam um malvado vilão.',
         tags: ['comédia', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são pequenas criaturas azuis.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'He-Man e os Mestres do Universo',
@@ -388,8 +431,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem se transforma em herói para proteger o reino de um vilão.',
         tags: ['ação', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal se transforma em herói.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'She-Ra e as Princesas do Poder',
@@ -398,8 +444,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem se transforma em heroína para liderar uma rebelião contra um malvado exército.',
         tags: ['ação', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal se transforma em heroína.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Thundercats',
@@ -408,8 +457,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de guerreiros luta para proteger seu novo lar de ameaças malignas.',
         tags: ['ação', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são guerreiros felinos.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Voltron',
@@ -418,8 +470,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Cinco pilotos de robôs leões se unem para formar um poderoso robô e defender o universo.',
         tags: ['ação', 'ficção científica'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais pilotam robôs leões.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Transformers',
@@ -428,8 +483,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Robôs alienígenas que podem se transformar em veículos lutam para proteger a Terra.',
         tags: ['ação', 'ficção científica'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são robôs alienígenas.',
+            'Desenho com batalhas e transformações.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Peanuts (Snoopy e Charlie Brown)',
@@ -438,8 +496,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras e desventuras de um personagem, seu cachorro e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Charlie Brown.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Garfield e Seus Amigos',
@@ -448,8 +509,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As travessuras de um personagem preguiçoso e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um gato preguiçoso chamado Garfield.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Incrível Mundo de Gumball',
@@ -458,8 +522,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seu irmão em uma cidade cheia de personagens excêntricos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um gato azul chamado Gumball.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Clarêncio, o Otimista',
@@ -468,8 +535,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem otimista e seus amigos vivem aventuras e aprendem lições de vida.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto otimista chamado Clarêncio.',
+            'Desenho com humor e lições de vida.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Barbie: Life in the Dreamhouse',
@@ -478,8 +548,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma personagem e seus amigos em uma casa de sonhos cheia de diversão.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é a boneca Barbie.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Kim Possible',
@@ -488,8 +561,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Adolescente que combate o crime enquanto lida com os desafios da vida escolar.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma adolescente chamada Kim Possible.',
+            'Desenho com batalhas e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Phineas e Ferb',
@@ -498,8 +574,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Dois personagens criam invenções incríveis durante as férias de verão.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos chamados Phineas e Ferb.',
+            'Desenho com humor e invenções malucas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Laboratório Submarino 2021',
@@ -508,8 +587,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Equipe de cientistas explora o fundo do mar em um laboratório submarino.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são cientistas.',
+            'Desenho com exploração submarina e ciência.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Impossíveis',
@@ -518,8 +600,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Trio de super-heróis que se disfarçam como uma banda de rock.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são super-heróis disfarçados de banda de rock.',
+            'Desenho com batalhas e música.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Clube das Winx',
@@ -528,8 +613,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de fadas adolescentes que frequentam uma escola de magia e enfrentam vilões.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são fadas adolescentes.',
+            'Desenho com magia e batalhas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Mucha Lucha',
@@ -538,8 +626,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Crianças que frequentam uma escola de luta livre e vivem aventuras hilárias.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são crianças que praticam luta livre.',
+            'Desenho com humor e batalhas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Anjinhos (Rugrats)',
@@ -548,8 +639,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de bebês curiosos e suas interpretações do mundo ao seu redor.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são bebês curiosos.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Hey Arnold!',
@@ -558,8 +652,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem com uma cabeça em forma de bola de futebol vive aventuras em sua vizinhança urbana.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Arnold.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Doug',
@@ -568,8 +665,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras e desafios de um personagem e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Doug.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Pateta e Max',
@@ -578,8 +678,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seu filho enquanto enfrentam os desafios da vida cotidiana.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são Pateta e seu filho Max.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'As Aventuras de Jackie Chan',
@@ -588,8 +691,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem e sua família enfrentam vilões e procuram artefatos mágicos.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um arqueólogo e artista marcial chamado Jackie Chan.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Meninas Superpoderosas',
@@ -598,8 +704,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Três personagens com superpoderes lutam contra vilões para proteger sua cidade.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são três meninas com superpoderes.',
+            'Desenho com batalhas e humor.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Samurai Jack',
@@ -608,8 +717,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem é transportado para um futuro distópico e luta para voltar ao seu tempo e derrotar o malvado Aku.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um samurai chamado Jack.',
+            'Desenho com batalhas e viagens no tempo.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Tiny Toon Adventures',
@@ -618,8 +730,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Jovens personagens inspirados nos Looney Tunes frequentam a escola de comédia.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são jovens inspirados nos Looney Tunes.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'A Turma do Pateta',
@@ -628,8 +743,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos em uma cidade suburbana.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é Pateta.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Darkwing Duck',
@@ -637,8 +755,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1991,
         brief_description: 'Super-herói pato combate o crime em uma cidade.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um pato super-herói chamado Darkwing Duck.',
+            'Desenho com batalhas e humor.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Animaniacs',
@@ -646,8 +767,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1993,
         brief_description: 'As aventuras malucas de personagens excêntricos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são excêntricos e malucos.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Inspector Gadget',
@@ -656,8 +780,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Detetive atrapalhado com gadgets embutidos em seu corpo luta contra um vilão.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um detetive atrapalhado com gadgets embutidos em seu corpo.',
+            'Desenho com batalhas e humor.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Pica-Pau',
@@ -665,8 +792,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1940,
         brief_description: 'As travessuras de um personagem maluco e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um pássaro maluco chamado Pica-Pau.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Ursinhos Carinhosos',
@@ -675,8 +805,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Ursinhos mágicos que vivem em um reino e ajudam a espalhar amor e bondade.',
         tags: ['fantasia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são ursinhos mágicos.',
+            'Desenho com magia e lições de vida.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Muppet Babies',
@@ -685,8 +818,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Versão infantil dos Muppets vivendo aventuras imaginárias em uma creche.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são versões infantis dos Muppets.',
+            'Desenho com humor e imaginação.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Bluey',
@@ -694,8 +830,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2018,
         brief_description: 'As aventuras de uma personagem e sua família.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma cachorrinha chamada Bluey.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Peppa Pig',
@@ -703,8 +842,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2004,
         brief_description: 'As aventuras de uma personagem e sua família.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma porquinha chamada Peppa Pig.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Barney e Seus Amigos',
@@ -713,8 +855,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem ensina lições de vida e valores para crianças.',
         tags: ['educação', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um dinossauro roxo chamado Barney.',
+            'Desenho com lições de vida e valores.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Thomas e Seus Amigos',
@@ -723,8 +868,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma locomotiva e seus amigos em uma ilha.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma locomotiva chamada Thomas.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Dora, a Aventureira',
@@ -733,8 +881,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem exploradora e seu amigo vivem aventuras enquanto ensinam inglês e espanhol.',
         tags: ['educação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma exploradora chamada Dora.',
+            'Desenho com aventuras e aprendizado de idiomas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Backyardigans',
@@ -743,8 +894,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de amigos animais que usam a imaginação para viver aventuras no quintal.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são animais que usam a imaginação.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Arthur',
@@ -752,8 +906,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1996,
         brief_description: 'As aventuras de um jovem personagem e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jovem chamado Arthur.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Sete Monstrinhos',
@@ -762,8 +919,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Sete irmãos monstros vivem aventuras e aprendem lições de vida.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são sete irmãos monstros.',
+            'Desenho com humor e lições de vida.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Little Einsteins',
@@ -772,8 +932,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de crianças que viajam pelo mundo em uma nave espacial aprendendo sobre música e arte.',
         tags: ['educação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são crianças que viajam pelo mundo.',
+            'Desenho com aprendizado de música e arte.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Charlie e Lola',
@@ -781,8 +944,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2005,
         brief_description: 'As aventuras de um irmão mais velho e sua irmãzinha.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são um irmão mais velho chamado Charlie e sua irmãzinha chamada Lola.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Pororo, o Pinguim',
@@ -791,8 +957,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos em uma vila de neve.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um pinguim chamado Pororo.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Caillou',
@@ -800,8 +969,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1997,
         brief_description: 'As aventuras e descobertas de um personagem.',
         tags: ['educação', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Caillou.',
+            'Desenho com lições de vida e aprendizado.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Lilo & Stitch: The Series',
@@ -810,8 +982,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem e seu amigo alienígena capturam e reabilitam experimentos genéticos.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são Lilo e seu amigo alienígena Stitch.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'A Família Radical',
@@ -819,8 +994,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2001,
         brief_description: 'As aventuras de uma adolescente e sua família.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma adolescente chamada Penny.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Incríveis Spiez',
@@ -829,8 +1007,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Quatro irmãos que trabalham como espiões para uma organização secreta.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são quatro irmãos espiões.',
+            'Desenho com batalhas e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Totally Spies',
@@ -839,8 +1020,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Três adolescentes que trabalham como espiãs para uma organização secreta.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são três adolescentes espiãs.',
+            'Desenho com batalhas e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Castores Pirados',
@@ -849,8 +1033,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois irmãos castores que vivem em uma represa.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos castores.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Rocket Power',
@@ -859,8 +1046,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de amigos que praticam esportes radicais e vivem aventuras na praia.',
         tags: ['aventura', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais praticam esportes radicais.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Vida de Inseto (série)',
@@ -868,8 +1058,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1998,
         brief_description: 'As aventuras de um grupo de insetos em um formigueiro.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são insetos.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Babar',
@@ -878,8 +1071,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem que se torna rei de sua terra natal.',
         tags: ['fantasia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um elefante chamado Babar.',
+            'Desenho com aventuras e lições de vida.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Franklin e Sua Turma',
@@ -887,8 +1083,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1997,
         brief_description: 'As aventuras de um personagem e seus amigos animais.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma tartaruga chamada Franklin.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'As Trigêmeas',
@@ -897,8 +1096,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de três irmãs trigêmeas que viajam pelo tempo e espaço.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são três irmãs trigêmeas.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'As Novas Aventuras de Winnie the Pooh',
@@ -907,8 +1109,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos no Bosque dos Cem Acres.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um urso chamado Winnie the Pooh.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'My Little Pony: Friendship Is Magic',
@@ -917,8 +1122,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de personagens mágicos que aprendem sobre amizade e enfrentam vilões.',
         tags: ['fantasia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são pôneis mágicos.',
+            'Desenho com aventuras e lições de amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'As Aventuras do Tintim',
@@ -926,8 +1134,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1991,
         brief_description: 'As aventuras de um jovem personagem e seu cachorro.',
         tags: ['aventura', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jovem repórter chamado Tintim.',
+            'Desenho com aventuras e mistérios.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Astro Boy',
@@ -935,8 +1146,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1963,
         brief_description: 'As aventuras de um personagem que luta contra o mal.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um robô chamado Astro Boy.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Speed Racer',
@@ -945,8 +1159,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um jovem piloto de corridas e seu carro.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um piloto de corridas chamado Speed Racer.',
+            'Desenho com corridas e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Samurai X',
@@ -954,8 +1171,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1996,
         brief_description: 'As aventuras de um ex-samurai que busca redenção.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um ex-samurai chamado Kenshin.',
+            'Desenho com batalhas e redenção.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Beyblade',
@@ -963,8 +1183,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2001,
         brief_description: 'Garotos que competem em batalhas de piões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais competem em batalhas de piões.',
+            'Desenho com batalhas e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Bakugan',
@@ -972,8 +1195,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2007,
         brief_description: 'Garotos que competem em batalhas com criaturas.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais competem em batalhas com criaturas.',
+            'Desenho com batalhas e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Power Rangers (série animada)',
@@ -982,8 +1208,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de adolescentes que se transformam em super-heróis para lutar contra vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são adolescentes que se transformam em super-heróis.',
+            'Desenho com batalhas e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Super Campeões',
@@ -991,8 +1220,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1983,
         brief_description: 'As aventuras de um jovem jogador de futebol.',
         tags: ['esporte', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jovem jogador de futebol chamado Oliver.',
+            'Desenho com esportes e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Hamtaro',
@@ -1000,8 +1232,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2000,
         brief_description: 'As aventuras de um personagem e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um hamster chamado Hamtaro.',
+            'Desenho com humor e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Shaman King',
@@ -1010,8 +1245,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem que pode se comunicar com espíritos e compete em um torneio.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um xamã chamado Yoh.',
+            'Desenho com batalhas e espíritos.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'InuYasha',
@@ -1020,8 +1258,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem que viaja no tempo e se junta a um meio-demônio para encontrar fragmentos de uma joia mágica.',
         tags: ['ação', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Kagome.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Bleach',
@@ -1030,8 +1271,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem que se torna um Ceifador de Almas e luta contra espíritos malignos.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Ichigo.',
+            'Desenho com batalhas e espíritos.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Death Note',
@@ -1040,8 +1284,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem encontra um caderno que permite matar qualquer pessoa ao escrever seu nome nele.',
         tags: ['suspense', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Light.',
+            'Desenho com mistério e suspense.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Code Geass',
@@ -1050,8 +1297,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem exilado ganha o poder de controlar as ações das pessoas e lidera uma rebelião contra um império tirânico.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um príncipe exilado chamado Lelouch.',
+            'Desenho com batalhas e estratégia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Sailor Moon',
@@ -1060,8 +1310,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem que se transforma em uma guerreira mágica para lutar contra forças do mal.',
         tags: ['fantasia', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Usagi.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Hunter x Hunter',
@@ -1070,8 +1323,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem que busca se tornar um Hunter para encontrar seu pai desaparecido.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Gon.',
+            'Desenho com batalhas e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Fullmetal Alchemist',
@@ -1080,8 +1336,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Dois personagens buscam a Pedra Filosofal para restaurar seus corpos após uma transmutação fracassada.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos chamados Edward e Alphonse.',
+            'Desenho com batalhas e alquimia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Attack on Titan',
@@ -1090,8 +1349,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Humanidade luta para sobreviver contra gigantes devoradores de homens.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais lutam contra gigantes.',
+            'Desenho com batalhas e sobrevivência.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Demon Slayer',
@@ -1100,8 +1362,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem se torna um caçador de demônios para vingar sua família e salvar sua irmã.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Tanjiro.',
+            'Desenho com batalhas e demônios.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'My Hero Academia',
@@ -1110,8 +1375,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem sem poderes em um mundo de super-heróis se matricula em uma escola para heróis.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Midoriya.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Jujutsu Kaisen',
@@ -1120,8 +1388,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem que se torna um feiticeiro para lutar contra maldições e espíritos malignos.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Yuji.',
+            'Desenho com batalhas e maldições.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Chainsaw Man',
@@ -1130,8 +1401,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem que se funde com um demônio motosserra e luta contra outros demônios.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Denji.',
+            'Desenho com batalhas e demônios.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Akira',
@@ -1140,8 +1414,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Em um futuro distópico, um jovem ganha poderes psíquicos e ameaça destruir a cidade.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jovem chamado Kaneda.',
+            'Desenho com batalhas e poderes psíquicos.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Dragon Ball Super',
@@ -1150,8 +1427,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Continuação das aventuras de personagens enquanto enfrentam novos inimigos poderosos.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais lutam com poderes especiais.',
+            'Desenho com batalhas épicas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Boruto',
@@ -1160,8 +1440,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras do filho de um personagem, enquanto ele segue os passos de seu pai como ninja.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Boruto.',
+            'Desenho com batalhas e crescimento pessoal.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Shin-Chan',
@@ -1170,8 +1453,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As travessuras de um personagem travesso e sua família.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto travesso chamado Shin-Chan.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Crayon Shin-chan',
@@ -1180,8 +1466,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As travessuras de um personagem travesso e sua família.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto travesso chamado Shin-Chan.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Cavaleiros da Távola Redonda',
@@ -1190,8 +1479,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos Cavaleiros da Távola Redonda em busca do Santo Graal.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são os Cavaleiros da Távola Redonda.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Capitão Planeta e os Defensores',
@@ -1200,8 +1492,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de jovens com anéis mágicos que invocam o Capitão Planeta para combater a poluição.',
         tags: ['aventura', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são jovens com anéis mágicos.',
+            'Desenho com batalhas e lições de vida.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Superman: The Animated Series',
@@ -1210,8 +1505,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras do super-herói enquanto ele protege uma cidade de vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é o super-herói Superman.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Batman: A Série Animada',
@@ -1220,8 +1518,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras do super-herói enquanto ele combate o crime em uma cidade.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é o super-herói Batman.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Liga da Justiça',
@@ -1230,8 +1531,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de super-heróis se une para proteger a Terra de ameaças.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são super-heróis da Liga da Justiça.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Young Justice',
@@ -1240,8 +1544,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de jovens super-heróis que trabalham em equipe para combater o crime.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são jovens super-heróis.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Vingadores: Os Heróis Mais Poderosos da Terra',
@@ -1250,8 +1557,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de super-heróis se une para proteger a Terra de ameaças.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são super-heróis dos Vingadores.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Homem-Aranha: A Série Animada',
@@ -1260,8 +1570,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras do super-herói enquanto ele combate o crime em uma cidade.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é o super-herói Homem-Aranha.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'X-Men: A Série Animada',
@@ -1270,8 +1583,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de mutantes com poderes especiais luta para proteger a humanidade e combater vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são mutantes dos X-Men.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Wolverine e os X-Men',
@@ -1280,8 +1596,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem lidera os X-Men em uma luta para salvar o futuro dos mutantes.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é o mutante Wolverine.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Hulk e os Agentes de S.M.A.S.H.',
@@ -1290,8 +1609,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem e sua equipe de super-heróis enfrentam ameaças para proteger a Terra.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é o super-herói Hulk.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Guardiões da Galáxia',
@@ -1300,8 +1622,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de desajustados espaciais se une para proteger a galáxia de ameaças.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são os Guardiões da Galáxia.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Archer',
@@ -1310,8 +1635,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um espião egocêntrico e sua equipe disfuncional.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um espião chamado Archer.',
+            'Desenho com humor e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'BoJack Horseman',
@@ -1320,8 +1648,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As desventuras de um personagem antropomórfico e ex-estrela de TV em busca de redenção.',
         tags: ['comédia', 'drama'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um cavalo antropomórfico chamado BoJack Horseman.',
+            'Desenho com humor e drama.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Big Mouth',
@@ -1330,8 +1661,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de adolescentes lidando com a puberdade e seus monstros hormonais.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são adolescentes lidando com a puberdade.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'F is for Family',
@@ -1340,8 +1674,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As desventuras de uma família disfuncional nos anos 70.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são membros de uma família disfuncional.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Family Guy',
@@ -1349,8 +1686,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1999,
         brief_description: 'As desventuras de uma família em uma cidade.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são membros da família Griffin.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'American Dad',
@@ -1359,8 +1699,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As desventuras de uma família e seu alienígena residente.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são membros da família Smith.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Boondocks',
@@ -1369,8 +1712,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois irmãos que se mudam para um subúrbio.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos chamados Huey e Riley.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Clifford, o Gigante Cão Vermelho',
@@ -1378,8 +1724,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2000,
         brief_description: 'As aventuras de um personagem gigante e sua dona.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um cão gigante chamado Clifford.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Max e Ruby',
@@ -1387,8 +1736,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2002,
         brief_description: 'As aventuras de dois irmãos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos chamados Max e Ruby.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Mundo de Elmo',
@@ -1397,8 +1749,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem explora o mundo ao seu redor e aprende novas lições.',
         tags: ['educação', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um monstro vermelho chamado Elmo.',
+            'Desenho com lições de vida e aprendizado.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Animais do Bosque dos Vinténs',
@@ -1407,8 +1762,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de animais que foge de seu habitat destruído e busca um novo lar seguro.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são animais que fogem de seu habitat destruído.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Histórias de Ursos com Rupert',
@@ -1416,8 +1774,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1991,
         brief_description: 'As aventuras de um personagem e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um urso chamado Rupert.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Paddington',
@@ -1426,8 +1787,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem que vem de outro lugar para viver em uma cidade.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um urso chamado Paddington.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Tartarugas Ninja',
@@ -1436,8 +1800,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Quatro personagens treinados em artes marciais lutam contra o crime em uma cidade.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são quatro tartarugas ninjas.',
+            'Desenho com batalhas e artes marciais.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Kung Fu Panda: Lendas do Dragão Guerreiro',
@@ -1446,8 +1813,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem enquanto ele treina para se tornar um mestre do kung fu.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um panda chamado Po.',
+            'Desenho com batalhas e artes marciais.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Como Treinar Seu Dragão: A Série',
@@ -1456,8 +1826,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seu dragão enquanto eles exploram novas ilhas e enfrentam novos desafios.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Soluço.',
+            'Desenho com aventuras e dragões.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Madagascar: A Little Wild',
@@ -1466,8 +1839,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos personagens de Madagascar quando eram jovens e viviam em um zoológico.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são os personagens de Madagascar quando eram jovens.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Pinguins de Madagascar',
@@ -1476,8 +1852,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de quatro personagens espiões que vivem em um zoológico.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são quatro pinguins espiões.',
+            'Desenho com humor e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Ônibus Mágico',
@@ -1486,8 +1865,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Professora excêntrica leva seus alunos em viagens educativas em um ônibus mágico.',
         tags: ['educação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma professora excêntrica chamada Sra. Frizzle.',
+            'Desenho com viagens educativas e aprendizado.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Gato de Botas: Preso num Conto Épico',
@@ -1496,8 +1878,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem enquanto ele tenta escapar de um livro mágico.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um gato chamado Gato de Botas.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Miraculous: As Aventuras de Ladybug',
@@ -1506,8 +1891,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Adolescentes que se transformam em super-heróis para proteger uma cidade de vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são adolescentes que se transformam em super-heróis.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Espetacular Homem-Aranha',
@@ -1516,8 +1904,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras do super-herói enquanto ele combate o crime em uma cidade.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é o super-herói Homem-Aranha.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Homem-Aranha no Aranhaverso (série)',
@@ -1526,8 +1917,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de diferentes versões do super-herói de universos paralelos.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são diferentes versões do Homem-Aranha.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Dead End: Paranormal Park',
@@ -1536,8 +1930,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Dois adolescentes e um cachorro enfrentam forças paranormais em um parque temático assombrado.',
         tags: ['terror', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois adolescentes e um cachorro.',
+            'Desenho com terror e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Amphibia',
@@ -1546,8 +1943,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem é transportada para um mundo de sapos antropomórficos e vive aventuras.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Anne.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Owl House',
@@ -1556,8 +1956,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem encontra um portal para um mundo mágico e decide se tornar uma bruxa.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Luz.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Star vs. As Forças do Mal',
@@ -1566,8 +1969,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem de outra dimensão luta contra vilões enquanto vive na Terra.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma princesa chamada Star.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Infinity Train',
@@ -1576,8 +1982,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem fica presa em um trem infinito e deve resolver mistérios para encontrar o caminho de casa.',
         tags: ['aventura', 'mistério'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Tulip.',
+            'Desenho com aventuras e mistérios.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Carmen Sandiego',
@@ -1586,8 +1995,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem viaja pelo mundo roubando de vilões e devolvendo para as vítimas.',
         tags: ['aventura', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma ladra chamada Carmen Sandiego.',
+            'Desenho com aventuras e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Hilda',
@@ -1596,8 +2008,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem aventureira e seus amigos exploram um mundo cheio de criaturas mágicas.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Hilda.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Turbo FAST',
@@ -1605,8 +2020,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2013,
         brief_description: 'As aventuras de um personagem de corrida e sua equipe.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um caracol chamado Turbo.',
+            'Desenho com humor e corridas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Croods: O Início',
@@ -1615,8 +2033,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma família pré-histórica enquanto eles exploram o mundo ao seu redor.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são membros da família Croods.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Spirit: Cavalgando Livre',
@@ -1625,8 +2046,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem faz amizade com um cavalo selvagem e vive aventuras no Velho Oeste.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Lucky.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Trollhunters',
@@ -1635,8 +2059,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem descobre um amuleto mágico e se torna o protetor dos trolls que vivem sob sua cidade.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Jim.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: '3Below',
@@ -1645,8 +2072,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Dois adolescentes alienígenas e seu guarda-costas robô se escondem na Terra após um golpe em seu planeta natal.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois adolescentes alienígenas.',
+            'Desenho com aventuras e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Wizards: Contos de Arcadia',
@@ -1655,8 +2085,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Aprendiz de mago deve unir forças com heróis de diferentes mundos para salvar a Terra.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um aprendiz de mago chamado Douxie.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Guerra do Submundo',
@@ -1665,8 +2098,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de guerreiros luta para proteger o mundo subterrâneo de ameaças.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são guerreiros do mundo subterrâneo.',
+            'Desenho com batalhas e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Kipo e os Animonstros',
@@ -1675,8 +2111,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem sai de seu abrigo subterrâneo e explora um mundo pós-apocalíptico cheio de criaturas mutantes.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Kipo.',
+            'Desenho com aventuras e criaturas mutantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Kid Cosmic',
@@ -1685,8 +2124,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem encontra pedras cósmicas que lhe dão superpoderes e forma uma equipe de heróis para proteger a Terra.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Kid.',
+            'Desenho com aventuras e superpoderes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Arcane',
@@ -1695,8 +2137,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Baseado no universo de League of Legends, a série explora a origem de dois campeões icônicos e a luta entre duas cidades.',
         tags: ['ação', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são campeões do jogo League of Legends.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Cuphead Show!',
@@ -1705,8 +2150,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois personagens em um mundo inspirado em desenhos animados dos anos 30.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos chamados Cuphead e Mugman.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Castlevania',
@@ -1715,8 +2163,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Caçador de vampiros luta para salvar uma região de Drácula e suas forças malignas.',
         tags: ['ação', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um caçador de vampiros chamado Trevor.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Blood of Zeus',
@@ -1725,8 +2176,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem descobre ser filho de Zeus e deve salvar o mundo de uma ameaça demoníaca.',
         tags: ['fantasia', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um semideus chamado Heron.',
+            'Desenho com batalhas e mitologia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Dragon’s Dogma',
@@ -1735,8 +2189,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem busca vingança contra um dragão que roubou seu coração, enfrentando monstros e desafios ao longo do caminho.',
         tags: ['fantasia', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um guerreiro chamado Ethan.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Witcher: Lenda do Lobo',
@@ -1745,8 +2202,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Prequela da série The Witcher, explorando a juventude de Vesemir, mentor de Geralt de Rívia.',
         tags: ['fantasia', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um bruxo chamado Vesemir.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: "Dota: Dragon's Blood",
@@ -1755,8 +2215,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Baseado no universo do jogo Dota 2, a série segue um Cavaleiro Dragão em sua jornada para salvar o mundo.',
         tags: ['fantasia', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um Cavaleiro Dragão chamado Davion.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Heróis de Sanjay',
@@ -1765,8 +2228,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem imagina aventuras épicas com seus heróis favoritos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Sanjay.',
+            'Desenho com humor e imaginação.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Megas XLR',
@@ -1775,8 +2241,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Dois personagens encontram um robô gigante e o usam para combater invasores alienígenas.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois amigos chamados Coop e Jamie.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'KND: A Turma do Bairro',
@@ -1785,8 +2254,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de crianças que luta contra os adultos e suas regras opressivas.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são crianças que lutam contra os adultos.',
+            'Desenho com batalhas e humor.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Show dos Looney Tunes',
@@ -1795,8 +2267,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras modernas dos personagens clássicos dos Looney Tunes.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são os personagens clássicos dos Looney Tunes.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'As Novas Aventuras de Tom e Jerry',
@@ -1805,8 +2280,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Novas aventuras dos personagens enquanto continuam sua rivalidade clássica.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são Tom e Jerry.',
+            'Desenho com humor e rivalidade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Taz-Mania',
@@ -1815,8 +2293,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras do personagem e sua família na ilha da Tasmânia.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é o demônio da Tasmânia chamado Taz.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Quack Pack',
@@ -1824,8 +2305,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1996,
         brief_description: 'As aventuras de um personagem e seus sobrinhos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é o pato Donald e seus sobrinhos.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Gárgulas',
@@ -1834,8 +2318,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagens que ganham vida à noite protegem uma cidade de ameaças.',
         tags: ['ação', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são gárgulas que ganham vida à noite.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Freakazoid!',
@@ -1844,8 +2331,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Adolescente se transforma em um super-herói maluco e combate vilões bizarros.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um adolescente chamado Dexter.',
+            'Desenho com humor e batalhas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Turbo Teen',
@@ -1854,8 +2344,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Adolescente que se transforma em um carro esportivo e luta contra o crime.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um adolescente chamado Brett.',
+            'Desenho com batalhas e transformações.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Centurions',
@@ -1864,8 +2357,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de heróis com trajes de combate que lhes conferem habilidades especiais para lutar contra vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são heróis com trajes de combate.',
+            'Desenho com batalhas e tecnologia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Superamigos',
@@ -1874,8 +2370,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de super-heróis da DC Comics que se unem para combater o mal.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são super-heróis da DC Comics.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'SilverHawks',
@@ -1884,8 +2383,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de heróis cibernéticos que protegem a galáxia de vilões.',
         tags: ['ação', 'ficção científica'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são heróis cibernéticos.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Galaxy Rangers',
@@ -1894,8 +2396,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de heróis espaciais que lutam para proteger a galáxia de ameaças.',
         tags: ['ação', 'ficção científica'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são heróis espaciais.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Jayce e os Guerreiros do Espaço',
@@ -1903,8 +2408,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1985,
         brief_description: 'Grupo de heróis que lutam contra uma força maligna.',
         tags: ['ação', 'ficção científica'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são heróis espaciais.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'M.A.S.K.',
@@ -1913,8 +2421,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de heróis com veículos transformáveis que lutam contra uma organização criminosa.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são heróis com veículos transformáveis.',
+            'Desenho com batalhas e tecnologia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'C.O.P.S.',
@@ -1923,8 +2434,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de policiais futuristas que lutam contra o crime em uma cidade futurista.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são policiais futuristas.',
+            'Desenho com batalhas e tecnologia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Street Sharks',
@@ -1933,8 +2447,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de heróis mutantes com habilidades de tubarões que lutam contra vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são heróis mutantes com habilidades de tubarões.',
+            'Desenho com batalhas e transformações.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Extreme Dinosaurs',
@@ -1943,8 +2460,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de dinossauros mutantes que lutam contra vilões para proteger a Terra.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dinossauros mutantes.',
+            'Desenho com batalhas e transformações.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Dinoplativolos',
@@ -1953,8 +2473,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de dinossauros que lutam contra vilões para proteger a Terra.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dinossauros.',
+            'Desenho com batalhas e transformações.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'As Aventuras de Jimmy Neutron',
@@ -1963,8 +2486,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem gênio inventa dispositivos incríveis e vive aventuras com seus amigos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um gênio chamado Jimmy Neutron.',
+            'Desenho com humor e invenções malucas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Fanboy e Chum Chum',
@@ -1973,8 +2499,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois personagens que se vestem como super-heróis e vivem situações absurdas.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois amigos chamados Fanboy e Chum Chum.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Segredo dos Animais',
@@ -1983,8 +2512,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de personagens que vivem situações hilárias.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são animais de uma fazenda.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Planet Sheen',
@@ -1993,8 +2525,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem de Jimmy Neutron, em um planeta alienígena.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Sheen.',
+            'Desenho com humor e aventuras espaciais.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'El Tigre: As Aventuras de Manny Rivera',
@@ -2003,8 +2538,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem com poderes de tigre luta contra vilões enquanto decide se quer ser herói ou vilão.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Manny.',
+            'Desenho com batalhas e transformações.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'A Vida Moderna de Rocko',
@@ -2013,8 +2551,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos em uma cidade moderna.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um wallaby chamado Rocko.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Aaahh!!! Real Monsters',
@@ -2023,8 +2564,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de três personagens que frequentam uma escola de sustos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são três monstros.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'CatDog',
@@ -2033,8 +2577,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um ser metade gato e metade cachorro e suas desventuras.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um ser metade gato e metade cachorro.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Thornberrys',
@@ -2043,8 +2590,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma família que viaja pelo mundo documentando a vida selvagem.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são membros da família Thornberry.',
+            'Desenho com aventuras e vida selvagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'ChalkZone',
@@ -2053,8 +2603,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem descobre um mundo mágico onde tudo o que é desenhado em um quadro negro ganha vida.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Rudy.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Rocket Power',
@@ -2063,8 +2616,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de amigos que praticam esportes radicais e vivem aventuras na praia.',
         tags: ['aventura', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais praticam esportes radicais.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Kablam!',
@@ -2073,8 +2629,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Programa de variedades com diferentes segmentos de animação e personagens excêntricos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são excêntricos e malucos.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'T.U.F.F. Puppy',
@@ -2083,8 +2642,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem se torna agente secreto e luta contra vilões ao lado de sua parceira.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um cachorro chamado Dudley.',
+            'Desenho com humor e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Pinguins de Madagascar',
@@ -2093,8 +2655,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de quatro personagens espiões que vivem no zoológico de Central Park.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são quatro pinguins espiões.',
+            'Desenho com humor e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Vila Sésamo: A Animação',
@@ -2103,8 +2668,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Versão animada do programa educativo Vila Sésamo, ensinando lições de vida e valores para crianças.',
         tags: ['educação', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são os personagens de Vila Sésamo.',
+            'Desenho com lições de vida e aprendizado.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Vegetais',
@@ -2113,8 +2681,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Série de animação com personagens vegetais que ensinam lições de vida e valores cristãos.',
         tags: ['educação', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são vegetais.',
+            'Desenho com lições de vida e valores cristãos.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Madeline',
@@ -2123,8 +2694,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma personagem e suas amigas em um internato em Paris.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Madeline.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Angelina Ballerina',
@@ -2133,8 +2707,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma jovem personagem que sonha em se tornar uma bailarina famosa.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma ratinha chamada Angelina.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Postman Pat',
@@ -2143,8 +2720,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seu gato enquanto entregam correspondências em uma vila.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um carteiro chamado Pat.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'LazyTown',
@@ -2153,8 +2733,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma personagem e seus amigos enquanto aprendem sobre saúde e bem-estar.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Stephanie.',
+            'Desenho com humor e lições de vida.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Charlie Chalk',
@@ -2163,8 +2746,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem em uma ilha cheia de personagens excêntricos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um palhaço chamado Charlie Chalk.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Bananas de Pijamas',
@@ -2173,8 +2759,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois personagens antropomórficos e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois bananas antropomórficos.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Irmãos Koala',
@@ -2183,8 +2772,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois irmãos enquanto ajudam seus amigos em uma cidade.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos koalas.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Puffin Rock',
@@ -2193,8 +2785,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma jovem personagem e seu irmão em uma ilha.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma jovem puffin chamada Oona.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Sarah & Duck',
@@ -2202,8 +2797,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2013,
         brief_description: 'As aventuras de uma personagem e seu melhor amigo.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Sarah.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Gigantosaurus',
@@ -2212,8 +2810,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de quatro jovens personagens enquanto exploram seu mundo pré-histórico.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são quatro jovens dinossauros.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Pequerruchos',
@@ -2222,8 +2823,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de personagens curiosos e suas interpretações do mundo ao seu redor.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são pequenos e curiosos.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Super Wings',
@@ -2232,8 +2836,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos enquanto entregam pacotes ao redor do mundo.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um avião chamado Jett.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Thomas e Seus Amigos',
@@ -2242,8 +2849,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma locomotiva e seus amigos na Ilha de Sodor.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma locomotiva chamada Thomas.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Bom Dinossauro (série)',
@@ -2251,8 +2861,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2015,
         brief_description: 'As aventuras de um jovem personagem e seu amigo.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jovem dinossauro chamado Arlo.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Jelly Jamm',
@@ -2261,8 +2874,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de amigos em um planeta musical.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são amigos em um planeta musical.',
+            'Desenho com humor e música.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Zoboomafoo',
@@ -2271,8 +2887,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Dois irmãos e um personagem ensinam sobre animais e a natureza.',
         tags: ['educação', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos e um lêmure chamado Zoboomafoo.',
+            'Desenho com lições de vida e aprendizado sobre animais.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'George, o Curioso',
@@ -2280,8 +2899,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2006,
         brief_description: 'As aventuras de um personagem curioso e seu amigo.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um macaco curioso chamado George.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Contos de Little Bear',
@@ -2289,8 +2911,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1995,
         brief_description: 'As aventuras de um jovem personagem e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jovem urso chamado Little Bear.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Rupert',
@@ -2298,8 +2923,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1991,
         brief_description: 'As aventuras de um personagem e seus amigos.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um urso chamado Rupert.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Urso na Casa Azul',
@@ -2308,8 +2936,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos em uma casa azul.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um urso chamado Bear.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Baby Shark’s Big Show!',
@@ -2317,8 +2948,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2020,
         brief_description: 'As aventuras de um personagem e seus amigos no oceano.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um tubarão chamado Baby Shark.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Moleques do Bairro',
@@ -2327,8 +2961,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de crianças que luta contra os adultos e suas regras opressivas.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são crianças que lutam contra os adultos.',
+            'Desenho com batalhas e humor.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Jimmy Two-Shoes',
@@ -2337,8 +2974,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem otimista em uma cidade governada por um demônio.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Jimmy.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Kick Buttowski',
@@ -2347,8 +2987,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem que sonha em se tornar o maior dublê do mundo.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Kick.',
+            'Desenho com batalhas e humor.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Dave, o Bárbaro',
@@ -2357,8 +3000,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e sua família em um reino medieval.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um bárbaro chamado Dave.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Lloyd no Espaço',
@@ -2367,8 +3013,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos em uma estação espacial.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Lloyd.',
+            'Desenho com aventuras e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Substitutos',
@@ -2377,8 +3026,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois irmãos que podem substituir qualquer adulto em suas vidas por alguém novo.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos chamados Riley e Todd.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Buzz Lightyear do Comando Estelar',
@@ -2387,8 +3039,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e sua equipe de patrulheiros espaciais enquanto lutam contra o malvado Imperador Zurg.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um patrulheiro espacial chamado Buzz Lightyear.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'A Lenda de Tarzan',
@@ -2397,8 +3052,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de personagens enquanto exploram a selva e enfrentam vilões.',
         tags: ['aventura', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um homem chamado Tarzan.',
+            'Desenho com aventuras e vida selvagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'As Aventuras de Timão e Pumba',
@@ -2407,8 +3065,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos personagens enquanto viajam pelo mundo.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são um suricato chamado Timão e um javali chamado Pumba.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: '101 Dálmatas: A Série',
@@ -2417,8 +3078,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos personagens enquanto enfrentam uma vilã.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dálmatas.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Aladdin',
@@ -2427,8 +3091,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de personagens enquanto enfrentam vilões e exploram o mundo.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jovem chamado Aladdin.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'A Pequena Sereia',
@@ -2437,8 +3104,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma personagem enquanto explora o mundo submarino e a superfície.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma sereia chamada Ariel.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Hércules',
@@ -2447,8 +3117,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras do jovem personagem enquanto treina para se tornar um herói e enfrenta vilões mitológicos.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jovem chamado Hércules.',
+            'Desenho com batalhas e mitologia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Os Ursinhos Gummi',
@@ -2457,8 +3130,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de personagens mágicos que vivem em um reino medieval.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são ursinhos mágicos.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Duck Dodgers',
@@ -2467,8 +3143,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um herói espacial enquanto luta contra vilões intergalácticos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um pato chamado Duck Dodgers.',
+            'Desenho com humor e aventuras espaciais.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Super Choque',
@@ -2477,8 +3156,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um adolescente com poderes elétricos que luta contra o crime em sua cidade.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um adolescente chamado Virgil.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Max Steel',
@@ -2487,8 +3169,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um jovem super-herói enquanto luta contra vilões e salva o mundo.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jovem chamado Max Steel.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Action Man',
@@ -2497,8 +3182,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um super-herói enquanto luta contra vilões e salva o mundo.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um super-herói chamado Action Man.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Hot Wheels: AcceleRacers',
@@ -2507,8 +3195,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de pilotos de corrida que competem em pistas perigosas e enfrentam vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são pilotos de corrida.',
+            'Desenho com batalhas e corridas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Powerpuff Girls Z',
@@ -2517,8 +3208,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Versão anime das Meninas Superpoderosas, onde três personagens ganham superpoderes e lutam contra vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são três meninas com superpoderes.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Astro Boy (2003)',
@@ -2526,8 +3220,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 2003,
         brief_description: 'As aventuras de um personagem que luta contra o mal.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um robô chamado Astro Boy.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Gigantor',
@@ -2536,8 +3233,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem que controla um robô gigante para lutar contra vilões.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Jimmy.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Patlabor',
@@ -2546,8 +3246,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma unidade policial que usa robôs gigantes para combater o crime.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são policiais que usam robôs gigantes.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Robotech',
@@ -2556,8 +3259,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de pilotos de robôs gigantes que lutam contra invasores alienígenas.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são pilotos de robôs gigantes.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Macross',
@@ -2566,8 +3272,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de pilotos de robôs gigantes que lutam contra invasores alienígenas.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são pilotos de robôs gigantes.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Neo Genesis Evangelion',
@@ -2576,8 +3285,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de adolescentes que pilotam robôs gigantes para proteger a Terra de criaturas chamadas Anjos.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são adolescentes que pilotam robôs gigantes.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Cowboy Bebop',
@@ -2586,8 +3298,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de caçadores de recompensas espaciais enquanto viajam pelo sistema solar.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são caçadores de recompensas espaciais.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Trigun',
@@ -2595,8 +3310,11 @@ const cartoon: Cartoon[] = [
         year_of_release: 1998,
         brief_description: 'As aventuras de um pistoleiro em um planeta desértico.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um pistoleiro chamado Vash.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Outlaw Star',
@@ -2605,8 +3323,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de mercenários espaciais enquanto procuram um tesouro lendário.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são mercenários espaciais.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Black Lagoon',
@@ -2615,8 +3336,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de mercenários que operam no sudeste asiático.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são mercenários.',
+            'Desenho com batalhas e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Gurren Lagann',
@@ -2625,8 +3349,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de rebeldes que pilotam robôs gigantes para lutar contra um império tirânico.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são rebeldes que pilotam robôs gigantes.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Kill la Kill',
@@ -2635,8 +3362,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem busca vingança pela morte de seu pai e enfrenta uma escola dominada por uniformes de combate.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Ryuko.',
+            'Desenho com batalhas e vingança.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Samurai Champloo',
@@ -2645,8 +3375,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois personagens e uma garota em busca de um personagem que cheira a girassóis.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois samurais e uma garota.',
+            'Desenho com batalhas e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Great Teacher Onizuka',
@@ -2655,8 +3388,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Ex-motoqueiro se torna professor e enfrenta desafios para ganhar o respeito de seus alunos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um ex-motoqueiro chamado Onizuka.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Love Hina',
@@ -2665,8 +3401,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem se muda para uma pensão feminina e tenta cumprir uma promessa de infância.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Keitaro.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Toradora!',
@@ -2675,8 +3414,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem e garota formam uma aliança para ajudar um ao outro a conquistar seus respectivos interesses amorosos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são um garoto chamado Ryuuji e uma garota chamada Taiga.',
+            'Desenho com humor e romance.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Clannad',
@@ -2685,8 +3427,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem problemático faz amizade com uma garota tímida e juntos enfrentam os desafios da vida escolar.',
         tags: ['drama', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são um garoto chamado Tomoya e uma garota chamada Nagisa.',
+            'Desenho com drama e romance.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Fruits Basket',
@@ -2695,8 +3440,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Garota órfã descobre que sua nova família se transforma em animais do zodíaco chinês quando abraçados pelo sexo oposto.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Tohru.',
+            'Desenho com magia e romance.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Ouran High School Host Club',
@@ -2705,8 +3453,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Garota pobre se disfarça de garoto e se junta a um clube de anfitriões em uma escola de elite.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Haruhi.',
+            'Desenho com humor e romance.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'K-ON!',
@@ -2715,8 +3466,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de garotas forma uma banda de música leve e enfrenta os desafios da vida escolar.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são garotas que formam uma banda.',
+            'Desenho com humor e música.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Lucky Star',
@@ -2725,8 +3479,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras cotidianas de um grupo de garotas do ensino médio.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são garotas do ensino médio.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Sword Art Online',
@@ -2735,8 +3492,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Jogadores ficam presos em um jogo de realidade virtual e devem lutar para sobreviver e escapar.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são jogadores presos em um jogo de realidade virtual.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'No Game No Life',
@@ -2745,8 +3505,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Irmãos prodígios dos jogos são transportados para um mundo onde tudo é decidido por jogos.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são irmãos prodígios dos jogos.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Overlord',
@@ -2755,8 +3518,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Jogador fica preso em um jogo de realidade virtual e decide conquistar o mundo do jogo.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um jogador preso em um jogo de realidade virtual.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Re:Zero',
@@ -2765,8 +3531,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem é transportado para um mundo de fantasia e descobre que tem o poder de voltar no tempo ao morrer.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Subaru.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Rising of the Shield Hero',
@@ -2775,8 +3544,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem é transportado para um mundo de fantasia e se torna o herói do escudo, enfrentando desafios e traições.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Naofumi.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Log Horizon',
@@ -2785,8 +3557,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Jogadores ficam presos em um jogo de realidade virtual e devem se adaptar à nova realidade.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são jogadores presos em um jogo de realidade virtual.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Konosuba',
@@ -2795,8 +3570,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem é transportado para um mundo de fantasia e forma uma equipe disfuncional para enfrentar desafios.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Kazuma.',
+            'Desenho com humor e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Blue Exorcist',
@@ -2805,8 +3583,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem descobre que é filho de Satanás e decide se tornar um exorcista para lutar contra demônios.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Rin.',
+            'Desenho com batalhas e demônios.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Black Clover',
@@ -2815,8 +3596,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem sem poderes mágicos sonha em se tornar o Rei Mago e enfrenta desafios em um mundo de magia.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Asta.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Fairy Tail',
@@ -2825,8 +3609,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de personagens que fazem parte de uma guilda.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são membros da guilda Fairy Tail.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Magi',
@@ -2835,8 +3622,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um jovem personagem e seus amigos enquanto exploram um mundo de magia e mistério.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Aladdin.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Seven Deadly Sins',
@@ -2845,8 +3635,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de cavaleiros desonrados busca redenção e luta contra forças do mal para salvar o reino.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são cavaleiros desonrados.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Soul Eater',
@@ -2855,8 +3648,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Estudantes de uma escola de armas lutam contra criaturas malignas para proteger o mundo.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são estudantes de uma escola de armas.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Noragami',
@@ -2865,8 +3661,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Deus menor busca seguidores e enfrenta espíritos malignos para se tornar um deus respeitado.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um deus menor chamado Yato.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Erased',
@@ -2875,8 +3674,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem com a habilidade de voltar no tempo tenta impedir um assassinato que ocorreu em sua infância.',
         tags: ['suspense', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Satoru.',
+            'Desenho com mistério e suspense.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Your Lie in April',
@@ -2885,8 +3687,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem prodígio que perdeu a habilidade de tocar encontra inspiração em uma personagem excêntrica.',
         tags: ['drama', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Kousei.',
+            'Desenho com drama e música.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'AnoHana',
@@ -2895,8 +3700,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de amigos de infância se reúne para ajudar o espírito de uma amiga falecida a encontrar paz.',
         tags: ['drama', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são amigos de infância.',
+            'Desenho com drama e mistério.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Tokyo Revengers',
@@ -2905,8 +3713,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem viaja no tempo para salvar sua namorada do ensino médio e se envolve com gangues de delinquentes.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Takemichi.',
+            'Desenho com batalhas e viagens no tempo.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Horimiya',
@@ -2915,8 +3726,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Dois colegas de classe com personalidades opostas desenvolvem uma amizade e um romance inesperado.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são um garoto chamado Miyamura e uma garota chamada Hori.',
+            'Desenho com humor e romance.'
+        ],
+        difficulty: 1,
     },
     {
         name: "Komi Can't Communicate",
@@ -2925,8 +3739,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem com dificuldade de comunicação social tenta fazer 100 amigos com a ajuda de um colega de classe.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Komi.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Spy x Family',
@@ -2935,8 +3752,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Espião deve formar uma família falsa para completar uma missão, mas descobre que sua esposa é uma assassina e sua filha tem poderes telepáticos.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são um espião, uma assassina e uma garota com poderes telepáticos.',
+            'Desenho com batalhas e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Blue Period',
@@ -2945,8 +3765,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Estudante do ensino médio descobre sua paixão pela arte e decide se tornar um artista.',
         tags: ['drama', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Yatora.',
+            'Desenho com drama e arte.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Beastars',
@@ -2955,8 +3778,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Em um mundo de personagens antropomórficos, um personagem enfrenta seus instintos predatórios enquanto desenvolve sentimentos por uma personagem.',
         tags: ['drama', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um lobo chamado Legoshi.',
+            'Desenho com drama e romance.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Great Pretender',
@@ -2965,8 +3791,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem japonês se junta a um grupo de vigaristas internacionais para realizar grandes golpes ao redor do mundo.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um vigarista chamado Makoto.',
+            'Desenho com batalhas e golpes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Carole & Tuesday',
@@ -2975,8 +3804,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Duas personagens de origens diferentes se unem para perseguir seus sonhos de se tornarem musicistas em Marte.',
         tags: ['drama', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são duas garotas chamadas Carole e Tuesday.',
+            'Desenho com drama e música.'
+        ],
+        difficulty: 1,
     },
     {
         name: "Vivy: Fluorite Eye's Song",
@@ -2985,8 +3817,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'IA cantora deve salvar a humanidade de um futuro apocalíptico seguindo instruções de uma IA do futuro.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma IA cantora chamada Vivy.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: '86 Eighty-Six',
@@ -2995,8 +3830,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Em um futuro distópico, jovens soldados pilotam mechas para lutar contra uma ameaça robótica enquanto enfrentam discriminação e opressão.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são jovens soldados que pilotam mechas.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Mobile Suit Gundam',
@@ -3005,8 +3843,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de pilotos de robôs gigantes em uma guerra espacial.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são pilotos de robôs gigantes.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Code: Breaker',
@@ -3015,8 +3856,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem com poderes sobrenaturais trabalha como agente secreto para uma organização que combate o crime.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Rei.',
+            'Desenho com batalhas e superpoderes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Bokurano',
@@ -3025,8 +3869,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de crianças deve pilotar um robô gigante para salvar a Terra, mas a cada batalha um deles deve sacrificar sua vida.',
         tags: ['ficção científica', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são crianças que pilotam um robô gigante.',
+            'Desenho com batalhas e robôs gigantes.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Zatch Bell',
@@ -3035,8 +3882,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem e seu parceiro competem em um torneio para se tornar o rei dos personagens.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Kiyo.',
+            'Desenho com batalhas e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Monster',
@@ -3045,8 +3895,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Médico salva a vida de um personagem que se torna um serial killer e deve caçá-lo para corrigir seu erro.',
         tags: ['suspense', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um médico chamado Tenma.',
+            'Desenho com mistério e suspense.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Paranoia Agent',
@@ -3055,8 +3908,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Detetives investigam uma série de ataques cometidos por um personagem com um taco de beisebol dourado.',
         tags: ['suspense', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são detetives.',
+            'Desenho com mistério e suspense.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Serial Experiments Lain',
@@ -3065,8 +3921,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem se envolve em uma rede de conspirações e mistérios enquanto explora o mundo virtual.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Lain.',
+            'Desenho com mistério e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Tex Avery Show',
@@ -3075,8 +3934,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Coletânea de curtas-metragens de animação com personagens icônicos e humor absurdo.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são excêntricos e malucos.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Caverna do Dragão',
@@ -3085,8 +3947,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de crianças é transportado para um mundo de fantasia e deve encontrar o caminho de volta para casa.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são crianças transportadas para um mundo de fantasia.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Critic',
@@ -3095,8 +3960,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As desventuras de um personagem enquanto ele avalia filmes ruins e lida com sua vida pessoal.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um crítico de cinema chamado Jay.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Daria',
@@ -3105,8 +3973,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma personagem sarcástica enquanto ela navega pela vida no ensino médio.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota sarcástica chamada Daria.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Clone High',
@@ -3115,8 +3986,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de clones de figuras históricas famosas enquanto frequentam o ensino médio.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são clones de figuras históricas famosas.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Undergrads',
@@ -3125,8 +3999,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de amigos enquanto enfrentam os desafios da vida universitária.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são amigos na universidade.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Mission Hill',
@@ -3135,8 +4012,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um jovem e seus amigos enquanto vivem em um bairro boêmio.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são jovens em um bairro boêmio.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Sit Down, Shut Up',
@@ -3145,8 +4025,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As desventuras de um grupo de professores disfuncionais em uma escola de ensino médio.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são professores disfuncionais.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Downtown',
@@ -3155,8 +4038,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de amigos enquanto vivem em um bairro urbano e enfrentam os desafios da vida adulta.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são amigos em um bairro urbano.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Drawn Together',
@@ -3165,8 +4051,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Paródia de reality shows onde personagens de diferentes estilos de animação vivem juntos em uma casa.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são de diferentes estilos de animação.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Harvey Birdman, Attorney at Law',
@@ -3175,8 +4064,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Super-herói aposentado se torna advogado e defende personagens de desenhos animados em tribunal.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um super-herói aposentado chamado Harvey Birdman.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Sealab 2021',
@@ -3185,8 +4077,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Paródia de uma série de animação dos anos 70, onde uma equipe de cientistas vive em uma estação submarina.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são cientistas em uma estação submarina.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Space Ghost Coast to Coast',
@@ -3195,8 +4090,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Super-herói aposentado se torna apresentador de um talk show e entrevista celebridades.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um super-herói aposentado chamado Space Ghost.',
+            'Desenho com humor e entrevistas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Brak Show',
@@ -3205,8 +4103,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem enquanto vive com sua família em um subúrbio.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um alienígena chamado Brak.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Robot Chicken',
@@ -3215,8 +4116,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Série de esquetes de comédia em stop-motion que parodia a cultura pop e personagens famosos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são excêntricos e malucos.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Metalocalypse',
@@ -3225,8 +4129,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma banda de death metal enquanto enfrentam desafios absurdos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são membros de uma banda de death metal.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Home Movies',
@@ -3235,8 +4142,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos enquanto fazem filmes caseiros.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Brendon.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'China, IL',
@@ -3245,8 +4155,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As desventuras de professores e alunos em uma universidade fictícia.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são professores e alunos.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Frango Robô',
@@ -3255,8 +4168,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Série de esquetes de comédia em stop-motion que parodia a cultura pop e personagens famosos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são excêntricos e malucos.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'King Star King',
@@ -3265,8 +4181,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um guerreiro interdimensional enquanto luta contra vilões bizarros.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um guerreiro interdimensional chamado King Star King.',
+            'Desenho com humor e batalhas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Adventure Time: Distant Lands',
@@ -3275,8 +4194,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Série de especiais que exploram novas histórias e personagens no universo de Hora de Aventura.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são do universo de Hora de Aventura.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Craig of the Creek',
@@ -3285,8 +4207,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos enquanto exploram um riacho e suas áreas circundantes.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Craig.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'We Baby Bears',
@@ -3295,8 +4220,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos personagens enquanto procuram um novo lar.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são os ursos bebês.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Mao Mao: Heroes of Pure Heart',
@@ -3305,8 +4233,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos enquanto protegem um vale.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um gato chamado Mao Mao.',
+            'Desenho com batalhas e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Victor and Valentino',
@@ -3315,8 +4246,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois meio-irmãos enquanto exploram o folclore e as lendas de sua cidade.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois meio-irmãos chamados Victor e Valentino.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: "OK K.O.! Let's Be Heroes",
@@ -3325,8 +4259,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem enquanto ele treina para se tornar um herói e enfrenta vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado K.O.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Summer Camp Island',
@@ -3335,8 +4272,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois amigos enquanto frequentam um acampamento de verão mágico.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois amigos chamados Oscar e Hedgehog.',
+            'Desenho com humor e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Little Demon',
@@ -3345,8 +4285,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma personagem que descobre ser a filha do Diabo e deve lidar com seus poderes demoníacos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Chrissy.',
+            'Desenho com humor e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Star Trek: Lower Decks',
@@ -3355,8 +4298,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras da tripulação de apoio de uma nave estelar enquanto enfrentam desafios absurdos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são da tripulação de apoio da nave estelar.',
+            'Desenho com humor e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Star Wars: Visions',
@@ -3365,8 +4311,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Série de curtas-metragens de animação que exploram novas histórias e personagens no universo de Star Wars.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são do universo de Star Wars.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Clone Wars',
@@ -3375,8 +4324,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos Jedi e seus aliados durante as Guerras Clônicas no universo de Star Wars.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são Jedi e seus aliados.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Rebels',
@@ -3385,8 +4337,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de rebeldes enquanto lutam contra o Império Galáctico no universo de Star Wars.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são rebeldes.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Bad Batch',
@@ -3395,8 +4350,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de clones de elite enquanto enfrentam desafios após as Guerras Clônicas no universo de Star Wars.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são clones de elite.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Resistance',
@@ -3405,8 +4363,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um piloto da Resistência enquanto luta contra a Primeira Ordem no universo de Star Wars.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um piloto da Resistência chamado Kaz.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'LEGO Star Wars: The Freemaker Adventures',
@@ -3415,8 +4376,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma família de catadores de sucata enquanto exploram o universo de Star Wars em forma de LEGO.',
         tags: ['ficção científica', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são uma família de catadores de sucata.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'LEGO Ninjago',
@@ -3425,8 +4389,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de personagens enquanto lutam contra vilões e protegem o mundo de Ninjago.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são ninjas.',
+            'Desenho com batalhas e super-heróis.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'LEGO City Adventures',
@@ -3435,8 +4402,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos habitantes de LEGO City enquanto enfrentam desafios e vivem situações hilárias.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são habitantes de LEGO City.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Mixels',
@@ -3445,8 +4415,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de criaturas que podem se combinar para formar seres mais poderosos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são criaturas que podem se combinar.',
+            'Desenho com humor e transformações.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Unikitty!',
@@ -3455,8 +4428,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma personagem e seus amigos enquanto enfrentam desafios e espalham alegria.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma gatinha chamada Unikitty.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The LEGO Movie: The Series',
@@ -3465,8 +4441,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos personagens do filme LEGO enquanto enfrentam novos desafios e vivem situações hilárias.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são do filme LEGO.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'VeggieTales in the House',
@@ -3475,8 +4454,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos personagens vegetais enquanto ensinam lições de vida e valores cristãos.',
         tags: ['educação', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são vegetais.',
+            'Desenho com lições de vida e valores cristãos.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'The Croods: Family Tree',
@@ -3485,8 +4467,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras da família pré-histórica enquanto exploram o mundo ao seu redor e enfrentam novos desafios.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são membros da família Croods.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Kung Fu Panda: The Dragon Knight',
@@ -3495,8 +4480,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem enquanto ele treina para se tornar um mestre do kung fu e enfrenta novos vilões.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um panda chamado Po.',
+            'Desenho com batalhas e artes marciais.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Madagascar: A Little Wild',
@@ -3505,8 +4493,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos personagens de Madagascar quando eram jovens e viviam em um zoológico.',
         tags: ['comédia', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são os personagens de Madagascar quando eram jovens.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Dragons: Rescue Riders',
@@ -3515,8 +4506,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois personagens que treinam dragões para resgatar e proteger sua vila.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são dois irmãos chamados Dak e Leyla.',
+            'Desenho com aventuras e dragões.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'How to Train Your Dragon: The Hidden World',
@@ -3525,8 +4519,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seu dragão enquanto eles exploram novas ilhas e enfrentam novos desafios.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Soluço.',
+            'Desenho com aventuras e dragões.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Spirit Riding Free',
@@ -3535,8 +4532,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem faz amizade com um cavalo selvagem e vive aventuras no Velho Oeste.',
         tags: ['aventura', 'família'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Lucky.',
+            'Desenho com aventuras e amizade.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Abominable and the Invisible City',
@@ -3545,8 +4545,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de amigos enquanto exploram uma cidade mágica e enfrentam desafios.',
         tags: ['aventura', 'fantasia'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são amigos que exploram uma cidade mágica.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Trolls: The Beat Goes On!',
@@ -3555,8 +4558,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos personagens de Trolls enquanto enfrentam desafios e vivem situações hilárias.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são os personagens de Trolls.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'TrollsTopia',
@@ -3565,8 +4571,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras dos personagens de Trolls enquanto enfrentam desafios e vivem situações hilárias.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são os personagens de Trolls.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Fast & Furious Spy Racers',
@@ -3575,8 +4584,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de jovens pilotos de corrida que trabalham como espiões para combater o crime.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são jovens pilotos de corrida.',
+            'Desenho com batalhas e corridas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Carmen Sandiego',
@@ -3585,8 +4597,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem viaja pelo mundo roubando de vilões e devolvendo para as vítimas.',
         tags: ['aventura', 'ação'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma ladra chamada Carmen Sandiego.',
+            'Desenho com aventuras e espionagem.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Johnny Test',
@@ -3595,8 +4610,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seu cachorro falante enquanto vivem situações absurdas.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Johnny.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Total Drama Island',
@@ -3605,8 +4623,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Paródia de reality shows onde adolescentes competem em desafios absurdos em uma ilha deserta.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são adolescentes competindo em uma ilha deserta.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Stoked',
@@ -3615,8 +4636,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de adolescentes que trabalham em um resort de surfe durante o verão.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são adolescentes que trabalham em um resort de surfe.',
+            'Desenho com humor e aventuras.'
+        ],
+        difficulty: 1,
     },
     {
         name: '6teen',
@@ -3625,8 +4649,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de adolescentes enquanto enfrentam os desafios da vida no shopping center.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são adolescentes que trabalham em um shopping center.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Class of the Titans',
@@ -3635,8 +4662,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de adolescentes descendentes de heróis mitológicos luta contra vilões da mitologia grega.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são adolescentes descendentes de heróis mitológicos.',
+            'Desenho com batalhas e mitologia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Being Ian',
@@ -3645,8 +4675,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem enquanto ele sonha em se tornar um cineasta famoso.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Ian.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Detentionaire',
@@ -3655,8 +4688,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Personagem é injustamente acusado de uma pegadinha e deve descobrir o verdadeiro culpado enquanto cumpre detenção.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Lee.',
+            'Desenho com humor e mistério.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Wayside',
@@ -3665,8 +4701,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de alunos em uma escola excêntrica.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são alunos de uma escola excêntrica.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: "What's with Andy?",
@@ -3675,8 +4714,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As travessuras de um personagem enquanto ele prega peças em sua cidade.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Andy.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Braceface',
@@ -3685,8 +4727,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma adolescente enquanto ela lida com os desafios da vida escolar e seus aparelhos dentários.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Sharon.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Ruby Gloom',
@@ -3695,8 +4740,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma personagem e seus amigos excêntricos em uma mansão gótica.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Ruby.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Monster Buster Club',
@@ -3705,8 +4753,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'Grupo de crianças que luta contra alienígenas disfarçados em sua cidade.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são crianças que lutam contra alienígenas.',
+            'Desenho com batalhas e ficção científica.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Martin Mystery',
@@ -3715,8 +4766,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem enquanto ele investiga fenômenos paranormais.',
         tags: ['ação', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto chamado Martin.',
+            'Desenho com batalhas e mistério.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Mona, a Vampira',
@@ -3725,8 +4779,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de uma personagem que acredita ser uma vampira e enfrenta monstros imaginários.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma garota chamada Mona.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Wunschpunsch',
@@ -3735,8 +4792,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois personagens que tentam desfazer os feitiços lançados por seus donos bruxos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são um gato chamado Maurizio e um corvo chamado Jacob.',
+            'Desenho com humor e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Simsala Grimm',
@@ -3745,8 +4805,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de dois personagens que viajam para o mundo dos contos de fadas dos Irmãos Grimm.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são um rato chamado Yoyo e um corvo chamado Doc Croc.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Shaun, o Carneiro',
@@ -3755,8 +4818,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seus amigos enquanto vivem situações hilárias na fazenda.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é uma ovelha chamada Shaun.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Wallace e Gromit',
@@ -3765,8 +4831,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem e seu amigo inteligente enquanto enfrentam desafios absurdos.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são um inventor chamado Wallace e seu cachorro chamado Gromit.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'A Fuga das Galinhas: A Série',
@@ -3775,8 +4844,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de personagens enquanto tentam escapar de uma fazenda.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são galinhas.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Morph',
@@ -3785,8 +4857,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem enquanto vive situações hilárias.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um boneco de massinha chamado Morph.',
+            'Desenho com humor e situações absurdas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'O Menino Maluquinho',
@@ -3795,8 +4870,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um personagem travesso enquanto vive situações hilárias.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagem principal é um garoto travesso chamado Maluquinho.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Castelo Rá-Tim-Bum (animado)',
@@ -3805,8 +4883,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de amigos que vivem em um castelo mágico e enfrentam desafios fantásticos.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são amigos que vivem em um castelo mágico.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Turma da Mônica',
@@ -3815,8 +4896,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de amigos enquanto vivem situações hilárias.',
         tags: ['comédia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são amigos da Turma da Mônica.',
+            'Desenho com humor e situações cotidianas.'
+        ],
+        difficulty: 1,
     },
     {
         name: 'Sítio do Picapau Amarelo (animado)',
@@ -3825,8 +4909,11 @@ const cartoon: Cartoon[] = [
         brief_description:
             'As aventuras de um grupo de amigos que vivem em um sítio mágico e enfrentam desafios fantásticos.',
         tags: ['fantasia', 'aventura'],
-        clues: ['Dica 1 relacionada ao item', 'Dica 2 relacionada ao item'],
-        category: 'Categoria geral do item',
+        clues: [
+            'Personagens principais são amigos que vivem em um sítio mágico.',
+            'Desenho com aventuras e magia.'
+        ],
+        difficulty: 1,
     },
 ] as const
 
