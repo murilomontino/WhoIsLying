@@ -1,4 +1,4 @@
-import cartoonsJson from './cartoons.json'
+import cartoonsJson from './cartoon.json'
 
 export type Cartoon = {
     name: string
@@ -10,6 +10,6 @@ export type Cartoon = {
     difficulty: 0 | 1 | 2 | 3 | 4 | 5
 }
 
-const cartoons: Cartoon[] = cartoonsJson
+const cartoons = cartoonsJson as Cartoon[]
 
 export default cartoons
