@@ -6,6 +6,9 @@ import { drawPlayer } from '~/utils/drawPlayer'
 import type { IPlayer } from '../players/player'
 import {
     type InitialState,
+    ON_CHANGE_DIFFICULTY,
+    ON_CHANGE_DIFFICULTY_FAIL,
+    ON_CHANGE_DIFFICULTY_SUCCESS,
     ON_CHANGE_MOST_VOTED,
     ON_CHANGE_MOST_VOTED_FAIL,
     ON_CHANGE_MOST_VOTED_SUCCESS,
@@ -48,6 +51,7 @@ const initialState: InitialState = {
     points: 500,
     disguisedPlayer: null,
     questionRound: 1,
+    difficulty: 1,
     votingItem: '',
     item: null,
     mostVoted: null,
@@ -216,6 +220,19 @@ const slice = createSlice({
         ) => {
             state.isLoading = LOADING.SUCCESS
             state.item = action.payload.item
+        },
+        [ON_CHANGE_DIFFICULTY]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_CHANGE_DIFFICULTY_SUCCESS]: (
+            state,
+            action: PayloadAction<{ difficulty: number }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.difficulty = action.payload.difficulty
+        },
+        [ON_CHANGE_DIFFICULTY_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
         },
     },
 })

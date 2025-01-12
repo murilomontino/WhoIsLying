@@ -86,6 +86,7 @@ const slice = createSlice({
                 score: 0,
                 reveal: false,
                 canAnswer: true,
+                balance: 300,
                 canVote: true,
                 blackListQuestioners: [],
                 votes: [],

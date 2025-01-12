@@ -7,6 +7,7 @@ export type InitialState = {
     rounds: number
     round: number
     points: number
+    difficulty: 0 | 1 | 2 | 3 | 4 | 5
     questionRound: number
     disguisedPlayer: IPlayer | null
     votingItem: string
@@ -60,6 +61,10 @@ export const ON_GENERATE_ITEM = 'ON_GENERATE_ITEM'
 export const ON_GENERATE_ITEM_SUCCESS = 'ON_GENERATE_ITEM_SUCCESS'
 export const ON_GENERATE_ITEM_FAIL = 'ON_GENERATE_ITEM_FAIL'
 
+export const ON_CHANGE_DIFFICULTY = 'ON_CHANGE_DIFFICULTY'
+export const ON_CHANGE_DIFFICULTY_SUCCESS = 'ON_CHANGE_DIFFICULTY_SUCCESS'
+export const ON_CHANGE_DIFFICULTY_FAIL = 'ON_CHANGE_DIFFICULTY_FAIL'
+
 export const ACTION_CHANGE_ROUNDS = `${name}/${ON_CHANGE_ROUNDS}`
 export const ACTION_CHANGE_ROUNDS_SUCCESS = `${name}/${ON_CHANGE_ROUNDS_SUCCESS}`
 export const ACTION_CHANGE_ROUNDS_FAIL = `${name}/${ON_CHANGE_ROUNDS_FAIL}`
@@ -103,3 +108,7 @@ export const ACTION_CHANGE_MOST_VOTED_FAIL = `${name}/${ON_CHANGE_MOST_VOTED_FAI
 export const ACTION_GENERATE_ITEM = `${name}/${ON_GENERATE_ITEM}`
 export const ACTION_GENERATE_ITEM_SUCCESS = `${name}/${ON_GENERATE_ITEM_SUCCESS}`
 export const ACTION_GENERATE_ITEM_FAIL = `${name}/${ON_GENERATE_ITEM_FAIL}`
+
+export const ACTION_CHANGE_DIFFICULTY = `${name}/${ON_CHANGE_DIFFICULTY}`
+export const ACTION_CHANGE_DIFFICULTY_SUCCESS = `${name}/${ON_CHANGE_DIFFICULTY_SUCCESS}`
+export const ACTION_CHANGE_DIFFICULTY_FAIL = `${name}/${ON_CHANGE_DIFFICULTY_FAIL}`

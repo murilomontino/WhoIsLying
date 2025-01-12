@@ -2,10 +2,12 @@ import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-import { selectCategories, selectPlayers } from '~/store/selectors'
+import { selectCategories, selectGames, selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
 import {
     type NewPlayersScore,
+    onChangeDifficultyFail,
+    onChangeDifficultySuccess,
     onChangeMostVotedFail,
     onChangeMostVotedSuccess,
     onChangePlayRoundFail,
@@ -39,6 +41,7 @@ import { drawWordWithConditions } from '~/utils/drawWord'
 import { onChangePlayers, onResetPlayers, onResetScore } from '../players/actions'
 import type { IPlayer } from '../players/player'
 import {
+    ACTION_CHANGE_DIFFICULTY,
     ACTION_CHANGE_MOST_VOTED,
     ACTION_CHANGE_PLAY_ROUND,
     ACTION_CHANGE_POINTS,
@@ -158,14 +161,25 @@ export function* onChangeMostVoted({
 export function* onGenerateItem() {
     try {
         const { category }: RootState['categories'] = yield select(selectCategories)
+        const { difficulty }: RootState['game'] = yield select(selectGames)
         const items: Categories[] = yield generateCategories(category as Category)
         const word: Categories = yield drawWordWithConditions(
             items,
-            (item) => item.difficulty === 1,
+            (item) => item.difficulty <= difficulty,
         )
         yield put(onGenerateItemSuccess({ item: word }))
     } catch (_) {
         yield put(onGenerateItemFail())
+    }
+}
+
+export function* onChangeDifficulty({
+    payload,
+}: PayloadAction<{ difficulty: number }>) {
+    try {
+        yield put(onChangeDifficultySuccess(payload))
+    } catch (_) {
+        yield put(onChangeDifficultyFail())
     }
 }
 
@@ -213,6 +227,10 @@ export function* watchOnGenerateItem() {
     yield takeLatest(ACTION_GENERATE_ITEM, onGenerateItem)
 }
 
+export function* watchOnChangeDifficulty() {
+    yield takeLatest(ACTION_CHANGE_DIFFICULTY, onChangeDifficulty)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnChangeRounds),
@@ -226,6 +244,7 @@ function* Sagas() {
         fork(watchOnChangePlayRound),
         fork(watchOnChangeMostVoted),
         fork(watchOnGenerateItem),
+        fork(watchOnChangeDifficulty),
     ])
 }
 
