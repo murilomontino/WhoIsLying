@@ -50,7 +50,7 @@ const RevealByIdScreen = () => {
 
         await delay(1000) // Aguarda a animação de saída
 
-        router.push('/reveal')
+        router.push(`/reveal/${player?._id}/skills`)
     }, [player])
 
     const handlePressReveal = useCallback(async () => {
