@@ -24,8 +24,11 @@ const RevealByIdScreen = () => {
     const [isExiting, setIsExiting] = useState(false)
     const [player, setPlayer] = useState<typeof Player | null>(null)
     const { players } = useAppSelector((state) => state.players)
-    const { category } = useAppSelector((state) => state.categories)
-    const { disguisedPlayer, item: word } = useAppSelector((state) => state.game)
+    const {
+        disguisedPlayer,
+        item: word,
+        category,
+    } = useAppSelector((state) => state.game)
     const router = useRouter()
     const dispatch = useAppDispatch()
     const { id } = useLocalSearchParams()

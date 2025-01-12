@@ -29,7 +29,7 @@ import cache from '~/utils/cache'
 import { delay } from '~/utils/delay'
 
 const PreStartScreen = () => {
-    const { category } = useAppSelector((state) => state.categories)
+    const { category } = useAppSelector((state) => state.game)
     const dispatch = useAppDispatch()
     const router = useRouter()
 

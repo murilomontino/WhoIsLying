@@ -1,11 +1,15 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import type { Categories } from '~/constants/categories'
+import type { Categories, Category } from '~/constants/categories'
 import { LOADING } from '~/store/slices/constants'
 import { drawPlayer } from '~/utils/drawPlayer'
 import type { IPlayer } from '../players/player'
 import {
+    type Difficulty,
     type InitialState,
+    ON_CHANGE_CATEGORY,
+    ON_CHANGE_CATEGORY_FAIL,
+    ON_CHANGE_CATEGORY_SUCCESS,
     ON_CHANGE_DIFFICULTY,
     ON_CHANGE_DIFFICULTY_FAIL,
     ON_CHANGE_DIFFICULTY_SUCCESS,
@@ -54,6 +58,7 @@ const initialState: InitialState = {
     difficulty: 1,
     votingItem: '',
     item: null,
+    category: null,
     mostVoted: null,
 }
 
@@ -226,12 +231,25 @@ const slice = createSlice({
         },
         [ON_CHANGE_DIFFICULTY_SUCCESS]: (
             state,
-            action: PayloadAction<{ difficulty: number }>,
+            action: PayloadAction<{ difficulty: Difficulty }>,
         ) => {
             state.isLoading = LOADING.SUCCESS
             state.difficulty = action.payload.difficulty
         },
         [ON_CHANGE_DIFFICULTY_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_CHANGE_CATEGORY]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_CHANGE_CATEGORY_SUCCESS]: (
+            state,
+            action: PayloadAction<{ category: Category }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.category = action.payload.category
+        },
+        [ON_CHANGE_CATEGORY_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

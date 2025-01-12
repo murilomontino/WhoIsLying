@@ -13,7 +13,7 @@ import { useAppSelector } from '~/store/hooks'
 import type { IPlayer } from '~/store/slices/players/player'
 import { delay } from '~/utils/delay'
 
-const RevealScreen = () => {
+const SkillsRevealScreen = () => {
     const [isExiting, setIsExiting] = useState(false)
     const [player, setPlayer] = useState<IPlayer | null>(null)
     const { id } = useLocalSearchParams()
@@ -85,4 +85,4 @@ const RevealScreen = () => {
     )
 }
 
-export default RevealScreen
+export default SkillsRevealScreen

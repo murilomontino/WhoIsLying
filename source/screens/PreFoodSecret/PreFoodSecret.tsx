@@ -16,11 +16,10 @@ import { useAppSelector } from '~/store/hooks'
 
 const PreFoodSecretScreen = () => {
     const router = useRouter()
-    const { disguisedPlayer } = useAppSelector((state) => state.game)
+    const { disguisedPlayer, category } = useAppSelector((state) => state.game)
     const handleContinue = () => {
         router.push('/food-secret')
     }
-    const { category } = useAppSelector((state) => state.categories)
 
     return (
         <DefaultLayout>

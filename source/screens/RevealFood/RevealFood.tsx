@@ -19,8 +19,7 @@ import { delay } from '~/utils/delay'
 
 const RevealFoodScreen = () => {
     const router = useRouter()
-    const { category } = useAppSelector((state) => state.categories)
-    const { disguisedPlayer, votingItem, item } = useAppSelector(
+    const { disguisedPlayer, votingItem, item, category } = useAppSelector(
         (state) => state.game,
     )
     const minDelay = 1000

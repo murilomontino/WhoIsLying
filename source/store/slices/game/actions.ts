@@ -3,6 +3,9 @@ import { createAction } from '@reduxjs/toolkit'
 import type { Categories } from '~/constants/categories'
 import type { IPlayer } from '../players/player'
 import {
+    ACTION_CHANGE_CATEGORY,
+    ACTION_CHANGE_CATEGORY_FAIL,
+    ACTION_CHANGE_CATEGORY_SUCCESS,
     ACTION_CHANGE_DIFFICULTY,
     ACTION_CHANGE_DIFFICULTY_FAIL,
     ACTION_CHANGE_DIFFICULTY_SUCCESS,
@@ -40,6 +43,14 @@ import {
     ACTION_VOTING_ITEM_FAIL,
     ACTION_VOTING_ITEM_SUCCESS,
 } from './types'
+
+export const onChangeCategory = createAction<{ category: string }>(
+    ACTION_CHANGE_CATEGORY,
+)
+export const onChangeCategorySuccess = createAction<{ category: string }>(
+    ACTION_CHANGE_CATEGORY_SUCCESS,
+)
+export const onChangeCategoryFail = createAction(ACTION_CHANGE_CATEGORY_FAIL)
 
 export const onChangeRounds = createAction<{ rounds: number }>(ACTION_CHANGE_ROUNDS)
 export const onChangeRoundsSuccess = createAction<{ rounds: number }>(

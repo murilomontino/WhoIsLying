@@ -2,10 +2,12 @@ import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-import { selectCategories, selectGames, selectPlayers } from '~/store/selectors'
+import { selectGames, selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
 import {
     type NewPlayersScore,
+    onChangeCategoryFail,
+    onChangeCategorySuccess,
     onChangeDifficultyFail,
     onChangeDifficultySuccess,
     onChangeMostVotedFail,
@@ -41,6 +43,7 @@ import { drawWordWithConditions } from '~/utils/drawWord'
 import { onChangePlayers, onResetPlayers, onResetScore } from '../players/actions'
 import type { IPlayer } from '../players/player'
 import {
+    ACTION_CHANGE_CATEGORY,
     ACTION_CHANGE_DIFFICULTY,
     ACTION_CHANGE_MOST_VOTED,
     ACTION_CHANGE_PLAY_ROUND,
@@ -160,8 +163,8 @@ export function* onChangeMostVoted({
 
 export function* onGenerateItem() {
     try {
-        const { category }: RootState['categories'] = yield select(selectCategories)
-        const { difficulty }: RootState['game'] = yield select(selectGames)
+        const { difficulty, category }: RootState['game'] =
+            yield select(selectGames)
         const items: Categories[] = yield generateCategories(category as Category)
         const word: Categories = yield drawWordWithConditions(
             items,
@@ -181,6 +184,20 @@ export function* onChangeDifficulty({
     } catch (_) {
         yield put(onChangeDifficultyFail())
     }
+}
+
+export function* onChangeCategory({
+    payload,
+}: PayloadAction<{ category: string }>) {
+    try {
+        yield put(onChangeCategorySuccess(payload))
+    } catch (_) {
+        yield put(onChangeCategoryFail())
+    }
+}
+
+export function* watchOnChangeCategory() {
+    yield takeLatest(ACTION_CHANGE_CATEGORY, onChangeCategory)
 }
 
 export function* watchOnChangeRounds() {

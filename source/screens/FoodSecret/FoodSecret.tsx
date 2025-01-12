@@ -24,8 +24,9 @@ const FoodSecretScreen = () => {
     const router = useRouter()
     const [voting, setVoting] = useState<string | null>(null)
     const [isExisting, setIsExisting] = useState(false)
-    const { disguisedPlayer, item } = useAppSelector((state) => state.game)
-    const { category } = useAppSelector((state) => state.categories)
+    const { disguisedPlayer, item, category } = useAppSelector(
+        (state) => state.game,
+    )
 
     const dispatch = useAppDispatch()
 

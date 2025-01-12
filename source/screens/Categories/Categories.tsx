@@ -11,7 +11,7 @@ import type { ImgCategory } from '~/components/molecules/card-category/card-cate
 import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
 import { useAppDispatch, useAppSelector } from '~/store/hooks'
-import { onChangeCategory } from '~/store/slices/categories/actions'
+import { onChangeCategory } from '~/store/slices/game/actions'
 
 type Category = {
     title: string
@@ -26,16 +26,8 @@ const categories: Category[] = [
         active: true,
     },
     {
-        title: 'Anime',
-        category: 'anime',
-    },
-    {
         title: 'Movie',
         category: 'movie',
-    },
-    {
-        title: 'Game',
-        category: 'game',
     },
     {
         title: 'Music',

@@ -23,7 +23,7 @@ const PreAskingScreen = () => {
     const [isExiting, setIsExiting] = useState(false)
 
     const { players } = useAppSelector((state) => state.players)
-    const { category } = useAppSelector((state) => state.categories)
+    const { category } = useAppSelector((state) => state.game)
 
     const handleContinue = useCallback(async () => {
         setIsExiting(true)

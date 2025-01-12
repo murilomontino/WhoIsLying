@@ -1,8 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { type PersistConfig, persistReducer } from 'redux-persist'
 import autoMergeLevel from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
-import categories from './slices/categories/slice'
-import type { InitialState as CategoriesState } from './slices/categories/types'
 import game from './slices/game/slice'
 import type { InitialState as GameState } from './slices/game/types'
 import players from './slices/players/slice'
@@ -20,11 +18,6 @@ const persistedReducersPlayers = persistReducer<PlayersState>(
     players,
 )
 
-const persistedReducersCategories = persistReducer<CategoriesState>(
-    makePersistConfig('@who-is-lying/categories'),
-    categories,
-)
-
 const persistedReducersGame = persistReducer<GameState>(
     makePersistConfig('@who-is-lying/game'),
     game,
@@ -32,7 +25,6 @@ const persistedReducersGame = persistReducer<GameState>(
 
 const reducers = {
     players: persistedReducersPlayers,
-    categories: persistedReducersCategories,
     game: persistedReducersGame,
 }
 

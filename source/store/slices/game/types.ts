@@ -1,18 +1,21 @@
-import type { Categories } from '~/constants/categories'
+import type { Categories, Category } from '~/constants/categories'
 import type { LOADING } from '~/store/slices/constants'
 import type { IPlayer } from '../players/player'
+
+export type Difficulty = 0 | 1 | 2 | 3 | 4 | 5
 
 export type InitialState = {
     isLoading: LOADING
     rounds: number
     round: number
     points: number
-    difficulty: 0 | 1 | 2 | 3 | 4 | 5
+    difficulty: Difficulty
     questionRound: number
     disguisedPlayer: IPlayer | null
     votingItem: string
     item: Categories | null
     mostVoted: IPlayer | null
+    category: Category | null
 }
 
 export const name = 'game'
@@ -64,6 +67,14 @@ export const ON_GENERATE_ITEM_FAIL = 'ON_GENERATE_ITEM_FAIL'
 export const ON_CHANGE_DIFFICULTY = 'ON_CHANGE_DIFFICULTY'
 export const ON_CHANGE_DIFFICULTY_SUCCESS = 'ON_CHANGE_DIFFICULTY_SUCCESS'
 export const ON_CHANGE_DIFFICULTY_FAIL = 'ON_CHANGE_DIFFICULTY_FAIL'
+
+export const ON_CHANGE_CATEGORY = 'ON_CHANGE_CATEGORY'
+export const ON_CHANGE_CATEGORY_SUCCESS = 'ON_CHANGE_CATEGORY_SUCCESS'
+export const ON_CHANGE_CATEGORY_FAIL = 'ON_CHANGE_CATEGORY_FAIL'
+
+export const ACTION_CHANGE_CATEGORY = `${name}/${ON_CHANGE_CATEGORY}`
+export const ACTION_CHANGE_CATEGORY_SUCCESS = `${name}/${ON_CHANGE_CATEGORY_SUCCESS}`
+export const ACTION_CHANGE_CATEGORY_FAIL = `${name}/${ON_CHANGE_CATEGORY_FAIL}`
 
 export const ACTION_CHANGE_ROUNDS = `${name}/${ON_CHANGE_ROUNDS}`
 export const ACTION_CHANGE_ROUNDS_SUCCESS = `${name}/${ON_CHANGE_ROUNDS_SUCCESS}`
