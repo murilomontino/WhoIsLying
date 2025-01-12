@@ -13,6 +13,7 @@ import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import Title from '~/components/atoms/title'
+import Difficulty from '~/components/molecules/difficulty'
 import GoBack from '~/components/molecules/go-back'
 import Points from '~/components/molecules/points'
 import Rounds from '~/components/molecules/rounds'
@@ -67,11 +68,21 @@ const PreStartScreen = () => {
                 <Rounds />
                 <Points />
             </View>
+            <View className="flex flex-col items-center justify-center flex-1 w-full px-2">
+                <Text
+                    entering={FadeIn.duration(1000)}
+                    exiting={FadeOut.duration(1000)}
+                    className="w-full text-left text-gray-800 md:w-1/2"
+                >
+                    Opções de Jogo
+                </Text>
+                <Difficulty />
+            </View>
 
             <View
                 entering={BounceIn.duration(1000)}
                 exiting={BounceOut.duration(1000)}
-                className="flex flex-row items-center justify-center flex-1 w-full px-4 space-x-4"
+                className="flex flex-row items-center justify-center flex-[0.5] w-full px-4 space-x-4"
             >
                 <ButtonPrimary className="w-full" onPress={handleStartGame}>
                     <Text as="h3" className="!text-white text-shadow-outlined-red">
