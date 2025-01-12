@@ -8381,6 +8381,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-magic-modal@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "react-native-magic-modal@npm:6.0.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-gesture-handler: "*"
+    react-native-reanimated: "*"
+  checksum: 10c0/3b3464dd032c6b1248cd82230db3df54747b522c38d3c591da5a24a7fd975b382556a0b18649202d7c9ef81da9bbe3804d5dd0aa660588c8d6ea4bb524eab7ac
+  languageName: node
+  linkType: hard
+
 "react-native-reanimated@npm:~3.16.1":
   version: 3.16.6
   resolution: "react-native-reanimated@npm:3.16.6"
@@ -10394,6 +10406,7 @@ __metadata:
     react-native: "npm:0.76.5"
     react-native-cache: "npm:^2.0.3"
     react-native-get-random-values: "npm:^1.11.0"
+    react-native-magic-modal: "npm:^6.0.3"
     react-native-reanimated: "npm:~3.16.1"
     react-native-safe-area-context: "npm:4.12.0"
     react-native-screens: "npm:~4.4.0"

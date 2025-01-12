@@ -1,0 +1,155 @@
+[
+	{
+		"id": "#1",
+		"name": "Espionagem",
+		"description": "Habilidade de se infiltrar e obter informações sigilosas",
+		"help": "Você obteve um dica sobre a palavra (no máximo 2 dicas)",
+		"icon": "eye",
+		"type": "Investigation",
+		"color": "#3498db"
+	},
+	{
+		"id": "#2",
+		"name": "Contra-espionagem",
+		"description": "Habilidade de identificar e neutralizar espiões",
+		"help": "Você alterou a informação sigilosa sobre a palavra, enganando o impostor",
+		"icon": "eye-slash",
+		"type": "Defense",
+		"color": "#2ecc71"
+	},
+	{
+		"id": "#3",
+		"name": "Tudo ou Nada",
+		"description": "Habilidade de acertar o alvo com precisão",
+		"help": "Escolha um alvo se for o impostor, ele é revelado. Se acertar o alvo, somente você ganha 200 pontos, mas atenção se errar, você não pontuará e o impostor ganhará 200 pontos independente de ter sido descoberto ou não. A vitória está em suas mãos.",
+		"icon": "fire-alt",
+		"type": "Strategic",
+		"color": "#f39c12"
+	},
+	{
+		"id": "#4",
+		"name": "Ocultação de Crime",
+		"description": "Habilidade de ocultar provas",
+		"help": "O impostor decide não revelar sua identidade",
+		"icon": "lock",
+		"type": "Defense",
+		"color": "#2ecc71"
+	},
+	{
+		"id": "#5",
+		"name": "Bloquear Voto",
+		"description": "Habilidade de bloquear o voto",
+		"help": "Você pode bloquear o voto de algum jogador a sua escolha",
+		"icon": "hand-middle-finger",
+		"type": "Control",
+		"color": "#e74c3c"
+	},
+	{
+		"id": "#6",
+		"name": "Confusão",
+		"description": "Você embaralha as informações obtidas",
+		"help": "Você interceptou a palavra, mas não conseguiu decifrá-la um jogador aleatório receberá uma palavra falsa para confundir",
+		"icon": "sync",
+		"type": "Manipulation",
+		"color": "#9b59b6"
+	},
+	{
+		"id": "#7",
+		"name": "Manipulação",
+		"description": "Habilidade de influenciar os pensamentos de outros jogadores.",
+		"help": "Você pode forçar um jogador a revelar sua dedução sobre quem é o impostor antes da votação.",
+		"icon": "jenkins",
+		"type": "Manipulation",
+		"color": "#9b59b6"
+	},
+	{
+		"id": "#8",
+		"name": "Corromper",
+		"description": "Você rouba 50 pontos de outro jogador (não afeta o impostor).",
+		"help": "Introduz uma dinâmica de roubo de pontos, incentivando alianças e rivalidades.",
+		"icon": "money-bill-wave",
+		"type": "Attack",
+		"color": "#e74c3c"
+	},
+	{
+		"id": "#9",
+		"name": "Silêncio",
+		"description": "Habilidade de silenciar um jogador",
+		"help": "Você impede um jogador de fazer perguntas ou dar respostas durante a próxima rodada.",
+		"icon": "microphone-slash",
+		"type": "Control",
+		"color": "#e74c3c"
+	},
+	{
+		"id": "#10",
+		"name": "Proteção",
+		"description": "Habilidade de proteger um jogador de ações adversas.",
+		"help": "Você impede que outro jogador seja alvo de habilidades negativas nesta rodada.",
+		"icon": "hands-helping",
+		"type": "Defense",
+		"color": "#2ecc71"
+	},
+	{
+		"id": "#11",
+		"name": "Inversão de Alvos",
+		"description": "Habilidade de confundir as intenções.",
+		"help": "Você troca o alvo de uma habilidade já usada nesta rodada para outro jogador.",
+		"icon": "retweet",
+		"type": "Manipulation",
+		"color": "#9b59b6"
+	},
+	{
+		"id": "#12",
+		"name": "Espelho",
+		"description": "Habilidade de refletir ações negativas",
+		"help": "Se alguém usar uma habilidade contra você nesta rodada, ela é revertida para quem a usou.",
+		"icon": "object-ungroup",
+		"type": "Defense",
+		"color": "#2ecc71"
+	},
+	{
+		"id": "#13",
+		"name": "Apagar Rastro",
+		"description": "Habilidade de esconder sua participação.",
+		"help": "Sua ação nesta rodada não será exibida na tela de habilidades usadas.",
+		"icon": "eraser",
+		"type": "Defense",
+		"color": "#2ecc71"
+	},
+	{
+		"id": "#14",
+		"name": "Espionagem Reversa",
+		"description": "Habilidade de investigar quem usou habilidades.",
+		"help": "Você descobre quem usou uma habilidade específica nesta rodada, mas não qual habilidade foi usada.",
+		"icon": "search",
+		"type": "Investigation",
+		"color": "#3498db"
+	},
+	{
+		"id": "#15",
+		"name": "Presságio",
+		"description": "Habilidade de prever o futuro.",
+		"help": "Você faz uma previsão sobre quem será o próximo a usar uma habilidade contra você. Se acertar, ganha 100 pontos.",
+		"icon": "hamsa",
+		"type": "Strategic",
+		"color": "#f39c12"
+	},
+	{
+		"id": "#16",
+		"name": "Dia Nublado",
+		"description": "Coloque uma nuvem densa sobre os olhos de outro jogador",
+		"help": "Uma nuvem densa dificulta a visualização na hora de votar",
+		"icon": "cloud",
+		"type": "Strategic",
+		"color": "#f39c12"
+	},
+	{
+		"id": "#17",
+		"name": "Vigília",
+		"description": "Você está de olho",
+		"help": "Você escolhe um jogador para vigiar, se alguém usar alguma carta contra ele, seu nome será descoberto na rodada ",
+		"icon": "ghost",
+		"type": "Investigation",
+		"color": "#f39c12"
+	}
+]

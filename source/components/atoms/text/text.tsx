@@ -19,7 +19,7 @@ const text = tv({
             h4: 'text-3xl',
             h5: 'text-2xl',
             h6: 'text-xl',
-            subtitle: 'text-sm',
+            subtitle: 'text-lg',
             body: 'text-2xl',
             caption: 'text-xs',
             overline: 'text-xs',

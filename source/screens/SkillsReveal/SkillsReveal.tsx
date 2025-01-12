@@ -5,8 +5,10 @@ import { FadeInRight, FadeOutLeft } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
 import { ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
+import CardSkill from '~/components/molecules/card-skill'
 import GoBack from '~/components/molecules/go-back'
 import View from '~/components/ui/view'
+import skills from '~/constants/skills.json'
 import { useAppSelector } from '~/store/hooks'
 import type { IPlayer } from '~/store/slices/players/player'
 import { delay } from '~/utils/delay'
@@ -52,16 +54,11 @@ const RevealScreen = () => {
                     </Text>
                 </View>
                 <ScrollView
-                    className="max-h-[240px] w-full px-4 "
-                    contentContainerClassName="w-full flex-row flex-wrap gap-4"
+                    className="max-h-[360px] w-full "
+                    contentContainerClassName="w-full flex-row flex-wrap gap-4 items-start justify-center"
                 >
-                    {[...Array(12)].map((_, index) => (
-                        <View
-                            key={index}
-                            className="mb-4 bg-white rounded-lg w-44 h-44"
-                        >
-                            <Text>Item {index + 1}</Text>
-                        </View>
+                    {skills.map((skill) => (
+                        <CardSkill skill={skill} key={skill.id} />
                     ))}
                 </ScrollView>
                 <View
