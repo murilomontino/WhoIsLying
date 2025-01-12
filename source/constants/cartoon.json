@@ -3,14 +3,14 @@
         "name": "The Flintstones",
         "genre": "Comédia",
         "year_of_release": 1960,
-        "brief_description": "Família vivendo aventuras humorísticas em um cenário incomum",
+        "brief_description": "Família vivendo aventuras humorísticas em um cenário incomum.",
         "tags": [
             "comédia",
             "família"
         ],
         "clues": [
-            "É conhecida como uma sitcom animada da TV.",
-            "Os personagens utilizam versões primitivas de tecnologias do século 20."
+            "Aventuras em um cenário primitivo com toques modernos.",
+            "Uma visão cômica de como seria viver em um passado alternativo."
         ],
         "difficulty": 0
     },
@@ -25,8 +25,8 @@
             "comédia"
         ],
         "clues": [
-            "A história se passa em um mundo cheio de elementos mágicos e criaturas peculiares.",
-            "Explora temas de amizade, coragem e criatividade."
+            "Explora um mundo cheio de magia e elementos pós-apocalípticos.",
+            "Uma jornada repleta de criaturas excêntricas e lições de vida."
         ],
         "difficulty": 1
     },
@@ -41,8 +41,8 @@
             "família"
         ],
         "clues": [
-            "Família amarela.",
-            "Cidade fictícia chamada Springfield."
+            "Retrata situações do dia a dia com humor ácido.",
+            "Explora a dinâmica de uma família em uma cidade fictícia."
         ],
         "difficulty": 0
     },
@@ -57,8 +57,8 @@
             "animação"
         ],
         "clues": [
-            "Viagens interdimensionais.",
-            "Relação entre avô e neto."
+            "Histórias envolvendo ciência, filosofia e sarcasmo.",
+            "Explora viagens interdimensionais e reflexões profundas."
         ],
         "difficulty": 1
     },
@@ -72,8 +72,8 @@
             "família"
         ],
         "clues": [
-            "É uma das animações mais clássicas e reconhecidas da TV.",
-            "Retrata interações engraçadas e criativas sem falas."
+            "Um jogo constante de perseguições criativas.",
+            "Humor visual sem necessidade de diálogos."
         ],
         "difficulty": 0
     },
@@ -88,8 +88,8 @@
             "infantil"
         ],
         "clues": [
-            "Personagem principal vive em um abacaxi.",
-            "Trabalha em um restaurante de fast food."
+            "Histórias que se passam em um ambiente subaquático único.",
+            "Uma mistura de humor surreal e cotidiano."
         ],
         "difficulty": 0
     },
@@ -103,8 +103,8 @@
             "família"
         ],
         "clues": [
-            "É um dos maiores marcos da animação clássica.",
-            "Famosa por apresentar histórias curtas e cheias de humor."
+            "Animação com situações cômicas e exageradas.",
+            "Apresenta uma variedade de personagens icônicos."
         ],
         "difficulty": 1
     },
@@ -118,10 +118,10 @@
             "família"
         ],
         "clues": [
-            "É uma série cheia de aventuras, mistérios e viagens.",
-            "Retrata o valor da coragem e da exploração."
+            "Aventuras que envolvem tesouros e descobertas misteriosas.",
+            "Foca em temas de coragem e exploração em família."
         ],
-        "difficulty": 3
+        "difficulty": 5
     },
     {
         "name": "Popeye",
@@ -133,8 +133,8 @@
             "aventura"
         ],
         "clues": [
-            "É uma animação clássica conhecida pelo estilo único.",
-            "Transmite mensagens sobre superação e determinação."
+            "Histórias que exaltam a superação e a força de vontade.",
+            "Aventuras em um estilo visual clássico e marcante."
         ],
         "difficulty": 2
     },
@@ -148,10 +148,10 @@
             "família"
         ],
         "clues": [
-            "É ambientada em um mundo futurista cheio de invenções.",
-            "Retrata as interações familiares com um toque tecnológico."
+            "Uma visão do futuro com tecnologia avançada e robôs.",
+            "Explora como a inovação afeta a vida cotidiana."
         ],
-        "difficulty": 3
+        "difficulty": 5
     },
     {
         "name": "Scooby-Doo",
@@ -163,8 +163,8 @@
             "aventura"
         ],
         "clues": [
-            "Famosa série sobre mistérios e trabalho em equipe.",
-            "É conhecida pelas reviravoltas em suas histórias."
+            "Mistérios resolvidos por um grupo unido e curioso.",
+            "Envolve situações intrigantes e revelações inesperadas."
         ],
         "difficulty": 0
     },
@@ -178,8 +178,8 @@
             "aventura"
         ],
         "clues": [
-            "É uma série com muito humor e planos ambiciosos.",
-            "Retrata a dinâmica entre personagens opostos."
+            "Dinâmica entre dois personagens com objetivos contrastantes.",
+            "Uma sátira de planos grandiosos e suas consequências."
         ],
         "difficulty": 2
     },
@@ -193,8 +193,8 @@
             "aventura"
         ],
         "clues": [
-            "É uma animação que mistura humor e suspense.",
-            "Famosa por situações que misturam tensão e coragem."
+            "Mistura de terror leve e humor em cenários inusitados.",
+            "Histórias que exploram o medo e a coragem de enfrentar o desconhecido."
         ],
         "difficulty": 2
     },
@@ -209,15 +209,9 @@
             "animação"
         ],
         "clues": [
-            "Desenho com viagem no tempo.",
-            "Sitcom animado."
+            "Aventuras em um futuro cheio de inovações e surpresas.",
+            "Explora temas sociais com um toque de humor cínico."
         ],
-        "difficulty": 2
-    },
-    {
-        "name": "South Park",
-        "genre": "Comédia",
-        "year_of_release": 1997,
         "difficulty": 2
     },
     {
@@ -230,8 +224,23 @@
             "sátira"
         ],
         "clues": [
-            "Desenho com humor ácido.",
-            "Personagens infantis."
+            "Sátira social que não poupa polêmicas nem tabus.",
+            "Histórias que misturam humor ácido e crítica cultural."
+        ],
+        "difficulty": 2
+    },
+    {
+        "name": "South Park",
+        "genre": "Comédia",
+        "year_of_release": 1997,
+        "brief_description": "Sátira social e política através das aventuras de quatro personagens em uma pequena cidade.",
+        "tags": [
+            "comédia",
+            "sátira"
+        ],
+        "clues": [
+            "Sátira social que não poupa polêmicas nem tabus.",
+            "Histórias que misturam humor ácido e crítica cultural."
         ],
         "difficulty": 2
     },
@@ -245,8 +254,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagem principal controla os elementos.",
-            "História de redenção e crescimento pessoal."
+            "História sobre o equilíbrio entre forças e o domínio de habilidades especiais.",
+            "Mostra uma jornada de redenção e crescimento em um mundo fantástico."
         ],
         "difficulty": 2
     },
@@ -260,8 +269,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagem principal tem padrinhos mágicos.",
-            "Desenho com humor e fantasia."
+            "Aventuras que misturam situações cotidianas com elementos mágicos.",
+            "Mostra como desejos nem sempre levam aos resultados esperados."
         ],
         "difficulty": 1
     },
@@ -275,8 +284,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é narcisista.",
-            "Desenho com humor e situações absurdas."
+            "Explora situações absurdas e exageradas de forma cômica.",
+            "Personagens vivem desventuras em busca de objetivos pessoais."
         ],
         "difficulty": 1
     },
@@ -290,8 +299,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um gênio.",
-            "Desenho com humor e invenções malucas."
+            "Mostra a genialidade de um inventor enfrentando desafios inesperados.",
+            "Mistura humor com ciência em um ambiente cheio de invenções."
         ],
         "difficulty": 1
     },
@@ -305,8 +314,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens lutam com poderes especiais.",
-            "Desenho com batalhas épicas."
+            "História repleta de batalhas intensas e superações.",
+            "Explora o crescimento pessoal através de treinamento e desafios épicos."
         ],
         "difficulty": 0
     },
@@ -320,8 +329,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um ninja.",
-            "Desenho com batalhas e crescimento pessoal."
+            "Uma jornada em busca de reconhecimento e realização pessoal.",
+            "Mistura aventuras emocionantes com lições de perseverança."
         ],
         "difficulty": 1
     },
@@ -335,8 +344,8 @@
             "ação"
         ],
         "clues": [
-            "Personagens são piratas.",
-            "Desenho com aventuras e batalhas."
+            "Aventuras marítimas em busca de tesouros lendários.",
+            "Explora os laços de amizade e trabalho em equipe em um cenário vasto."
         ],
         "difficulty": 1
     },
@@ -350,8 +359,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagem principal joga cartas mágicas.",
-            "Desenho com duelos e magia."
+            "História centrada em jogos estratégicos e desafios mágicos.",
+            "Explora coragem e estratégia em situações emocionantes."
         ],
         "difficulty": 1
     },
@@ -365,8 +374,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagens capturam criaturas chamadas Pokémon.",
-            "Desenho com batalhas e amizade."
+            "Aventuras com criaturas que possuem habilidades únicas e surpreendentes.",
+            "Explora o vínculo entre treinadores e seus companheiros em batalhas amistosas."
         ],
         "difficulty": 1
     },
@@ -380,8 +389,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagens são transportados para um mundo digital.",
-            "Desenho com batalhas e amizade."
+            "Mundo digital onde amizades são formadas com criaturas incríveis.",
+            "Mistura batalhas intensas com lições de amizade e superação."
         ],
         "difficulty": 1
     },
@@ -395,8 +404,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagens usam armaduras baseadas nas constelações.",
-            "Desenho com batalhas épicas."
+            "Guerreiros enfrentam desafios para proteger valores sagrados.",
+            "História repleta de combates épicos e mitologia."
         ],
         "difficulty": 1
     },
@@ -410,8 +419,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal tem um relógio alienígena.",
-            "Desenho com transformações e batalhas."
+            "Mistura ação e ficção científica com transformações incríveis.",
+            "Mostra como a criatividade pode levar à vitória em situações difíceis."
         ],
         "difficulty": 1
     },
@@ -425,8 +434,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagem principal tem poderes mágicos.",
-            "Desenho com batalhas e crescimento pessoal."
+            "Explora a convivência com seres mágicos em um mundo cheio de desafios.",
+            "Mostra como diferenças podem se tornar uma força em situações difíceis."
         ],
         "difficulty": 1
     },
@@ -440,8 +449,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais trabalham em um parque.",
-            "Desenho com humor e situações absurdas."
+            "Situações absurdas e surreais em um ambiente de trabalho peculiar.",
+            "Mostra como os problemas diários podem se tornar aventuras únicas."
         ],
         "difficulty": 1
     },
@@ -455,8 +464,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são irmãos gêmeos.",
-            "Desenho com mistérios e aventuras."
+            "História sobre explorar segredos e resolver mistérios.",
+            "Mostra como a curiosidade pode levar a descobertas inesperadas."
         ],
         "difficulty": 1
     },
@@ -470,8 +479,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são jovens super-heróis.",
-            "Desenho com batalhas e crescimento pessoal."
+            "Ação com jovens enfrentando desafios em um mundo cheio de perigos.",
+            "Explora a dinâmica de um grupo trabalhando para superar diferenças."
         ],
         "difficulty": 1
     },
@@ -485,8 +494,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagens principais são pequenas criaturas azuis.",
-            "Desenho com humor e aventuras."
+            "Pequenas criaturas vivem aventuras em uma vila cheia de desafios.",
+            "Mistura humor e situações inusitadas em um mundo fantástico."
         ],
         "difficulty": 1
     },
@@ -500,8 +509,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagem principal se transforma em herói.",
-            "Desenho com batalhas e magia."
+            "História de um herói que protege seu reino de forças sombrias.",
+            "Mistura magia e ação em batalhas emocionantes."
         ],
         "difficulty": 1
     },
@@ -515,8 +524,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagem principal se transforma em heroína.",
-            "Desenho com batalhas e magia."
+            "Uma jovem descobre que pode se transformar em uma guerreira lendária.",
+            "Histórias sobre união e resistência contra forças opressivas."
         ],
         "difficulty": 1
     },
@@ -530,8 +539,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagens principais são guerreiros felinos.",
-            "Desenho com batalhas e magia."
+            "Grupo de guerreiros luta para proteger seu novo lar.",
+            "Mistura de aventura, ação e elementos fantásticos."
         ],
         "difficulty": 1
     },
@@ -545,10 +554,10 @@
             "ficção científica"
         ],
         "clues": [
-            "Personagens principais pilotam robôs leões.",
-            "Desenho com batalhas e robôs gigantes."
+            "Cinco heróis se unem para controlar um robô gigante.",
+            "Explora trabalho em equipe e batalhas épicas no espaço."
         ],
-        "difficulty": 3
+        "difficulty": 4
     },
     {
         "name": "Transformers",
@@ -560,8 +569,8 @@
             "ficção científica"
         ],
         "clues": [
-            "Personagens principais são robôs alienígenas.",
-            "Desenho com batalhas e transformações."
+            "Máquinas alienígenas que vivem entre nós e se transformam.",
+            "Histórias sobre conflitos entre facções e proteção da Terra."
         ],
         "difficulty": 1
     },
@@ -575,8 +584,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Charlie Brown.",
-            "Desenho com humor e situações cotidianas."
+            "Retrata as desventuras de um grupo de amigos em situações cotidianas.",
+            "Explora temas de amizade, perseverança e humor sutil."
         ],
         "difficulty": 1
     },
@@ -590,8 +599,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é um gato preguiçoso chamado Garfield.",
-            "Desenho com humor e situações cotidianas."
+            "A vida cômica de um animal preguiçoso e seus amigos.",
+            "Explora situações cotidianas com um toque de sarcasmo."
         ],
         "difficulty": 1
     },
@@ -605,8 +614,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um gato azul chamado Gumball.",
-            "Desenho com humor e situações absurdas."
+            "Histórias surreais em uma cidade cheia de personagens excêntricos.",
+            "Explora aventuras escolares e familiares de forma cômica."
         ],
         "difficulty": 1
     },
@@ -620,10 +629,10 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um garoto otimista chamado Clarêncio.",
-            "Desenho com humor e lições de vida."
+            "Mostra o olhar positivo de uma criança sobre o mundo.",
+            "Histórias sobre amizade e aprendizados diários."
         ],
-        "difficulty": 4
+        "difficulty": 5
     },
     {
         "name": "Barbie: Life in the Dreamhouse",
@@ -635,10 +644,10 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é a boneca Barbie.",
-            "Desenho com humor e situações cotidianas."
+            "Uma personagem vive em um mundo idealizado e cheio de humor.",
+            "Explora situações engraçadas e dinâmicas familiares."
         ],
-        "difficulty": 4
+        "difficulty": 5
     },
     {
         "name": "Kim Possible",
@@ -650,8 +659,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é uma adolescente chamada Kim Possible.",
-            "Desenho com batalhas e espionagem."
+            "Uma jovem divide sua vida entre salvar o mundo e o ensino médio.",
+            "Histórias sobre coragem, espionagem e superação."
         ],
         "difficulty": 1
     },
@@ -665,8 +674,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são dois irmãos chamados Phineas e Ferb.",
-            "Desenho com humor e invenções malucas."
+            "Dois jovens inventores aproveitam suas férias com criações impressionantes.",
+            "Explora criatividade e imaginação em situações inusitadas."
         ],
         "difficulty": 1
     },
@@ -680,8 +689,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são cientistas.",
-            "Desenho com exploração submarina e ciência."
+            "Equipe de cientistas explora as profundezas do oceano em busca de descobertas.",
+            "Histórias que misturam ciência e mistérios submarinos."
         ],
         "difficulty": 5
     },
@@ -695,8 +704,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são super-heróis disfarçados de banda de rock.",
-            "Desenho com batalhas e música."
+            "Um grupo de heróis esconde sua verdadeira identidade enquanto luta contra o mal.",
+            "Explora ação e música de forma única e criativa."
         ],
         "difficulty": 1
     },
@@ -710,8 +719,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são fadas adolescentes.",
-            "Desenho com magia e batalhas."
+            "Histórias em uma escola de magia repleta de aventuras e desafios.",
+            "Mistura fantasia, amizade e lições importantes."
         ],
         "difficulty": 1
     },
@@ -725,8 +734,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são crianças que praticam luta livre.",
-            "Desenho com humor e batalhas."
+            "Crianças frequentam uma escola onde a luta livre é o foco principal.",
+            "Explora humor e aventuras em um ambiente de competição."
         ],
         "difficulty": 1
     },
@@ -740,8 +749,8 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são bebês curiosos.",
-            "Desenho com humor e situações cotidianas."
+            "Bebês curiosos exploram o mundo de forma única e imaginativa.",
+            "Histórias cheias de humor e perspectivas infantis."
         ],
         "difficulty": 1
     },
@@ -755,8 +764,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Arnold.",
-            "Desenho com humor e situações cotidianas."
+            "A vida urbana é vista pelos olhos de um jovem otimista e sonhador.",
+            "Explora amizades e desafios em um bairro vibrante."
         ],
         "difficulty": 1
     },
@@ -770,8 +779,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Doug.",
-            "Desenho com humor e situações cotidianas."
+            "Aventuras de um jovem e seus amigos enfrentando desafios e descobertas.",
+            "Explora amizade e criatividade em histórias cativantes."
         ],
         "difficulty": 1
     },
@@ -785,8 +794,8 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são Pateta e seu filho Max.",
-            "Desenho com humor e situações cotidianas."
+            "Uma dinâmica familiar cômica com desafios do dia a dia.",
+            "Explora humor em situações cotidianas com um toque sentimental."
         ],
         "difficulty": 1
     },
@@ -800,8 +809,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um arqueólogo e artista marcial chamado Jackie Chan.",
-            "Desenho com batalhas e magia."
+            "Artefatos mágicos e combates épicos estão no centro dessas aventuras.",
+            "Mistura ação, mistério e valores familiares."
         ],
         "difficulty": 2
     },
@@ -815,8 +824,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são três meninas com superpoderes.",
-            "Desenho com batalhas e humor."
+            "Um grupo de jovens com habilidades incríveis enfrenta vilões para proteger sua cidade.",
+            "Explora ação e trabalho em equipe em cenários cheios de aventura."
         ],
         "difficulty": 1
     },
@@ -830,8 +839,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um samurai chamado Jack.",
-            "Desenho com batalhas e viagens no tempo."
+            "Um samurai luta para retornar ao seu tempo enfrentando diversos desafios.",
+            "Explora a determinação e o confronto entre o bem e o mal."
         ],
         "difficulty": 1
     },
@@ -845,10 +854,10 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são jovens inspirados nos Looney Tunes.",
-            "Desenho com humor e situações cotidianas."
+            "Personagens inspirados em figuras clássicas exploram o aprendizado e a comédia.",
+            "Mistura humor leve com situações criativas e educativas."
         ],
-        "difficulty": 3
+        "difficulty": 4
     },
     {
         "name": "A Turma do Pateta",
@@ -860,8 +869,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é Pateta.",
-            "Desenho com humor e situações cotidianas."
+            "Uma turma cômica vive aventuras em uma cidade suburbana peculiar.",
+            "Explora amizades e situações do cotidiano com um toque divertido."
         ],
         "difficulty": 1
     },
@@ -875,10 +884,10 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um pato super-herói chamado Darkwing Duck.",
-            "Desenho com batalhas e humor."
+            "Histórias de um herói peculiar enfrentando criminosos em um mundo cômico.",
+            "Mistura ação e humor com personagens excêntricos."
         ],
-        "difficulty": 3
+        "difficulty": 4
     },
     {
         "name": "Animaniacs",
@@ -890,10 +899,10 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são excêntricos e malucos.",
-            "Desenho com humor e situações absurdas."
+            "Um grupo de personagens excêntricos se envolve em situações absurdas.",
+            "Mistura humor rápido e aventuras surreais com leve crítica social."
         ],
-        "difficulty": 3
+        "difficulty": 4
     },
     {
         "name": "Inspector Gadget",
@@ -905,10 +914,10 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um detetive atrapalhado com gadgets embutidos em seu corpo.",
-            "Desenho com batalhas e humor."
+            "Um detetive atrapalhado utiliza gadgets inusitados para resolver casos.",
+            "Explora ação e humor em investigações mirabolantes."
         ],
-        "difficulty": 3
+        "difficulty": 4
     },
     {
         "name": "Pica-Pau",
@@ -920,8 +929,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é um pássaro maluco chamado Pica-Pau.",
-            "Desenho com humor e situações absurdas."
+            "A vida cheia de travessuras de um personagem energético e cômico.",
+            "Mistura situações inusitadas com humor visual e caricato."
         ],
         "difficulty": 1
     },
@@ -935,8 +944,8 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são ursinhos mágicos.",
-            "Desenho com magia e lições de vida."
+            "Criaturas mágicas vivem em um reino encantado espalhando valores positivos.",
+            "Histórias que exploram amizade, bondade e superação."
         ],
         "difficulty": 1
     },
@@ -950,8 +959,8 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são versões infantis dos Muppets.",
-            "Desenho com humor e imaginação."
+            "Versões infantis de personagens clássicos exploram sua imaginação.",
+            "Mistura aventuras lúdicas com lições de vida criativas."
         ],
         "difficulty": 1
     },
@@ -965,8 +974,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é uma cachorrinha chamada Bluey.",
-            "Desenho com humor e situações cotidianas."
+            "Uma jovem cachorrinha explora o mundo ao lado de sua família animada.",
+            "Histórias que exploram os desafios e as alegrias da convivência familiar."
         ],
         "difficulty": 1
     },
@@ -980,8 +989,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é uma porquinha chamada Peppa Pig.",
-            "Desenho com humor e situações cotidianas."
+            "Aventuras de uma porquinha curiosa e sua família em um mundo colorido.",
+            "Explora temas cotidianos com leveza e aprendizado infantil."
         ],
         "difficulty": 1
     },
@@ -995,10 +1004,10 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é um dinossauro roxo chamado Barney.",
-            "Desenho com lições de vida e valores."
+            "Um dinossauro carismático ensina valores positivos para crianças.",
+            "Mistura música, aprendizado e diversão educativa."
         ],
-        "difficulty": 4
+        "difficulty": 5
     },
     {
         "name": "Thomas e Seus Amigos",
@@ -1310,8 +1319,8 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são pôneis mágicos.",
-            "Desenho com aventuras e lições de amizade."
+            "Um caderno misterioso que oferece o poder de decidir sobre a vida das pessoas.",
+            "Explora suspense psicológico e dilemas éticos complexos."
         ],
         "difficulty": 1
     },
@@ -1325,8 +1334,8 @@
             "ação"
         ],
         "clues": [
-            "Personagem principal é um jovem repórter chamado Tintim.",
-            "Desenho com aventuras e mistérios."
+            "Um jovem rebelde usa um poder especial para liderar uma revolução contra um império.",
+            "Mistura ação, estratégia política e temas de liderança."
         ],
         "difficulty": 1
     },
@@ -1340,8 +1349,8 @@
             "ação"
         ],
         "clues": [
-            "Personagem principal é um robô chamado Astro Boy.",
-            "Desenho com batalhas e ficção científica."
+            "A história de um jovem ninja que busca reconhecimento e deseja se tornar líder de sua vila.",
+            "Mistura batalhas emocionantes e lições sobre amizade e superação."
         ],
         "difficulty": 3
     },
@@ -1355,8 +1364,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um piloto de corridas chamado Speed Racer.",
-            "Desenho com corridas e aventuras."
+            "Aventura épica de piratas em busca de um tesouro lendário.",
+            "Mistura ação, humor e trabalho em equipe em um mundo vasto."
         ],
         "difficulty": 2
     },
@@ -1370,8 +1379,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um ex-samurai chamado Kenshin.",
-            "Desenho com batalhas e redenção."
+            "Dois irmãos enfrentam perigos em busca de corrigir um erro cometido com alquimia.",
+            "Explora temas como sacrifício, ciência e valores familiares."
         ],
         "difficulty": 2
     },
@@ -1385,8 +1394,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais competem em batalhas de piões.",
-            "Desenho com batalhas e amizade."
+            "Guardiões lutam para proteger a Terra de ameaças poderosas em batalhas épicas.",
+            "Mistura treinamento, superação e laços de amizade."
         ],
         "difficulty": 1
     },
@@ -1460,8 +1469,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um xamã chamado Yoh.",
-            "Desenho com batalhas e espíritos."
+            "A história de um jovem que pode se comunicar com espíritos em um torneio especial.",
+            "Mistura ação e estratégia com um toque de espiritualidade."
         ],
         "difficulty": 1
     },
@@ -1475,8 +1484,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagem principal é uma garota chamada Kagome.",
-            "Desenho com batalhas e magia."
+            "Viagem no tempo para recuperar uma joia mágica em um mundo cheio de demônios.",
+            "Mistura batalhas épicas, magia e temas de amizade."
         ],
         "difficulty": 1
     },
@@ -1490,8 +1499,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Ichigo.",
-            "Desenho com batalhas e espíritos."
+            "Histórias de um jovem que assume o dever de proteger vivos e mortos de forças sombrias.",
+            "Explora batalhas espirituais e dilemas sobre poder e sacrifício."
         ],
         "difficulty": 1
     },
@@ -1505,8 +1514,8 @@
             "fantasia"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Light.",
-            "Desenho com mistério e suspense."
+            "Um caderno misterioso que oferece o poder de decidir sobre a vida das pessoas.",
+            "Mistura suspense psicológico com dilemas éticos e intelectuais."
         ],
         "difficulty": 1
     },
@@ -1520,8 +1529,8 @@
             "ação"
         ],
         "clues": [
-            "Personagem principal é um príncipe exilado chamado Lelouch.",
-            "Desenho com batalhas e estratégia."
+            "Um rebelde com um poder especial lidera uma revolução contra um império.",
+            "Mistura estratégia política, ação e temas de liderança."
         ],
         "difficulty": 1
     },
@@ -1535,8 +1544,8 @@
             "ação"
         ],
         "clues": [
-            "Personagem principal é uma garota chamada Usagi.",
-            "Desenho com batalhas e magia."
+            "Magos de uma guilda enfrentam desafios para proteger seus companheiros e o mundo.",
+            "Mistura magia, humor e laços fortes de amizade."
         ],
         "difficulty": 1
     },
@@ -1550,8 +1559,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Gon.",
-            "Desenho com batalhas e aventuras."
+            "Um jovem embarca em uma jornada para se tornar um caçador renomado como seu pai.",
+            "Mistura aventura, batalhas emocionantes e estratégias inteligentes."
         ],
         "difficulty": 1
     },
@@ -1565,8 +1574,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são dois irmãos chamados Edward e Alphonse.",
-            "Desenho com batalhas e alquimia."
+            "Dois irmãos tentam corrigir um erro trágico enquanto exploram os limites da alquimia.",
+            "Mistura batalhas intensas com lições de sacrifício e valores familiares."
         ],
         "difficulty": 1
     },
@@ -1580,8 +1589,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais lutam contra gigantes.",
-            "Desenho com batalhas e sobrevivência."
+            "A humanidade luta contra gigantes que ameaçam sua sobrevivência.",
+            "Histórias de batalhas épicas em um mundo cercado por mistério e desespero."
         ],
         "difficulty": 1
     },
@@ -1595,8 +1604,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Tanjiro.",
-            "Desenho com batalhas e demônios."
+            "Um jovem embarca em uma jornada para salvar sua irmã e combater forças sombrias.",
+            "Mistura batalhas emocionantes com temas de sacrifício e determinação."
         ],
         "difficulty": 1
     },
@@ -1610,8 +1619,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Midoriya.",
-            "Desenho com batalhas e super-heróis."
+            "Um jovem sonha em ser um herói em um mundo onde poderes são comuns.",
+            "Explora coragem, superação e o treinamento de heróis em situações extremas."
         ],
         "difficulty": 1
     },
@@ -1625,8 +1634,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Yuji.",
-            "Desenho com batalhas e maldições."
+            "Um jovem enfrenta maldições enquanto descobre um mundo repleto de magia sombria.",
+            "Mistura ação, comédia e temas sobrenaturais em batalhas intensas."
         ],
         "difficulty": 1
     },
@@ -1640,8 +1649,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Denji.",
-            "Desenho com batalhas e demônios."
+            "Um jovem forma um pacto com um demônio para lutar contra ameaças sobrenaturais.",
+            "Mistura violência estilizada e humor sombrio em um universo caótico."
         ],
         "difficulty": 1
     },
@@ -1655,8 +1664,8 @@
             "ação"
         ],
         "clues": [
-            "Personagem principal é um jovem chamado Kaneda.",
-            "Desenho com batalhas e poderes psíquicos."
+            "Em um futuro distópico, poderes psíquicos ameaçam a estabilidade de uma cidade.",
+            "Histórias que misturam ficção científica, ação e reflexões sociais profundas."
         ],
         "difficulty": 1
     },
@@ -1670,8 +1679,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais lutam com poderes especiais.",
-            "Desenho com batalhas épicas."
+            "Guardiões do universo enfrentam inimigos poderosos em batalhas épicas.",
+            "Mistura treinamento, superação e rivalidades intensas."
         ],
         "difficulty": 1
     },
@@ -1685,8 +1694,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um garoto chamado Boruto.",
-            "Desenho com batalhas e crescimento pessoal."
+            "O filho de um grande herói busca seu próprio caminho enquanto enfrenta novos desafios.",
+            "Mistura aventura, crescimento pessoal e a busca por superar o legado de sua família."
         ],
         "difficulty": 1
     },
@@ -1700,8 +1709,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é um garoto travesso chamado Shin-Chan.",
-            "Desenho com humor e situações cotidianas."
+            "Travessuras cômicas de um garoto travesso que coloca todos ao seu redor em situações absurdas.",
+            "Histórias que misturam humor leve com críticas sutis ao cotidiano."
         ],
         "difficulty": 4
     },
@@ -1715,8 +1724,8 @@
             "família"
         ],
         "clues": [
-            "Personagem principal é um garoto travesso chamado Shin-Chan.",
-            "Desenho com humor e situações cotidianas."
+            "Um garoto com uma personalidade única provoca caos e risadas em sua família e amigos.",
+            "Mistura comédia e situações cotidianas inusitadas com um estilo excêntrico."
         ],
         "difficulty": 1
     },
@@ -1730,8 +1739,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são os Cavaleiros da Távola Redonda.",
-            "Desenho com batalhas e magia."
+            "A lendária busca pelo Santo Graal ganha vida com batalhas mágicas e heróicas.",
+            "Mistura fantasia, aventura e temas de honra em histórias épicas."
         ],
         "difficulty": 2
     },
@@ -1745,8 +1754,8 @@
             "ação"
         ],
         "clues": [
-            "Personagens principais são jovens com anéis mágicos.",
-            "Desenho com batalhas e lições de vida."
+            "Jovens com anéis mágicos enfrentam vilões para proteger o planeta.",
+            "Mistura ação e lições sobre responsabilidade ambiental."
         ],
         "difficulty": 2
     },
@@ -1760,8 +1769,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é o super-herói Superman.",
-            "Desenho com batalhas e super-heróis."
+            "As aventuras de um herói que luta para proteger sua cidade de ameaças perigosas.",
+            "Mistura ação com histórias que destacam valores de justiça e coragem."
         ],
         "difficulty": 1
     },
@@ -1775,8 +1784,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é o super-herói Batman.",
-            "Desenho com batalhas e super-heróis."
+            "Um vigilante sombrio combate o crime em uma cidade cheia de mistérios.",
+            "Mistura ação, suspense e histórias emocionantes de superação."
         ],
         "difficulty": 1
     },
@@ -1790,8 +1799,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são super-heróis da Liga da Justiça.",
-            "Desenho com batalhas e super-heróis."
+            "Um grupo de heróis se une para proteger o mundo de grandes ameaças.",
+            "Histórias que destacam trabalho em equipe e batalhas épicas contra o mal."
         ],
         "difficulty": 1
     },
@@ -1805,8 +1814,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são jovens super-heróis.",
-            "Desenho com batalhas e super-heróis."
+            "Jovens heróis enfrentam desafios enquanto aprendem a trabalhar em equipe.",
+            "Mistura ação e crescimento pessoal em um mundo cheio de perigos."
         ],
         "difficulty": 4
     },
@@ -1820,8 +1829,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são super-heróis dos Vingadores.",
-            "Desenho com batalhas e super-heróis."
+            "Heróis poderosos unem forças para salvar o planeta de ameaças cósmicas.",
+            "Mistura ação e aventura com laços de amizade e rivalidades icônicas."
         ],
         "difficulty": 2
     },
@@ -1835,8 +1844,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é o super-herói Homem-Aranha.",
-            "Desenho com batalhas e super-heróis."
+            "Um herói ágil protege sua cidade enquanto enfrenta vilões icônicos.",
+            "Mistura ação, drama e desafios pessoais de um jovem herói."
         ],
         "difficulty": 1
     },
@@ -1850,8 +1859,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são mutantes dos X-Men.",
-            "Desenho com batalhas e super-heróis."
+            "Mutantes com habilidades incríveis lutam para proteger um mundo que os teme.",
+            "Mistura ação, temas sociais e desafios pessoais em um universo emocionante."
         ],
         "difficulty": 1
     },
@@ -1865,8 +1874,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é o mutante Wolverine.",
-            "Desenho com batalhas e super-heróis."
+            "Um grupo de mutantes se une para proteger seu futuro em meio a batalhas épicas.",
+            "Mistura ação, trabalho em equipe e temas de aceitação em um mundo dividido."
         ],
         "difficulty": 1
     },
@@ -1880,8 +1889,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é o super-herói Hulk.",
-            "Desenho com batalhas e super-heróis."
+            "Heróis com força descomunal enfrentam ameaças para proteger a Terra.",
+            "Mistura ação e comédia em aventuras cheias de impacto."
         ],
         "difficulty": 2
     },
@@ -1895,8 +1904,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são os Guardiões da Galáxia.",
-            "Desenho com batalhas e super-heróis."
+            "Um grupo de desajustados espaciais se une para proteger a galáxia.",
+            "Mistura ação, humor e batalhas intergalácticas com um toque de amizade."
         ],
         "difficulty": 2
     },
@@ -1910,8 +1919,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagem principal é um espião chamado Archer.",
-            "Desenho com humor e espionagem."
+            "As aventuras hilárias de um espião carismático e sua equipe disfuncional.",
+            "Mistura humor ácido e espionagem em missões inusitadas."
         ],
         "difficulty": 4
     },
@@ -1925,8 +1934,8 @@
             "drama"
         ],
         "clues": [
-            "Personagem principal é um cavalo antropomórfico chamado BoJack Horseman.",
-            "Desenho com humor e drama."
+            "As desventuras de uma ex-estrela de TV em busca de redenção.",
+            "Mistura humor e drama com reflexões sobre fama e autossabotagem."
         ],
         "difficulty": 4
     },
@@ -1940,8 +1949,8 @@
             "aventura"
         ],
         "clues": [
-            "Personagens principais são adolescentes lidando com a puberdade.",
-            "Desenho com humor e situações absurdas."
+            "Adolescentes enfrentam os desafios da puberdade com a ajuda de monstros hormonais.",
+            "Mistura comédia irreverente e temas de amadurecimento."
         ],
         "difficulty": 4
     },
@@ -1955,8 +1964,8 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são membros de uma família disfuncional.",
-            "Desenho com humor e situações cotidianas."
+            "A vida de uma família nos anos 70 é retratada com humor ácido e realismo.",
+            "Mistura comédia e drama em situações cotidianas."
         ],
         "difficulty": 2
     },
@@ -1970,8 +1979,8 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são membros da família Griffin.",
-            "Desenho com humor e situações cotidianas."
+            "As desventuras de uma família excêntrica em uma cidade cheia de surpresas.",
+            "Mistura humor absurdo e crítica social em histórias inusitadas."
         ],
         "difficulty": 1
     },
@@ -1985,10 +1994,10 @@
             "família"
         ],
         "clues": [
-            "Personagens principais são membros da família Smith.",
-            "Desenho com humor e situações cotidianas."
+            "Uma família peculiar lida com situações cômicas e seu alienígena residente.",
+            "Mistura humor irreverente com temas familiares e absurdos."
         ],
-        "difficulty": 4
+        "difficulty": 3
     },
     {
         "name": "The Boondocks",

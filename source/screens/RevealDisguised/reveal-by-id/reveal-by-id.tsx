@@ -59,8 +59,12 @@ const RevealByIdScreen = () => {
         setDisabled(true)
     }, [])
 
+    const isDisguisedPlayer = useMemo(() => {
+        return id === disguisedPlayer?._id
+    }, [id, disguisedPlayer])
+
     const item = useMemo(() => {
-        if (id === disguisedPlayer?._id) {
+        if (isDisguisedPlayer) {
             return 'Você é o Impostor'
         }
         return word?.name
@@ -132,7 +136,7 @@ const RevealByIdScreen = () => {
                 <Text
                     entering={FadeInRight}
                     exiting={FadeOutRight}
-                    demount={isExiting}
+                    demount={visible}
                     as="body"
                     className="w-full text-wrap px-8 text-center !text-white md:w-1/2 text-shadow-sm"
                 >
@@ -140,6 +144,27 @@ const RevealByIdScreen = () => {
                     comida secreta. Tente Fazer com que pareça óbvio que você sabe
                     qual é a comida secreta, mas sem revelar diretamente.
                 </Text>
+                <View
+                    delay={1000}
+                    entering={FadeInLeft}
+                    exiting={FadeOutRight}
+                    demount={isExiting}
+                    condition={visible}
+                    className="flex-1 w-full"
+                >
+                    <Text className="gap-2">
+                        <Text className="mr-2">Ano de Lançamento:</Text>
+                        {word?.year_of_release}
+                    </Text>
+                    <Text className="gap-2">
+                        <Text className="mr-2">Gênero:</Text>
+                        {word?.genre}
+                    </Text>
+                    <Text condition={!isDisguisedPlayer} className="gap-2">
+                        <Text className="mr-2">Descrição:</Text>
+                        {word?.brief_description}
+                    </Text>
+                </View>
                 <View
                     delay={1100}
                     condition={visible}
