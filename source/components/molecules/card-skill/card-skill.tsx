@@ -1,4 +1,5 @@
 import { FontAwesome5 } from '@expo/vector-icons'
+import cn from 'classnames'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import Text from '~/components/atoms/text'
@@ -45,18 +46,22 @@ export type Skill = {
 type CardSkillProps = {
     skill: Skill
     onPress?: () => void
+    disabled?: boolean
 }
 
-const CardSkill = ({ skill, onPress }: CardSkillProps) => {
+const CardSkill = ({ skill, onPress, disabled }: CardSkillProps) => {
     return (
         <TouchableOpacity
+            disabled={disabled}
             onPress={onPress}
             key={skill.id}
-            className="w-48 h-48 p-2 px-1 mb-4 bg-white rounded-lg"
+            className={cn('w-48 h-48 p-2  px-1 mb-4 bg-white rounded-lg', {
+                'opacity-90 ': disabled,
+            })}
         >
             <View
                 style={{
-                    borderColor: skill.color,
+                    borderColor: disabled ? '#4b5563' : skill.color,
                 }}
                 className="border-2 !h-full justify-between rounded-lg"
             >
@@ -65,12 +70,16 @@ const CardSkill = ({ skill, onPress }: CardSkillProps) => {
                         as="h6"
                         className="text-center"
                         style={{
-                            color: skill.color,
+                            color: disabled ? '#4b5563' : skill.color,
                         }}
                     >
                         {skill.name}
                     </Text>
-                    <FontAwesome5 name={skill.icon} size={24} color={skill.color} />
+                    <FontAwesome5
+                        name={skill.icon}
+                        size={24}
+                        color={disabled ? '#4b5563' : skill.color}
+                    />
                 </View>
                 <View className="items-start justify-start flex-1 px-[0.5rem] ">
                     <Text
@@ -87,7 +96,7 @@ const CardSkill = ({ skill, onPress }: CardSkillProps) => {
                         <FontAwesome5
                             name={IconSkills[skill.type]}
                             size={24}
-                            color={skill.color}
+                            color={disabled ? '#4b5563' : skill.color}
                         />
                         <Text as="overline" className="p-0">
                             {NamedTypeSkills[skill.type]}

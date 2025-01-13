@@ -22,6 +22,16 @@ export function* onChangeBalance({
 }>) {
     try {
         const { players }: RootState['players'] = yield select(selectPlayers)
+        const player = players.find((p) => p._id === payload.player._id)
+
+        if (!player) {
+            throw new Error('Player not found')
+        }
+
+        if (player.balance < payload.skill.price) {
+            throw new Error('Insufficient balance')
+        }
+
         const newPlayers = players.map((p) =>
             p._id === payload.player._id
                 ? {

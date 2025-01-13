@@ -79,13 +79,6 @@ const SkillsRevealScreen = () => {
                         className="w-full"
                         contentContainerClassName="w-full gap-2 flex-row flex-wrap pb-[120px] md:justify-evenly "
                     >
-                        {skills.map((skill) => (
-                            <CardSkill
-                                onPress={onOpen.bind(null, skill as ISkill)}
-                                skill={skill as ISkill}
-                                key={skill.id}
-                            />
-                        ))}
                         <TouchableOpacity
                             onPress={handleReveal}
                             className="w-48 h-48 p-2 px-1 mb-4 bg-white rounded-lg"
@@ -120,6 +113,14 @@ const SkillsRevealScreen = () => {
                                 </View>
                             </View>
                         </TouchableOpacity>
+                        {skills.map((skill) => (
+                            <CardSkill
+                                disabled={(player?.balance || 0) < skill.price}
+                                onPress={onOpen.bind(null, skill as ISkill)}
+                                skill={skill as ISkill}
+                                key={skill.id}
+                            />
+                        ))}
                     </ScrollView>
                 </View>
                 <Modalize ref={modalizeRef}>
