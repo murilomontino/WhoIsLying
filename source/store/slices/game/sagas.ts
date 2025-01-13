@@ -28,12 +28,15 @@ import {
     onResetGameSuccess,
     onScorePlayersFail,
     onScorePlayersSuccess,
+    onUpdateSkillsInGameFail,
+    onUpdateSkillsInGameSuccess,
     onVoteInTheDisguisedFail,
     onVoteInTheDisguisedSuccess,
     onVotingItemFail,
     onVotingItemSuccess,
 } from './actions'
 
+import type { Skill } from '~/components/molecules/card-skill/card-skill'
 import {
     type Categories,
     type Category,
@@ -54,6 +57,7 @@ import {
     ACTION_GENERATE_ITEM,
     ACTION_RESET_GAME,
     ACTION_SCORE_PLAYERS,
+    ACTION_UPDATE_SKILLS_IN_GAME,
     ACTION_VOTE_IN_THE_DISGUISED,
     ACTION_VOTING_ITEM,
 } from './types'
@@ -196,6 +200,29 @@ export function* onChangeCategory({
     }
 }
 
+export function* onChangeSkillsInGame({
+    payload,
+}: PayloadAction<{ skill: Skill; type: 'add' | 'remove' }>) {
+    try {
+        const { skillsInGame }: RootState['game'] = yield select(selectGames)
+        let newSkills = [...skillsInGame]
+        if (payload.type === 'add') {
+            newSkills.push(payload.skill)
+        } else {
+            newSkills = skillsInGame.filter(
+                (skill) => skill.id !== payload.skill.id,
+            )
+        }
+        yield put(
+            onUpdateSkillsInGameSuccess({
+                skills: newSkills,
+            }),
+        )
+    } catch (_) {
+        yield put(onUpdateSkillsInGameFail())
+    }
+}
+
 export function* watchOnChangeCategory() {
     yield takeLatest(ACTION_CHANGE_CATEGORY, onChangeCategory)
 }
@@ -248,6 +275,10 @@ export function* watchOnChangeDifficulty() {
     yield takeLatest(ACTION_CHANGE_DIFFICULTY, onChangeDifficulty)
 }
 
+export function* watchOnUpdateSkillsInGame() {
+    yield takeLatest(ACTION_UPDATE_SKILLS_IN_GAME, onChangeSkillsInGame)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnChangeRounds),
@@ -263,6 +294,7 @@ function* Sagas() {
         fork(watchOnGenerateItem),
         fork(watchOnChangeDifficulty),
         fork(watchOnChangeCategory),
+        fork(watchOnUpdateSkillsInGame),
     ])
 }
 

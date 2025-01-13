@@ -1,5 +1,6 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 
+import type { Skill } from '~/components/molecules/card-skill/card-skill'
 import type { Categories, Category } from '~/constants/categories'
 import { LOADING } from '~/store/slices/constants'
 import { drawPlayer } from '~/utils/drawPlayer'
@@ -39,6 +40,9 @@ import {
     ON_SCORE_PLAYERS,
     ON_SCORE_PLAYERS_FAIL,
     ON_SCORE_PLAYERS_SUCCESS,
+    ON_UPDATE_SKILLS_IN_GAME,
+    ON_UPDATE_SKILLS_IN_GAME_FAIL,
+    ON_UPDATE_SKILLS_IN_GAME_SUCCESS,
     ON_VOTE_IN_THE_DISGUISED,
     ON_VOTE_IN_THE_DISGUISED_FAIL,
     ON_VOTE_IN_THE_DISGUISED_SUCCESS,
@@ -57,6 +61,7 @@ const initialState: InitialState = {
     questionRound: 1,
     difficulty: 1,
     votingItem: '',
+    skillsInGame: [],
     item: null,
     category: null,
     mostVoted: null,
@@ -170,6 +175,7 @@ const slice = createSlice({
             state.disguisedPlayer = null
             state.questionRound = 1
             state.votingItem = ''
+            state.skillsInGame = []
             state.mostVoted = null
         },
         [ON_RESET_GAME_FAIL]: (state) => {
@@ -250,6 +256,19 @@ const slice = createSlice({
             state.category = action.payload.category
         },
         [ON_CHANGE_CATEGORY_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_UPDATE_SKILLS_IN_GAME]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_UPDATE_SKILLS_IN_GAME_SUCCESS]: (
+            state,
+            action: PayloadAction<{ skills: Skill[] }>,
+        ) => {
+            state.isLoading = LOADING.SUCCESS
+            state.skillsInGame = action.payload.skills
+        },
+        [ON_UPDATE_SKILLS_IN_GAME_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },

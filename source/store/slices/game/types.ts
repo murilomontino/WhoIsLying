@@ -1,3 +1,4 @@
+import type { Skill } from '~/components/molecules/card-skill/card-skill'
 import type { Categories, Category } from '~/constants/categories'
 import type { LOADING } from '~/store/slices/constants'
 import type { IPlayer } from '../players/player'
@@ -16,6 +17,7 @@ export type InitialState = {
     item: Categories | null
     mostVoted: IPlayer | null
     category: Category | null
+    skillsInGame: Skill[]
 }
 
 export const name = 'game'
@@ -72,6 +74,10 @@ export const ON_CHANGE_CATEGORY = 'ON_CHANGE_CATEGORY'
 export const ON_CHANGE_CATEGORY_SUCCESS = 'ON_CHANGE_CATEGORY_SUCCESS'
 export const ON_CHANGE_CATEGORY_FAIL = 'ON_CHANGE_CATEGORY_FAIL'
 
+export const ON_UPDATE_SKILLS_IN_GAME = 'ON_UPDATE_SKILLS_IN_GAME'
+export const ON_UPDATE_SKILLS_IN_GAME_SUCCESS = 'ON_UPDATE_SKILLS_IN_GAME_SUCCESS'
+export const ON_UPDATE_SKILLS_IN_GAME_FAIL = 'ON_UPDATE_SKILLS_IN_GAME_FAIL'
+
 export const ACTION_CHANGE_CATEGORY = `${name}/${ON_CHANGE_CATEGORY}`
 export const ACTION_CHANGE_CATEGORY_SUCCESS = `${name}/${ON_CHANGE_CATEGORY_SUCCESS}`
 export const ACTION_CHANGE_CATEGORY_FAIL = `${name}/${ON_CHANGE_CATEGORY_FAIL}`
@@ -123,3 +129,7 @@ export const ACTION_GENERATE_ITEM_FAIL = `${name}/${ON_GENERATE_ITEM_FAIL}`
 export const ACTION_CHANGE_DIFFICULTY = `${name}/${ON_CHANGE_DIFFICULTY}`
 export const ACTION_CHANGE_DIFFICULTY_SUCCESS = `${name}/${ON_CHANGE_DIFFICULTY_SUCCESS}`
 export const ACTION_CHANGE_DIFFICULTY_FAIL = `${name}/${ON_CHANGE_DIFFICULTY_FAIL}`
+
+export const ACTION_UPDATE_SKILLS_IN_GAME = `${name}/${ON_UPDATE_SKILLS_IN_GAME}`
+export const ACTION_UPDATE_SKILLS_IN_GAME_SUCCESS = `${name}/${ON_UPDATE_SKILLS_IN_GAME_SUCCESS}`
+export const ACTION_UPDATE_SKILLS_IN_GAME_FAIL = `${name}/${ON_UPDATE_SKILLS_IN_GAME_FAIL}`

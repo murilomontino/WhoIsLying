@@ -39,6 +39,8 @@ export type Skill = {
     identifier: string
     icon: string
     color: string
+    target: string | null
+    source: string | null
     price: number
     type: TypeSkills
 }

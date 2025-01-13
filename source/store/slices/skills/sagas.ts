@@ -3,9 +3,17 @@ import { all, put, select, takeLatest } from 'redux-saga/effects'
 import type { Skill } from '~/components/molecules/card-skill/card-skill'
 import { selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
-import { onChangePlayers } from '../players/actions'
+import {
+    onChangePlayers,
+    onUpdateHistoricSkills,
+    onUpdateSkillAttack,
+    onUpdateSkillDefense,
+} from '../players/actions'
 import type { IPlayer } from '../players/player'
 import {
+    onAddSkillHistoric as onAddSkillHistoricAction,
+    onAddSkillHistoricFail,
+    onAddSkillHistoricSuccess,
     onBuySkillFail,
     onBuySkillSuccess,
     onChangeBalance as onChangeBalanceAction,
@@ -48,14 +56,86 @@ export function* onChangeBalance({
     }
 }
 
-export function* onBuySkill({
+export function* onAddSkillHistoric({
     payload,
 }: PayloadAction<{
     skill: Skill
     player: IPlayer
 }>) {
     try {
-        yield put(onChangeBalanceAction(payload))
+        yield put(
+            onUpdateHistoricSkills({
+                player: payload.player,
+                skill: payload.skill,
+                type: 'add',
+            }),
+        )
+        yield put(onAddSkillHistoricSuccess())
+    } catch (_) {
+        yield put(onAddSkillHistoricFail())
+    }
+}
+
+export function* onBuySkill({
+    payload,
+}: PayloadAction<{
+    skill: Skill
+    source: IPlayer
+    target: IPlayer
+}>) {
+    try {
+        yield put(
+            onChangeBalanceAction({
+                player: payload.source,
+                skill: payload.skill,
+            }),
+        )
+        yield put(
+            onAddSkillHistoricAction({
+                player: payload.source,
+                skill: payload.skill,
+            }),
+        )
+
+        switch (payload.skill.identifier) {
+            case '#all_or_nothing': // Tudo ou nada
+            case '#cloudy_day':
+            case '#block_vote':
+            case '#manipulation':
+            case '#corrupt':
+            case '#silence':
+                yield put(
+                    onUpdateSkillAttack({
+                        player: payload.target,
+                        skill: payload.skill,
+                        type: 'add',
+                    }),
+                )
+                break
+            case '#vigil':
+            case '#protection':
+                yield put(
+                    onUpdateSkillDefense({
+                        player: payload.target,
+                        skill: payload.skill,
+                        type: 'add',
+                    }),
+                )
+                break
+            case '#mirror':
+            case '#erase_trace':
+                yield put(
+                    onUpdateSkillDefense({
+                        player: payload.source,
+                        skill: payload.skill,
+                        type: 'add',
+                    }),
+                )
+                break
+            default:
+                break
+        }
+
         switch (payload.skill.identifier) {
             case '#espionage': // Espionagem
                 break
@@ -94,6 +174,7 @@ export function* onBuySkill({
             default:
                 break
         }
+
         yield put(onBuySkillSuccess())
     } catch (_) {
         yield put(onBuySkillFail())
@@ -108,8 +189,16 @@ export function* watchOnChangeBalance() {
     yield takeLatest(ACTION_BALANCE_CHANGE, onChangeBalance)
 }
 
+export function* watchOnAddSkillHistoric() {
+    yield takeLatest(ACTION_BALANCE_CHANGE, onAddSkillHistoric)
+}
+
 function* Sagas() {
-    yield all([watchOnBuySkill(), watchOnChangeBalance()])
+    yield all([
+        watchOnBuySkill(),
+        watchOnChangeBalance(),
+        watchOnAddSkillHistoric(),
+    ])
 }
 
 export default Sagas

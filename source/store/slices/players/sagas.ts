@@ -2,6 +2,7 @@ import { all, fork, put, select, takeLatest } from 'redux-saga/effects'
 
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+import type { Skill } from '~/components/molecules/card-skill/card-skill'
 import { selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
 import { onVoteInTheDisguised } from '../game/actions'
@@ -25,6 +26,8 @@ import {
     onResetVotingSuccess,
     onUpdateCanPlayerVoteFail,
     onUpdateCanPlayerVoteSuccess,
+    onUpdateHistoricSkillsFail,
+    onUpdateHistoricSkillsSuccess,
     onUpdatePlayerCanAnswerFail,
     onUpdatePlayerCanAnswerSuccess,
     onUpdatePlayerCanAskFail,
@@ -35,6 +38,10 @@ import {
     onUpdatePlayerRevealSuccess,
     onUpdatePlayerScoreFail,
     onUpdatePlayerScoreSuccess,
+    onUpdateSkillAttackFail,
+    onUpdateSkillAttackSuccess,
+    onUpdateSkillDefenseFail,
+    onUpdateSkillDefenseSuccess,
     onVoteInPlayerFail,
     onVoteInPlayerSuccess,
 } from './actions'
@@ -49,11 +56,14 @@ import {
     ACTION_RESET_SCORE,
     ACTION_RESET_VOTING,
     ACTION_UPDATE_CAN_PLAYER_VOTE,
+    ACTION_UPDATE_HISTORIC_SKILLS,
     ACTION_UPDATE_PLAYER_CAN_ANSWER,
     ACTION_UPDATE_PLAYER_CAN_ASK,
     ACTION_UPDATE_PLAYER_NAME,
     ACTION_UPDATE_PLAYER_REVEAL,
     ACTION_UPDATE_PLAYER_SCORE,
+    ACTION_UPDATE_SKILL_ATTACK,
+    ACTION_UPDATE_SKILL_DEFENSE,
     ACTION_VOTE_IN_PLAYER,
 } from './types'
 
@@ -250,6 +260,99 @@ export function* onResetScore() {
     }
 }
 
+export function* onUpdateHistoricSkills({
+    payload,
+}: PayloadAction<{ player: IPlayer; skill: Skill; type: 'remove' | 'add' }>) {
+    try {
+        const { players }: RootState['players'] = yield select(selectPlayers)
+        const newPlayers: IPlayer[] = players.map((player) => {
+            if (player._id !== payload.player._id) {
+                return player
+            }
+
+            if (payload.type === 'add') {
+                return {
+                    ...player,
+                    boughtSkillsInRound: [
+                        ...player.boughtSkillsInRound,
+                        payload.skill,
+                    ],
+                }
+            }
+
+            return {
+                ...player,
+                boughtSkillsInRound: player.boughtSkillsInRound.filter(
+                    (skill) => skill.id !== payload.skill.id,
+                ),
+            }
+        })
+        yield put(onUpdateHistoricSkillsSuccess({ players: newPlayers }))
+    } catch (_) {
+        yield put(onUpdateHistoricSkillsFail())
+    }
+}
+
+export function* onUpdateSkillDefense({
+    payload,
+}: PayloadAction<{ player: IPlayer; skill: Skill; type: 'remove' | 'add' }>) {
+    try {
+        const { players }: RootState['players'] = yield select(selectPlayers)
+        const newPlayers: IPlayer[] = players.map((player) => {
+            if (player._id !== payload.player._id) {
+                return player
+            }
+
+            if (payload.type === 'add') {
+                return {
+                    ...player,
+                    skillsDefense: [...player.skillsDefense, payload.skill],
+                }
+            }
+
+            return {
+                ...player,
+                skillsDefense: player.skillsDefense.filter(
+                    (skill) => skill.id !== payload.skill.id,
+                ),
+            }
+        })
+        yield put(onUpdateSkillDefenseSuccess({ players: newPlayers }))
+    } catch (_) {
+        yield put(onUpdateSkillDefenseFail())
+    }
+}
+
+export function* onUpdateSkillAttack({
+    payload,
+}: PayloadAction<{ player: IPlayer; skill: Skill; type: 'remove' | 'add' }>) {
+    try {
+        const { players }: RootState['players'] = yield select(selectPlayers)
+        const newPlayers: IPlayer[] = players.map((player) => {
+            if (player._id !== payload.player._id) {
+                return player
+            }
+
+            if (payload.type === 'add') {
+                return {
+                    ...player,
+                    skillsAttack: [...player.skillsAttack, payload.skill],
+                }
+            }
+
+            return {
+                ...player,
+                skillsAttack: player.skillsAttack.filter(
+                    (skill) => skill.id !== payload.skill.id,
+                ),
+            }
+        })
+        yield put(onUpdateSkillAttackSuccess({ players: newPlayers }))
+    } catch (_) {
+        yield put(onUpdateSkillAttackFail())
+    }
+}
+
 export function* watchOnResetPlayers() {
     yield takeLatest(ACTION_RESET_PLAYERS, onResetPlayers)
 }
@@ -310,6 +413,18 @@ export function* watchOnResetScore() {
     yield takeLatest(ACTION_RESET_SCORE, onResetScore)
 }
 
+export function* watchOnUpdateHistoricSkills() {
+    yield takeLatest(ACTION_UPDATE_HISTORIC_SKILLS, onUpdateHistoricSkills)
+}
+
+export function* watchOnUpdateSkillDefense() {
+    yield takeLatest(ACTION_UPDATE_SKILL_DEFENSE, onUpdateSkillDefense)
+}
+
+export function* watchOnUpdateSkillAttack() {
+    yield takeLatest(ACTION_UPDATE_SKILL_ATTACK, onUpdateSkillAttack)
+}
+
 function* Sagas() {
     yield all([
         fork(watchOnAddPlayers),
@@ -327,6 +442,9 @@ function* Sagas() {
         fork(watchOnNewQuestionRound),
         fork(watchOnChangePlayers),
         fork(watchOnResetScore),
+        fork(watchOnUpdateHistoricSkills),
+        fork(watchOnUpdateSkillDefense),
+        fork(watchOnUpdateSkillAttack),
     ])
 }
 

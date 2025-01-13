@@ -2,6 +2,9 @@ import { createAction } from '@reduxjs/toolkit'
 import type { Skill } from '~/components/molecules/card-skill/card-skill'
 import type { IPlayer } from '../players/player'
 import {
+    ACTION_ADD_SKILL_HISTORIC,
+    ACTION_ADD_SKILL_HISTORIC_FAIL,
+    ACTION_ADD_SKILL_HISTORIC_SUCCESS,
     ACTION_BALANCE_CHANGE,
     ACTION_BALANCE_CHANGE_FAIL,
     ACTION_BALANCE_CHANGE_SUCCESS,
@@ -22,3 +25,11 @@ export const onChangeBalance = createAction<{ skill: Skill; player: IPlayer }>(
 
 export const onChangeBalanceSuccess = createAction(ACTION_BALANCE_CHANGE_SUCCESS)
 export const onChangeBalanceFail = createAction(ACTION_BALANCE_CHANGE_FAIL)
+
+export const onAddSkillHistoric = createAction<{ skill: Skill; player: IPlayer }>(
+    ACTION_ADD_SKILL_HISTORIC,
+)
+export const onAddSkillHistoricSuccess = createAction(
+    ACTION_ADD_SKILL_HISTORIC_SUCCESS,
+)
+export const onAddSkillHistoricFail = createAction(ACTION_ADD_SKILL_HISTORIC_FAIL)

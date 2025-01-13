@@ -1,5 +1,6 @@
 import { createAction } from '@reduxjs/toolkit'
 
+import type { Skill } from '~/components/molecules/card-skill/card-skill'
 import type { Categories } from '~/constants/categories'
 import type { IPlayer } from '../players/player'
 import {
@@ -36,6 +37,9 @@ import {
     ACTION_SCORE_PLAYERS,
     ACTION_SCORE_PLAYERS_FAIL,
     ACTION_SCORE_PLAYERS_SUCCESS,
+    ACTION_UPDATE_SKILLS_IN_GAME,
+    ACTION_UPDATE_SKILLS_IN_GAME_FAIL,
+    ACTION_UPDATE_SKILLS_IN_GAME_SUCCESS,
     ACTION_VOTE_IN_THE_DISGUISED,
     ACTION_VOTE_IN_THE_DISGUISED_FAIL,
     ACTION_VOTE_IN_THE_DISGUISED_SUCCESS,
@@ -143,3 +147,14 @@ export const onChangeDifficultySuccess = createAction<{ difficulty: number }>(
     ACTION_CHANGE_DIFFICULTY_SUCCESS,
 )
 export const onChangeDifficultyFail = createAction(ACTION_CHANGE_DIFFICULTY_FAIL)
+
+export const onUpdateSkillsInGame = createAction<{
+    skill: Skill
+    type: 'add' | 'remove'
+}>(ACTION_UPDATE_SKILLS_IN_GAME)
+export const onUpdateSkillsInGameSuccess = createAction<{ skills: Skill[] }>(
+    ACTION_UPDATE_SKILLS_IN_GAME_SUCCESS,
+)
+export const onUpdateSkillsInGameFail = createAction(
+    ACTION_UPDATE_SKILLS_IN_GAME_FAIL,
+)

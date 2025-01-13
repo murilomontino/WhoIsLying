@@ -1,5 +1,6 @@
 import { createAction } from '@reduxjs/toolkit'
 
+import type { Skill } from '~/components/molecules/card-skill/card-skill'
 import type { IPlayer } from './player'
 import {
     ACTION_ADD_PLAYERS,
@@ -29,6 +30,9 @@ import {
     ACTION_UPDATE_CAN_PLAYER_VOTE,
     ACTION_UPDATE_CAN_PLAYER_VOTE_FAIL,
     ACTION_UPDATE_CAN_PLAYER_VOTE_SUCCESS,
+    ACTION_UPDATE_HISTORIC_SKILLS,
+    ACTION_UPDATE_HISTORIC_SKILLS_FAIL,
+    ACTION_UPDATE_HISTORIC_SKILLS_SUCCESS,
     ACTION_UPDATE_PLAYER_CAN_ANSWER,
     ACTION_UPDATE_PLAYER_CAN_ANSWER_FAIL,
     ACTION_UPDATE_PLAYER_CAN_ANSWER_SUCCESS,
@@ -44,6 +48,12 @@ import {
     ACTION_UPDATE_PLAYER_SCORE,
     ACTION_UPDATE_PLAYER_SCORE_FAIL,
     ACTION_UPDATE_PLAYER_SCORE_SUCCESS,
+    ACTION_UPDATE_SKILL_ATTACK,
+    ACTION_UPDATE_SKILL_ATTACK_FAIL,
+    ACTION_UPDATE_SKILL_ATTACK_SUCCESS,
+    ACTION_UPDATE_SKILL_DEFENSE,
+    ACTION_UPDATE_SKILL_DEFENSE_FAIL,
+    ACTION_UPDATE_SKILL_DEFENSE_SUCCESS,
     ACTION_VOTE_IN_PLAYER,
     ACTION_VOTE_IN_PLAYER_FAIL,
     ACTION_VOTE_IN_PLAYER_SUCCESS,
@@ -179,3 +189,43 @@ export const onResetScoreSuccess = createAction<{ players: IPlayer[] }>(
     ACTION_RESET_SCORE_SUCCESS,
 )
 export const onResetScoreFail = createAction(ACTION_RESET_SCORE_FAIL)
+
+export const onUpdateHistoricSkills = createAction<{
+    player: IPlayer
+    skill: Skill
+    type: 'add' | 'remove'
+}>(ACTION_UPDATE_HISTORIC_SKILLS)
+
+export const onUpdateHistoricSkillsSuccess = createAction<{
+    players: IPlayer[]
+}>(ACTION_UPDATE_HISTORIC_SKILLS_SUCCESS)
+
+export const onUpdateHistoricSkillsFail = createAction(
+    ACTION_UPDATE_HISTORIC_SKILLS_FAIL,
+)
+
+export const onUpdateSkillDefense = createAction<{
+    player: IPlayer
+    skill: Skill
+    type: 'add' | 'remove'
+}>(ACTION_UPDATE_SKILL_DEFENSE)
+
+export const onUpdateSkillDefenseSuccess = createAction<{
+    players: IPlayer[]
+}>(ACTION_UPDATE_SKILL_DEFENSE_SUCCESS)
+
+export const onUpdateSkillDefenseFail = createAction(
+    ACTION_UPDATE_SKILL_DEFENSE_FAIL,
+)
+
+export const onUpdateSkillAttack = createAction<{
+    player: IPlayer
+    skill: Skill
+    type: 'add' | 'remove'
+}>(ACTION_UPDATE_SKILL_ATTACK)
+
+export const onUpdateSkillAttackSuccess = createAction<{
+    players: IPlayer[]
+}>(ACTION_UPDATE_SKILL_ATTACK_SUCCESS)
+
+export const onUpdateSkillAttackFail = createAction(ACTION_UPDATE_SKILL_ATTACK_FAIL)

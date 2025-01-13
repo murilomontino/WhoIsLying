@@ -3,6 +3,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import { LOADING } from '~/store/slices/constants'
 import {
     type InitialState,
+    ON_ADD_SKILL_HISTORIC,
+    ON_ADD_SKILL_HISTORIC_FAIL,
+    ON_ADD_SKILL_HISTORIC_SUCCESS,
     ON_BALANCE_CHANGE,
     ON_BALANCE_CHANGE_FAIL,
     ON_BALANCE_CHANGE_SUCCESS,
@@ -36,6 +39,15 @@ const slice = createSlice({
             state.isLoading = LOADING.SUCCESS
         },
         [ON_BALANCE_CHANGE_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_ADD_SKILL_HISTORIC]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_ADD_SKILL_HISTORIC_SUCCESS]: (state) => {
+            state.isLoading = LOADING.SUCCESS
+        },
+        [ON_ADD_SKILL_HISTORIC_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
         },
     },
