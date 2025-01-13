@@ -3,6 +3,7 @@ import cartoon from '~/constants/cartoon.json'
 import type { Cartoon, Categories } from '~/constants/categories'
 import { shuffleArray } from './shuffleArray'
 
+const blacklist: Categories[] = []
 // Função para gerar um número inteiro aleatório dentro de um intervalo (min inclusivo, max exclusivo)
 const getRandomInt = async (min: number, max: number): Promise<number> => {
     const randomBytes = await getRandomBytesAsync(4) // Gera 4 bytes aleatórios
@@ -23,17 +24,24 @@ export const drawWordWithConditions = async (
     conditions: (player: Categories) => boolean,
 ): Promise<Cartoon> => {
     let word = null
-    while (word === null) {
+    let i = 0
+
+    while (word === null && i < words.length) {
         if (words.length === 0) {
             break
         }
         const randomWord = await drawWord(words)
-        if (conditions(randomWord)) {
+        if (conditions(randomWord) && !blacklist.includes(randomWord)) {
             word = randomWord
         }
+        i++
     }
 
-    return word as Cartoon
+    if (word === null && i === words.length) {
+        blacklist.splice(0, blacklist.length)
+    }
+
+    return (word as Cartoon) || drawWordWithConditions(words, conditions)
 }
 
 // quero que gere 7 palavras aleatórias
