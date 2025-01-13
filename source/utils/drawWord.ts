@@ -1,9 +1,17 @@
-import type { Cartoon } from '~/constants/cartoon'
-import cartoon from '~/constants/cartoon'
-import type { Categories } from '~/constants/categories'
+import { getRandomBytesAsync } from 'expo-crypto'
+import cartoon from '~/constants/cartoon.json'
+import type { Cartoon, Categories } from '~/constants/categories'
 import { shuffleArray } from './shuffleArray'
-export const drawWord = (cartoons: Categories[]): Categories => {
-    const randomIndex = Math.floor(Math.random() * cartoons.length)
+
+// Função para gerar um número inteiro aleatório dentro de um intervalo (min inclusivo, max exclusivo)
+const getRandomInt = async (min: number, max: number): Promise<number> => {
+    const randomBytes = await getRandomBytesAsync(4) // Gera 4 bytes aleatórios
+    const randomNumber = new Uint32Array(randomBytes.buffer)[0] // Converte para inteiro
+    return Math.floor((randomNumber / (0xffffffff + 1)) * (max - min)) + min
+}
+
+export const drawWord = async (cartoons: Categories[]): Promise<Cartoon> => {
+    const randomIndex = await getRandomInt(0, cartoons.length)
     const selectedIndex = randomIndex % cartoons.length
     const shuffledCartoons = shuffleArray(cartoons)
     const cartoon = shuffledCartoons[selectedIndex]
@@ -19,7 +27,7 @@ export const drawWordWithConditions = async (
         if (words.length === 0) {
             break
         }
-        const randomWord = drawWord(words)
+        const randomWord = await drawWord(words)
         if (conditions(randomWord)) {
             word = randomWord
         }
@@ -29,13 +37,13 @@ export const drawWordWithConditions = async (
 }
 
 // quero que gere 7 palavras aleatórias
-export const generateWords = (
+export const generateWords = async (
     category: Categories,
     numberOfWords = 7,
-): Categories[] => {
+): Promise<Cartoon[]> => {
     const words = [category]
     for (let i = 0; i < numberOfWords; i++) {
-        const word = drawWord(cartoon)
+        const word = await drawWord(cartoon as Categories[])
         words.push(word)
     }
     const items = shuffleArray(words)
