@@ -1,12 +1,15 @@
+import { FontAwesome5 } from '@expo/vector-icons'
 import { useLocalSearchParams, useRouter } from 'expo-router'
-import React, { useCallback, useEffect, useState } from 'react'
-import { ScrollView } from 'react-native'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { ScrollView, TouchableOpacity } from 'react-native'
+import { Modalize } from 'react-native-modalize'
 import { FadeInRight, FadeOutLeft } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
-import { ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
 import CardSkill from '~/components/molecules/card-skill'
+import type { Skill as ISkill } from '~/components/molecules/card-skill/card-skill'
 import GoBack from '~/components/molecules/go-back'
+import Skill from '~/components/organisms/skill'
 import View from '~/components/ui/view'
 import skills from '~/constants/skills.json'
 import { useAppSelector } from '~/store/hooks'
@@ -15,10 +18,18 @@ import { delay } from '~/utils/delay'
 
 const SkillsRevealScreen = () => {
     const [isExiting, setIsExiting] = useState(false)
+    const [skill, setSkill] = useState<ISkill | null>(null)
+    const modalizeRef = useRef<Modalize>(null)
     const [player, setPlayer] = useState<IPlayer | null>(null)
     const { id } = useLocalSearchParams()
     const { players } = useAppSelector((state) => state.players)
     const router = useRouter()
+
+    const onOpen = async (skill: ISkill) => {
+        setSkill(skill)
+        await delay(100)
+        modalizeRef.current?.open()
+    }
 
     useEffect(() => {
         const player = players.find((p) => p._id === id)
@@ -43,44 +54,72 @@ const SkillsRevealScreen = () => {
             <View className="flex flex-col items-center justify-center w-full h-[85vh] space-y-8">
                 <View className="flex flex-col items-center justify-center flex-1 w-full px-2 space-y-4">
                     <Text>Loja de Habilidades</Text>
-                    <Text
-                        entering={FadeInRight}
-                        exiting={FadeOutLeft}
-                        demount={isExiting}
-                        as="h2"
-                        className="!text-white text-shadow-outlined-red"
-                    >
-                        {player?.name}
-                    </Text>
+                    <View className="flex-row">
+                        <Text
+                            entering={FadeInRight}
+                            exiting={FadeOutLeft}
+                            demount={isExiting}
+                            as="h2"
+                            className="!text-white text-shadow-outlined-red"
+                        >
+                            {player?.name}
+                        </Text>
+                        <Text
+                            entering={FadeInRight}
+                            exiting={FadeOutLeft}
+                            demount={isExiting}
+                            as="h4"
+                            className="!text-white text-shadow-outlined-red"
+                        >
+                            ({player?.balance} DinDin)
+                        </Text>
+                    </View>
                 </View>
                 <ScrollView
                     className="max-h-[360px] w-full "
                     contentContainerClassName="w-full flex-row flex-wrap gap-4 items-start justify-center"
                 >
                     {skills.map((skill) => (
-                        <CardSkill skill={skill} key={skill.id} />
+                        <CardSkill
+                            onPress={onOpen.bind(null, skill as ISkill)}
+                            skill={skill as ISkill}
+                            key={skill.id}
+                        />
                     ))}
-                </ScrollView>
-                <View
-                    delay={1100}
-                    entering={FadeInRight}
-                    demount={isExiting}
-                    exiting={FadeOutLeft}
-                    className="flex flex-[0.5] items-center justify-center w-full px-8"
-                >
-                    <ButtonPrimary
+                    <TouchableOpacity
                         onPress={handleReveal}
-                        className="w-full rounded-full"
+                        className="w-48 h-48 p-2 px-1 mb-4 bg-white rounded-lg"
                     >
-                        <Text
-                            className="!text-white text-shadow-outlined-red"
-                            as="h3"
+                        <View
+                            style={{
+                                borderColor: '#000',
+                            }}
+                            className="border-2 !h-full justify-between rounded-lg"
                         >
-                            Entendido
-                        </Text>
-                    </ButtonPrimary>
-                </View>
+                            <View className="items-center w-full">
+                                <Text as="h6" className="text-center">
+                                    Continuar
+                                </Text>
+                                <FontAwesome5 name={''} size={24} color={'#000'} />
+                            </View>
+                            <View className="items-start justify-start flex-1 px-[0.5rem] ">
+                                <Text
+                                    className="px-0 text-sm text-gray-800 text-start"
+                                    style={{
+                                        fontFamily: 'Helvetica',
+                                    }}
+                                >
+                                    Clique Aqui para continuar. Tenha certeza de que
+                                    já comprou todas as habilidades que deseja.
+                                </Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                </ScrollView>
             </View>
+            <Modalize ref={modalizeRef}>
+                <Skill skill={skill as ISkill} />
+            </Modalize>
         </DefaultLayout>
     )
 }
