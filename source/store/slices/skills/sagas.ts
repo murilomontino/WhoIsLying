@@ -3,7 +3,12 @@ import { all, put, takeLatest } from 'redux-saga/effects'
 import { onBuySkillFail, onBuySkillSuccess } from './actions'
 import { ACTION_BUY_SKILL } from './types'
 
-export function* onBuySkill({ payload }: PayloadAction<{ skillId: string }>) {
+export function* onBuySkill({
+    payload,
+}: PayloadAction<{
+    skillId: string
+    price: number
+}>) {
     try {
         switch (payload.skillId) {
             case '#espionage': // Espionagem
