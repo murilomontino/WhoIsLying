@@ -158,7 +158,7 @@
 		"name": "Presságio",
 		"identifier": "#omen",
 		"description": "Habilidade de prever o futuro.",
-		"help": "Você faz uma previsão sobre quem será o próximo a usar uma habilidade contra você. Se acertar, ganha 100 pontos.",
+		"help": "Você faz uma previsão sobre quem irá usar uma habilidade contra você. Se acertar, ganha 100 pontos.",
 		"icon": "hamsa",
 		"type": "strategic",
 		"color": "#f39c12",

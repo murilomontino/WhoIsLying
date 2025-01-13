@@ -3,6 +3,7 @@ import { all, put, select, takeLatest } from 'redux-saga/effects'
 import type { Skill } from '~/components/molecules/card-skill/card-skill'
 import { selectPlayers } from '~/store/selectors'
 import type { RootState } from '~/store/store'
+import { onUpdateSkillsInGame } from '../game/actions'
 import {
     onChangePlayers,
     onUpdateHistoricSkills,
@@ -98,8 +99,10 @@ export function* onBuySkill({
         )
 
         switch (payload.skill.identifier) {
+            // ATAQUE
             case '#all_or_nothing': // Tudo ou nada
             case '#cloudy_day':
+            case '#omen':
             case '#block_vote':
             case '#manipulation':
             case '#corrupt':
@@ -112,6 +115,7 @@ export function* onBuySkill({
                     }),
                 )
                 break
+            // DEFESA
             case '#vigil':
             case '#protection':
                 yield put(
@@ -132,44 +136,20 @@ export function* onBuySkill({
                     }),
                 )
                 break
-            default:
-                break
-        }
-
-        switch (payload.skill.identifier) {
-            case '#espionage': // Espionagem
-                break
-            case '#counter_espionage': // Contra-espionagem
-                break
-            case '#all_or_nothing': // Tudo ou nada
-                break
+            // CONTEXT GAME
+            case '#counter_espionage':
             case '#crime_concealment':
-                break
-            case '#block_vote':
-                break
             case '#confusion':
+                yield put(
+                    onUpdateSkillsInGame({
+                        skill: payload.skill,
+                        type: 'add',
+                    }),
+                )
                 break
-            case '#manipulation':
-                break
-            case '#corrupt':
-                break
-            case '#silence':
-                break
-            case '#protection':
-                break
+            // USO IMEDIATO A COMPRA
             case '#target_inversion':
-                break
-            case '#mirror':
-                break
-            case '#erase_trace':
-                break
             case '#reverse_espionage':
-                break
-            case '#omen':
-                break
-            case '#cloudy_day':
-                break
-            case '#vigil':
                 break
             default:
                 break
