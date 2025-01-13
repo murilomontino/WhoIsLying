@@ -14,7 +14,8 @@ export const drawPlayerWithConditions = async (
     conditions: (player: IPlayer) => boolean,
 ): Promise<IPlayer> => {
     let player = null
-    while (player === null) {
+    let i = 0
+    while (player === null && i < 1000) {
         if (players.length === 0) {
             break
         }
@@ -22,6 +23,7 @@ export const drawPlayerWithConditions = async (
         if (conditions(randomPlayer)) {
             player = randomPlayer
         }
+        i++
     }
 
     return player as IPlayer
