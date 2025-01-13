@@ -8,6 +8,7 @@ import type { IPlayer } from '../players/player'
 import {
     onBuySkillFail,
     onBuySkillSuccess,
+    onChangeBalance as onChangeBalanceAction,
     onChangeBalanceFail,
     onChangeBalanceSuccess,
 } from './actions'
@@ -21,14 +22,16 @@ export function* onChangeBalance({
 }>) {
     try {
         const { players }: RootState['players'] = yield select(selectPlayers)
-        const player = players.find((p) => p._id === payload.player._id)
-        if (!player) {
-            throw new Error('Player not found')
-        }
+        const newPlayers = players.map((p) =>
+            p._id === payload.player._id
+                ? {
+                      ...p,
+                      balance: p.balance - payload.skill.price,
+                  }
+                : p,
+        )
 
-        player.balance -= payload.skill.price
-
-        yield put(onChangePlayers({ players }))
+        yield put(onChangePlayers({ players: newPlayers }))
         yield put(onChangeBalanceSuccess())
     } catch (_) {
         yield put(onChangeBalanceFail())
@@ -42,6 +45,7 @@ export function* onBuySkill({
     player: IPlayer
 }>) {
     try {
+        yield put(onChangeBalanceAction(payload))
         switch (payload.skill.identifier) {
             case '#espionage': // Espionagem
                 break

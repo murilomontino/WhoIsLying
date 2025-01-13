@@ -5,6 +5,7 @@ import game from './slices/game/slice'
 import type { InitialState as GameState } from './slices/game/types'
 import players from './slices/players/slice'
 import type { InitialState as PlayersState } from './slices/players/types'
+import skills from './slices/skills/slice'
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const makePersistConfig = (key: string): PersistConfig<any> => ({
@@ -26,6 +27,7 @@ const persistedReducersGame = persistReducer<GameState>(
 const reducers = {
     players: persistedReducersPlayers,
     game: persistedReducersGame,
+    skills,
 }
 
 export default reducers
