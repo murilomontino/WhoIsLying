@@ -1,6 +1,6 @@
 import { FontAwesome5 } from '@expo/vector-icons'
 import { useLocalSearchParams, useRouter } from 'expo-router'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { Modalize } from 'react-native-modalize'
@@ -21,25 +21,22 @@ const SkillsRevealScreen = () => {
     const [isExiting, setIsExiting] = useState(false)
     const [skill, setSkill] = useState<ISkill | null>(null)
     const modalizeRef = useRef<Modalize>(null)
-    const [player, setPlayer] = useState<IPlayer | null>(null)
     const { id } = useLocalSearchParams()
     const { players } = useAppSelector((state) => state.players)
     const router = useRouter()
+    const player = useMemo(() => {
+        const p = players.find((p) => p._id === id)
+        if (!p) {
+            router.push('/reveal')
+        }
+        return p
+    }, [id, players])
 
     const onOpen = async (skill: ISkill) => {
         setSkill(skill)
         await delay(100)
         modalizeRef.current?.open()
     }
-
-    useEffect(() => {
-        const player = players.find((p) => p._id === id)
-        if (player) {
-            setPlayer(player)
-        } else {
-            router.push('/reveal')
-        }
-    }, [id])
 
     const handleReveal = useCallback(async () => {
         setIsExiting(true)
@@ -126,7 +123,7 @@ const SkillsRevealScreen = () => {
                     </ScrollView>
                 </View>
                 <Modalize ref={modalizeRef}>
-                    <Skill skill={skill as ISkill} />
+                    <Skill skill={skill as ISkill} player={player as IPlayer} />
                 </Modalize>
             </DefaultLayout>
         </GestureHandlerRootView>
