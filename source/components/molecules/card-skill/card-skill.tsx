@@ -35,6 +35,7 @@ export type Skill = {
     name: string
     description: string
     help: string
+    identifier: string
     icon: string
     color: string
     price: number

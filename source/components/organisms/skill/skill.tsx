@@ -1,5 +1,5 @@
 import { FontAwesome5 } from '@expo/vector-icons'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import { ButtonPrimary } from '~/components/atoms/button'
 import Text from '~/components/atoms/text'
@@ -8,12 +8,25 @@ import {
     IconSkills,
     NamedTypeSkills,
 } from '~/components/molecules/card-skill/card-skill'
+import { useAppDispatch } from '~/store/hooks'
+import type { IPlayer } from '~/store/slices/players/player'
+import { onBuySkill } from '~/store/slices/skills/actions'
 
 type SkillProps = {
     skill: ISkill
+    player: IPlayer
 }
 
-const Skill = ({ skill }: SkillProps) => {
+const Skill = ({ skill, player }: SkillProps) => {
+    const dispatch = useAppDispatch()
+
+    const handleBuySkill = useCallback(
+        ({ skill, player }: { skill: ISkill; player: IPlayer }) => {
+            dispatch(onBuySkill({ skill, player }))
+        },
+        [],
+    )
+
     return (
         <View key={skill.id} className="w-full h-screen p-4 bg-white rounded-lg">
             <View
@@ -81,7 +94,7 @@ const Skill = ({ skill }: SkillProps) => {
                     </Text>
                 </View>
                 <ButtonPrimary
-                    onPress={() => {}}
+                    onPress={() => handleBuySkill({ skill, player })}
                     style={{
                         backgroundColor: skill.color,
                         width: '100%',
