@@ -1,7 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import { LOADING } from '~/store/slices/constants'
-import { type InitialState, name } from './types'
+import {
+    type InitialState,
+    ON_BALANCE_CHANGE,
+    ON_BALANCE_CHANGE_FAIL,
+    ON_BALANCE_CHANGE_SUCCESS,
+    ON_BUY_SKILL,
+    ON_BUY_SKILL_FAIL,
+    ON_BUY_SKILL_SUCCESS,
+    name,
+} from './types'
 
 const initialState: InitialState = {
     isLoading: LOADING.IDLE,
@@ -10,7 +19,26 @@ const initialState: InitialState = {
 const slice = createSlice({
     name,
     initialState,
-    reducers: {},
+    reducers: {
+        [ON_BUY_SKILL]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_BUY_SKILL_SUCCESS]: (state) => {
+            state.isLoading = LOADING.SUCCESS
+        },
+        [ON_BUY_SKILL_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+        [ON_BALANCE_CHANGE]: (state) => {
+            state.isLoading = LOADING.PENDING
+        },
+        [ON_BALANCE_CHANGE_SUCCESS]: (state) => {
+            state.isLoading = LOADING.SUCCESS
+        },
+        [ON_BALANCE_CHANGE_FAIL]: (state) => {
+            state.isLoading = LOADING.FAILED
+        },
+    },
 })
 
 export default slice.reducer

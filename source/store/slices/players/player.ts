@@ -1,3 +1,5 @@
+import type { Skill } from '~/components/molecules/card-skill/card-skill'
+
 export type IPlayer = {
     _id: string
     name: string
@@ -8,6 +10,9 @@ export type IPlayer = {
     blackListQuestioners: string[]
     votes: string[]
     displayVotes: number
+    skillsDefense: Skill[]
+    skillsAttack: Skill[]
+    boughtSkillsInRound: Skill[]
     canVote: boolean
     canAsk: boolean
     __protocol: string
@@ -21,6 +26,9 @@ export const Player: IPlayer = {
     votes: [],
     balance: 300,
     reveal: false,
+    boughtSkillsInRound: [],
+    skillsAttack: [],
+    skillsDefense: [],
     canAnswer: true,
     canVote: true,
     blackListQuestioners: [],

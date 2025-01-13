@@ -92,6 +92,9 @@ const slice = createSlice({
                 votes: [],
                 displayVotes: 0,
                 canAsk: true,
+                boughtSkillsInRound: [],
+                skillsAttack: [],
+                skillsDefense: [],
                 __protocol: 'player',
             })
             state.players = [...state.players, player]
