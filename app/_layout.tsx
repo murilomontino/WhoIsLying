@@ -1,5 +1,5 @@
 import { Slot } from 'expo-router'
-
+import 'react-native-get-random-values'
 // Import your global CSS file
 import '../global.css'
 
