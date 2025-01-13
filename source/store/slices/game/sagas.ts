@@ -262,6 +262,7 @@ function* Sagas() {
         fork(watchOnChangeMostVoted),
         fork(watchOnGenerateItem),
         fork(watchOnChangeDifficulty),
+        fork(watchOnChangeCategory),
     ])
 }
 

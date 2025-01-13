@@ -2,6 +2,7 @@ import { FontAwesome5 } from '@expo/vector-icons'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { Modalize } from 'react-native-modalize'
 import { FadeInRight, FadeOutLeft } from 'react-native-reanimated'
 import DefaultLayout from '~/components/_layout/default'
@@ -49,10 +50,10 @@ const SkillsRevealScreen = () => {
     }, [])
 
     return (
-        <DefaultLayout>
-            <GoBack />
-            <View className="flex flex-col items-center justify-center w-full h-[85vh] space-y-8">
-                <View className="flex flex-col items-center justify-center flex-1 w-full px-2 space-y-4">
+        <GestureHandlerRootView style={{ flex: 1 }}>
+            <DefaultLayout>
+                <GoBack />
+                <View className="flex flex-col max-h-[20%] items-center justify-center w-full px-2 h-fit ">
                     <Text>Loja de Habilidades</Text>
                     <View className="flex-row">
                         <Text
@@ -75,52 +76,60 @@ const SkillsRevealScreen = () => {
                         </Text>
                     </View>
                 </View>
-                <ScrollView
-                    className="max-h-[360px] w-full "
-                    contentContainerClassName="w-full flex-row flex-wrap gap-4 items-start justify-center"
-                >
-                    {skills.map((skill) => (
-                        <CardSkill
-                            onPress={onOpen.bind(null, skill as ISkill)}
-                            skill={skill as ISkill}
-                            key={skill.id}
-                        />
-                    ))}
-                    <TouchableOpacity
-                        onPress={handleReveal}
-                        className="w-48 h-48 p-2 px-1 mb-4 bg-white rounded-lg"
+                <View className="h-full flex-2">
+                    <ScrollView
+                        keyboardShouldPersistTaps="handled"
+                        className="w-full"
+                        contentContainerClassName="w-full gap-2 flex-row flex-wrap pb-[120px] md:justify-evenly "
                     >
-                        <View
-                            style={{
-                                borderColor: '#000',
-                            }}
-                            className="border-2 !h-full justify-between rounded-lg"
+                        {skills.map((skill) => (
+                            <CardSkill
+                                onPress={onOpen.bind(null, skill as ISkill)}
+                                skill={skill as ISkill}
+                                key={skill.id}
+                            />
+                        ))}
+                        <TouchableOpacity
+                            onPress={handleReveal}
+                            className="w-48 h-48 p-2 px-1 mb-4 bg-white rounded-lg"
                         >
-                            <View className="items-center w-full">
-                                <Text as="h6" className="text-center">
-                                    Continuar
-                                </Text>
-                                <FontAwesome5 name={''} size={24} color={'#000'} />
+                            <View
+                                style={{
+                                    borderColor: '#000',
+                                }}
+                                className="border-2 !h-full justify-between rounded-lg"
+                            >
+                                <View className="items-center w-full">
+                                    <Text as="h6" className="text-center">
+                                        Continuar
+                                    </Text>
+                                    <FontAwesome5
+                                        name={''}
+                                        size={24}
+                                        color={'#000'}
+                                    />
+                                </View>
+                                <View className="items-start justify-start flex-1 px-[0.5rem] ">
+                                    <Text
+                                        className="px-0 text-sm text-gray-800 text-start"
+                                        style={{
+                                            fontFamily: 'Helvetica',
+                                        }}
+                                    >
+                                        Clique Aqui para continuar. Tenha certeza de
+                                        que já comprou todas as habilidades que
+                                        deseja.
+                                    </Text>
+                                </View>
                             </View>
-                            <View className="items-start justify-start flex-1 px-[0.5rem] ">
-                                <Text
-                                    className="px-0 text-sm text-gray-800 text-start"
-                                    style={{
-                                        fontFamily: 'Helvetica',
-                                    }}
-                                >
-                                    Clique Aqui para continuar. Tenha certeza de que
-                                    já comprou todas as habilidades que deseja.
-                                </Text>
-                            </View>
-                        </View>
-                    </TouchableOpacity>
-                </ScrollView>
-            </View>
-            <Modalize ref={modalizeRef}>
-                <Skill skill={skill as ISkill} />
-            </Modalize>
-        </DefaultLayout>
+                        </TouchableOpacity>
+                    </ScrollView>
+                </View>
+                <Modalize ref={modalizeRef}>
+                    <Skill skill={skill as ISkill} />
+                </Modalize>
+            </DefaultLayout>
+        </GestureHandlerRootView>
     )
 }
 

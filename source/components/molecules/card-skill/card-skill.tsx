@@ -81,7 +81,7 @@ const CardSkill = ({ skill, onPress }: CardSkillProps) => {
                         {skill.description}
                     </Text>
                 </View>
-                <View className="flex-row items-start justify-between  px-[0.5rem]">
+                <View className="flex-row items-start justify-between px-[0.5rem]">
                     <View className="flex-row items-center gap-2">
                         <FontAwesome5
                             name={IconSkills[skill.type]}
