@@ -119,10 +119,18 @@ const slice = createSlice({
         },
         [ON_UPDATE_PLAYER_SCORE_SUCCESS]: (state, action) => {
             state.isLoading = LOADING.SUCCESS
-            const player = state.players.find((p) => p._id === action.payload._id)
-            if (player) {
-                player.score = action.payload.score
-            }
+            const players = state.players.map((player) => {
+                if (player._id === action.payload._id) {
+                    return {
+                        ...player,
+                        score: action.payload.score,
+                        balance: player.balance + action.payload.score,
+                    }
+                }
+                return player
+            })
+
+            state.players = players
         },
         [ON_UPDATE_PLAYER_SCORE_FAIL]: (state) => {
             state.isLoading = LOADING.FAILED
